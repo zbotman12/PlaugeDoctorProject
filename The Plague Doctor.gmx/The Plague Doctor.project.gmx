@@ -47,6 +47,7 @@
       <sprite>sprites\enemy_sightbox</sprite>
     </sprites>
     <sprite>sprites\spr_crate</sprite>
+    <sprite>sprites\sprite23</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
