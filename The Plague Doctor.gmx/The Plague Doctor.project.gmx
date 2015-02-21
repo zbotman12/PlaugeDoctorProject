@@ -47,7 +47,11 @@
       <sprite>sprites\enemy_sightbox</sprite>
     </sprites>
     <sprite>sprites\spr_crate</sprite>
+<<<<<<< HEAD
     <sprite>sprites\sprite23</sprite>
+=======
+    <sprite>sprites\Big_tits_money</sprite>
+>>>>>>> pr/1
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
