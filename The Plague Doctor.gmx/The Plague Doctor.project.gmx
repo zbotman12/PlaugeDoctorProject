@@ -59,6 +59,7 @@
     <backgrounds name="menu">
       <background>background\bg_menu</background>
     </backgrounds>
+    <background>background\background3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -113,12 +114,12 @@
     <object>objects\obj_hideable</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_test2</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_underground</room>
-    <room>rooms\rm_test2</room>
     <room>rooms\rm_ass</room>
   </rooms>
   <help>
