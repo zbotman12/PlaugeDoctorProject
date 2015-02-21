@@ -20,6 +20,6 @@
   <width>66</width>
   <height>32</height>
   <frames>
-    <frame index="0">images\spr_walldarker_0.png</frame>
+    <frame index="0">images\spr_wall2_0.png</frame>
   </frames>
 </sprite>

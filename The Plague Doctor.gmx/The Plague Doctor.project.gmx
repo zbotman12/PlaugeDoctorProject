@@ -27,26 +27,30 @@
     </sprites>
     <sprites name="level">
       <sprite>sprites\spr_wall</sprite>
-      <sprite>sprites\spr_walldarker</sprite>
-      <sprite>sprites\spr_wallforeground</sprite>
+      <sprite>sprites\spr_wall2</sprite>
       <sprite>sprites\spr_ground</sprite>
-      <sprite>sprites\spr_groundforeground2</sprite>
       <sprite>sprites\spr_ground2</sprite>
-      <sprite>sprites\spr_groundforeground3</sprite>
       <sprite>sprites\spr_redwall</sprite>
       <sprite>sprites\spr_nextroom</sprite>
       <sprite>sprites\spr_grass</sprite>
       <sprite>sprites\spr_ground3</sprite>
-      <sprite>sprites\spr_groundforeground</sprite>
       <sprite>sprites\spr_invwall</sprite>
       <sprite>sprites\spr_poppy</sprite>
       <sprite>sprites\spr_poppy2</sprite>
+      <sprites name="background">
+        <sprite>sprites\spr_groundbackground</sprite>
+        <sprite>sprites\spr_groundbackground2</sprite>
+        <sprite>sprites\spr_groundbackground3</sprite>
+        <sprite>sprites\spr_wallbackground</sprite>
+        <sprite>sprites\spr_wallbackground2</sprite>
+      </sprites>
     </sprites>
     <sprites name="enemie">
       <sprite>sprites\spr_testenemie</sprite>
       <sprite>sprites\enemy_sightbox</sprite>
     </sprites>
     <sprite>sprites\spr_crate</sprite>
+    <sprite>sprites\spr_crate2</sprite>
     <sprite>sprites\sprite23</sprite>
     <sprite>sprites\Big_tits_money</sprite>
     <sprite>sprites\sprite25</sprite>
@@ -55,6 +59,7 @@
     <backgrounds name="level">
       <background>background\bg_ass</background>
       <background>background\bg_war</background>
+      <background>background\bg_ohgod</background>
     </backgrounds>
     <backgrounds name="menu">
       <background>background\bg_menu</background>
@@ -75,7 +80,7 @@
   <objects name="objects">
     <objects name="level">
       <object>objects\obj_nextroom</object>
-      <object>objects\obj_walldarker</object>
+      <object>objects\obj_wall2</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_invwall</object>
       <object>objects\obj_redwall</object>
@@ -86,11 +91,12 @@
       <object>objects\obj_grass</object>
       <object>objects\obj_poppy</object>
       <object>objects\obj_poppy2</object>
-      <objects name="foreground">
-        <object>objects\obj_groundforeground3</object>
-        <object>objects\obj_groundforeground2</object>
-        <object>objects\obj_groundforeground</object>
-        <object>objects\obj_wallforeground</object>
+      <objects name="background">
+        <object>objects\obj_groundbackground3</object>
+        <object>objects\obj_groundbackground2</object>
+        <object>objects\obj_groundbackground</object>
+        <object>objects\obj_wallbackground</object>
+        <object>objects\obj_wallbackground2</object>
       </objects>
     </objects>
     <objects name="player">
@@ -111,15 +117,16 @@
       <object>objects\obj_level_sound</object>
     </objects>
     <object>objects\obj_crate</object>
+    <object>objects\obj_crate2</object>
     <object>objects\obj_hideable</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test2</room>
+    <room>rooms\rm_underground</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_poppyfields</room>
-    <room>rooms\rm_underground</room>
+    <room>rooms\rm_test2</room>
     <room>rooms\rm_ass</room>
   </rooms>
   <help>
