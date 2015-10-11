@@ -11,26 +11,6 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>108</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_set_friction</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>3</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -46,12 +26,20 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Variables
-grav = 0.2;
+grav = .85;
+startgrav = grav;
+vertAcclConstant = 9.8;
+horAcclConstant = 25;
 hsp = 0;
 vsp = 0;
-jumpspeed = 8;
+jumpspeed = 45;
+jumpHeight = 50;
 movespeed = 4;
+startMoveSpeed = movespeed;
 crouch = false;
+grounded = false;
+MaxMoveSpeed = 7;
+preJumpY = y;
 </string>
           </argument>
         </arguments>
@@ -107,7 +95,7 @@ crouch = false;
             <string>    //Get the player's input
 key_right = keyboard_check(ord("D"));
 key_left = -keyboard_check(ord("A"));
-key_jump = keyboard_check_pressed(vk_space);
+key_jump = keyboard_check_released(vk_space);
 key_jump_held = keyboard_check(vk_space);
 key_hide = 0;
 key_S = keyboard_check_pressed(ord("S"));
@@ -126,24 +114,49 @@ if(key_S_release)
 
 //React to inputs
 move = key_left + key_right;
+if(move == 0 || !grounded || lastFrameMove != move){
+    movespeed = startMoveSpeed;
+}else if (grounded){
+    if(movespeed &lt; MaxMoveSpeed){
+        movespeed += movespeed/horAcclConstant;
+    }
+}
+lastFrameMove = move;
+
 hsp = move * movespeed;
-if (vsp &lt; 10) vsp += grav;
+
+if (vsp &lt; 100) vsp += grav;
+
+if (place_meeting(x,y+1,obj_wall))
+   {
+       grounded = true;   
+   }else{
+       grounded = false;
+   }
+       
+//if(!grounded) {
+//grav += grav/vertAcclConstant;
+//}else{
+//grav = startgrav;
+//}
+
+
+
+if(grounded) {
+    if(key_jump == 1){
+        preJumpY = y;
+        if(jumpspeed &gt; jumpHeight){
         
-     if (place_meeting(x,y+1,obj_wall))
-        {
-            vsp = key_jump * -jumpspeed;
-            //Red walls being Jump Pads
-            if (place_meeting(x,y+1,obj_redwall))
-                {
-                    vsp = -jumpspeed * 2;
-                }
         }
-        
+        vsp = -jumpspeed;
         if((vsp &lt; 0) &amp;&amp; (!key_jump_held))
         {
-            vsp = max(vsp, - jumpspeed/4);
+           vsp = max(vsp, - jumpspeed/4);
         }
-           
+    }
+}//else if (place_meeting(x,preJumpY - jumpHeight, obj_player)){
+   // vsp = 0;
+//}           
          
         //Horizontal Collision
         if (place_meeting(x+hsp,y,obj_wall))
@@ -176,6 +189,15 @@ if (vsp &lt; 10) vsp += grav;
     { 
             sprite_index = spr_playerright;
     }
+if (key_jump_held)
+{      
+        sprite_index = spr_player_crouch_idle;     
+}
+else
+    { 
+            sprite_index = spr_playerright;
+    }
+    
 if (key_S_held &amp;&amp; !crouch)
 {      
         sprite_index = spr_player_crouch;
