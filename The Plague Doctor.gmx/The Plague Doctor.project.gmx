@@ -12,6 +12,7 @@
     <sounds name="level">
       <sound>sound\sou_stealth</sound>
       <sound>sound\sou_ass</sound>
+      <sound>sound\sou_alert</sound>
       <sound>sound\sou_wind</sound>
     </sounds>
   </sounds>
@@ -21,11 +22,22 @@
     </sprites>
     <sprites name="player">
       <sprite>sprites\spr_playerright</sprite>
+      <sprite>sprites\spr_crawl</sprite>
+      <sprite>sprites\spr_walking</sprite>
+      <sprite>sprites\spr_hide</sprite>
+      <sprite>sprites\spr_crouch</sprite>
+      <sprite>sprites\spr_crouched_idle</sprite>
+      <sprite>sprites\spr_falling</sprite>
+      <sprite>sprites\spr_running</sprite>
+      <sprite>sprites\spr_dead</sprite>
+      <sprite>sprites\spr_idle</sprite>
       <sprite>sprites\spr_playerhide</sprite>
       <sprite>sprites\spr_player_crouch</sprite>
       <sprite>sprites\spr_player_crouch_idle</sprite>
     </sprites>
     <sprites name="level">
+      <sprite>sprites\spr_light</sprite>
+      <sprite>sprites\spr_torch</sprite>
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_wall2</sprite>
       <sprite>sprites\spr_ground</sprite>
@@ -48,12 +60,15 @@
     <sprites name="enemie">
       <sprite>sprites\spr_testenemie</sprite>
       <sprite>sprites\enemy_sightbox</sprite>
+      <sprite>sprites\spr_spotted</sprite>
     </sprites>
     <sprite>sprites\spr_crate</sprite>
     <sprite>sprites\spr_crate2</sprite>
     <sprite>sprites\sprite23</sprite>
     <sprite>sprites\Big_tits_money</sprite>
     <sprite>sprites\sprite25</sprite>
+    <sprite>sprites\sprite32</sprite>
+    <sprite>sprites\sprite35</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
@@ -90,6 +105,9 @@
       <object>objects\obj_ground3</object>
       <object>objects\obj_grass</object>
       <object>objects\obj_poppy</object>
+      <object>objects\obj_glow</object>
+      <object>objects\obj_night</object>
+      <object>objects\obj_torch</object>
       <object>objects\obj_poppy2</object>
       <objects name="background">
         <object>objects\obj_groundbackground3</object>
@@ -109,10 +127,12 @@
     </objects>
     <objects name="enemie">
       <object>objects\obj_Soldier</object>
+      <object>objects\obj_spotted</object>
       <object>objects\obj_sightbox_soldier</object>
     </objects>
     <objects name="sound">
       <object>objects\obj_soundwind</object>
+      <object>objects\obj_alertsound</object>
       <object>objects\obj_soundass</object>
       <object>objects\obj_level_sound</object>
     </objects>
@@ -121,13 +141,13 @@
     <object>objects\obj_hideable</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_poppyfields</room>
+    <room>rooms\rm_menu</room>
+    <room>rooms\rm_ass</room>
+    <room>rooms\rm_test</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_underground</room>
-    <room>rooms\rm_menu</room>
-    <room>rooms\rm_test</room>
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_test2</room>
-    <room>rooms\rm_ass</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
