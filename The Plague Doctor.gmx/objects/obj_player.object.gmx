@@ -207,6 +207,15 @@ if (place_meeting(x, y + v_y, obj_wall)) {
 }
 y += v_y;
 
+/** Going down slopes */
+    yminus = 0;
+    while (!place_meeting(x + v_x, y + yminus, obj_wall) &amp;&amp; yminus &lt;= (2 * abs(v_x))) {
+        yminus += 1;
+    }
+        if (place_meeting(x + v_x, y + yminus, obj_wall)) {
+            grounded = true;
+            y += yminus;
+            }
 
 //------------------------------------//
 //-----PLAYER OBJECT INTERACTIONS-----//

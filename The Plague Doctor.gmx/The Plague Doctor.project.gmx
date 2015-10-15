@@ -152,6 +152,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_slope</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_underground</room>
