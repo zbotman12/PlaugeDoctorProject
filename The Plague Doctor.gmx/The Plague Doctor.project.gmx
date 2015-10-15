@@ -40,6 +40,7 @@
       <sprite>sprites\spr_torch</sprite>
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_wall2</sprite>
+      <sprite>sprites\spr_light2</sprite>
       <sprite>sprites\spr_ground</sprite>
       <sprite>sprites\spr_incline</sprite>
       <sprite>sprites\spr_slopeWall</sprite>
@@ -145,14 +146,19 @@
     <object>objects\obj_crate</object>
     <object>objects\obj_crate2</object>
     <object>objects\obj_hideable</object>
+    <objects name="Lighting">
+      <object>objects\obj_light</object>
+      <object>objects\obj_lightcontrol</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_level1</room>
+    <room>rooms\rm_menu</room>
+    <room>rooms\rm_underground</room>
+    <room>rooms\room7</room>
     <room>rooms\rm_test2</room>
     <room>rooms\rm_ass</room>
-    <room>rooms\rm_menu</room>
     <room>rooms\rm_test</room>
-    <room>rooms\rm_underground</room>
     <room>rooms\rm_poppyfields</room>
   </rooms>
   <help>

@@ -1447,7 +1447,6 @@
     <instance objName="obj_glow" x="2461" y="870" name="inst_EFC20EC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294901760" rotation="0"/>
     <instance objName="obj_glow" x="3993" y="868" name="inst_BD03989B" locked="0" code="" scaleX="1.53817272186279" scaleY="1.36625003814697" colour="4294901760" rotation="0"/>
     <instance objName="obj_glow" x="3228" y="892" name="inst_8AC8A8F6" locked="0" code="" scaleX="1.41999995708466" scaleY="1.27125000953674" colour="3372154880" rotation="0"/>
-    <instance objName="obj_glow" x="4581" y="643" name="inst_BECE6C9F" locked="0" code="" scaleX="1.75719654560089" scaleY="1.49937427043915" colour="3691052800" rotation="0"/>
     <instance objName="obj_slopeWall" x="1386" y="896" name="inst_20ECF2A7" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeWall" x="1518" y="832" name="inst_D8F95AF8" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeWall" x="1584" y="800" name="inst_B1864D8D" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
