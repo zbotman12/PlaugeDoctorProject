@@ -209,12 +209,15 @@ y += v_y;
 
 /** Going down slopes */
     yminus = 0;
-    while (!place_meeting(x + v_x, y + yminus, obj_wall) &amp;&amp; yminus &lt;= (2 * abs(v_x))) {
+    while (!place_meeting(x + v_x, y + yminus, obj_wall) &amp;&amp; yminus &lt;= 10) {
         yminus += 1;
     }
         if (place_meeting(x + v_x, y + yminus, obj_wall)) {
             grounded = true;
             y += yminus;
+            }
+            else {
+            grounded = false;
             }
 
 //------------------------------------//
