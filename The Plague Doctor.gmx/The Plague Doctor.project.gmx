@@ -39,6 +39,7 @@
       <sprite>sprites\spr_light</sprite>
       <sprite>sprites\spr_torch</sprite>
       <sprite>sprites\spr_wall</sprite>
+      <sprite>sprites\spr_ladder</sprite>
       <sprite>sprites\spr_wall2</sprite>
       <sprite>sprites\spr_light2</sprite>
       <sprite>sprites\spr_ground</sprite>
@@ -102,6 +103,8 @@
       <object>objects\obj_wall2</object>
       <object>objects\obj_slopeWall2</object>
       <object>objects\obj_wall</object>
+      <object>objects\obj_grabBlock</object>
+      <object>objects\obj_ladder</object>
       <object>objects\obj_incline</object>
       <object>objects\obj_slopeWall</object>
       <object>objects\obj_invwall</object>
@@ -152,10 +155,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_level1</room>
-    <room>rooms\rm_slope</room>
-    <room>rooms\rm_menu</room>
     <room>rooms\rm_underground</room>
+    <room>rooms\rm_slope</room>
+    <room>rooms\rm_level1</room>
+    <room>rooms\rm_menu</room>
     <room>rooms\room7</room>
     <room>rooms\rm_test2</room>
     <room>rooms\rm_ass</room>
