@@ -60,9 +60,9 @@ with(obj_light){
 }
 
 surface_reset_target();
-shader_set( shd_PerlinNoise );
+//shader_set( shd_PerlinNoise );
 draw_surface_ext(surf, 0, 0, 1/surfScale, 1/surfScale, 0, c_white, 0.75);
-shader_reset();
+//shader_reset();
 draw_surface_ext(surf, 0, 0, 1/surfScale, 1/surfScale, 0, c_white, 0.75);
 </string>
           </argument>

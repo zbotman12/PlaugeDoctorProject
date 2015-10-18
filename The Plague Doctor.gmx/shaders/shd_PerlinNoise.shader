@@ -51,8 +51,9 @@ void main()
     vec4 Color = texture2D( gm_BaseTexture, v_vTexcoord );
     float n = (noise(v_vPosition/16.0)*0.2 +noise(v_vPosition/32.0)*0.2 
         +noise(v_vPosition/64.0)*0.3 +noise(v_vPosition/128.0)*0.3);
-    
-    gl_FragColor = vec4(Color.rgb,clamp(n * Color.a, 0.01, 0.4));
+    vec3 lum = vec3(0.299, 0.587, 0.114);
+    float bw= dot( Color.rgb, lum);//black and white result
+    gl_FragColor = vec4( bw * vec3(1.0, 0.8, 0.4),n * Color.a/*clamp(n * Color.a, 0.01, 0.4)*/);
     //gl_FragColor = vec4(vec3(n),1.0);
 }
 

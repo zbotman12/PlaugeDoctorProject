@@ -53,7 +53,7 @@ application_surface_draw_enable(false);
 //----------------------------------
 
 // Draw the application surface with shader
-shader_set( shd_PerlinNoise );
+shader_set( shd_SepiaTone );
 draw_surface( application_surface, 0, 0 );
 shader_reset();
 </string>

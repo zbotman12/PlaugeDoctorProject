@@ -1517,6 +1517,7 @@
     <instance objName="obj_torch" x="4739" y="617" name="inst_0DE9C8B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="5341" y="520" name="inst_27186B65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="6032" y="616" name="inst_B0D59926" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shader_controller" x="148" y="381" name="inst_6C05C8D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="725" y="850" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_79D511B7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
