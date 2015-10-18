@@ -28,6 +28,7 @@
             <string>///Initialize Variables
 right = false;
 left = false;
+rightAndLeftPressed = false;
 runningRight = false;
 runningLeft = false;
 grounded = true;
@@ -83,12 +84,13 @@ g = 2;
   
 -----------------------------------------------------------------------------------------*/
 
-//------------------------------------------------WALKING, RUNNING, FRICTION, AND IDLE
+
+//------------------------------------------------WALKING, RUNNING, JUMPING, IDEL, AND FRICTION
 
 
 // Right and left keys set velocities.
 if (grounded) {
-    if (right) {
+    if (right &amp;&amp; !left) {
   
         // only this speed if walking
         if (!runButton) {
@@ -98,15 +100,14 @@ if (grounded) {
         image_xscale = 1; // Flip sprite.
     
         //Shift eases into a running speed based on fric
-        if (runButton) {
-            if (v_x &lt; maxRunningSpeed) {      
-                // divided by two just makes it take longer to reach 10
-                v_x += fric;
-            }
+        if (runButton &amp;&amp; v_x &lt; maxRunningSpeed) {      
+            // divided by two just makes it take longer to reach 10
+            v_x += fric;
         }
     }
 
-    if (left) {
+
+    if (left &amp;&amp; !right) {
     
         if (!runButton) {
             v_x = -maxWalkingSpeed;
@@ -115,35 +116,46 @@ if (grounded) {
         image_xscale = -1; // Flip sprite.
 
         // Shift increases speed.
-        if (runButton) {
-            if (v_x &gt; -maxRunningSpeed) {
-                v_x -= fric;
-            }
+        if (runButton &amp;&amp; v_x &gt; -maxRunningSpeed) {
+            v_x -= fric;
         }
     }
+}
     
-    if (right &amp;&amp; left) {
-        v_x = 0;
-    }
+    // jumping if grounded and space is pressed
+if (keyboard_check_pressed(vk_space) &amp;&amp; grounded) {
+    v_y = -jumpingSpeed;
 }
 
 
 //------------------------------------------------WALKING AND RUNNING BOOLEANS
 
 
-// movement booleans
+// right
 if (keyboard_check(vk_right)) {
     right = true;
 } else {
     right = false;
 }
 
+// left
 if (keyboard_check(vk_left)) {
     left = true;
-} else {
+} 
+else {
     left = false;
 }
 
+// both pressed
+if (keyboard_check(vk_right) 
+    &amp;&amp; keyboard_check(vk_left)) {
+        rightAndLeftPressed = true;
+}
+else {
+    rightAndLeftPressed = false;
+}
+
+// run boolean
 if (keyboard_check(vk_lshift)) {
     runButton = true;
 } else {
@@ -158,33 +170,21 @@ if (grounded) {
     if (!right &amp;&amp; v_x &gt; 0) {
         v_x -= fric; // fric can be changed depending on floor tile
     }
-
-    if (!left &amp;&amp; v_x &lt; 0) {
+    else if (!left &amp;&amp; v_x &lt; 0) {
         v_x += fric;
     }
+    if (rightAndLeftPressed // pressing left and right don't cancel momentum
+            &amp;&amp; v_x &gt; 0) {
+                v_x -= fric;
+                image_xscale = -1; // flip the sprite in motion's direction
+    }
+    else if (rightAndLeftPressed
+            &amp;&amp; v_x &lt; 0) {
+                v_x += fric;
+                image_xscale = 1;
+    }
 }
-
-
-//------------------------------------------------JUMPING AND GRAVITY
-
-
-if (keyboard_check_pressed(vk_space) &amp;&amp; grounded == true) { // we don't want to spam jumps by holding space so use "pressed"
-    v_y = -jumpingSpeed;
-}
-    
-// If one pixel above ground, v_y = 0. If space is pressed, jump.
-if (place_meeting(x, y + 1, obj_wall)) {
-    v_y = 0;
-    grounded = true;
-        if (keyboard_check_pressed(vk_space)) {
-        v_y = -jumpingSpeed;
-        }
-}
-else { // Else, gravity pulls you down (falling is assumed).
-    v_y += g;
-    grounded = false; // Can't jump when not grounded.
-}
-  
+ 
 
 /*----------------------------------------
    ____      _ _ _     _                 
@@ -256,20 +256,34 @@ y += v_y;
 //------------------------------------------------GOING DOWN SLOPES
 
 
-    yminus = 0;
-    while (!place_meeting(x + v_x, y + yminus, obj_wall) &amp;&amp; yminus &lt;= slopeScanValue) {
-        yminus += 1;
-    }
+yminus = 0;
+while (!place_meeting(x + v_x, y + yminus, obj_wall) &amp;&amp; yminus &lt;= slopeScanValue) {
+    yminus += 1;
+}
     
-    if (place_meeting(x + v_x, y + yminus, obj_wall)) {
-        grounded = true;
-        y += yminus;
-    }
-    else {
-        grounded = false;
-    }
+if (place_meeting(x + v_x, y + yminus, obj_wall)) {
+    grounded = true;
+    y += yminus;
+}
+else {
+    grounded = false;
+}
 
-    
+
+//------------------------------------------------GRAVITY AND GROUNDED BOOLEAN
+
+
+// If one pixel above ground, v_y = 0. If space is pressed, jump.
+if (place_meeting(x, y + 1, obj_wall)) {
+    v_y = 0;
+    grounded = true;
+}
+else { // Else, gravity pulls you down (falling is assumed).
+    v_y += g;
+    grounded = false; // Can't jump when not grounded.
+}
+  
+  
 /*----------------------------------------------------------------------------------------------------------
    ___  ____      _ _____ ____ _____   ___ _   _ _____ _____ ____      _    ____ _____ ___ ___  _   _ ____  
   / _ \| __ )    | | ____/ ___|_   _| |_ _| \ | |_   _| ____|  _ \    / \  / ___|_   _|_ _/ _ \| \ | / ___| 
@@ -283,45 +297,44 @@ y += v_y;
 //------------------------------------------------HIDING
 
 
-if (grounded) { // must be on the ground to be hidden
-    if (place_meeting(x, y, obj_crate) // if your colliding with the crate
-         &amp;&amp; keyboard_check(vk_down)) { // and down is pressed
-             hidden = true;
-    }   
-     else {
-        hidden = false;
-    }
+if (grounded 
+    &amp;&amp; place_meeting(x, y, obj_crate) // if your colliding with the crate
+    &amp;&amp; keyboard_check(vk_down)) { // and down is pressed
+                hidden = true;
+}   
+else {
+    hidden = false;
 }
 
 
 //------------------------------------------------GRABBING ON GRAB WALLS
 
 
-if(place_meeting(x + 1, y, obj_grabBlock)) {
-    if (keyboard_check(vk_control) &amp;&amp; !grounded) {
-        grabbing = true;
-    } else {
-        grabbing = false;
-    }
+if(place_meeting(x + 1, y, obj_grabBlock) 
+                &amp;&amp; keyboard_check(vk_control) 
+                &amp;&amp; grounded) {
+    grabbing = true;
+} else {
+    grabbing = false;
 }
 
 /* Same code but for the left side. 
  * Since sign(x) can return 0 it can't be used for grabs.
  */
  
-if(place_meeting(x - 1, y, obj_grabBlock)) {
-    if (keyboard_check(vk_control) &amp;&amp; !grounded) {
-        grabbing = true;
-    } else {
-        grabbing = false;
-    }
+if(place_meeting(x - 1, y, obj_grabBlock)
+                &amp;&amp; keyboard_check(vk_control) 
+                &amp;&amp; grounded) {
+    grabbing = true;
+} else {
+    grabbing = false;
 }
 
 // if you're grabbing you can't go left, right, up or down.
 if (grabbing) {
     v_y = 0;
     v_x = 0;
-    //grounded = true;
+    grounded = true;
     x = xprevious;
     y = yprevious;
 }
@@ -387,9 +400,8 @@ if (grounded) { // sprites when grounded
         
         sprite_index = spr_running;
         image_speed = 3;
-        }
-    
-    else if (left || right) { // if no horizontal speed
+    }
+    else if ((left || right)) { // if no horizontal speed
     
         if (sprite_index != spr_walking) { // same as before
             image_index = 0;
@@ -397,19 +409,18 @@ if (grounded) { // sprites when grounded
         
         sprite_index = spr_walking;
         image_speed = 4;
-     }
-     
-     else { // if none of the above, then make player idle.
+    }
+    else { // if none of the above, then make player idle.
         sprite_index = spr_idle;
         image_speed = 2;
-     }
+    }
+    
+    if (rightAndLeftPressed) { //both pressed
+        sprite_index = spr_idle;
+        image_speed = 1;
+    }
 }
 
-// if both direction keys pressed = idle and stationary
-if (right &amp;&amp; left) {
-    sprite_index = spr_idle;
-    image_speed = 1;
-}
 
 else { // if not grounded...
 
