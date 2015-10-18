@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,15 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surf = surface_create(room_width, room_height);
-surfScale = 1/8;
-
+            <string>//Disable automatic drawing of the application surface
+application_surface_draw_enable(false);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="77">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -50,20 +49,13 @@ surfScale = 1/8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(surf);
-draw_clear(c_black);
+            <string>/// Draw Surface with Shader Effect
+//----------------------------------
 
-with(obj_light){
-    draw_set_blend_mode(bm_src_color);
-    draw_sprite_ext(spr_light2, 0, x*other.surfScale, y*other.surfScale, lightSize*other.surfScale, lightSize*other.surfScale, 0, c_white, lightStrength);
-    draw_set_blend_mode(bm_normal);
-}
-
-surface_reset_target();
+// Draw the application surface with shader
 shader_set( shd_PerlinNoise );
-draw_surface_ext(surf, 0, 0, 1/surfScale, 1/surfScale, 0, c_white, 0.75);
+draw_surface( application_surface, 0, 0 );
 shader_reset();
-draw_surface_ext(surf, 0, 0, 1/surfScale, 1/surfScale, 0, c_white, 0.75);
 </string>
           </argument>
         </arguments>

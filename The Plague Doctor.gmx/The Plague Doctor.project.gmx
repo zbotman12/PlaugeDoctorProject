@@ -98,6 +98,12 @@
       <script>scripts\scr_menu.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
+    <shader type="GLSLES">shaders\shd_SepiaTone.shader</shader>
+    <shader type="GLSLES">shaders\shd_Inverted.shader</shader>
+    <shader type="GLSLES">shaders\shd_PerlinNoise.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <fonts name="menu">
       <font>fonts\fnt_menu</font>
@@ -164,13 +170,14 @@
     <objects name="Lighting">
       <object>objects\obj_light</object>
       <object>objects\obj_lightcontrol</object>
+      <object>objects\obj_shader_controller</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_whiteboxing</room>
+    <room>rooms\rm_level1</room>
     <room>rooms\rm_underground</room>
     <room>rooms\rm_slope</room>
-    <room>rooms\rm_level1</room>
     <room>rooms\rm_menu</room>
     <room>rooms\room7</room>
     <room>rooms\rm_test2</room>
