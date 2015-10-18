@@ -51,7 +51,6 @@ surfScale = 1/8;
           <argument>
             <kind>1</kind>
             <string>surface_set_target(surf);
-
 draw_clear(c_black);
 
 with(obj_light){
@@ -61,6 +60,9 @@ with(obj_light){
 }
 
 surface_reset_target();
+shader_set( shd_PerlinNoise );
+draw_surface_ext(surf, 0, 0, 1/surfScale, 1/surfScale, 0, c_white, 0.75);
+shader_reset();
 draw_surface_ext(surf, 0, 0, 1/surfScale, 1/surfScale, 0, c_white, 0.75);
 </string>
           </argument>

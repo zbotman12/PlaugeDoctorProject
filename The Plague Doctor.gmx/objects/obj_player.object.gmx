@@ -116,6 +116,7 @@ if (grounded) {
         image_xscale = -1; // Flip sprite.
 
         // Shift increases speed.
+
         if (runButton &amp;&amp; v_x &gt; -maxRunningSpeed) {
             v_x -= fric;
         }
@@ -131,12 +132,14 @@ if (keyboard_check_pressed(vk_space) &amp;&amp; grounded) {
 //------------------------------------------------WALKING AND RUNNING BOOLEANS
 
 
+
 // right
 if (keyboard_check(vk_right)) {
     right = true;
 } else {
     right = false;
 }
+
 
 // left
 if (keyboard_check(vk_left)) {
@@ -296,7 +299,6 @@ else { // Else, gravity pulls you down (falling is assumed).
 
 //------------------------------------------------HIDING
 
-
 if (grounded 
     &amp;&amp; place_meeting(x, y, obj_crate) // if your colliding with the crate
     &amp;&amp; keyboard_check(vk_down)) { // and down is pressed
@@ -305,7 +307,6 @@ if (grounded
 else {
     hidden = false;
 }
-
 
 //------------------------------------------------GRABBING ON GRAB WALLS
 

@@ -31,7 +31,7 @@
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -1461,6 +1461,7 @@
     <instance objName="obj_glow" x="1212" y="600" name="inst_BC4D01A5" locked="0" code="" scaleX="1.26999998092651" scaleY="1.25750005245209" colour="4294934592" rotation="0"/>
     <instance objName="obj_glow" x="2210" y="753" name="inst_ABBA0F9E" locked="0" code="" scaleX="1.26999998092651" scaleY="1.25750005245209" colour="4294934592" rotation="0"/>
     <instance objName="obj_glow" x="750" y="778" name="inst_DB259DF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294934592" rotation="0"/>
+    <instance objName="obj_shader_controller" x="142" y="149" name="inst_7F693DA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

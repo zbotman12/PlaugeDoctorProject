@@ -54,6 +54,12 @@
       <sprite>sprites\spr_invwall</sprite>
       <sprite>sprites\spr_poppy</sprite>
       <sprite>sprites\spr_poppy2</sprite>
+      <sprites name="white boxs">
+        <sprite>sprites\spr_white_box_background</sprite>
+        <sprite>sprites\spr_White_box</sprite>
+        <sprite>sprites\spr_slope_white_box</sprite>
+        <sprite>sprites\spr_slope_while_box</sprite>
+      </sprites>
       <sprites name="background">
         <sprite>sprites\spr_groundbackground</sprite>
         <sprite>sprites\spr_groundbackground2</sprite>
@@ -92,6 +98,12 @@
       <script>scripts\scr_menu.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
+    <shader type="GLSLES">shaders\shd_SepiaTone.shader</shader>
+    <shader type="GLSLES">shaders\shd_Inverted.shader</shader>
+    <shader type="GLSLES">shaders\shd_PerlinNoise.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <fonts name="menu">
       <font>fonts\fnt_menu</font>
@@ -99,6 +111,12 @@
   </fonts>
   <objects name="objects">
     <objects name="level">
+      <objects name="White boxs">
+        <object>objects\obj_white_box</object>
+        <object>objects\obj_slope_white_box0</object>
+        <object>objects\obj_slope_white_box</object>
+        <object>objects\obj_white_box_background</object>
+      </objects>
       <object>objects\obj_nextroom</object>
       <object>objects\obj_wall2</object>
       <object>objects\obj_slopeWall2</object>
@@ -152,6 +170,7 @@
     <objects name="Lighting">
       <object>objects\obj_light</object>
       <object>objects\obj_lightcontrol</object>
+      <object>objects\obj_shader_controller</object>
     </objects>
   </objects>
   <rooms name="rooms">
