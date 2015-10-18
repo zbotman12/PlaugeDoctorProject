@@ -167,6 +167,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_whiteboxing</room>
     <room>rooms\rm_underground</room>
     <room>rooms\rm_slope</room>
     <room>rooms\rm_level1</room>
@@ -175,7 +176,6 @@
     <room>rooms\rm_test2</room>
     <room>rooms\rm_ass</room>
     <room>rooms\rm_test</room>
-    <room>rooms\rm_whiteboxing</room>
     <room>rooms\rm_poppyfields</room>
   </rooms>
   <help>
