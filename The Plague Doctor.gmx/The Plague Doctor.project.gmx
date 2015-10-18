@@ -36,6 +36,8 @@
       <sprite>sprites\spr_player_crouch_idle</sprite>
     </sprites>
     <sprites name="level">
+      <sprite>sprites\spr_White_box</sprite>
+      <sprite>sprites\spr_slope_white_box</sprite>
       <sprite>sprites\spr_light</sprite>
       <sprite>sprites\spr_torch</sprite>
       <sprite>sprites\spr_wall</sprite>
@@ -101,6 +103,7 @@
     <objects name="level">
       <object>objects\obj_nextroom</object>
       <object>objects\obj_wall2</object>
+      <object>objects\obj_white_box</object>
       <object>objects\obj_slopeWall2</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_grabBlock</object>
@@ -110,6 +113,7 @@
       <object>objects\obj_invwall</object>
       <object>objects\obj_redwall</object>
       <object>objects\obj_fade</object>
+      <object>objects\obj_slope_white_box</object>
       <object>objects\obj_ground</object>
       <object>objects\obj_ground2</object>
       <object>objects\obj_ground3</object>
@@ -155,6 +159,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room9</room>
     <room>rooms\rm_underground</room>
     <room>rooms\rm_slope</room>
     <room>rooms\rm_level1</room>
