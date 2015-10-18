@@ -87,7 +87,7 @@ g = 2;
 
 
 // Right and left keys set velocities.
-if (grounded) {
+//if (grounded) {
     if (right) {
   
         // only this speed if walking
@@ -98,7 +98,7 @@ if (grounded) {
         image_xscale = 1; // Flip sprite.
     
         //Shift eases into a running speed based on fric
-        if (runButton) {
+        if (runButton || grounded) {
             if (v_x &lt; maxRunningSpeed) {      
                 // divided by two just makes it take longer to reach 10
                 v_x += fric;
@@ -115,7 +115,7 @@ if (grounded) {
         image_xscale = -1; // Flip sprite.
 
         // Shift increases speed.
-        if (runButton) {
+        if (runButton || grounded) {
             if (v_x &gt; -maxRunningSpeed) {
                 v_x -= fric;
             }
@@ -125,20 +125,20 @@ if (grounded) {
     if (right &amp;&amp; left) {
         v_x = 0;
     }
-}
+//}
 
 
 //------------------------------------------------WALKING AND RUNNING BOOLEANS
 
 
 // movement booleans
-if (keyboard_check(vk_right)) {
+if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {
     right = true;
 } else {
     right = false;
 }
 
-if (keyboard_check(vk_left)) {
+if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {
     left = true;
 } else {
     left = false;
@@ -285,7 +285,7 @@ y += v_y;
 
 if (grounded) { // must be on the ground to be hidden
     if (place_meeting(x, y, obj_crate) // if your colliding with the crate
-         &amp;&amp; keyboard_check(vk_down)) { // and down is pressed
+         &amp;&amp; (keyboard_check(vk_down) || keyboard_check(ord("S")))) { // and down is pressed
              hidden = true;
     }   
      else {
