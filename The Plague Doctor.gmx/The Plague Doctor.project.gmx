@@ -36,8 +36,6 @@
       <sprite>sprites\spr_player_crouch_idle</sprite>
     </sprites>
     <sprites name="level">
-      <sprite>sprites\spr_White_box</sprite>
-      <sprite>sprites\spr_slope_white_box</sprite>
       <sprite>sprites\spr_light</sprite>
       <sprite>sprites\spr_torch</sprite>
       <sprite>sprites\spr_wall</sprite>
@@ -56,6 +54,12 @@
       <sprite>sprites\spr_invwall</sprite>
       <sprite>sprites\spr_poppy</sprite>
       <sprite>sprites\spr_poppy2</sprite>
+      <sprites name="white boxs">
+        <sprite>sprites\spr_white_box_background</sprite>
+        <sprite>sprites\spr_White_box</sprite>
+        <sprite>sprites\spr_slope_white_box</sprite>
+        <sprite>sprites\spr_slope_while_box</sprite>
+      </sprites>
       <sprites name="background">
         <sprite>sprites\spr_groundbackground</sprite>
         <sprite>sprites\spr_groundbackground2</sprite>
@@ -101,9 +105,14 @@
   </fonts>
   <objects name="objects">
     <objects name="level">
+      <objects name="White boxs">
+        <object>objects\obj_white_box</object>
+        <object>objects\obj_slope_white_box0</object>
+        <object>objects\obj_slope_white_box</object>
+        <object>objects\obj_white_box_background</object>
+      </objects>
       <object>objects\obj_nextroom</object>
       <object>objects\obj_wall2</object>
-      <object>objects\obj_white_box</object>
       <object>objects\obj_slopeWall2</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_grabBlock</object>
@@ -113,7 +122,6 @@
       <object>objects\obj_invwall</object>
       <object>objects\obj_redwall</object>
       <object>objects\obj_fade</object>
-      <object>objects\obj_slope_white_box</object>
       <object>objects\obj_ground</object>
       <object>objects\obj_ground2</object>
       <object>objects\obj_ground3</object>
@@ -159,7 +167,6 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room9</room>
     <room>rooms\rm_underground</room>
     <room>rooms\rm_slope</room>
     <room>rooms\rm_level1</room>
@@ -168,6 +175,7 @@
     <room>rooms\rm_test2</room>
     <room>rooms\rm_ass</room>
     <room>rooms\rm_test</room>
+    <room>rooms\rm_whiteboxing</room>
     <room>rooms\rm_poppyfields</room>
   </rooms>
   <help>
