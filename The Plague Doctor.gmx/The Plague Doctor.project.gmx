@@ -56,9 +56,11 @@
       <sprite>sprites\spr_poppy2</sprite>
       <sprites name="white boxs">
         <sprite>sprites\spr_white_box_background</sprite>
+        <sprite>sprites\spr_checkpoint</sprite>
         <sprite>sprites\spr_White_box</sprite>
         <sprite>sprites\spr_slope_white_box</sprite>
         <sprite>sprites\spr_slope_while_box</sprite>
+        <sprite>sprites\spr_bad_guy_while_box</sprite>
       </sprites>
       <sprites name="background">
         <sprite>sprites\spr_groundbackground</sprite>
@@ -116,6 +118,8 @@
         <object>objects\obj_slope_white_box0</object>
         <object>objects\obj_slope_white_box</object>
         <object>objects\obj_white_box_background</object>
+        <object>objects\obj_checkpoint</object>
+        <object>objects\obj_bad_guy_white_box</object>
       </objects>
       <object>objects\obj_nextroom</object>
       <object>objects\obj_wall2</object>
@@ -174,12 +178,13 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_whiteboxing</room>
+    <room>rooms\rm_test2</room>
     <room>rooms\rm_slope</room>
     <room>rooms\rm_underground</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_menu</room>
     <room>rooms\room7</room>
-    <room>rooms\rm_test2</room>
     <room>rooms\rm_ass</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_poppyfields</room>
