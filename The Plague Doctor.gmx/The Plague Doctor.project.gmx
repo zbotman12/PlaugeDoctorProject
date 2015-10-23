@@ -105,6 +105,7 @@
     <shader type="GLSLES">shaders\shd_SepiaTone.shader</shader>
     <shader type="GLSLES">shaders\shd_Inverted.shader</shader>
     <shader type="GLSLES">shaders\shd_PerlinNoise.shader</shader>
+    <shader type="GLSLES">shaders\shd_multiply.shader</shader>
   </shaders>
   <fonts name="fonts">
     <fonts name="menu">
@@ -172,10 +173,11 @@
     <object>objects\obj_crate2</object>
     <object>objects\obj_hideable</object>
     <objects name="Lighting">
-      <object>objects\obj_light</object>
       <object>objects\obj_lightcontrol</object>
       <object>objects\obj_shader_controller</object>
+      <object>objects\obj_light</object>
     </objects>
+    <object>objects\obj_Pause</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_whiteboxing</room>

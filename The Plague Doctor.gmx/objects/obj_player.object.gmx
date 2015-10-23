@@ -89,37 +89,35 @@ g = 2;
 
 
 // Right and left keys set velocities.
-if (grounded) {
-    if (right &amp;&amp; !left) {
-  
-        // only this speed if walking
-        if (!runButton) {
-            v_x = maxWalkingSpeed;
-        }
+if (right &amp;&amp; !left) {
 
-        image_xscale = 1; // Flip sprite.
-    
-        //Shift eases into a running speed based on fric
-        if (runButton &amp;&amp; v_x &lt; maxRunningSpeed) {      
-            // divided by two just makes it take longer to reach 10
-            v_x += fric;
-        }
+    // only this speed if walking
+    if (!runButton) {
+        v_x = maxWalkingSpeed;
     }
 
+    image_xscale = 1; // Flip sprite.
 
-    if (left &amp;&amp; !right) {
+    //Shift eases into a running speed based on fric
+    if (runButton &amp;&amp; v_x &lt; maxRunningSpeed) {      
+        // divided by two just makes it take longer to reach 10
+        v_x += fric;
+    }
+}
+
+
+if (left &amp;&amp; !right) {
+
+    if (!runButton &amp;&amp; grounded) {
+        v_x = -maxWalkingSpeed;
+}
     
-        if (!runButton) {
-            v_x = -maxWalkingSpeed;
-        }
-        
-        image_xscale = -1; // Flip sprite.
+    image_xscale = -1; // Flip sprite.
 
-        // Shift increases speed.
+    // Shift increases speed.
 
-        if (runButton &amp;&amp; v_x &gt; -maxRunningSpeed) {
-            v_x -= fric;
-        }
+    if (runButton &amp;&amp; v_x &gt; -maxRunningSpeed) {
+        v_x -= fric;
     }
 }
     

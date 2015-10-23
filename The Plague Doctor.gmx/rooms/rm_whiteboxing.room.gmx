@@ -5269,6 +5269,7 @@
     <instance objName="obj_white_box_background" x="11552" y="736" name="inst_1F4A7E1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="11520" y="768" name="inst_D1835BD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="11584" y="736" name="inst_E640C86A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Pause" x="96" y="64" name="inst_44709992" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="725" y="850" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_79D511B7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
