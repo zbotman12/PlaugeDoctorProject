@@ -93,6 +93,7 @@
       <background>background\bg_menu</background>
     </backgrounds>
     <background>background\background3</background>
+    <background>background\background5</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">

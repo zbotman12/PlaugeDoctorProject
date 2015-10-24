@@ -39,11 +39,11 @@ runButton = false;
 image_speed = 2;
 image_index = 0;
 
-maxWalkingSpeed = 3;
+maxWalkingSpeed = 5;
 maxRunningSpeed = 10;
 jumpingSpeed = 20;
 slopeScanValue = 10;
-fric = 0.5;
+fric = 0.8;
 
 v_x = 0;
 v_y = 0;
@@ -83,6 +83,42 @@ g = 2;
  |_|   |_____/_/   \_\_| |_____|_| \_\ |_|  |_|\___/  \_/  |_____|_|  |_|_____|_| \_| |_| 
   
 -----------------------------------------------------------------------------------------*/
+
+//------------------------------------------------WALKING AND RUNNING BOOLEANS
+
+
+
+// right
+if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {
+    right = true;
+} else {
+    right = false;
+}
+
+
+// left
+if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {
+    left = true;
+} 
+else {
+    left = false;
+}
+
+// both pressed
+if ((keyboard_check(vk_right) || keyboard_check(ord("D"))) 
+    &amp;&amp; (keyboard_check(vk_left) || keyboard_check(ord("A")))) {
+        rightAndLeftPressed = true;
+}
+else {
+    rightAndLeftPressed = false;
+}
+
+// run boolean
+if (keyboard_check(vk_lshift)) {
+    runButton = true;
+} else {
+    runButton = false;
+}
 
 
 //------------------------------------------------WALKING, RUNNING, JUMPING, IDEL, AND FRICTION
@@ -127,64 +163,38 @@ if (keyboard_check_pressed(vk_space) &amp;&amp; grounded) {
 }
 
 
-//------------------------------------------------WALKING AND RUNNING BOOLEANS
-
-
-
-// right
-if (keyboard_check(vk_right)) {
-    right = true;
-} else {
-    right = false;
-}
-
-
-// left
-if (keyboard_check(vk_left)) {
-    left = true;
-} 
-else {
-    left = false;
-}
-
-// both pressed
-if (keyboard_check(vk_right) 
-    &amp;&amp; keyboard_check(vk_left)) {
-        rightAndLeftPressed = true;
-}
-else {
-    rightAndLeftPressed = false;
-}
-
-// run boolean
-if (keyboard_check(vk_lshift)) {
-    runButton = true;
-} else {
-    runButton = false;
-}
-
-
 //------------------------------------------------END OF WALK/RUN DECELERATION
 
 
-if (grounded) {
+//if (grounded) {
     if (!right &amp;&amp; v_x &gt; 0) {
         v_x -= fric; // fric can be changed depending on floor tile
+        if (v_x &lt; 0){
+            v_x = 0;
+        }
     }
     else if (!left &amp;&amp; v_x &lt; 0) {
         v_x += fric;
+        if (v_x &gt; 0){
+            v_x = 0;
+        }
     }
-    if (rightAndLeftPressed // pressing left and right don't cancel momentum
-            &amp;&amp; v_x &gt; 0) {
+    if (rightAndLeftPressed &amp;&amp; v_x &gt; 0) {  // pressing left and right don't cancel momentum
                 v_x -= fric;
                 image_xscale = -1; // flip the sprite in motion's direction
+        if (v_x &lt; 0){
+            v_x = 0;
+        }
     }
     else if (rightAndLeftPressed
             &amp;&amp; v_x &lt; 0) {
                 v_x += fric;
                 image_xscale = 1;
+        if (v_x &gt; 0){
+            v_x = 0;
+        }
     }
-}
+//}
  
 
 /*----------------------------------------
@@ -411,7 +421,7 @@ if (grounded) { // sprites when grounded
     }
     else { // if none of the above, then make player idle.
         sprite_index = spr_idle;
-        image_speed = 2;
+        image_speed = 1;
     }
     
     if (rightAndLeftPressed) { //both pressed
@@ -419,8 +429,6 @@ if (grounded) { // sprites when grounded
         image_speed = 1;
     }
 }
-
-
 else { // if not grounded...
 
     if (v_y &gt; 0) {
