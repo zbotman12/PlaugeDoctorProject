@@ -45,7 +45,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Initialize Var
+            <string>/*Initialize Var*/
 grav = 0.2;
 hsp = 0;
 vsp = 0;
@@ -56,7 +56,9 @@ key_left = -1;
 key_jump = 0;
 follow = false;
 
+
 sightboxInst = instance_create(x, y, obj_sightbox_soldier);
+
 </string>
           </argument>
         </arguments>
@@ -154,6 +156,7 @@ if (place_meeting(x,y+vsp,obj_wall))
 
 
 y += vsp;
+
 
 //Controling the sprite turning
 

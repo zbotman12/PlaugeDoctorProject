@@ -11,7 +11,6 @@
     </sounds>
     <sounds name="level">
       <sound>sound\sou_stealth</sound>
-      <sound>sound\sou_ass</sound>
       <sound>sound\sou_alert</sound>
       <sound>sound\sou_wind</sound>
     </sounds>
@@ -21,7 +20,6 @@
       <sprite>sprites\spr_arrow</sprite>
     </sprites>
     <sprites name="player">
-      <sprite>sprites\spr_playerright</sprite>
       <sprite>sprites\spr_crawl</sprite>
       <sprite>sprites\spr_walking</sprite>
       <sprite>sprites\spr_hide</sprite>
@@ -29,45 +27,51 @@
       <sprite>sprites\spr_crouched_idle</sprite>
       <sprite>sprites\spr_falling</sprite>
       <sprite>sprites\spr_running</sprite>
-      <sprite>sprites\spr_dead</sprite>
       <sprite>sprites\spr_idle</sprite>
-      <sprite>sprites\spr_playerhide</sprite>
-      <sprite>sprites\spr_player_crouch</sprite>
-      <sprite>sprites\spr_player_crouch_idle</sprite>
+    </sprites>
+    <sprites name="Lighting">
+      <sprite>sprites\spr_torch</sprite>
+      <sprites name="Light Cookies">
+        <sprite>sprites\spr_light2</sprite>
+      </sprites>
     </sprites>
     <sprites name="level">
-      <sprite>sprites\spr_light</sprite>
-      <sprite>sprites\spr_torch</sprite>
-      <sprite>sprites\spr_wall</sprite>
-      <sprite>sprites\spr_ladder</sprite>
-      <sprite>sprites\spr_wall2</sprite>
-      <sprite>sprites\spr_light2</sprite>
-      <sprite>sprites\spr_ground</sprite>
-      <sprite>sprites\spr_incline</sprite>
-      <sprite>sprites\spr_slopeWall</sprite>
-      <sprite>sprites\spr_slopeWall2</sprite>
-      <sprite>sprites\spr_ground2</sprite>
-      <sprite>sprites\spr_redwall</sprite>
-      <sprite>sprites\spr_nextroom</sprite>
-      <sprite>sprites\spr_grass</sprite>
-      <sprite>sprites\spr_ground3</sprite>
-      <sprite>sprites\spr_invwall</sprite>
-      <sprite>sprites\spr_poppy</sprite>
-      <sprite>sprites\spr_poppy2</sprite>
-      <sprites name="white boxs">
+      <sprites name="Walls and Floors">
+        <sprite>sprites\spr_wall2</sprite>
+        <sprite>sprites\spr_ground</sprite>
+        <sprite>sprites\spr_slopeWall</sprite>
+        <sprite>sprites\spr_slopeWall2</sprite>
+        <sprite>sprites\spr_ground2</sprite>
+        <sprite>sprites\spr_grass</sprite>
+        <sprite>sprites\spr_ground3</sprite>
+        <sprite>sprites\spr_wall</sprite>
+      </sprites>
+      <sprites name="Scenery">
+        <sprite>sprites\spr_poppy</sprite>
+        <sprite>sprites\spr_poppy2</sprite>
+        <sprites name="background">
+          <sprite>sprites\spr_groundbackground</sprite>
+          <sprite>sprites\spr_groundbackground2</sprite>
+          <sprite>sprites\spr_groundbackground3</sprite>
+          <sprite>sprites\spr_wallbackground</sprite>
+          <sprite>sprites\spr_wallbackground2</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="white boxes">
         <sprite>sprites\spr_white_box_background</sprite>
         <sprite>sprites\spr_checkpoint</sprite>
         <sprite>sprites\spr_White_box</sprite>
+        <sprite>sprites\spr_stair_block</sprite>
         <sprite>sprites\spr_slope_white_box</sprite>
+        <sprite>sprites\sprite56</sprite>
         <sprite>sprites\spr_slope_while_box</sprite>
         <sprite>sprites\spr_bad_guy_while_box</sprite>
       </sprites>
-      <sprites name="background">
-        <sprite>sprites\spr_groundbackground</sprite>
-        <sprite>sprites\spr_groundbackground2</sprite>
-        <sprite>sprites\spr_groundbackground3</sprite>
-        <sprite>sprites\spr_wallbackground</sprite>
-        <sprite>sprites\spr_wallbackground2</sprite>
+      <sprites name="Interactables">
+        <sprite>sprites\spr_ladder</sprite>
+        <sprite>sprites\spr_nextroom</sprite>
+        <sprite>sprites\spr_crate</sprite>
+        <sprite>sprites\spr_crate2</sprite>
       </sprites>
     </sprites>
     <sprites name="enemie">
@@ -75,31 +79,31 @@
       <sprite>sprites\enemy_sightbox</sprite>
       <sprite>sprites\spr_spotted</sprite>
     </sprites>
-    <sprite>sprites\spr_crate</sprite>
-    <sprite>sprites\spr_crate2</sprite>
-    <sprite>sprites\sprite23</sprite>
-    <sprite>sprites\Big_tits_money</sprite>
-    <sprite>sprites\sprite25</sprite>
-    <sprite>sprites\sprite32</sprite>
-    <sprite>sprites\sprite35</sprite>
+    <sprite>sprites\sprite53</sprite>
+    <sprite>sprites\sprite54</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
-      <background>background\bg_ass</background>
       <background>background\bg_war</background>
-      <background>background\bg_ohgod</background>
+      <background>background\bg_stars</background>
     </backgrounds>
     <backgrounds name="menu">
       <background>background\bg_menu</background>
     </backgrounds>
-    <background>background\background3</background>
-    <background>background\background5</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="menu">
       <script>scripts\scr_menu.gml</script>
     </scripts>
+    <script>scripts\scr_player_get_inputs.gml</script>
+    <script>scripts\scr_player_normal.gml</script>
+    <script>scripts\scr_player_collision.gml</script>
+    <script>scripts\scr_player_sprite_control.gml</script>
+    <script>scripts\scr_player_hide.gml</script>
+    <script>scripts\scr_player_ledgegrab.gml</script>
+    <script>scripts\scr_player_ladder.gml</script>
+    <script>scripts\scr_player_stairs.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -114,81 +118,88 @@
     </fonts>
   </fonts>
   <objects name="objects">
+    <objects name="Effects">
+      <object>objects\obj_fade</object>
+    </objects>
+    <objects name="Controllers">
+      <object>objects\obj_Pause</object>
+      <object>objects\obj_shader_controller</object>
+    </objects>
     <objects name="level">
-      <objects name="White boxs">
+      <objects name="White boxes">
         <object>objects\obj_white_box</object>
+        <object>objects\obj_slope_parent</object>
+        <object>objects\obj_stair_block</object>
         <object>objects\obj_slope_white_box0</object>
         <object>objects\obj_slope_white_box</object>
+        <object>objects\obj_stair</object>
         <object>objects\obj_white_box_background</object>
         <object>objects\obj_checkpoint</object>
         <object>objects\obj_bad_guy_white_box</object>
       </objects>
-      <object>objects\obj_nextroom</object>
-      <object>objects\obj_wall2</object>
-      <object>objects\obj_slopeWall2</object>
-      <object>objects\obj_wall</object>
-      <object>objects\obj_grabBlock</object>
-      <object>objects\obj_ladder</object>
-      <object>objects\obj_incline</object>
-      <object>objects\obj_slopeWall</object>
-      <object>objects\obj_invwall</object>
-      <object>objects\obj_redwall</object>
-      <object>objects\obj_fade</object>
-      <object>objects\obj_ground</object>
-      <object>objects\obj_ground2</object>
-      <object>objects\obj_ground3</object>
-      <object>objects\obj_grass</object>
-      <object>objects\obj_poppy</object>
-      <object>objects\obj_glow</object>
-      <object>objects\obj_night</object>
-      <object>objects\obj_torch</object>
-      <object>objects\obj_poppy2</object>
-      <objects name="background">
-        <object>objects\obj_groundbackground3</object>
-        <object>objects\obj_groundbackground2</object>
-        <object>objects\obj_groundbackground</object>
-        <object>objects\obj_wallbackground</object>
-        <object>objects\obj_wallbackground2</object>
+      <objects name="Scenery">
+        <objects name="background">
+          <object>objects\obj_groundbackground3</object>
+          <object>objects\obj_groundbackground2</object>
+          <object>objects\obj_groundbackground</object>
+          <object>objects\obj_wallbackground</object>
+          <object>objects\obj_wallbackground2</object>
+        </objects>
+        <object>objects\obj_poppy</object>
+        <object>objects\obj_poppy2</object>
+      </objects>
+      <objects name="Walls and Floors">
+        <object>objects\obj_invwall</object>
+        <object>objects\obj_slopeWall</object>
+        <object>objects\obj_wall</object>
+        <object>objects\obj_slopeWall2</object>
+        <object>objects\obj_wall2</object>
+        <object>objects\obj_ground</object>
+        <object>objects\obj_ground2</object>
+        <object>objects\obj_ground3</object>
+        <object>objects\obj_grass</object>
+        <object>objects\obj_Depth10Trigger</object>
+        <object>objects\obj_Depth0Trigger</object>
+      </objects>
+      <objects name="Interactables">
+        <object>objects\obj_nextroom</object>
+        <object>objects\obj_ladder</object>
+        <object>objects\obj_grabBlock</object>
+        <object>objects\obj_hideable</object>
+        <object>objects\obj_crate</object>
       </objects>
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
-      <object>objects\obj_oldplayer</object>
     </objects>
     <objects name="menu">
       <object>objects\obj_menu_sound</object>
       <object>objects\obj_menu</object>
     </objects>
-    <objects name="enemie">
+    <objects name="enemies">
       <object>objects\obj_Soldier</object>
+      <object>objects\obj_new_enemy</object>
       <object>objects\obj_spotted</object>
       <object>objects\obj_sightbox_soldier</object>
+      <object>objects\obj_alertsound</object>
     </objects>
     <objects name="sound">
       <object>objects\obj_soundwind</object>
-      <object>objects\obj_alertsound</object>
-      <object>objects\obj_soundass</object>
       <object>objects\obj_level_sound</object>
     </objects>
-    <object>objects\obj_crate</object>
-    <object>objects\obj_crate2</object>
-    <object>objects\obj_hideable</object>
     <objects name="Lighting">
       <object>objects\obj_lightcontrol</object>
-      <object>objects\obj_shader_controller</object>
       <object>objects\obj_light</object>
+      <object>objects\obj_torch</object>
     </objects>
-    <object>objects\obj_Pause</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_whiteboxing</room>
-    <room>rooms\rm_test2</room>
-    <room>rooms\rm_slope</room>
+    <room>rooms\room10</room>
     <room>rooms\rm_underground</room>
-    <room>rooms\rm_level1</room>
     <room>rooms\rm_menu</room>
-    <room>rooms\room7</room>
-    <room>rooms\rm_ass</room>
+    <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\rm_slope</room>
+    <room>rooms\rm_level1</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_poppyfields</room>
   </rooms>

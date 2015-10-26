@@ -1429,7 +1429,6 @@
     <instance objName="obj_wall" x="3432" y="768" name="inst_D6CB0865" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="2442" y="672" name="inst_29FDDBA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="3960" y="704" name="inst_9C857756" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_night" x="254" y="120" name="inst_22D34B22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="1221" y="617" name="inst_37265398" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="754" y="778" name="inst_75BDEC9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="1681" y="586" name="inst_36D2790C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1441,26 +1440,16 @@
     <instance objName="obj_torch" x="3232" y="905" name="inst_CB6AB9CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="3990" y="873" name="inst_1AB43597" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="430" y="706" name="inst_DC8D8077" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_glow" x="2698" y="489" name="inst_37481936" locked="0" code="" scaleX="1.36625003814697" scaleY="1.22903633117676" colour="4294934592" rotation="0"/>
-    <instance objName="obj_glow" x="3753" y="492" name="inst_FD4E9337" locked="0" code="" scaleX="1.26032543182373" scaleY="1.22625005245209" colour="4294934592" rotation="0"/>
-    <instance objName="obj_glow" x="2461" y="870" name="inst_EFC20EC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294901760" rotation="0"/>
-    <instance objName="obj_glow" x="3993" y="868" name="inst_BD03989B" locked="0" code="" scaleX="1.53817272186279" scaleY="1.36625003814697" colour="4294901760" rotation="0"/>
-    <instance objName="obj_glow" x="3228" y="892" name="inst_8AC8A8F6" locked="0" code="" scaleX="1.41999995708466" scaleY="1.27125000953674" colour="3372154880" rotation="0"/>
     <instance objName="obj_slopeWall" x="1386" y="896" name="inst_20ECF2A7" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeWall" x="1518" y="832" name="inst_D8F95AF8" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeWall" x="1584" y="800" name="inst_B1864D8D" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeWall" x="1452" y="864" name="inst_E6F4195E" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground" x="1584" y="768" name="inst_2DC5EFF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_incline" x="1584" y="736" name="inst_4EF30ECB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground2" x="1650" y="704" name="inst_03232072" locked="0" code="" scaleX="-0.757575750350952" scaleY="1.03125" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeWall" x="1650" y="704" name="inst_171FF7A8" locked="0" code="" scaleX="-0.757575750350952" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1386" y="864" name="inst_468E5508" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1452" y="832" name="inst_95298C41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeWall2" x="2112" y="864" name="inst_43EA39E7" locked="0" code="" scaleX="-1" scaleY="-1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_glow" x="1673" y="575" name="inst_1EE539C8" locked="0" code="" scaleX="1.46683359146118" scaleY="1.92240297794342" colour="4294934592" rotation="0"/>
-    <instance objName="obj_glow" x="1212" y="600" name="inst_BC4D01A5" locked="0" code="" scaleX="1.26999998092651" scaleY="1.25750005245209" colour="4294934592" rotation="0"/>
-    <instance objName="obj_glow" x="2210" y="753" name="inst_ABBA0F9E" locked="0" code="" scaleX="1.26999998092651" scaleY="1.25750005245209" colour="4294934592" rotation="0"/>
-    <instance objName="obj_glow" x="750" y="778" name="inst_DB259DF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294934592" rotation="0"/>
     <instance objName="obj_shader_controller" x="142" y="149" name="inst_7F693DA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
