@@ -91,6 +91,7 @@
       <background>background\the_boogers</background>
       <background>background\bg_stars</background>
       <background>background\background3</background>
+      <background>background\bg_prototilesheet</background>
     </backgrounds>
     <backgrounds name="menu">
       <background>background\bg_menu</background>
@@ -204,6 +205,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\room10</room>
     <room>rooms\rm_level1</room>
     <room>rooms\room8</room>
