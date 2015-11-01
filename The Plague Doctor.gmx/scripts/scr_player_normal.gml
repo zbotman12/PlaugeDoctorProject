@@ -1,4 +1,5 @@
 scr_player_get_inputs();
+scr_player_ladder();
 
 // Right and left keys set velocities.
 if (right && !left) {

@@ -49,7 +49,7 @@ x += v_x; // Check for collisions first, then update x.
 //------------------------------------------------Y-AXIS COLLISIONS
 
 
-if (place_meeting(x, y + v_y, floorObject)) {
+if (place_meeting(x, y + v_y, floorObject) && !climbing) {
 
 // While you haven't collided yet...
     while(!place_meeting(x, y + sign(v_y), floorObject)) {
@@ -89,8 +89,11 @@ if (place_meeting(x, y + 1, floorObject)) {
     v_y = 0;
     grounded = true;
 }
+
 else { // Else, gravity pulls you down (falling is assumed).
+    g = 2;
     v_y += g;
     grounded = false; // Can't jump when not grounded.
 }
   
+
