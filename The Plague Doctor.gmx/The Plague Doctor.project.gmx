@@ -42,6 +42,7 @@
         <sprite>sprites\spr_slopeWall</sprite>
         <sprite>sprites\spr_slopeWall2</sprite>
         <sprite>sprites\spr_ground2</sprite>
+        <sprite>sprites\sprite44</sprite>
         <sprite>sprites\spr_grass</sprite>
         <sprite>sprites\spr_ground3</sprite>
         <sprite>sprites\spr_wall</sprite>
@@ -86,6 +87,7 @@
   <backgrounds name="background">
     <backgrounds name="level">
       <background>background\bg_war</background>
+      <background>background\background3</background>
       <background>background\bg_stars</background>
     </backgrounds>
     <backgrounds name="menu">
@@ -133,6 +135,7 @@
         <object>objects\obj_white_ladder</object>
         <object>objects\obj_slope_parent</object>
         <object>objects\obj_slope_mask</object>
+        <object>objects\obj_ground_mask</object>
         <object>objects\obj_stair_block</object>
         <object>objects\obj_slope_white_box0</object>
         <object>objects\obj_slope_white_box</object>

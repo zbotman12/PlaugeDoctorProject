@@ -53,7 +53,7 @@ image_index = 0;
 maxWalkingSpeed = 5;
 maxRunningSpeed = 10;
 jumpingSpeed = 20;
-slopeScanValue = 10;
+slopeScanValue = 20;
 fric = 0.8;
 
 v_x = 0;

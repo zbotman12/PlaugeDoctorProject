@@ -35,7 +35,7 @@ if (left && !right) {
 }
     
     // jumping if grounded and space is pressed
-if (keyboard_check_pressed(vk_space) && grounded) {
+if (keyboard_check_pressed(vk_space) && grounded && !stairs) {
     v_y = -jumpingSpeed;
 }
 
@@ -87,16 +87,17 @@ if (place_meeting(x, y + 1, obj_slope_parent)) {
 }
 
 //------------------------------------------------STAIRS
-
-if(place_meeting(x, y + 1, obj_slope_mask) && (keyboard_check(vk_up) || keyboard_check(vk_down))){
-    stairs = true
+if(place_meeting(x, y + 1, obj_ground_mask) 
+    && (keyboard_check(vk_up) || keyboard_check(vk_down))){
+    stairs = true;
 }
 
 if(stairs){
-    scr_player_collision(obj_stair_block);
-    if (!place_meeting(x, y, obj_slope_mask)) {
+    scr_player_collision(obj_stair);
+    
+    if (place_meeting(x, y + 1, obj_wall) && !place_meeting(x, y, obj_slope_mask)) {
         stairs = false;
-    }
+    }  
 } else {
     scr_player_collision(obj_wall);
     stairs = false;
@@ -104,7 +105,7 @@ if(stairs){
 
 
 
-
 scr_player_sprite_control();
+
 
 
