@@ -67,6 +67,7 @@
         <sprite>sprites\sprite56</sprite>
         <sprite>sprites\spr_slope_while_box</sprite>
         <sprite>sprites\spr_bad_guy_while_box</sprite>
+        <sprite>sprites\spr_Landmine</sprite>
       </sprites>
       <sprites name="Interactables">
         <sprite>sprites\spr_ladder</sprite>
@@ -87,6 +88,7 @@
     <backgrounds name="level">
       <background>background\bg_war</background>
       <background>background\bg_stars</background>
+      <background>background\background3</background>
     </backgrounds>
     <backgrounds name="menu">
       <background>background\bg_menu</background>
@@ -140,6 +142,7 @@
         <object>objects\obj_white_box_background</object>
         <object>objects\obj_checkpoint</object>
         <object>objects\obj_bad_guy_white_box</object>
+        <object>objects\obj_white_box_landmine</object>
       </objects>
       <objects name="Scenery">
         <objects name="background">
@@ -203,6 +206,7 @@
     <room>rooms\rm_underground</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\rm_Lv2_whitebox</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_slope</room>
     <room>rooms\rm_test</room>
