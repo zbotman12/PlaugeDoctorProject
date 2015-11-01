@@ -205,9 +205,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room10</room>
+    <room>rooms\rm_level1</room>
     <room>rooms\room8</room>
     <room>rooms\rm_underground</room>
-    <room>rooms\rm_level1</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Lv2_whitebox</room>
     <room>rooms\rm_menu</room>
