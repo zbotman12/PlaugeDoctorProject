@@ -97,7 +97,9 @@
       <background>background\bg_menu</background>
     </backgrounds>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\EnemyPath1</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="menu">
       <script>scripts\scr_menu.gml</script>
@@ -118,6 +120,7 @@
       <script>scripts\scr_enemy_choose_state.gml</script>
       <script>scripts\scr_enemy_move_state.gml</script>
       <script>scripts\scr_enemy_AI.gml</script>
+      <script>scripts\scr_enemy_path.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -197,7 +200,7 @@
     </objects>
     <objects name="enemies">
       <object>objects\obj_Soldier</object>
-      <object>objects\obj_new_enemy</object>
+      <object>objects\obj_path_enemy</object>
       <object>objects\obj_spotted</object>
       <object>objects\obj_sightbox_soldier</object>
       <object>objects\obj_alertsound</object>
@@ -213,12 +216,12 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_underground</room>
     <room>rooms\room8</room>
     <room>rooms\room10</room>
     <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_level1</room>
-    <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Lv2_whitebox</room>
