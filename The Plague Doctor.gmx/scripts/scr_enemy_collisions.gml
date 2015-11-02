@@ -12,13 +12,11 @@ if (place_meeting(x+hsp,y,obj_wall))
         }
         hsp = 0;
     if(!follow){
-        if(!key_right)
+        if(move == -1)
         {
-            key_right = 1;
-            key_left = 0; 
+            move = 1;
         }else{
-            key_right = 0;
-            key_left = -1; 
+            move = -1;
         }
     }
 }

@@ -1,5 +1,8 @@
 scr_player_get_inputs();
+scr_player_sprite_control();
 scr_player_ladder();
+scr_player_ledgegrab();
+scr_player_stairs();
 
 // Right and left keys set velocities.
 if (right && !left) {
@@ -36,7 +39,7 @@ if (left && !right) {
     
     // jumping if grounded and space is pressed
 if (keyboard_check_pressed(vk_space) && grounded) {
-    v_y = -30;
+    v_y = -jumpingSpeed;
 }
 
 //------------------------------------------------END OF WALK/RUN DECELERATION
@@ -86,26 +89,11 @@ if (place_meeting(x, y + 1, obj_slope_parent)) {
     maxRunningSpeed = 10;
 }
 
-//------------------------------------------------STAIRS
-if(place_meeting(x, y + 1, obj_ground_mask) 
-    && (keyboard_check(vk_up) || keyboard_check(vk_down))){
-    stairs = true;
-}
-
-if(stairs){
-    scr_player_collision(obj_stair_block);
-    
-    if (place_meeting(x, y + 1, obj_wall) && !place_meeting(x, y, obj_slope_mask)) {
-        stairs = false;
-    }  
-} else {
-    scr_player_collision(obj_wall);
-    stairs = false;
-}
 
 
 
-scr_player_sprite_control();
+
+
 
 
 

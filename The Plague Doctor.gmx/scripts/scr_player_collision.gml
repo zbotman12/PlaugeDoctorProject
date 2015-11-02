@@ -48,7 +48,7 @@ x += v_x; // Check for collisions first, then update x.
 //------------------------------------------------Y-AXIS COLLISIONS
 
 
-if (place_meeting(x, y + v_y, floorObject) && !climbing) {
+if (place_meeting(x, y + v_y, floorObject)) {
 
 // While you haven't collided yet...
     while(!place_meeting(x, y + sign(v_y), floorObject)) {
@@ -56,7 +56,7 @@ if (place_meeting(x, y + v_y, floorObject) && !climbing) {
     // Move one pixel up or down.
         y += sign(v_y);
     }
-    
+    grounded = true;
     // When you collide, set v_y = 0.
     v_y = 0;
 }
@@ -84,13 +84,8 @@ else {
 
 
 // If one pixel above ground, v_y = 0. If space is pressed, jump.
-if (place_meeting(x, y + 1, floorObject)) {
-    v_y = 0;
-    grounded = true;
-}
-
-else { // Else, gravity pulls you down (falling is assumed).
-    g = 2;
+if (!place_meeting(x, y + 1, floorObject) && !climbing) {
+    //g = 2;
     v_y += g;
     grounded = false; // Can't jump when not grounded.
 }
