@@ -9,7 +9,6 @@
 floorObject = argument0; 
 //------------------------------------------------X-AXIS AND UPHILL SLOPE COLLISIONS
 
-if (floorObject.solid) {
 // If on collision course with the wall...
 if (place_meeting(x + v_x, y, floorObject)) {
 
@@ -94,6 +93,5 @@ else { // Else, gravity pulls you down (falling is assumed).
     g = 2;
     v_y += g;
     grounded = false; // Can't jump when not grounded.
-}
 }
 

@@ -1,5 +1,5 @@
 //------------------------------------------------GRABBING ON GRAB WALLS
-
+/*
 
 if(place_meeting(x + 1, y, obj_grabBlock) 
                 && keyboard_check(vk_control) 
@@ -12,7 +12,7 @@ if(place_meeting(x + 1, y, obj_grabBlock)
 /* Same code but for the left side. 
  * Since sign(x) can return 0 it can't be used for grabs.
  */
- 
+ /*
 if(place_meeting(x - 1, y, obj_grabBlock)
                 && keyboard_check(vk_control) 
                 && grounded) {
@@ -35,4 +35,4 @@ if (!keyboard_check(vk_control)) {
     grabbing = false;
 }
 
-
+*/

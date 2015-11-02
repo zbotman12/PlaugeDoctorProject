@@ -35,8 +35,8 @@ if (left && !right) {
 }
     
     // jumping if grounded and space is pressed
-if (keyboard_check_pressed(vk_space) && grounded && !stairs) {
-    v_y = -jumpingSpeed;
+if (keyboard_check_pressed(vk_space) && grounded) {
+    v_y = -30;
 }
 
 //------------------------------------------------END OF WALK/RUN DECELERATION

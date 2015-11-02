@@ -1,5 +1,7 @@
 /****LADDERS****/
 
+/*
+
 if (keyboard_check((vk_up) || (vk_down)) && place_meeting(x, y, obj_white_ladder)) {
         climbing = true;
     }
@@ -25,4 +27,4 @@ if (climbing) {
 }
 
 
-
+*/

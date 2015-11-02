@@ -102,15 +102,23 @@
     <scripts name="menu">
       <script>scripts\scr_menu.gml</script>
     </scripts>
-    <script>scripts\scr_player_get_inputs.gml</script>
-    <script>scripts\scr_player_normal.gml</script>
-    <script>scripts\scr_player_collision.gml</script>
-    <script>scripts\scr_player_sprite_control.gml</script>
-    <script>scripts\scr_player_hide.gml</script>
-    <script>scripts\scr_player_ledgegrab.gml</script>
-    <script>scripts\scr_player_ladder.gml</script>
-    <script>scripts\scr_player_stairs.gml</script>
-    <script>scripts\scr_enemy_AI.gml</script>
+    <scripts name="Player Scripts">
+      <script>scripts\scr_player_get_inputs.gml</script>
+      <script>scripts\scr_player_normal.gml</script>
+      <script>scripts\scr_player_collision.gml</script>
+      <script>scripts\scr_player_ledgegrab.gml</script>
+      <script>scripts\scr_player_sprite_control.gml</script>
+      <script>scripts\scr_player_hide.gml</script>
+      <script>scripts\scr_player_ladder.gml</script>
+      <script>scripts\scr_player_stairs.gml</script>
+    </scripts>
+    <scripts name="Enemy Scripts">
+      <script>scripts\scr_enemy_idle_state.gml</script>
+      <script>scripts\scr_enemy_collisions.gml</script>
+      <script>scripts\scr_enemy_choose_state.gml</script>
+      <script>scripts\scr_enemy_move_state.gml</script>
+      <script>scripts\scr_enemy_AI.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -205,17 +213,17 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_Lvl1_whitebox</room>
-    <room>rooms\room10</room>
-    <room>rooms\rm_level1</room>
-    <room>rooms\room8</room>
     <room>rooms\rm_underground</room>
+    <room>rooms\rm_level1</room>
+    <room>rooms\rm_test</room>
+    <room>rooms\room10</room>
+    <room>rooms\room8</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Lv2_whitebox</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_slope</room>
-    <room>rooms\rm_test</room>
-    <room>rooms\rm_poppyfields</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
