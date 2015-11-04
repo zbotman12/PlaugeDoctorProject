@@ -1,22 +1,24 @@
 /****LADDERS****/
 
-if ((keyboard_check(ord("W")) || keyboard_check(ord("S"))) && place_meeting(x, y + 1, obj_white_ladder)) {
+if ((keyboard_check_direct(ord("W")) || keyboard_check_direct(ord("S"))) && place_meeting(x, y + 1, obj_ladder_climb_mask)) {
         climbing = true;
 }
 
 if (climbing) {
-    g = 0;
 
-    if (keyboard_check(ord("W"))) {
-        v_y = -11;
+    jumpingSpeed = 0;
+
+    if (keyboard_check_direct(ord("W"))) {
+        v_y = -ladderSpeed;
     }
-    else if (keyboard_check(ord("S"))) {
-        v_y = 11;
+    else if (keyboard_check_direct(ord("S"))) {
+        v_y = ladderSpeed;
     }
     else {
         v_y = 0;
+        g = 0;
     }
-    if (!place_meeting(x, y, obj_white_ladder)) {
+    if (!place_meeting(x, y - 1, obj_ladder_climb_mask)) {
         climbing = false;
         v_y = 0;
         g = 2;
@@ -26,5 +28,7 @@ if (climbing) {
         v_y = 0;
         g = 2;
     }
+} else {
+    jumpingSpeed = 20;
 }
 

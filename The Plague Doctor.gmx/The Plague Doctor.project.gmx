@@ -62,7 +62,9 @@
         <sprite>sprites\spr_white_box_background</sprite>
         <sprite>sprites\spr_checkpoint</sprite>
         <sprite>sprites\spr_White_box</sprite>
-        <sprite>sprites\spr_mask</sprite>
+        <sprite>sprites\spr_mask_wall</sprite>
+        <sprite>sprites\spr_ladder_mask</sprite>
+        <sprite>sprites\spr_mask_stair</sprite>
         <sprite>sprites\spr_stair_block</sprite>
         <sprite>sprites\spr_slope_white_box</sprite>
         <sprite>sprites\sprite56</sprite>
@@ -84,6 +86,7 @@
     </sprites>
     <sprite>sprites\sprite53</sprite>
     <sprite>sprites\sprite54</sprite>
+    <sprite>sprites\sprite46</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
@@ -104,6 +107,7 @@
     </scripts>
     <scripts name="Player Scripts">
       <script>scripts\scr_player_get_inputs.gml</script>
+      <script>scripts\scr_player_health.gml</script>
       <script>scripts\scr_player_normal.gml</script>
       <script>scripts\scr_player_collision.gml</script>
       <script>scripts\scr_player_ledgegrab.gml</script>
@@ -143,10 +147,10 @@
     <objects name="level">
       <objects name="White boxes">
         <object>objects\obj_white_box</object>
-        <object>objects\obj_white_ladder</object>
         <object>objects\obj_slope_parent</object>
-        <object>objects\obj_slope_mask</object>
-        <object>objects\obj_ground_mask</object>
+        <object>objects\obj_ladder_climb_mask</object>
+        <object>objects\obj_wall_ignore_mask</object>
+        <object>objects\obj_enter_stairs_mask</object>
         <object>objects\obj_stair_block</object>
         <object>objects\obj_slope_white_box0</object>
         <object>objects\obj_slope_white_box</object>
@@ -213,15 +217,14 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_underground</room>
-    <room>rooms\room8</room>
-    <room>rooms\room10</room>
-    <room>rooms\rm_poppyfields</room>
+    <room>rooms\our_house</room>
+    <room>rooms\falling_for_you</room>
+    <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_level1</room>
-    <room>rooms\rm_Lvl1_whitebox</room>
-    <room>rooms\rm_test</room>
-    <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Lv2_whitebox</room>
+    <room>rooms\rm_poppyfields</room>
+    <room>rooms\rm_underground</room>
+    <room>rooms\rm_test</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_slope</room>
   </rooms>

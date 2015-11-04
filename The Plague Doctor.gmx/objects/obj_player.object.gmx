@@ -3,7 +3,7 @@
   <spriteName>spr_idle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_walking</maskName>
@@ -35,6 +35,10 @@ enum states{
 
 state = states.normal;
 
+//health
+player_hp = 100;
+
+// kinematics
 right = false;
 left = false;
 rightAndLeftPressed = false;
@@ -46,19 +50,24 @@ grabbing = false;
 runButton = false;
 climbing = false;
 stairs = false;
-
-image_speed = 2;
-image_index = 0;
-
+downSlide = false;
 maxWalkingSpeed = 5;
 maxRunningSpeed = 10;
 jumpingSpeed = 20;
-slopeScanValue = 10;
+ladderSpeed = 16;
+slopeScanValue = 15;
 fric = 0.8;
-
 v_x = 0;
 v_y = 0;
 g = 2;
+
+// sprites
+image_speed = 2;
+image_index = 0;
+
+
+
+
 
 
 

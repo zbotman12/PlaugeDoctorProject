@@ -3,6 +3,7 @@ scr_player_sprite_control();
 scr_player_ladder();
 scr_player_ledgegrab();
 scr_player_stairs();
+scr_player_health();
 
 // Right and left keys set velocities.
 if (right && !left) {
@@ -63,8 +64,7 @@ if (rightAndLeftPressed && v_x > 0) {  // pressing left and right don't cancel m
         v_x = 0;
     }
 }
-else if (rightAndLeftPressed
-        && v_x < 0) {
+else if (rightAndLeftPressed && v_x < 0) {
             v_x += fric;
             image_xscale = 1;
     if (v_x > 0){
