@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprite56</spriteName>
   <solid>-1</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_stair_block</parentName>

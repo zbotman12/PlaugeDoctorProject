@@ -36,4 +36,4 @@ if (abs(obj_player.x - x) > 200 && abs(obj_player.y - y) > 200) {
     follow = false;
 }
 
-scr_enemy_choose_state();
+//scr_enemy_choose_state();
