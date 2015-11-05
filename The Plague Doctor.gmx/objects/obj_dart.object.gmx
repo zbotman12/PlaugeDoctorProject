@@ -50,31 +50,25 @@ vy = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_dart();
-
-if(instance_exists(obj_dart)) {
-    if (place_meeting(x + vx, y, obj_white_box)) { 
-    while (!place_meeting(x + sign(vx), y, obj_white_box)) {
+            <string>if (place_meeting(x + vx, y, obj_wall)) { 
+    while (!place_meeting(x + sign(vx), y, obj_wall)) {
         x += sign(vx);
     }
     vx = 0;
 }
 x += vx;
 
-if (place_meeting(x, y + vy, obj_white_box)) { 
-    while (!place_meeting(x, y + vy, obj_white_box)) {
+if (place_meeting(x, y + vy, obj_wall)) { 
+    while (!place_meeting(x, y + sign(vy), obj_wall)) {
         y += sign(vy);
     }
     vy = 0;
 }
 y += vy;
 
-if (!place_meeting(x, y + 2, obj_white_box)) {
+if (!place_meeting(x, y + 1, obj_wall)) {
     vy += g;
 }
-}
-
-
 </string>
           </argument>
         </arguments>

@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1024</width>
   <height>768</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>1</vsnap>
+  <hsnap>1</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -56,7 +56,7 @@
     <instance objName="obj_white_box" x="896" y="96" name="inst_7B66D17F" locked="0" code="" scaleX="1" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_stair_block" x="480" y="576" name="inst_2D1244BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enter_stairs_mask" x="510" y="538" name="inst_99144E4C" locked="0" code="" scaleX="0.060606062412262" scaleY="1.19354844093323" colour="4294967295" rotation="0"/>
-    <instance objName="obj_enter_stairs_mask" x="192" y="266" name="inst_EE6E28DF" locked="0" code="" scaleX="0.0625" scaleY="1.25" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enter_stairs_mask" x="208" y="269" name="inst_EE6E28DF" locked="0" code="" scaleX="0.0625" scaleY="1.25" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_ignore_mask" x="224" y="288" name="inst_97918F36" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stair" x="480" y="544" name="inst_A0E10953" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stair" x="448" y="512" name="inst_A52A0C94" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -92,7 +92,7 @@
     <instance objName="obj_white_box_background" x="544" y="544" name="inst_1D7400DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="512" y="544" name="inst_68797F43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="480" y="544" name="inst_2977A450" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="448" y="544" name="inst_8422F4AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_white_box_background" x="411" y="511" name="inst_8422F4AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="448" y="512" name="inst_51F19563" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="416" y="512" name="inst_293B4B70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="416" y="480" name="inst_7BE465B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -167,7 +167,6 @@
     <instance objName="obj_white_box_background" x="128" y="224" name="inst_34D7755B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="128" y="256" name="inst_95E4E754" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="160" y="256" name="inst_72CBFD36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="192" y="256" name="inst_06486E04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="224" y="256" name="inst_108BD24F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="224" y="224" name="inst_8893C861" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="256" y="224" name="inst_3E38C26F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -247,7 +246,7 @@
     <instance objName="obj_stair_block" x="544" y="576" name="inst_77DFDE54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enter_stairs_mask" x="845" y="281" name="inst_63A7EDCA" locked="0" code="" scaleX="0.0625" scaleY="0.90625" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_ignore_mask" x="576" y="288" name="inst_C61CF27A" locked="0" code="" scaleX="8" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="806" y="225" name="inst_5EC08666" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="544" y="512" name="inst_5EC08666" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="608" y="352" name="inst_277DDD07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="544" y="320" name="inst_268373E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="736" y="320" name="inst_020F1C58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

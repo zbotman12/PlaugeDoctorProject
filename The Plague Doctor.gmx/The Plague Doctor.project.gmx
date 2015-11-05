@@ -111,14 +111,16 @@
       <script>scripts\scr_menu.gml</script>
     </scripts>
     <scripts name="Player Scripts">
-      <script>scripts\scr_player_get_inputs.gml</script>
-      <script>scripts\scr_player_health.gml</script>
       <script>scripts\scr_player_normal.gml</script>
+      <script>scripts\scr_player_health.gml</script>
+      <script>scripts\scr_player_get_inputs.gml</script>
+      <script>scripts\scr_player_motion.gml</script>
+      <script>scripts\scr_player_sprite_control.gml</script>
       <script>scripts\scr_player_collision.gml</script>
       <script>scripts\scr_player_ledgegrab.gml</script>
-      <script>scripts\scr_player_sprite_control.gml</script>
       <script>scripts\scr_player_hide.gml</script>
       <script>scripts\scr_player_attack.gml</script>
+      <script>scripts\scr_get_direction.gml</script>
       <script>scripts\scr_player_ladder.gml</script>
       <script>scripts\scr_player_stairs.gml</script>
     </scripts>
@@ -235,13 +237,13 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_underground</room>
+    <room>rooms\our_house</room>
     <room>rooms\room16</room>
     <room>rooms\rm_Lvl1_whitebox</room>
-    <room>rooms\our_house</room>
     <room>rooms\falling_for_you</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_Lv2_whitebox</room>
-    <room>rooms\rm_underground</room>
     <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_menu</room>
   </rooms>

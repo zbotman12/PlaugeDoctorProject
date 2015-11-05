@@ -25,7 +25,6 @@ if (place_meeting(x + v_x, y, floorObject)) {
     while (place_meeting(x + v_x, y - yplus, floorObject) && yplus <= slopeScanValue) {
         yplus += 1;
     }
-        
     // Uses new yplus, if there is a collision... (means one of the two conditions above returned false).   
     if (place_meeting(x + v_x, y - yplus, floorObject)) {
     
@@ -70,7 +69,7 @@ yminus = 0;
 while (!place_meeting(x + v_x, y + yminus, floorObject) && yminus <= slopeScanValue) {
     yminus += 1;
 }
-    
+
 if (place_meeting(x + v_x, y + yminus, floorObject)) {
     grounded = true;
     y += yminus;
@@ -98,6 +97,3 @@ if (place_meeting(x, y, obj_ammo)) {
         instance_destroy();
     }
 }
-
-
-
