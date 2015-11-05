@@ -3200,8 +3200,6 @@
     <instance objName="obj_wall2" x="2970" y="1600" name="inst_2B5BE943" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall2" x="2970" y="1632" name="inst_783F6938" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall2" x="2970" y="1664" name="inst_2F1B3F19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_ladder" x="201" y="1514" name="inst_BF2A8BC1" locked="0" code="" scaleX="1.75" scaleY="7.9375" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_ladder" x="1189" y="1760" name="inst_D1833A93" locked="0" code="" scaleX="1.9375" scaleY="7.06451606750488" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

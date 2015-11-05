@@ -4,6 +4,7 @@ scr_player_ladder();
 scr_player_ledgegrab();
 scr_player_stairs();
 scr_player_health();
+scr_player_attack();
 
 // Right and left keys set velocities.
 if (right && !left) {
@@ -39,7 +40,7 @@ if (left && !right) {
 }
     
     // jumping if grounded and space is pressed
-if (keyboard_check_pressed(vk_space) && grounded) {
+if (jump && grounded) {
     v_y = -jumpingSpeed;
 }
 

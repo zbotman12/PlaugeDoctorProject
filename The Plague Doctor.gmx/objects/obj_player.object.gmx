@@ -26,31 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Variables
-enum states{
-    normal,
-    sprint,
-    hide,
-    staircase
-}
-
-state = states.normal;
 
 //health
 player_hp = 100;
 
 // kinematics
-right = false;
-left = false;
-rightAndLeftPressed = false;
-runningRight = false;
-runningLeft = false;
-grounded = true;
-hidden = false;
-grabbing = false;
-runButton = false;
-climbing = false;
-stairs = false;
-downSlide = false;
 maxWalkingSpeed = 5;
 maxRunningSpeed = 10;
 jumpingSpeed = 20;
@@ -70,6 +50,95 @@ image_index = 0;
 
 
 
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Kinematic booleans
+
+right = false;
+left = false;
+rightAndLeftPressed = false;
+runningRight = false;
+runningLeft = false;
+grounded = true;
+hidden = false;
+grabbing = false;
+runButton = false;
+climbing = false;
+stairs = false;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player State
+
+enum states{
+    normal,
+    sprint,
+    hide,
+    staircase
+}
+
+state = states.normal;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Darts
+globalvar dartCount;
+dartCount = 0;
 
 
 </string>

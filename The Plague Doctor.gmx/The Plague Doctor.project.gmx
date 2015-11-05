@@ -84,6 +84,9 @@
       <sprite>sprites\enemy_sightbox</sprite>
       <sprite>sprites\spr_spotted</sprite>
     </sprites>
+    <sprites name="Item">
+      <sprite>sprites\spr_dart</sprite>
+    </sprites>
     <sprite>sprites\sprite53</sprite>
     <sprite>sprites\sprite54</sprite>
     <sprite>sprites\sprite46</sprite>
@@ -115,8 +118,12 @@
       <script>scripts\scr_player_ledgegrab.gml</script>
       <script>scripts\scr_player_sprite_control.gml</script>
       <script>scripts\scr_player_hide.gml</script>
+      <script>scripts\scr_player_attack.gml</script>
       <script>scripts\scr_player_ladder.gml</script>
       <script>scripts\scr_player_stairs.gml</script>
+    </scripts>
+    <scripts name="Item Scripts">
+      <script>scripts\scr_dart.gml</script>
     </scripts>
     <scripts name="Enemy Scripts">
       <script>scripts\scr_enemy_idle_state.gml</script>
@@ -125,6 +132,9 @@
       <script>scripts\scr_enemy_move_state.gml</script>
       <script>scripts\scr_enemy_AI.gml</script>
       <script>scripts\scr_enemy_path.gml</script>
+    </scripts>
+    <scripts name="Solid Object Scripts">
+      <script>scripts\scr_change_experiment.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -150,6 +160,7 @@
     <objects name="level">
       <objects name="White boxes">
         <object>objects\obj_white_box</object>
+        <object>objects\obj_White_box_null</object>
         <object>objects\obj_slope_parent</object>
         <object>objects\obj_ladder_climb_mask</object>
         <object>objects\obj_wall_ignore_mask</object>
@@ -209,6 +220,10 @@
       <object>objects\obj_sightbox_soldier</object>
       <object>objects\obj_alertsound</object>
     </objects>
+    <objects name="Items">
+      <object>objects\obj_dart</object>
+      <object>objects\obj_ammo</object>
+    </objects>
     <objects name="sound">
       <object>objects\obj_soundwind</object>
       <object>objects\obj_level_sound</object>
@@ -220,22 +235,15 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room16</room>
+    <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\our_house</room>
     <room>rooms\falling_for_you</room>
-    <room>rooms\rm_Lvl1_whitebox</room>
-    <room>rooms\rm_underground</room>
-    <room>rooms\room8</room>
-    <room>rooms\room10</room>
-    <room>rooms\rm_poppyfields</room>
-    <room>rooms\rm_level1</room>
-    <room>rooms\rm_test</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_Lv2_whitebox</room>
-    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_underground</room>
-    <room>rooms\rm_test</room>
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_menu</room>
-    <room>rooms\rm_slope</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

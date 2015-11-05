@@ -16,7 +16,7 @@ if (grabbing) {
         v_y = 0;
     }
     
-    if (keyboard_check(vk_space)) {
+    if (jump) {
             v_y = 0;
             g = 2;
     }

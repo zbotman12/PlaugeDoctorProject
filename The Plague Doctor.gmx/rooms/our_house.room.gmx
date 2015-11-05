@@ -335,7 +335,6 @@
     <instance objName="obj_white_box_background" x="864" y="256" name="inst_DC8CF079" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="832" y="256" name="inst_9AAC8FB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="832" y="224" name="inst_742FEE85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="0" y="0" name="inst_F14AC2A2" locked="0" code="" scaleX="0" scaleY="0" colour="0" rotation="0"/>
     <instance objName="obj_white_box_background" x="128" y="96" name="inst_5FCE09F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="160" y="96" name="inst_1AEE9D4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="192" y="96" name="inst_4C2F775F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
