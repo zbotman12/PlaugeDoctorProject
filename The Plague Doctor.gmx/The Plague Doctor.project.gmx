@@ -90,9 +90,15 @@
     <sprite>sprites\sprite53</sprite>
     <sprite>sprites\sprite54</sprite>
     <sprite>sprites\sprite46</sprite>
+    <sprite>sprites\sprite50</sprite>
+    <sprite>sprites\sprite51</sprite>
+    <sprite>sprites\sprite52</sprite>
+    <sprite>sprites\sprite55</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
+      <background>background\background7</background>
+      <background>background\background6</background>
       <background>background\bg_war</background>
       <background>background\the_boogers</background>
       <background>background\bg_stars</background>
@@ -158,6 +164,7 @@
     <objects name="Controllers">
       <object>objects\obj_Pause</object>
       <object>objects\obj_shader_controller</object>
+      <object>objects\obj_parallax</object>
     </objects>
     <objects name="level">
       <objects name="White boxes">
@@ -237,14 +244,14 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room16</room>
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_underground</room>
     <room>rooms\our_house</room>
-    <room>rooms\room16</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\falling_for_you</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_Lv2_whitebox</room>
-    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_menu</room>
   </rooms>
   <help>
