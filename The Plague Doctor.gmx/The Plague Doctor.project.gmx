@@ -111,6 +111,7 @@
   </backgrounds>
   <paths name="paths">
     <path>paths\EnemyPath1</path>
+    <path>paths\EnemyPath2</path>
   </paths>
   <scripts name="scripts">
     <scripts name="menu">
@@ -144,6 +145,7 @@
     <scripts name="Solid Object Scripts">
       <script>scripts\scr_change_experiment.gml</script>
     </scripts>
+    <script>scripts\EnemyPathing.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -249,6 +251,9 @@
     <room>rooms\rm_underground</room>
     <room>rooms\our_house</room>
     <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\room16</room>
+    <room>rooms\our_house</room>
+    <room>rooms\rm_underground</room>
     <room>rooms\falling_for_you</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_Lv2_whitebox</room>

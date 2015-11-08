@@ -58,16 +58,38 @@
     <instance objName="obj_stair" x="512" y="608" name="inst_F57EA5D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stair" x="544" y="576" name="inst_C7B9DDE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stair" x="576" y="544" name="inst_B3B39918" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box" x="0" y="544" name="inst_20DF9ADE" locked="0" code="" scaleX="32" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall_ignore_mask" x="416" y="544" name="inst_30574FB8" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enter_stairs_mask" x="384" y="704" name="inst_BC4A323E" locked="0" code="" scaleX="0.0625" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_enter_stairs_mask" x="606" y="512" name="inst_4C7D9DDC" locked="0" code="" scaleX="0.060606062412262" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stair_block" x="384" y="736" name="inst_AB25D31A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="224" y="672" name="inst_A2DF9403" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ammo" x="320" y="672" name="inst_CA66C2EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ammo" x="768" y="480" name="inst_4C1BCAB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ammo" x="960" y="672" name="inst_31998B6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ammo" x="192" y="480" name="inst_2F401772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="928" y="704" name="inst_49039772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="928" y="672" name="inst_024CF050" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="928" y="640" name="inst_972B1C7E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="928" y="608" name="inst_531BD587" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="928" y="576" name="inst_2CE3C0B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="928" y="512" name="inst_06D80E2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="896" y="512" name="inst_01C8F43A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="896" y="576" name="inst_551BF4F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="896" y="608" name="inst_1A2C2FDB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="896" y="640" name="inst_20636E04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="896" y="672" name="inst_508F8F9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="896" y="704" name="inst_25EF8166" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="896" y="544" name="inst_FCB7C794" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder_climb_mask" x="928" y="544" name="inst_6CC71297" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder" x="896" y="704" name="inst_DE99FE83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder" x="896" y="672" name="inst_D9BF4F2E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder" x="896" y="640" name="inst_09C5DED6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder" x="896" y="608" name="inst_72CB7A8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder" x="896" y="576" name="inst_5DA243C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder" x="896" y="544" name="inst_61DC690D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ladder" x="896" y="512" name="inst_219458E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enter_stairs_mask" x="608" y="512" name="inst_5C09C0A6" locked="0" code="" scaleX="0.0625" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_white_box" x="960" y="544" name="inst_2379490E" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_white_box" x="0" y="544" name="inst_EB57C369" locked="0" code="" scaleX="28" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="the_boogers" x="0" y="736" w="32" h="32" xo="320" yo="160" id="10001144" name="inst_D8A3C10E" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -81,7 +103,6 @@
     <tile bgName="the_boogers" x="256" y="736" w="32" h="32" xo="320" yo="160" id="10001152" name="inst_43E19C2E" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="288" y="736" w="32" h="32" xo="320" yo="160" id="10001153" name="inst_29967DEF" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="320" y="736" w="32" h="32" xo="320" yo="160" id="10001154" name="inst_617AB6FD" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="the_boogers" x="352" y="736" w="32" h="32" xo="320" yo="160" id="10001155" name="inst_8D9186B9" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="384" y="736" w="32" h="32" xo="320" yo="160" id="10001156" name="inst_9FA5D174" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="416" y="736" w="32" h="32" xo="320" yo="160" id="10001157" name="inst_6F07FB97" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="448" y="736" w="32" h="32" xo="320" yo="160" id="10001158" name="inst_4165BCBF" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -120,8 +141,6 @@
     <tile bgName="the_boogers" x="800" y="544" w="32" h="32" xo="320" yo="160" id="10001259" name="inst_5EDEE1CD" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="832" y="544" w="32" h="32" xo="320" yo="160" id="10001260" name="inst_FD31A106" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="864" y="544" w="32" h="32" xo="320" yo="160" id="10001261" name="inst_A31A66AB" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="the_boogers" x="896" y="544" w="32" h="32" xo="320" yo="160" id="10001262" name="inst_FFA0FCFC" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="the_boogers" x="928" y="544" w="32" h="32" xo="320" yo="160" id="10001263" name="inst_381837E7" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="960" y="544" w="32" h="32" xo="320" yo="160" id="10001264" name="inst_BB35BBA3" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="992" y="544" w="32" h="32" xo="320" yo="160" id="10001265" name="inst_771162EB" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="416" y="736" w="32" h="32" xo="352" yo="224" id="10001272" name="inst_60C955C6" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -153,8 +172,6 @@
     <tile bgName="the_boogers" x="800" y="512" w="32" h="32" xo="96" yo="160" id="10001534" name="inst_55A068FC" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="832" y="512" w="32" h="32" xo="96" yo="160" id="10001535" name="inst_47CE0C82" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="864" y="512" w="32" h="32" xo="96" yo="160" id="10001536" name="inst_92C3D9E2" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="the_boogers" x="896" y="512" w="32" h="32" xo="96" yo="160" id="10001537" name="inst_306A73B1" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="the_boogers" x="928" y="512" w="32" h="32" xo="96" yo="160" id="10001538" name="inst_2E5E6E4B" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="960" y="512" w="32" h="32" xo="96" yo="160" id="10001539" name="inst_3EF7E1D5" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="992" y="512" w="32" h="32" xo="96" yo="160" id="10001540" name="inst_D460E6DA" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="608" y="576" w="32" h="32" xo="128" yo="288" id="10001542" name="inst_155B5A6F" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -215,6 +232,7 @@
     <tile bgName="the_boogers" x="576" y="544" w="32" h="32" xo="96" yo="160" id="10001629" name="inst_71026216" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="576" y="512" w="32" h="32" xo="96" yo="160" id="10001630" name="inst_A3625ABE" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="544" y="544" w="32" h="32" xo="96" yo="160" id="10001631" name="inst_04F2414F" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_prototilesheet" x="896" y="544" w="32" h="32" xo="64" yo="96" id="10001633" name="inst_D0E918F4" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="992" y="736" w="32" h="32" xo="96" yo="192" id="10001378" name="inst_EB65CFDA" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="960" y="736" w="32" h="32" xo="96" yo="192" id="10001379" name="inst_C78C4B3A" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="928" y="736" w="32" h="32" xo="96" yo="192" id="10001380" name="inst_E99B00D2" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -249,8 +267,6 @@
     <tile bgName="the_boogers" x="0" y="736" w="32" h="32" xo="96" yo="192" id="10001409" name="inst_3FE09E66" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="992" y="544" w="32" h="32" xo="96" yo="192" id="10001485" name="inst_CF93F858" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="960" y="544" w="32" h="32" xo="96" yo="192" id="10001486" name="inst_D1CEFCB5" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="the_boogers" x="928" y="544" w="32" h="32" xo="96" yo="192" id="10001487" name="inst_4D90309D" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="the_boogers" x="896" y="544" w="32" h="32" xo="96" yo="192" id="10001488" name="inst_EB98B5B4" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="864" y="544" w="32" h="32" xo="96" yo="192" id="10001489" name="inst_89DF2C4E" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="832" y="544" w="32" h="32" xo="96" yo="192" id="10001490" name="inst_0FA8010C" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="800" y="544" w="32" h="32" xo="96" yo="192" id="10001491" name="inst_BF298926" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

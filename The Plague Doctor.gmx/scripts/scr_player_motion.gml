@@ -1,17 +1,20 @@
+maxWalkingSpeed = argument0;
+maxRunningSpeed = argument1;
+jumpingSpeed =argument2;
+
 //------------------------------------------------WALK/RUN
  
 if (right && !left) 
 {
-    if (!runButton) { v_x = maxWalkingSpeed; }
     image_xscale = 1; // Flip sprite.
+    if (!runButton) { v_x = maxWalkingSpeed; }
     if (runButton && v_x < maxRunningSpeed) { v_x += fric; }
 }
 
-
 if (left && !right) 
 {
-    if (!runButton) { v_x = -maxWalkingSpeed; }
     image_xscale = -1;
+    if (!runButton) { v_x = -maxWalkingSpeed; }
     if (runButton && v_x > -maxRunningSpeed) { v_x -= fric; }
 }
     
