@@ -1,32 +1,20 @@
-/****LADDERS****/
-
-if ((up || down) && place_meeting(x, y + 1, obj_ladder_climb_mask)) 
+if(temp==0) temp = slopeScanValue;
+slopeScanValue = ladderSpeed - 1;
+if (!place_meeting(x, y - 1, obj_ladder_climb_mask) || jump) 
 {
-        climbing = true;
+    v_y=0;
+    g=2;
+    slopeScanValue = temp;
+    temp = 0;
+    state = states.normal;
 }
-
-if (climbing) 
+else if (up) v_y = -ladderSpeed; 
+else if (down) v_y = ladderSpeed; 
+else
 {
-    jumpingSpeed = 0;
-
-    if (up) { v_y = -ladderSpeed; }
-    else if (down) { v_y = ladderSpeed; }
-    else if (!place_meeting(x, y - 1, obj_ladder_climb_mask) || jump) 
-    {
-        climbing = false;
-        v_y = 0;
-        g = 2;
-    }
-    else //If motionless on ladder
-    {
-        v_y = 0;
-        g = 0;
-    }
-    
-} 
-else 
-{
-    climbing = false;
-    jumpingSpeed = 20;
+v_y = 0; //If motionless on ladder 
+g=0;
 }
+scr_player_motion(maxWalkingSpeed, maxRunningSpeed, jumpingSpeed)
+scr_player_collision(obj_wall);
 

@@ -29,7 +29,7 @@ if (place_meeting(x + v_x, y, floorObject)) {
     if (place_meeting(x + v_x, y - yplus, floorObject)) {
     
         // While you haven't collided yet...
-        while(!place_meeting(x + sign(v_x), y, floorObject)) {
+        while(!place_meeting(x + v_x, y, floorObject)) {
         
                 // Move one pixel right or left.
                 x += sign(v_x);
@@ -66,11 +66,11 @@ y += v_y;
 
 
 yminus = 0;
-while (!place_meeting(x + v_x, y + yminus, floorObject) && yminus <= slopeScanValue) {
+while (!place_meeting(x + sign(v_x), y + yminus, floorObject) && yminus <= slopeScanValue) {
     yminus += 1;
 }
 
-if (place_meeting(x + v_x, y + yminus, floorObject)) {
+if (place_meeting(x + sign(v_x), y + yminus, floorObject)) {
     grounded = true;
     y += yminus;
 }

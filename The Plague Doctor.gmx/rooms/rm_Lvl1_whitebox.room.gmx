@@ -6517,6 +6517,7 @@
     <instance objName="obj_stair_block" x="15904" y="512" name="inst_2BE9BED3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stair_block" x="15680" y="704" name="inst_B43BF5F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="1376" y="672" name="inst_7B92C6B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Soldier" x="1856" y="512" name="inst_24DBD8C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="725" y="850" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_79D511B7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
