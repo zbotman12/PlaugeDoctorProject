@@ -246,12 +246,12 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room16</room>
-    <room>rooms\rm_poppyfields</room>
-    <room>rooms\rm_underground</room>
-    <room>rooms\our_house</room>
     <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\room16</room>
+    <room>rooms\rm_underground</room>
+    <room>rooms\room16</room>
+    <room>rooms\our_house</room>
     <room>rooms\our_house</room>
     <room>rooms\rm_underground</room>
     <room>rooms\falling_for_you</room>
