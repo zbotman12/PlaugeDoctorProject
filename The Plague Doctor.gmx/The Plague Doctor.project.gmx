@@ -245,7 +245,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-	<room>rooms\rm_poppyfields</room>
+    <room>rooms\rm_menu</room>
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\room16</room>
     <room>rooms\rm_underground</room>
@@ -253,7 +254,6 @@
     <room>rooms\falling_for_you</room>
     <room>rooms\rm_level1</room>
     <room>rooms\rm_Lv2_whitebox</room>
-    <room>rooms\rm_menu</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -2,7 +2,7 @@ switch (mpos)
 {
     case 0:
     {
-        room_goto(rm_level1);
+        room_goto(rm_Lvl1_whitebox);
         break;
     }
     case 1: 
@@ -11,7 +11,7 @@ switch (mpos)
         }
     case 2:
         {
-         room_goto(rm_ass);
+         room_goto(rm_poppyfields);
          break;
         }
     case 3:
