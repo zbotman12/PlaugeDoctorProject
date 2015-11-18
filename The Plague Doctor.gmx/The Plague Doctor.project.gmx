@@ -226,7 +226,6 @@
     </objects>
     <objects name="enemies">
       <object>objects\obj_Soldier</object>
-      <object>objects\obj_path_enemy</object>
       <object>objects\obj_spotted</object>
       <object>objects\obj_sightbox_soldier</object>
       <object>objects\obj_alertsound</object>
@@ -246,11 +245,11 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room16</room>
     <room>rooms\rm_poppyfields</room>
+    <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\room16</room>
     <room>rooms\rm_underground</room>
     <room>rooms\our_house</room>
-    <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\room16</room>
     <room>rooms\our_house</room>
     <room>rooms\rm_underground</room>

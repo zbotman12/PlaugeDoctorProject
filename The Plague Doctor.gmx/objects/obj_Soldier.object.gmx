@@ -45,10 +45,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-
-/*Initialize Var*/
+            <string>///Initialize Variables
 grav = 0.2;
 hsp = 0;
 vsp = 0;
@@ -64,6 +61,12 @@ Path = false;
 pointX = x;
 ReversePath = false;
 pathIndex = 0;
+debug_surf = surface_create(view_wview, view_hview);
+sightConeAngle = 15;
+defaultSightConeLength = 300;
+sightConeLength = 0;
+sightConeVertexArray[0,0] = 0;
+sightConeGrowthRate = 3;
 state = scr_enemy_idle_state;
 path = EnemyPath1;
 alarm[0] = room_speed * random_range(.4, .7);
@@ -131,6 +134,49 @@ if(ReversePath){
     }
 }
 scr_enemy_path(pointX);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+if(follow == true){
+    draw_set_color(c_red);
+}else{
+    draw_set_color(c_white);
+}
+draw_set_alpha(1);
+//draw_line(
+//    x,
+//    y,
+//    x + 100,
+//    y
+//);
+draw_triangle(    
+    sightConeVertexArray[0,0],
+    sightConeVertexArray[1,0],
+    sightConeVertexArray[0,1],
+    sightConeVertexArray[1,1],
+    sightConeVertexArray[0,2],
+    sightConeVertexArray[1,2], true);
+
 </string>
           </argument>
         </arguments>

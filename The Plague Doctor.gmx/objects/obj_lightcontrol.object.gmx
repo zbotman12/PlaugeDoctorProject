@@ -28,7 +28,6 @@
             <string>ambient_light = 0.2;
 
 light_surface = surface_create(view_wview, view_hview);
-
 application_surface_draw_enable(false);
 
 uniform_ambient = shader_get_uniform(shd_multiply, "u_fAmbient");
@@ -57,7 +56,7 @@ sampler_light = shader_get_sampler_index(shd_multiply, "u_sLight");
             <kind>1</kind>
             <string>shader_set(shd_multiply);
 shader_set_uniform_f(uniform_ambient, ambient_light);
-texture_set_stage(sampler_light, surface_get_texture(light_surface));
+texture_set_stage(sampler_light, surface_get_texture(light_surface ));
 
 draw_surface(application_surface, 0, 0);
 
