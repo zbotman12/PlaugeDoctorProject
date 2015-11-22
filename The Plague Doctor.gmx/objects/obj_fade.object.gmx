@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a = 0;
+            <string>instance_deactivate_object(self);
+a = 0;
 fade = 1;
 </string>
           </argument>

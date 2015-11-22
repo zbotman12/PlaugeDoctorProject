@@ -6,7 +6,7 @@
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
-  <speed>60</speed>
+  <speed>45</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
@@ -233,6 +233,8 @@
     <tile bgName="the_boogers" x="576" y="512" w="32" h="32" xo="96" yo="160" id="10001630" name="inst_A3625ABE" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="544" y="544" w="32" h="32" xo="96" yo="160" id="10001631" name="inst_04F2414F" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_prototilesheet" x="896" y="544" w="32" h="32" xo="64" yo="96" id="10001633" name="inst_D0E918F4" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="the_boogers" x="384" y="672" w="32" h="32" xo="0" yo="0" id="10011034" name="inst_B0AA3ADB" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="the_boogers" x="384" y="640" w="32" h="32" xo="0" yo="0" id="10011035" name="inst_7D969445" depth="3" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="992" y="736" w="32" h="32" xo="96" yo="192" id="10001378" name="inst_EB65CFDA" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="960" y="736" w="32" h="32" xo="96" yo="192" id="10001379" name="inst_C78C4B3A" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="the_boogers" x="928" y="736" w="32" h="32" xo="96" yo="192" id="10001380" name="inst_E99B00D2" depth="-10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

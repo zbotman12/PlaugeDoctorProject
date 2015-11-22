@@ -68,9 +68,11 @@
         <sprite>sprites\spr_stair_block</sprite>
         <sprite>sprites\spr_slope_white_box</sprite>
         <sprite>sprites\sprite56</sprite>
+        <sprite>sprites\sprite57</sprite>
         <sprite>sprites\spr_slope_while_box</sprite>
         <sprite>sprites\spr_bad_guy_while_box</sprite>
         <sprite>sprites\spr_Landmine</sprite>
+        <sprite>sprites\spr_next_room</sprite>
       </sprites>
       <sprites name="Interactables">
         <sprite>sprites\spr_ladder</sprite>
@@ -180,10 +182,12 @@
         <object>objects\obj_slope_white_box0</object>
         <object>objects\obj_slope_white_box</object>
         <object>objects\obj_stair</object>
+        <object>objects\obj_stairs</object>
         <object>objects\obj_white_box_background</object>
         <object>objects\obj_checkpoint</object>
         <object>objects\obj_bad_guy_white_box</object>
         <object>objects\obj_white_box_landmine</object>
+        <object>objects\obj_next_room</object>
       </objects>
       <objects name="Scenery">
         <objects name="background">
@@ -245,15 +249,16 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_menu</room>
-    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\rm_Lvl2_whitebox</room>
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\room16</room>
+    <room>rooms\rm_menu</room>
     <room>rooms\rm_underground</room>
     <room>rooms\our_house</room>
     <room>rooms\falling_for_you</room>
-    <room>rooms\rm_level1</room>
-    <room>rooms\rm_Lv2_whitebox</room>
+    <room>rooms\rm_level1_test</room>
+    <room>rooms\rm_Lvl3_whitebox</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
