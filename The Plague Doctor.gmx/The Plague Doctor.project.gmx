@@ -146,6 +146,7 @@
       <script>scripts\scr_change_experiment.gml</script>
     </scripts>
     <script>scripts\EnemyPathing.gml</script>
+    <script>scripts\scr_castRay.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -160,9 +161,6 @@
     </fonts>
   </fonts>
   <objects name="objects">
-    <objects name="Effects">
-      <object>objects\obj_fade</object>
-    </objects>
     <objects name="Controllers">
       <object>objects\obj_Pause</object>
       <object>objects\obj_shader_controller</object>
@@ -206,8 +204,6 @@
         <object>objects\obj_ground2</object>
         <object>objects\obj_ground3</object>
         <object>objects\obj_grass</object>
-        <object>objects\obj_Depth10Trigger</object>
-        <object>objects\obj_Depth0Trigger</object>
       </objects>
       <objects name="Interactables">
         <object>objects\obj_nextroom</object>
@@ -245,10 +241,10 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_menu</room>
-    <room>rooms\rm_poppyfields</room>
     <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\rm_poppyfields</room>
     <room>rooms\room16</room>
+    <room>rooms\rm_menu</room>
     <room>rooms\rm_underground</room>
     <room>rooms\our_house</room>
     <room>rooms\falling_for_you</room>

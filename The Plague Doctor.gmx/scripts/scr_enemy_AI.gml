@@ -6,8 +6,6 @@
     }
     sightscan++;
 }*/
-
-
 // sightConeVertexArray[ X or Y, point 1-3]
 //  |---------------------|  
 //  |    x     |    y     |  
@@ -16,29 +14,22 @@
 //  |---------------------|         
 sightConeVertexArray[0,0] = x;
 sightConeVertexArray[1,0] = y - sprite_height/3;
-sightConeVertexArray[0,1] = x + lengthdir_x(sightConeLength, image_angle - sightConeAngle);
+
+sightConeVertexArray[0,1] = x + lengthdir_x(sightConeLength * -1 * image_xscale, image_angle - sightConeAngle);
 sightConeVertexArray[1,1] = y + lengthdir_y(sightConeLength, image_angle - sightConeAngle);
-sightConeVertexArray[0,2] = x + lengthdir_x(sightConeLength, image_angle + sightConeAngle);
+
+sightConeVertexArray[0,2] = x + lengthdir_x(sightConeLength * -1 * image_xscale, image_angle + sightConeAngle);
 sightConeVertexArray[1,2] = y + lengthdir_y(sightConeLength, image_angle + sightConeAngle);
 
-inst = instance_nearest(sightConeVertexArray[0,0] + sightConeLength, y, obj_wall);
+if(sign(image_xscale)==1){
+    angle = 180;
+}else{
+    angle = 0;
+}
 
-if(inst.y <= sightConeVertexArray[1,0]) //if top of wall is level with or above enemy eyes, they are no longer able to see. 
+if(scr_castRay(angle, obj_wall, defaultSightConeLength, 10))
 {
-    if (rectangle_in_triangle(
-            inst.bbox_left, 
-            inst.bbox_top, 
-            inst.bbox_right, 
-            inst.bbox_bottom, 
-            sightConeVertexArray[0,0], 
-            sightConeVertexArray[1,0], 
-            sightConeVertexArray[0,1],
-            sightConeVertexArray[1,1],
-            sightConeVertexArray[0,2], 
-            sightConeVertexArray[1,2]))
-    {
-        sightConeLength = sightConeLength - abs(hsp);
-    }
+    sightConeLength =  abs(sightConeVertexArray[0,0] - rayHitPointX);
 }
 else
 {   
@@ -50,10 +41,6 @@ else
             sightConeLength = defaultSightConeLength;
         }
     }
-}
-if(place_meeting(sightConeVertexArray[0,0] + 1, sightConeVertexArray[1,0], obj_wall))
-{
-    sightConeLength = sprite_width/2;
 }
 
 if (rectangle_in_triangle(
