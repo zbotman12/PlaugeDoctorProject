@@ -179,8 +179,10 @@ switch (state){
 if (keyboard_check(vk_enter)) {
     room_restart();
 }
-
-
+if (place_meeting(x,y,obj_next_room))
+{ 
+    room_goto(rm_Lvl2_whitebox); 
+}
 
 
     
