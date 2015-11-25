@@ -49,6 +49,7 @@
       </sprites>
       <sprites name="Scenery">
         <sprite>sprites\spr_tree</sprite>
+        <sprite>sprites\spr_tree2</sprite>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
         <sprites name="background">
@@ -196,6 +197,7 @@
           <object>objects\obj_wallbackground</object>
           <object>objects\obj_wallbackground2</object>
         </objects>
+        <object>objects\obj_tree2</object>
         <object>objects\obj_tree</object>
         <object>objects\obj_poppy</object>
         <object>objects\obj_poppy2</object>

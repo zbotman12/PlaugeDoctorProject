@@ -1040,23 +1040,6 @@
     <instance objName="obj_slope_white_box" x="6848" y="736" name="inst_243CACFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="6411" y="615" name="inst_3E72E872" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_torch" x="6926" y="681" name="inst_573CB3E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6432" y="640" name="inst_9BD85B04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6432" y="608" name="inst_6C294D8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6464" y="576" name="inst_75E46999" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6496" y="544" name="inst_1B77159D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6464" y="544" name="inst_0DAA99E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6464" y="608" name="inst_B6020B85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6496" y="512" name="inst_3C6476E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6496" y="480" name="inst_8D714791" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6496" y="448" name="inst_02C909E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6528" y="480" name="inst_577FA29F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6528" y="448" name="inst_F005270D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6464" y="480" name="inst_A5FBC4BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6400" y="512" name="inst_AB8591B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6432" y="512" name="inst_DD053D6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6432" y="480" name="inst_032EB55F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6592" y="512" name="inst_BE3F8B0C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_white_box_background" x="6560" y="480" name="inst_83625034" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="6784" y="736" name="inst_FC2F0549" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="6784" y="704" name="inst_4BBA051C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_white_box_background" x="6816" y="672" name="inst_548B43AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -2375,6 +2358,13 @@
     <instance objName="obj_tree" x="5952" y="448" name="inst_FD223856" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="9344" y="608" name="inst_26F2F9AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="11520" y="640" name="inst_84A0C450" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="6432" y="416" name="inst_012B1DE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="5952" y="416" name="inst_6AA5E313" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="8800" y="576" name="inst_BD6A515C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="11936" y="640" name="inst_F1027EB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="10912" y="480" name="inst_E74BAD4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="8288" y="384" name="inst_30731E04" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_tree2" x="320" y="576" name="inst_8FF8DB09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="725" y="850" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_79D511B7" depth="4" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
