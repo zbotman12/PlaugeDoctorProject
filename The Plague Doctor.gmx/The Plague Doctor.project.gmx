@@ -51,6 +51,7 @@
         <sprite>sprites\spr_tree</sprite>
         <sprite>sprites\spr_tree2</sprite>
         <sprite>sprites\spr_tree3</sprite>
+        <sprite>sprites\spr_tank</sprite>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
         <sprites name="background">
@@ -201,6 +202,7 @@
         <object>objects\obj_tree</object>
         <object>objects\obj_tree2</object>
         <object>objects\obj_tree3</object>
+        <object>objects\obj_tank</object>
         <object>objects\obj_poppy</object>
         <object>objects\obj_poppy2</object>
       </objects>
