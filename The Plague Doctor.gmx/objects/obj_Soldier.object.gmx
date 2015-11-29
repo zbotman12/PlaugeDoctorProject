@@ -161,26 +161,27 @@ scr_enemy_path(pointX);
           <argument>
             <kind>1</kind>
             <string>draw_self();
-if(follow == true){
-    draw_set_color(c_red);
-}else{
-    draw_set_color(c_white);
+if(debug_mode){
+    if(follow == true){
+        draw_set_color(c_red);
+    }else{
+        draw_set_color(c_white);
+    }
+    draw_set_alpha(1);
+    //draw_line(
+    //    x,
+    //    y,
+    //    x + 100,
+    //    y
+    //);
+    draw_triangle(    
+        sightConeVertexArray[0,0],
+        sightConeVertexArray[1,0],
+        sightConeVertexArray[0,1],
+        sightConeVertexArray[1,1],
+        sightConeVertexArray[0,2],
+        sightConeVertexArray[1,2], true);
 }
-draw_set_alpha(1);
-//draw_line(
-//    x,
-//    y,
-//    x + 100,
-//    y
-//);
-draw_triangle(    
-    sightConeVertexArray[0,0],
-    sightConeVertexArray[1,0],
-    sightConeVertexArray[0,1],
-    sightConeVertexArray[1,1],
-    sightConeVertexArray[0,2],
-    sightConeVertexArray[1,2], true);
-
 </string>
           </argument>
         </arguments>

@@ -258,13 +258,23 @@ if (sprite_index == spr_falling) {
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_rectangle(
-        bbox_left, 
-        bbox_top, 
-        bbox_right, 
-        bbox_bottom,
-        true
-);
+if(debug_mode){
+    draw_rectangle(
+            bbox_left, 
+            bbox_top, 
+            bbox_right, 
+            bbox_bottom,
+            true
+    );
+    
+    switch (state){
+        case states.normal: draw_text(x + 10, y - 10, "STATE = normal"); break;
+        case states.staircase: draw_text(x + 10, y - 10, "STATE = staircase"); break;
+        case states.ladder: draw_text(x + 10, y - 10, "STATE = ladder"); break;
+        case states.ledgegrab: draw_text(x + 10, y - 10, "STATE = ledgegrab"); break;
+        case states.hide: draw_text(x + 10, y - 10, "STATE = hide"); break;
+    }
+}
 </string>
           </argument>
         </arguments>

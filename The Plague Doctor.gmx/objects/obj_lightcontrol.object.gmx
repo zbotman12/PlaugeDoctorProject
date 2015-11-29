@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-999</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,13 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ambient_light = 0.2;
+            <string>light_surface = surface_create(view_wview, view_hview);
+ambient_light = 0.4;
 
-light_surface = surface_create(view_wview, view_hview);
 application_surface_draw_enable(false);
 
 uniform_ambient = shader_get_uniform(shd_multiply, "u_fAmbient");
 sampler_light = shader_get_sampler_index(shd_multiply, "u_sLight");
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!surface_exists(light_surface)){
+    light_surface = surface_create(view_wview, view_hview);
+}
 </string>
           </argument>
         </arguments>
@@ -56,7 +81,7 @@ sampler_light = shader_get_sampler_index(shd_multiply, "u_sLight");
             <kind>1</kind>
             <string>shader_set(shd_multiply);
 shader_set_uniform_f(uniform_ambient, ambient_light);
-texture_set_stage(sampler_light, surface_get_texture(light_surface ));
+texture_set_stage(sampler_light, surface_get_texture(light_surface));
 
 draw_surface(application_surface, 0, 0);
 
@@ -88,13 +113,18 @@ draw_clear_alpha(c_black, 1);
 draw_set_blend_mode(bm_add);
 
 with(obj_light){
-draw_sprite_ext(spr_light2, 0, x - view_xview,y  - view_yview, size , size, 0, c_white, 1);
+/*   draw_primitive_begin(pr_trianglefan);
+    draw_vertex_color(round(x - view_xview),round(y - view_yview),color,1);
+    for( i = 0; i &lt; 361; i += accuracy; ){
+        scr_castRay(i,obj_wall,size,accuracy);
+        draw_vertex_color(rayHitPointX - view_xview ,rayHitPointY  - view_yview,color,1 - point_distance(rayHitPointX,rayHitPointY,x,y) / size);
+    }
+   draw_primitive_end(); */
+   draw_sprite_ext(spr_light2, 0, x - view_xview,y  - view_yview, size , size, 0, c_white, 1);
 }
 
 draw_set_blend_mode(bm_normal);
 surface_reset_target();
-
-
 </string>
           </argument>
         </arguments>

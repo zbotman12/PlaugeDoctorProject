@@ -1,24 +1,27 @@
-maxWalkingSpeed = argument0;
-maxRunningSpeed = argument1;
-jumpingSpeed =argument2;
+/*
+*   argument0   =   max walking speed
+*   argument1   =   max run speed
+*   argument2   =   jump speed
+*
+*/
 
 //------------------------------------------------WALK/RUN
  
 if (right && !left) 
 {
     image_xscale = 1; // Flip sprite.
-    if (!runButton) { v_x = maxWalkingSpeed; }
-    if (runButton && v_x < maxRunningSpeed) { v_x += fric; }
+    if (!runButton) { v_x = argument0; }
+    if (runButton && v_x < argument1) { v_x += fric; }
 }
 
 if (left && !right) 
 {
     image_xscale = -1;
-    if (!runButton) { v_x = -maxWalkingSpeed; }
-    if (runButton && v_x > -maxRunningSpeed) { v_x -= fric; }
+    if (!runButton) { v_x = -argument0; }
+    if (runButton && v_x > -argument1) { v_x -= fric; }
 }
     
-if (jump && grounded) { v_y = -jumpingSpeed; }
+if (jump && grounded) { v_y = -argument2; }
 
 //------------------------------------------------END OF WALK/RUN DECELERATION
 

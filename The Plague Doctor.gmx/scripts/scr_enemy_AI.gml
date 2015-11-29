@@ -65,7 +65,6 @@ else
     
 if(follow == true)
 {   
-    
     if(obj_player.x > x)
     {
         move = 1;
@@ -82,8 +81,6 @@ if(follow == true)
             move = -1;
         }
     }
-    
-   
 }
 
 if (abs(obj_player.x - x) > 200 && abs(obj_player.y - y) > 200) {
