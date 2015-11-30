@@ -48,12 +48,19 @@
         <sprite>sprites\spr_wall</sprite>
       </sprites>
       <sprites name="Scenery">
-        <sprite>sprites\spr_tree</sprite>
-        <sprite>sprites\spr_tree2</sprite>
-        <sprite>sprites\spr_tree3</sprite>
-        <sprite>sprites\spr_tank</sprite>
+        <sprites name="army">
+          <sprite>sprites\spr_tank</sprite>
+          <sprite>sprites\spr_tankre</sprite>
+          <sprite>sprites\spr_ammobox</sprite>
+          <sprite>sprites\spr_ammoboxre</sprite>
+        </sprites>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
+        <sprites name="Trees">
+          <sprite>sprites\spr_tree</sprite>
+          <sprite>sprites\spr_tree2</sprite>
+          <sprite>sprites\spr_tree3</sprite>
+        </sprites>
         <sprites name="background">
           <sprite>sprites\spr_groundbackground</sprite>
           <sprite>sprites\spr_groundbackground2</sprite>
@@ -199,10 +206,17 @@
           <object>objects\obj_wallbackground</object>
           <object>objects\obj_wallbackground2</object>
         </objects>
-        <object>objects\obj_tree</object>
-        <object>objects\obj_tree2</object>
-        <object>objects\obj_tree3</object>
-        <object>objects\obj_tank</object>
+        <objects name="Trees">
+          <object>objects\obj_tree</object>
+          <object>objects\obj_tree2</object>
+          <object>objects\obj_tree3</object>
+        </objects>
+        <objects name="army">
+          <object>objects\obj_tank</object>
+          <object>objects\obj_tankre</object>
+          <object>objects\obj_ammobox</object>
+          <object>objects\obj_ammoboxre</object>
+        </objects>
         <object>objects\obj_poppy</object>
         <object>objects\obj_poppy2</object>
       </objects>
