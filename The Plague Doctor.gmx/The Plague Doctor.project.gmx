@@ -111,12 +111,12 @@
   <backgrounds name="background">
     <backgrounds name="level">
       <background>background\background7</background>
+      <background>background\bg_prototilesheet</background>
       <background>background\background6</background>
       <background>background\bg_war</background>
       <background>background\the_boogers</background>
       <background>background\bg_stars</background>
       <background>background\background3</background>
-      <background>background\bg_prototilesheet</background>
     </backgrounds>
     <backgrounds name="menu">
       <background>background\bg_menu</background>

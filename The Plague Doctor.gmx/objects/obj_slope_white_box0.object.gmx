@@ -3,7 +3,7 @@
   <spriteName>spr_slope_while_box</spriteName>
   <solid>-1</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>10000</depth>
   <persistent>0</persistent>
   <parentName>obj_slope_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
