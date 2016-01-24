@@ -60,6 +60,9 @@ if(size &gt; 1.2){
 }else if(size &lt; 0.8){
     size = 0.8;
 }
+
+sizeX = size;
+sizeY = size;
 </string>
           </argument>
         </arguments>

@@ -215,7 +215,6 @@
           <object>objects\obj_ammobox</object>
           <object>objects\obj_ammoboxre</object>
           <object>objects\obj_barbed_wire</object>
-          <object>objects\obj_spotlight</object>
         </objects>
         <object>objects\obj_poppy</object>
         <object>objects\obj_poppy2</object>
@@ -248,7 +247,6 @@
     </objects>
     <objects name="enemies">
       <object>objects\obj_Soldier</object>
-      <object>objects\obj_spotlight</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_dart</object>
