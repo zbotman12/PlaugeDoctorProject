@@ -33,7 +33,6 @@
       <sprite>sprites\spr_torch</sprite>
       <sprites name="Light Cookies">
         <sprite>sprites\spr_light2</sprite>
-        <sprite>sprites\spr_spotlight</sprite>
       </sprites>
     </sprites>
     <sprites name="level">
@@ -54,6 +53,7 @@
           <sprite>sprites\spr_tankre</sprite>
           <sprite>sprites\spr_ammobox</sprite>
           <sprite>sprites\spr_ammoboxre</sprite>
+          <sprite>sprites\spr_barbed_wire</sprite>
         </sprites>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
@@ -214,6 +214,8 @@
           <object>objects\obj_tankre</object>
           <object>objects\obj_ammobox</object>
           <object>objects\obj_ammoboxre</object>
+          <object>objects\obj_barbed_wire</object>
+          <object>objects\obj_spotlight</object>
         </objects>
         <object>objects\obj_poppy</object>
         <object>objects\obj_poppy2</object>
