@@ -1,12 +1,6 @@
-/*while(sightscan < sightConeLength){
-    if(place_meeting(x + sign(image_xscale)*sightscan, y, obj_wall))
-    {
-        sightDist = sightscan;
-        break;
-    }
-    sightscan++;
-}*/
-// sightConeVertexArray[ X or Y, point 1-3]
+//if the player is in the sightcone, return true. Otherwise, return false.
+
+// sightConeVertexArray[ X(0) or Y(1), point 1-3]
 //  |---------------------|  
 //  |    x     |    y     |  
 //  |---------------------|  
@@ -55,36 +49,13 @@ if (rectangle_in_triangle(
         sightConeVertexArray[0,2], 
         sightConeVertexArray[1,2]))
 {
-    follow = true;
+    playerSpottedCoord[0] = obj_player.x;
+    playerSpottedCoord[1] = obj_player.y;
 }
 else 
 {
-    follow = false;
+    playerSpottedCoord[0] = -1;
+    playerSpottedCoord[1] = -1;
 }
 
-    
-if(follow == true)
-{   
-    if(obj_player.x > x)
-    {
-        move = 1;
-    }else if(obj_player.x < x)
-    {
-        move = -1;
-    }
-    
-    if (place_meeting(x, y, obj_wall) && obj_player.y > y) {
-        if (obj_player.x > x) {
-            move = 1;
-            }
-        else if(obj_player.x < x) {
-            move = -1;
-        }
-    }
-}
-
-if (abs(obj_player.x - x) > 200 && abs(obj_player.y - y) > 200) {
-    follow = false;
-}
-
-//scr_enemy_choose_state();
+    return playerSpottedCoord;

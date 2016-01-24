@@ -71,33 +71,18 @@ sightConeVertexArray[0,0] = 0;
 sightConeGrowthRate = 3;     
 rayHitPointX = 0;
 rayHitPointY = 0;
-state = scr_enemy_idle_state;
 path = EnemyPath1;
-alarm[0] = room_speed * random_range(.4, .7);
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// wandering
+playerLastSpottedCoord[0] = 0;
+RoamValue = 40;
+
+enum pidgeonStates{
+    patrol,
+    alert,
+    kill,
+    allclear
+}
+state = pidgeonStates.patrol;
 </string>
           </argument>
         </arguments>
@@ -121,23 +106,72 @@ alarm[0] = room_speed * random_range(.4, .7);
           <argument>
             <kind>1</kind>
             <string>scr_enemy_collisions();
-scr_enemy_AI();
-//script_execute(state);
 
-if(ReversePath){
-    if(!Path){
-        Path = true;
-        pathIndex--;
-        pointX = path_get_point_x(path, pathIndex);
-    }
-}else{
-    if(!Path){
-        Path = true;
-        pathIndex++;
-        pointX = path_get_point_x(path, pathIndex);
-    }
+switch (state){
+    case pidgeonStates.patrol:
+    {
+                                                            //Find the next point in the path based on current path direction
+        if(!Path){
+                Path = true;
+                if(ReversePath) pathIndex-- else pathIndex++;
+                pointX = path_get_point_x(path, pathIndex);
+                pointY = path_get_point_y(path, pathIndex);
+            }
+        
+        scr_enemy_move_to_point(pointX, pointY);
+
+                                                            //If pointX is the last point, Turn around when destination reached
+        if (pointX == path_get_point_x(path, path_get_number(path) - 1) || pointX == path_get_point_x(path, 0)){
+            ReversePath = !ReversePath;
+        }
+                                                            //If character is within range of pointX, pick a new point.
+        if((x &lt;= pointX + movespeed + 1 &amp;&amp; x &gt;= pointX - movespeed + 1)){
+            Path = false;
+        }
+
+        var sightcone = scr_enemy_sightcone();
+                                                            //If the player was found in the sightcone
+        if( sightcone[0] != -1)
+        {
+            playerLastSpottedCoord = sightcone;             //save where the character saw him
+            Path = false;
+            pointX = playerLastSpottedCoord[0];
+            state = pidgeonStates.alert;                    //Go into alert state
+        }
+    }break;
+    
+    case pidgeonStates.alert:
+    {
+        var RandomNumber = choose(-1,1,0);
+        if(!Path){
+            Path = true;
+            //Roam to new point
+            pointX = pointX + RandomNumber * RoamValue;
+        }
+        //Move toward player's last known location
+        scr_enemy_move_to_point(pointX, pointY);
+        
+        if((x &lt;= pointX + movespeed + 1 &amp;&amp; x &gt;= pointX - movespeed + 1)){
+            if(RandomNumber == 0){ //If we told him to stand still
+                //wait and Look back and forth
+            }else{
+                Path = false; //find a new path
+            }
+        }
+        
+    }break;
+    case pidgeonStates.kill:
+    {
+        //Kill the player
+    
+    }break;
+    case pidgeonStates.allclear:
+    {
+        //Leave the room
+    
+    }break;
+
 }
-scr_enemy_path(pointX);
 </string>
           </argument>
         </arguments>

@@ -33,6 +33,7 @@
       <sprite>sprites\spr_torch</sprite>
       <sprites name="Light Cookies">
         <sprite>sprites\spr_light2</sprite>
+        <sprite>sprites\spr_spotlight</sprite>
       </sprites>
     </sprites>
     <sprites name="level">
@@ -148,12 +149,9 @@
       <script>scripts\scr_dart.gml</script>
     </scripts>
     <scripts name="Enemy Scripts">
-      <script>scripts\scr_enemy_idle_state.gml</script>
       <script>scripts\scr_enemy_collisions.gml</script>
-      <script>scripts\scr_enemy_choose_state.gml</script>
-      <script>scripts\scr_enemy_move_state.gml</script>
-      <script>scripts\scr_enemy_AI.gml</script>
-      <script>scripts\scr_enemy_path.gml</script>
+      <script>scripts\scr_enemy_sightcone.gml</script>
+      <script>scripts\scr_enemy_move_to_point.gml</script>
     </scripts>
     <scripts name="Solid Object Scripts">
       <script>scripts\scr_change_experiment.gml</script>
@@ -248,9 +246,7 @@
     </objects>
     <objects name="enemies">
       <object>objects\obj_Soldier</object>
-      <object>objects\obj_spotted</object>
-      <object>objects\obj_sightbox_soldier</object>
-      <object>objects\obj_alertsound</object>
+      <object>objects\obj_spotlight</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_dart</object>
@@ -267,6 +263,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_Hospital_1</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Lvl2_whitebox</room>
     <room>rooms\rm_poppyfields</room>

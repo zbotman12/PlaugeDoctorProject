@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>light_surface = surface_create(view_wview, view_hview);
-ambient_light = 0.4;
+ambient_light = 0.7;
 
 application_surface_draw_enable(false);
 
@@ -113,14 +113,7 @@ draw_clear_alpha(c_black, 1);
 draw_set_blend_mode(bm_add);
 
 with(obj_light){
-/*   draw_primitive_begin(pr_trianglefan);
-    draw_vertex_color(round(x - view_xview),round(y - view_yview),color,1);
-    for( i = 0; i &lt; 361; i += accuracy; ){
-        scr_castRay(i,obj_wall,size,accuracy);
-        draw_vertex_color(rayHitPointX - view_xview ,rayHitPointY  - view_yview,color,1 - point_distance(rayHitPointX,rayHitPointY,x,y) / size);
-    }
-   draw_primitive_end(); */
-   draw_sprite_ext(spr_light2, 0, x - view_xview,y  - view_yview, size , size, 0, c_white, 1);
+   draw_sprite_ext(lightSprite, 0, x - view_xview,y  - view_yview, sizeX , sizeY, angle, c_white, 1);
 }
 
 draw_set_blend_mode(bm_normal);
