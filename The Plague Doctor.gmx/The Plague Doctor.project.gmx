@@ -110,6 +110,9 @@
     <sprite>sprites\sprite51</sprite>
     <sprite>sprites\sprite52</sprite>
     <sprite>sprites\sprite55</sprite>
+    <sprite>sprites\spr_invslot</sprite>
+    <sprite>sprites\spr_item_1</sprite>
+    <sprite>sprites\spr_item_2</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
@@ -149,6 +152,7 @@
     </scripts>
     <scripts name="Item Scripts">
       <script>scripts\scr_dart.gml</script>
+      <script>scripts\scr_item_placement.gml</script>
     </scripts>
     <scripts name="Enemy Scripts">
       <script>scripts\scr_enemy_collisions.gml</script>
@@ -178,6 +182,7 @@
       <object>objects\obj_Pause</object>
       <object>objects\obj_shader_controller</object>
       <object>objects\obj_parallax</object>
+      <object>objects\obj_invgrid</object>
     </objects>
     <objects name="level">
       <objects name="White boxes">
@@ -254,6 +259,8 @@
     <objects name="Items">
       <object>objects\obj_dart</object>
       <object>objects\obj_ammo</object>
+      <object>objects\obj_item_1</object>
+      <object>objects\obj_item_2</object>
     </objects>
     <objects name="sound">
       <object>objects\obj_soundwind</object>
@@ -266,8 +273,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_Hospital_1</room>
+    <room>rooms\room11</room>
     <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\rm_Hospital_1</room>
     <room>rooms\rm_Lvl2_whitebox</room>
     <room>rooms\rm_poppyfields</room>
     <room>rooms\room16</room>
