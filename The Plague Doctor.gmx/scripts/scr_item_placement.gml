@@ -6,7 +6,6 @@ if (trackMouse){
     x = mouse_x;
     y = mouse_y;
     if(obj_invgrid.itemSelected == noone) obj_invgrid.itemSelected = self.id;
-    //starts at -1 so that we make sure to count the cell at the origin point in the corner of the item
     for(var cellY = 0; cellY < numCellsY; cellY++){
         for(var cellX = 0; cellX < numCellsX; cellX++){
             obj_invgrid.invGrid[# currentCellX + cellX, currentCellY + cellY] = 0;
@@ -30,19 +29,24 @@ if (trackMouse){
     }
     
     if(snapX + numCellsX > obj_invgrid.kitSizeX || snapY + numCellsY > obj_invgrid.kitSizeY){
-    //item cannot fit, put it back on the mouse and exit
+        //item cannot fit, put it back on the mouse and exit
         trackMouse = true;
         exit;
     }
+    
     for(var cellY = 0; cellY < numCellsY; cellY++){
         for(var cellX = 0; cellX < numCellsX; cellX++){
             //If the item would overlap another item, put it back on the mouse and exit
             if(obj_invgrid.invGrid[# snapX + cellX, snapY + cellY] == 1){
                 trackMouse = true;
                 exit;
-            }else{
-                obj_invgrid.invGrid[# snapX + cellX, snapY + cellY] = 1;
             }
+        }
+    }
+    
+    for(var cellY = 0; cellY < numCellsY; cellY++){
+        for(var cellX = 0; cellX < numCellsX; cellX++){
+            obj_invgrid.invGrid[# snapX + cellX, snapY + cellY] = 1;
         }
     }
     

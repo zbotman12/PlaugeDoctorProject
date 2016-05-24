@@ -113,6 +113,7 @@
     <sprite>sprites\spr_invslot</sprite>
     <sprite>sprites\spr_item_1</sprite>
     <sprite>sprites\spr_item_2</sprite>
+    <sprite>sprites\spr_item_3</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="level">
@@ -261,6 +262,7 @@
       <object>objects\obj_ammo</object>
       <object>objects\obj_item_1</object>
       <object>objects\obj_item_2</object>
+      <object>objects\obj_item_3</object>
     </objects>
     <objects name="sound">
       <object>objects\obj_soundwind</object>

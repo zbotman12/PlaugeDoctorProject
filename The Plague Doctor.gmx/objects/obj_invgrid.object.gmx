@@ -26,14 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>///Set size variables and create grid
-kitSizeX = 25;
-kitSizeY = 15;
+kitSizeX = 40;
+kitSizeY = 30;
 
 invGrid = ds_grid_create(kitSizeX, kitSizeY);
 ds_grid_clear(invGrid, 0);
 
 instance_create(300, 300, obj_item_1);
 instance_create(100, 100, obj_item_2);
+instance_create(100, 200, obj_item_3);
 
 itemSelected = noone;
 </string>
@@ -60,7 +61,8 @@ itemSelected = noone;
             <kind>1</kind>
             <string>for(var yy = 0; yy &lt; kitSizeY; yy++){
     for(var xx = 0; xx &lt; kitSizeX; xx++){
-        draw_text(xx*INV_CELL_SIZE, yy*INV_CELL_SIZE, invGrid[#xx,yy]);
+        draw_sprite_ext(spr_invslot, 0, x + xx*INV_CELL_SIZE, y + yy*INV_CELL_SIZE, 1, 1,0,c_white, 1);
+        if(debug_mode)draw_text( x + xx*INV_CELL_SIZE, y + yy*INV_CELL_SIZE, invGrid[# xx, yy]);
     }
 }
 </string>
