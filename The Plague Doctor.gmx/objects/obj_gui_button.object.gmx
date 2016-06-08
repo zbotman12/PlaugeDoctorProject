@@ -25,30 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Set size variables and create grid
-kitSizeX = 25;
-kitSizeY = 15;
+            <string>/// Initialize the button
+text = 'Click Me';
+width = 96;
+height = 28;
+hover = false;
 
-invGrid = ds_grid_create(kitSizeX, kitSizeY);
-InventoryCoordList = ds_list_create();
-
-ds_grid_clear(invGrid, 0);
-gridStartX = view_xview * global.display_scale + 50;
-gridStartY = view_yview * global.display_scale + 50;
-
-itemSelected = noone;
-
-drawInvGUI = false;
-
-ds_list_add(InventoryCoordList, obj_item_1, 0, 0, 0);
-ds_list_add(InventoryCoordList, obj_item_2, 2, 2, 0);
-ds_list_add(InventoryCoordList, obj_item_3, 6, 6, 0);
+display_x = xstart * global.display_scale;
+display_y = ystart * global.display_scale;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -65,7 +55,36 @@ ds_list_add(InventoryCoordList, obj_item_3, 6, 6, 0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_grid_destroy(invGrid);
+            <string>/// Check to see if the mouse is above us
+
+var yhover = (global.gui_mouse_y == median(display_y - height/2, global.gui_mouse_y, display_y + height/2));
+var xhover = (global.gui_mouse_x == median(display_x - width/2, global.gui_mouse_x, display_x + width/2));
+hover = xhover &amp;&amp; yhover;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="53">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(hover){
+show_message("you CLICKED IT NIGGER");
+}
 </string>
           </argument>
         </arguments>
@@ -89,59 +108,19 @@ ds_list_add(InventoryCoordList, obj_item_3, 6, 6, 0);
           <argument>
             <kind>1</kind>
             <string>surface_set_target(application_surface);
-if(drawInvGUI)
-{
-    for(var cellY = 0; cellY &lt; kitSizeY; cellY++)
-    {
-        for(var cellX = 0; cellX &lt; kitSizeX; cellX++)
-        {
-            draw_sprite_ext(spr_invslot, 0, gridStartX + cellX*INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE, 1, 1,0,c_white, 1);
-            if(debug_mode)
-            {
-                draw_text(gridStartX + cellX*INV_CELL_SIZE,gridStartX + cellY*INV_CELL_SIZE, invGrid[# cellX, cellY]);
-            }
-        }
-    }
+if (hover){
+    draw_set_alpha(.2);
+}else{
+    draw_set_alpha(.5);
 }
- surface_reset_target();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="69">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>drawInvGUI = !drawInvGUI;
-ds_grid_clear(invGrid, 0);
-itemSelected = noone;
 
-    for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4)
-    {
-        if(drawInvGUI)
-        {
-            InventoryCoordList[| item + 3] = spawn_gui_item(InventoryCoordList[| item + 1], InventoryCoordList[| item + 2], InventoryCoordList[| item]);
-        }
-        else
-        {
-            with(InventoryCoordList[| item + 3]) instance_destroy();
-        }
-    }
-    
+draw_rectangle(display_x - width/2, display_y - height/2, display_x + width/2, display_y + height/2, false);
+draw_set_alpha(1);
+
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_text_color(display_x, display_y, text, c_white, c_white, c_white, c_white, 1);
+surface_reset_target();
 </string>
           </argument>
         </arguments>

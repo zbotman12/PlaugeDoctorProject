@@ -38,7 +38,19 @@ grabbing = false;
 runButton = false;
 climbing = false;
 stairs = false;
+click = false;
 
+// kinematics
+maxWalkingSpeed = 5;
+maxRunningSpeed = 10;
+jumpingSpeed = 20;
+ladderSpeed = 6;
+slopeScanValue = 15;
+fric = 0.8;
+v_x = 0;
+v_y = 0;
+g = 2;
+temp=0;
 </string>
           </argument>
         </arguments>
@@ -121,18 +133,6 @@ dartCount = 0;
 //health
 player_hp = 100;
 
-// kinematics
-maxWalkingSpeed = 5;
-maxRunningSpeed = 10;
-jumpingSpeed = 20;
-ladderSpeed = 6;
-slopeScanValue = 15;
-fric = 0.8;
-v_x = 0;
-v_y = 0;
-g = 2;
-temp=0;
-
 // sprites
 image_speed = 2;
 image_index = 0;
@@ -166,26 +166,99 @@ image_index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_player_get_inputs();
-scr_player_sprite_control();
+            <string>//Keyboard Inputs
+leftClick = mouse_check_button_pressed(mb_left);
+right = keyboard_check(ord("D"));
+left = keyboard_check(ord("A"));
+up = keyboard_check(ord("W"));
+down = keyboard_check(ord("S"));
+runButton = keyboard_check(vk_lshift);
+jump = keyboard_check_pressed(vk_space);
+rightAndLeftPressed = right &amp;&amp; left;
 
-switch (state){
-    case states.normal: scr_player_normal(); break;
-    case states.staircase: scr_player_stairs(); break;
-    case states.ladder: scr_player_ladder(); break;
-    case states.ledgegrab: scr_player_stairs(); break;
-    case states.hide: scr_player_normal(); break;
+//Sprites
+if (grounded) 
+{
+    if (runButton &amp;&amp; (right ^^ left))//If running
+    {
+        /** if the sprite isn't the running sprite set index to zero so when 
+          * it becomes the running sprite, it always starts on frame 0 */
+        if (sprite_index != spr_running) 
+        {  
+            image_index = 0;
+        }   
+        sprite_index = spr_running;
+        image_speed = 3;
+    }
+    else if ((left ^^ right)) //If not running
+    { 
+        // same as before
+        if (sprite_index != spr_walking) 
+        { 
+            image_index = 0;
+        }
+        sprite_index = spr_walking;
+        image_speed = 4;
+    }
+    else 
+    { 
+        // if idle.
+        sprite_index = spr_idle;
+        image_speed = 1;
+    }
 }
-if (keyboard_check(vk_enter)) {
+else 
+{ 
+    // if not grounded...
+    if (v_y &gt; 0) 
+    {
+        if (sprite_index != spr_falling) 
+        {
+            image_index = 0;
+        }
+        sprite_index = spr_falling; // this has a script in "animation end" to avoid looping
+        image_speed = 0.5;
+    }
+    if (v_y &lt; 0) 
+    {
+        sprite_index = spr_idle;
+        image_speed  = 1;
+    }
+}
+//Player State Machine
+switch (state)
+{
+    case states.normal:
+    { 
+        scr_player_normal(); 
+    }break;
+    case states.staircase: 
+    {
+        scr_player_stairs();
+    }break;
+    case states.ladder:
+    {
+        scr_player_ladder();
+    }break;
+    case states.ledgegrab:
+    {
+    
+    }break;
+    case states.hide:
+    {
+         
+    }break;
+}
+
+if (keyboard_check(vk_enter)) 
+{
     room_restart();
 }
+
 if (place_meeting(x,y,obj_next_room))
-{ 
+{
     room_goto(rm_Lvl2_whitebox); 
-}
-
-
-    
+}  
 
 </string>
           </argument>
@@ -209,15 +282,17 @@ if (place_meeting(x,y,obj_next_room))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (sprite_index == spr_hide) { // if this sprite is active
+            <string>if (sprite_index == spr_hide) 
+{
     image_index = 14; // set frame speed to 0 at frame 19 (last frame)
-    image_speed = 0;
-    }
+    image_speed = 0; //Do not animate
+}
 
-if (sprite_index == spr_falling) {
+if (sprite_index == spr_falling) 
+{
     image_index = 24;
     image_speed = 0;
-    }
+}
 
 </string>
           </argument>

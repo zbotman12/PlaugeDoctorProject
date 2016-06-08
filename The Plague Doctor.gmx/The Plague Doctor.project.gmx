@@ -5,7 +5,6 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\sou_In_Flanders_Fields</sound>
     <sounds name="menu">
       <sound>sound\sou_menu_plague</sound>
     </sounds>
@@ -14,6 +13,7 @@
       <sound>sound\sou_alert</sound>
       <sound>sound\sou_wind</sound>
     </sounds>
+    <sound>sound\snd_flanders</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="menu">
@@ -139,10 +139,7 @@
     </scripts>
     <scripts name="Player Scripts">
       <script>scripts\scr_player_normal.gml</script>
-      <script>scripts\scr_player_health.gml</script>
-      <script>scripts\scr_player_get_inputs.gml</script>
       <script>scripts\scr_player_motion.gml</script>
-      <script>scripts\scr_player_sprite_control.gml</script>
       <script>scripts\scr_player_collision.gml</script>
       <script>scripts\scr_player_ledgegrab.gml</script>
       <script>scripts\scr_player_hide.gml</script>
@@ -160,11 +157,9 @@
       <script>scripts\scr_enemy_sightcone.gml</script>
       <script>scripts\scr_enemy_move_to_point.gml</script>
     </scripts>
-    <scripts name="Solid Object Scripts">
-      <script>scripts\scr_change_experiment.gml</script>
-    </scripts>
     <script>scripts\EnemyPathing.gml</script>
     <script>scripts\scr_castRay.gml</script>
+    <script>scripts\spawn_gui_item.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -183,6 +178,7 @@
       <object>objects\obj_Pause</object>
       <object>objects\obj_shader_controller</object>
       <object>objects\obj_parallax</object>
+      <object>objects\obj_display</object>
       <object>objects\obj_invgrid</object>
     </objects>
     <objects name="level">
@@ -273,20 +269,19 @@
       <object>objects\obj_light</object>
       <object>objects\obj_torch</object>
     </objects>
+    <object>objects\obj_gameManager</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room11</room>
     <room>rooms\rm_Lvl1_whitebox</room>
+    <room>rooms\rm_menu</room>
     <room>rooms\rm_Hospital_1</room>
-    <room>rooms\rm_Lvl2_whitebox</room>
+    <room>rooms\falling_for_you</room>
     <room>rooms\rm_poppyfields</room>
     <room>rooms\room16</room>
-    <room>rooms\rm_menu</room>
     <room>rooms\rm_underground</room>
     <room>rooms\our_house</room>
-    <room>rooms\falling_for_you</room>
-    <room>rooms\rm_level1_test</room>
     <room>rooms\rm_Lvl3_whitebox</room>
+    <room>rooms\rm_Lvl2_whitebox</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -1,27 +1,33 @@
-/*
-*   argument0   =   max walking speed
-*   argument1   =   max run speed
-*   argument2   =   jump speed
-*
-*/
+var maxWalkingSpeed = argument0;
+var maxRunSpeed = argument1;
+var jumpSpeed = argument2;
+
+ 
+//Inputs
 
 //------------------------------------------------WALK/RUN
- 
+
 if (right && !left) 
 {
     image_xscale = 1; // Flip sprite.
-    if (!runButton) { v_x = argument0; }
-    if (runButton && v_x < argument1) { v_x += fric; }
+    if (!runButton) 
+    {
+        v_x = maxWalkingSpeed; 
+    }
+    if (runButton && v_x < maxRunSpeed)
+    {
+        v_x += fric;
+    }
 }
 
 if (left && !right) 
 {
-    image_xscale = -1;
-    if (!runButton) { v_x = -argument0; }
-    if (runButton && v_x > -argument1) { v_x -= fric; }
+    image_xscale = -1; // Flip sprite.
+    if (!runButton) { v_x = -maxWalkingSpeed; }
+    if (runButton && v_x > -maxRunSpeed) { v_x -= fric; }
 }
     
-if (jump && grounded) { v_y = -argument2; }
+if (jump && grounded) { v_y = -jumpSpeed; }
 
 //------------------------------------------------END OF WALK/RUN DECELERATION
 
