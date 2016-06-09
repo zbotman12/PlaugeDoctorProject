@@ -273,10 +273,8 @@
       <object>objects\obj_light</object>
       <object>objects\obj_torch</object>
     </objects>
-    <object>objects\obj_collision_grid</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room10</room>
     <room>rooms\rm_Hospital_1</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_menu</room>
