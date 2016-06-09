@@ -646,7 +646,8 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="4">
+    <constants number="5">
+      <constant name="TILE_SIZE">32</constant>
       <constant name="DEFUSEKIT_ID">2</constant>
       <constant name="BANDAGE_ID">1</constant>
       <constant name="LOCKPICK_ID">3</constant>

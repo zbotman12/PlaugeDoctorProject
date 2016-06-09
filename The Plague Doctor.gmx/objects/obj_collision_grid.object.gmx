@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,91 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Set size variables and create grid
-kitSizeX = 35;
-kitSizeY = 20;
+            <string>collisionLayerDepth = 1000;
+Tilemap = ds_grid_create(room_width/TILE_SIZE, room_height/TILE_SIZE);
 
-invGrid = ds_grid_create(kitSizeX, kitSizeY);
-InventoryCoordList = ds_list_create();
-
-ds_grid_clear(invGrid, 0);
-gridStartX = view_xview * global.display_scale + 50;
-gridStartY = view_yview * global.display_scale + 50;
-
-itemSelected = noone;
-
-drawInvGUI = false;
-
-ds_list_add(InventoryCoordList, obj_item_1, 0, 0, 0);
-ds_list_add(InventoryCoordList, obj_item_2, 2, 2, 0);
-ds_list_add(InventoryCoordList, obj_item_3, 6, 6, 0);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ds_grid_destroy(invGrid);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>surface_set_target(application_surface);
-if(drawInvGUI)
+var tiles = tile_get_ids_at_depth(collisionLayerDepth); //Get all tiles on the collidable layer
+ds_grid_clear(Tilemap, -1);
+for (var tileIndex = 0; tileIndex &lt; array_length_1d(tiles); tileIndex++;)
 {
-    for(var cellY = 0; cellY &lt; kitSizeY; cellY++)
+    var TileInfoList = ds_list_create();
+    ds_list_add(TileInfoList, 0,0);
+    var tileXPos = floor(tile_get_x(tiles[tileIndex]) / TILE_SIZE) * TILE_SIZE;
+    var tileYPos = floor(tile_get_y(tiles[tileIndex]) / TILE_SIZE) * TILE_SIZE;
+
+    for(var TilePixelY = 0; TilePixelY &lt; TILE_SIZE; TilePixelY++)
     {
-        for(var cellX = 0; cellX &lt; kitSizeX; cellX++)
+        if (tile_layer_find(collisionLayerDepth, tileXPos, tileYPos + TilePixelY) == tiles[tileIndex]) //If we hit the tile we are looping over on the left
         {
-            draw_sprite_ext(spr_invslot, 0, gridStartX + cellX*INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE, 1, 1,0,c_white, 1);
-            if(debug_mode)
-            {
-                draw_text(gridStartX + cellX*INV_CELL_SIZE,gridStartX + cellY*INV_CELL_SIZE, invGrid[# cellX, cellY]);
-            }
+            ds_list_replace(TileInfoList, 0, TilePixelY); //Store how many pixels from the top we find the leftmost edge of the tile
+        }
+        if (tile_layer_find(collisionLayerDepth, tileXPos + TILE_SIZE - 1, tileYPos + TilePixelY) == tiles[tileIndex]) //If we hit the tile we are looping over on the right
+        { 
+            ds_list_replace(TileInfoList, 1, TilePixelY); //Store how many pixels from the top we find the rightmost edge of the tile
         }
     }
+    Tilemap[# tileXPos / TILE_SIZE, tileYPos / TILE_SIZE] = TileInfoList;
 }
- surface_reset_target();
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="69">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -126,22 +72,46 @@ if(drawInvGUI)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>drawInvGUI = !drawInvGUI;
-ds_grid_clear(invGrid, 0);
-itemSelected = noone;
-
-    for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4)
+            <string>var tile;
+tile = tile_layer_find(1000, mouse_x, mouse_y);
+if tile != -1
+{
+    draw_set_color(c_white);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(font1);
+for(var xx = 0; xx &lt; ds_grid_width(Tilemap); xx++)
+{
+    for(var yy = 0; yy &lt; ds_grid_height(Tilemap); yy++)
     {
-        if(drawInvGUI)
+        if(ds_exists(Tilemap[# xx, yy], ds_type_list))
         {
-            InventoryCoordList[| item + 3] = spawn_gui_item(InventoryCoordList[| item + 1], InventoryCoordList[| item + 2], InventoryCoordList[| item]);
+            draw_text(xx * TILE_SIZE,yy * TILE_SIZE, ds_list_find_value(Tilemap[# xx, yy], 0));
+            draw_text(xx * TILE_SIZE + (TILE_SIZE - TILE_SIZE/3),yy * TILE_SIZE, ds_list_find_value(Tilemap[# xx, yy], 1));
         }
-        else
-        {
-            with(InventoryCoordList[| item + 3]) instance_destroy();
-        }
-    }
-    
+    }     
+}
 </string>
           </argument>
         </arguments>

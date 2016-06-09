@@ -188,7 +188,7 @@ if (grounded)
             image_index = 0;
         }   
         sprite_index = spr_running;
-        image_speed = 3;
+        image_speed = 3 * global.timeScale;
     }
     else if ((left ^^ right)) //If not running
     { 
@@ -198,13 +198,13 @@ if (grounded)
             image_index = 0;
         }
         sprite_index = spr_walking;
-        image_speed = 4;
+        image_speed = 4 * global.timeScale;
     }
     else 
     { 
         // if idle.
         sprite_index = spr_idle;
-        image_speed = 1;
+        image_speed = 1 * global.timeScale;
     }
 }
 else 
@@ -217,12 +217,12 @@ else
             image_index = 0;
         }
         sprite_index = spr_falling; // this has a script in "animation end" to avoid looping
-        image_speed = 0.5;
+        image_speed = 0.5 * global.timeScale;
     }
     if (v_y &lt; 0) 
     {
         sprite_index = spr_idle;
-        image_speed  = 1;
+        image_speed  = 1 * global.timeScale;
     }
 }
 //Player State Machine

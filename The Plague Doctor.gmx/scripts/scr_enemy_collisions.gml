@@ -1,4 +1,4 @@
-if (vsp < 10) vsp += grav; 
+if (vsp < 10) vsp += grav * global.timeScale; 
 
 
 //Horizontal Collision
@@ -18,7 +18,7 @@ if (place_meeting(x+hsp,y,obj_wall))
         }
     }
 }
-x += hsp;
+x += hsp * global.timeScale;
 
 //Vertical Collision
 if (place_meeting(x,y+vsp,obj_wall))
@@ -34,7 +34,7 @@ if (place_meeting(x,y+vsp,obj_wall))
 }
 
 
-y += vsp;
+y += vsp * global.timeScale;
 
 
 //Controling the sprite turning

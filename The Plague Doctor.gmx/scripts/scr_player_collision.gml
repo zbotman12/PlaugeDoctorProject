@@ -38,10 +38,10 @@ if (place_meeting(x + v_x, y, floorObject)) {
         v_x = 0;
     }
     else {
-        y -= yplus;
+        y -= yplus * global.timeScale;
     }
 }
-x += v_x; // Check for collisions first, then update x.
+x += v_x * global.timeScale; // Check for collisions first, then update x.
 
 
 //------------------------------------------------Y-AXIS COLLISIONS
@@ -59,7 +59,7 @@ if (place_meeting(x, y + v_y, floorObject)) {
     // When you collide, set v_y = 0.
     v_y = 0;
 }
-y += v_y;
+y += v_y * global.timeScale;
 
 
 //------------------------------------------------GOING DOWN SLOPES
@@ -72,7 +72,7 @@ while (!place_meeting(x + sign(v_x), y + yminus, floorObject) && yminus <= slope
 
 if (place_meeting(x + sign(v_x), y + yminus, floorObject)) {
     grounded = true;
-    y += yminus;
+    y += yminus * global.timeScale;
 }
 else {
     grounded = false;
@@ -85,7 +85,7 @@ else {
 // If one pixel above ground, v_y = 0. If space is pressed, jump.
 if (!place_meeting(x, y + 1, floorObject) && !climbing) {
     //g = 2;
-    v_y += g;
+    v_y += g * global.timeScale;
     grounded = false; // Can't jump when not grounded.
 }
 

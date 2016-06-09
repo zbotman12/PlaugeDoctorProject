@@ -128,6 +128,7 @@
     <backgrounds name="menu">
       <background>background\bg_menu</background>
     </backgrounds>
+    <background>background\background8</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\EnemyPath1</path>
@@ -172,6 +173,7 @@
     <fonts name="menu">
       <font>fonts\fnt_menu</font>
     </fonts>
+    <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
     <objects name="Controllers">
@@ -180,6 +182,8 @@
       <object>objects\obj_parallax</object>
       <object>objects\obj_display</object>
       <object>objects\obj_invgrid</object>
+      <object>objects\obj_gameManager</object>
+      <object>objects\obj_timeController</object>
     </objects>
     <objects name="level">
       <objects name="White boxes">
@@ -269,12 +273,13 @@
       <object>objects\obj_light</object>
       <object>objects\obj_torch</object>
     </objects>
-    <object>objects\obj_gameManager</object>
+    <object>objects\obj_collision_grid</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room10</room>
+    <room>rooms\rm_Hospital_1</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_menu</room>
-    <room>rooms\rm_Hospital_1</room>
     <room>rooms\falling_for_you</room>
     <room>rooms\rm_poppyfields</room>
     <room>rooms\room16</room>

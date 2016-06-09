@@ -57,7 +57,9 @@ coneWidth = 6;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = -1; i &lt;= 1; i++){
+            <string>turnSpeed = 0.2 * global.timeScale;
+
+for(i = -1; i &lt;= 1; i++){
     sawPlayer = collision_line(
     x,
     y,
