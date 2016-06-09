@@ -88,12 +88,3 @@ if (!place_meeting(x, y + 1, floorObject) && !climbing) {
     v_y += g * global.timeScale;
     grounded = false; // Can't jump when not grounded.
 }
-
-//------------------------------------------------PICK UP AMMO
-
-if (place_meeting(x, y, obj_ammo)) {
-    dartCount++;
-    with (instance_nearest(x, y, obj_ammo)) {
-        instance_destroy();
-    }
-}

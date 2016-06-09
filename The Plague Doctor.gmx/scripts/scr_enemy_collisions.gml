@@ -1,10 +1,11 @@
+wallObj = obj_wall_parent;
+
 if (vsp < 10) vsp += grav * global.timeScale; 
 
-
 //Horizontal Collision
-if (place_meeting(x+hsp,y,obj_wall))
+if (place_meeting(x+hsp,y,wallObj))
 {
-    while(!place_meeting(x+sign(hsp),y,obj_wall))
+    while(!place_meeting(x+sign(hsp),y,wallObj))
         {
             x += sign(hsp);
         }
@@ -21,9 +22,9 @@ if (place_meeting(x+hsp,y,obj_wall))
 x += hsp * global.timeScale;
 
 //Vertical Collision
-if (place_meeting(x,y+vsp,obj_wall))
+if (place_meeting(x,y+vsp,wallObj))
 {
-    while(!place_meeting(x,y+sign(vsp),obj_wall))
+    while(!place_meeting(x,y+sign(vsp),wallObj))
         {
             y += sign(vsp);
         }
@@ -33,9 +34,7 @@ if (place_meeting(x,y+vsp,obj_wall))
         }
 }
 
-
 y += vsp * global.timeScale;
-
 
 //Controling the sprite turning
 

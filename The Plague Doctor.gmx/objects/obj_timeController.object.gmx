@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.timeScale = (45/room_speed);
+            <string>global.timeScale = (30/room_speed);
 </string>
           </argument>
         </arguments>

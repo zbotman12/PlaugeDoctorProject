@@ -21,7 +21,7 @@ if(sign(image_xscale)==1){
     angle = 0;
 }
 
-if(scr_castRay(angle, obj_wall, defaultSightConeLength, 10))
+if(scr_castRay(angle, obj_wall_parent, defaultSightConeLength, 10))
 {
     sightConeLength =  abs(sightConeVertexArray[0,0] - rayHitPointX);
 }

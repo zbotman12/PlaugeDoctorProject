@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>menu[0] = "Start";
-menu[1] = "Continue (does notting)";
+menu[1] = "Continue (does nothing)";
 menu[2] = "Ass";
-menu[3] = "Options (does notting)";
+menu[3] = "Options (does nothing)";
 menu[4] = "Quit";
 
 space = 65;
