@@ -99,6 +99,7 @@
     <backgrounds name="menu">
       <background>background\bg_menu</background>
     </backgrounds>
+    <background>background\background5</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\EnemyPath1</path>
@@ -225,6 +226,7 @@
     <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Hospital_1</room>
+    <room>rooms\room3</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

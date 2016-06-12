@@ -9,10 +9,10 @@ var jumpSpeed = argument2;
 
 if (right && !left) 
 {
-    image_xscale = 1; // Flip sprite.
+    image_xscale = abs(image_xscale); // Flip sprite.
     if (!runButton) 
     {
-        v_x = maxWalkingSpeed; 
+        v_x = maxWalkingSpeed;
     }
     if (runButton && v_x < maxRunSpeed)
     {
@@ -22,7 +22,7 @@ if (right && !left)
 
 if (left && !right) 
 {
-    image_xscale = -1; // Flip sprite.
+    image_xscale = -1 * abs(image_xscale); // Flip sprite.
     if (!runButton) { v_x = -maxWalkingSpeed; }
     if (runButton && v_x > -maxRunSpeed) { v_x -= fric; }
 }
@@ -46,14 +46,14 @@ else if (!left && v_x < 0)
 else if (rightAndLeftPressed && v_x > 0) 
 {
     v_x -= fric;
-    image_xscale = -1;
+    image_xscale = -1 * abs(image_xscale);
     if (v_x < 0) { v_x = 0; }
 }
 
 else if (rightAndLeftPressed && v_x < 0) 
 {
     v_x += fric;
-    image_xscale = 1;
+    image_xscale = abs(image_xscale);
     if (v_x > 0) { v_x = 0; }
 }
 

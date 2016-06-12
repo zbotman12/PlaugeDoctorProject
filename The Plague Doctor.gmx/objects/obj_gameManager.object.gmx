@@ -28,7 +28,7 @@
             <string>instance_create(0,0, obj_timeController);
 instance_create(0,0, obj_display);
 instance_create(0,0, obj_lightcontrol);
-instance_create(0,0, obj_parallax);
+//instance_create(0,0, obj_parallax);
 instance_create(0,0, obj_invgrid);
 instance_create(0,0, obj_Pause);
 instance_create(0,0, obj_level_sound);
