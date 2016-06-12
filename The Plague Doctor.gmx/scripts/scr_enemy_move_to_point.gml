@@ -5,5 +5,5 @@ pointY = argument1;
 if(!(x <= pointX + movespeed + 1 && x >= pointX - movespeed + 1)){ 
     var dir = sign(pointX - x);
     move = dir;
-    hsp = move * movespeed;
+    v_x = move * movespeed;
 }

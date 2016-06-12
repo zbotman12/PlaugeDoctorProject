@@ -122,7 +122,6 @@
       <script>scripts\spawn_gui_item.gml</script>
     </scripts>
     <scripts name="Enemy Scripts">
-      <script>scripts\scr_enemy_collisions.gml</script>
       <script>scripts\scr_enemy_sightcone.gml</script>
       <script>scripts\scr_enemy_move_to_point.gml</script>
       <script>scripts\EnemyPathing.gml</script>

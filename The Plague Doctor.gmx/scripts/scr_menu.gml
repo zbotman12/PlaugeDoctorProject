@@ -13,10 +13,6 @@ switch (mpos)
         {
          break;
         }
-    case 3:
-        {
-        break;
-        }
-    case 4: game_end(); break;
+    case 3: game_end(); break;
     default: break;
 }   

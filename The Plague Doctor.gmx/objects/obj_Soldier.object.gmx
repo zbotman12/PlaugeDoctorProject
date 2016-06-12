@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Variables
-grav = 0.2;
-hsp = 0;
-vsp = 0;
+g = 0.2;
+v_x = 0;
+v_y = 0;
 jumpspeed = 7;
 movespeed = 2;
 key_right = 0;
@@ -51,6 +51,9 @@ sightConeVertexArray[0,0] = 0;
 sightConeGrowthRate = 3;     
 rayHitPointX = 0;
 rayHitPointY = 0;
+slopeScanValue = 15;
+climbing = false;
+grounded = false;
 path = EnemyPath1;
 
 playerLastSpottedCoord[0] = 0;
@@ -85,7 +88,16 @@ state = pidgeonStates.patrol;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_enemy_collisions();
+            <string>scr_player_collision(obj_wall_parent);
+
+if(sign(v_x) == 1)
+{
+image_xscale = -1 * abs(image_xscale);
+}
+else if(sign(v_x) == -1)
+{
+image_xscale = abs(image_xscale);
+}
 
 switch (state){
     case pidgeonStates.patrol:
