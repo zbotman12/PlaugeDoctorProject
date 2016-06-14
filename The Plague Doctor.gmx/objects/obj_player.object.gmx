@@ -40,18 +40,26 @@ climbing = false;
 stairs = false;
 click = false;
 lastDir = 0;
+gamepadHor = false;
+gamepadA = false;
+gamepadX = false;
+gamepadY = false;
+gamepadB = false;
+gamepadStart = false;
+gamepadLT = false;
+gamepadVert = false;
 
-// kinematics
+//kinematics
 maxWalkingSpeed = 8;
 maxRunningSpeed = 12;
-jumpingSpeed = 20;
+jumpingSpeed = 25;
 ladderSpeed = 6;
 slopeScanValue = 15;
 fric = 3;
 v_x = 0;
 v_y = 0;
-g = 2;
-temp=0;
+g = 3;
+temp = 0;
 </string>
           </argument>
         </arguments>
@@ -143,31 +151,7 @@ door = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var gamepadHor, gamepadA, gamepadX, gamepadY, gamepadB, gamepadStart, gamepadLT, gamepadVert = false;
-
-if (gamepad_is_connected(0))
-{ 
-    gamepad_set_axis_deadzone(0, 0.05);
-    gamepadHor = sign(gamepad_axis_value(0, gp_axislh));
-    gamepadVert = sign(gamepad_axis_value(0, gp_axislv));
-    gamepadStart = gamepad_button_check_pressed(0, gp_start);
-    gamepadA = gamepad_button_check_pressed(0, gp_face1);
-    gamepadX = gamepad_button_check_pressed(0, gp_face2);
-    gamepadY = gamepad_button_check_pressed(0, gp_face3);
-    gamepadB = gamepad_button_check_pressed(0, gp_face4);
-    gamepadLT = gamepad_button_check(0, gp_shoulderlb);
-       
-}
-
-//Keyboard Inputs
-leftClick = mouse_check_button_pressed(mb_left);
-right = keyboard_check(ord("D")) || (gamepadHor == 1);
-left = keyboard_check(ord("A")) || (gamepadHor == -1);
-up = keyboard_check(ord("W")) || (gamepadVert == 1);
-down = keyboard_check(ord("S")) || (gamepadVert != -1);
-runButton = keyboard_check(vk_lshift) || gamepadLT;
-jump = keyboard_check_pressed(vk_space) || gamepadA;
-rightAndLeftPressed = right &amp;&amp; left;
+            <string>get_input();
 
 //Sprites
 if (grounded) 

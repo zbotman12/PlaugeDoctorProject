@@ -33,7 +33,12 @@ menu[3] = "Quit";
 space = 65;
 mpos = 0;
 
-
+gamepadVertUp = 0;
+gamepadVertDown = 0;
+gamepadStart = 0;
+gamepadA = 0;
+lastgamepadVertUp = 0;
+lastgamepadVertDown = 0;
 </string>
           </argument>
         </arguments>
@@ -56,9 +61,18 @@ mpos = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var move = 0;
-move -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")),0);
-move += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")),0);
+            <string>if (gamepad_is_connected(0))
+{ 
+    gamepad_set_axis_deadzone(0, 0.1);
+    gamepadVertUp = min(sign(gamepad_axis_value(0, gp_axislv)), 0);
+    gamepadVertDown = max(sign(gamepad_axis_value(0, gp_axislv)), 0);
+    gamepadStart = gamepad_button_check_pressed(0, gp_start);
+    gamepadA = gamepad_button_check_pressed(0, gp_face1);
+}
+
+var move = 0;
+move -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")), (gamepadVertUp != lastgamepadVertUp),0);
+move += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")), (gamepadVertDown != lastgamepadVertDown),0);
 
 if (move != 0)
 {
@@ -68,8 +82,11 @@ if (move != 0)
 }
 
 var push;
-push = max(keyboard_check_released(vk_enter),keyboard_check_released(vk_shift),keyboard_check_released(vk_space), 0); 
+push = max(keyboard_check_released(vk_enter),keyboard_check_released(vk_shift),keyboard_check_released(vk_space), gamepadA, gamepadStart, 0); 
 if (push == 1) scr_menu();
+
+lastgamepadVertUp = gamepadVertUp;
+lastgamepadVertDown = gamepadVertDown;
 </string>
           </argument>
         </arguments>

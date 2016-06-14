@@ -54,7 +54,6 @@ else
 // If one pixel above ground, v_y = 0. If space is pressed, jump.
 if (!place_meeting(x, y + 1, floorObject) && !climbing)
 {
-    //g = 2;
     v_y += g;
     grounded = false; // Can't jump when not grounded.
 }

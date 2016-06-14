@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.timeScale = 0 //Turn this into a ratio
+            <string>global.timeScale = 0; //Turn this into a ratio
 </string>
           </argument>
         </arguments>
@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.timeScale = (30/room_speed);
+            <string>global.timeScale = 1;
 </string>
           </argument>
         </arguments>
