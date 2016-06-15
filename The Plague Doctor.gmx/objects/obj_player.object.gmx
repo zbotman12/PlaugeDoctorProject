@@ -52,8 +52,13 @@ gamepadVert = false;
 //kinematics
 maxWalkingSpeed = 8;
 maxRunningSpeed = 12;
-jumpingSpeed = 25;
+jumpingSpeed = 3;
+maxAirSpeed = 8;
 ladderSpeed = 6;
+jumpCounter = 5;
+baseJumpSpeed = 10;
+startJumpCount = false;
+jumpCounterMax = jumpCounter;
 slopeScanValue = 15;
 fric = 3;
 v_x = 0;
@@ -314,11 +319,15 @@ if (sprite_index == spr_falling)
             <kind>1</kind>
             <string>x = start_x;
 y = start_y;
-maxWalkingSpeed = maxWalkingSpeed * image_xscale;
-maxRunningSpeed = maxRunningSpeed * image_xscale;
-jumpingSpeed = jumpingSpeed * image_xscale;
-ladderSpeed = ladderSpeed * image_xscale;
-slopeScanValue = slopeScanValue * image_xscale;
+maxWalkingSpeed = maxWalkingSpeed * abs(image_xscale);
+maxRunningSpeed = maxRunningSpeed * abs(image_xscale);
+jumpingSpeed = jumpingSpeed * abs(image_xscale);
+ladderSpeed = ladderSpeed * abs(image_xscale);
+slopeScanValue = slopeScanValue * abs(image_xscale);
+grounded = false;
+v_x = 0;
+v_y = 0;
+
 </string>
           </argument>
         </arguments>
@@ -392,8 +401,5 @@ if(debug_mode){
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>32,74</point>
-    <point>74,74</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>
