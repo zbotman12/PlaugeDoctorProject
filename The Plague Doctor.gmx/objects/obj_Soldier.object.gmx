@@ -88,7 +88,7 @@ state = pidgeonStates.patrol;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_player_collision(obj_wall_parent);
+            <string>//scr_player_collision(obj_wall_parent);
 
 if(sign(v_x) == 1)
 {

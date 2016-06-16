@@ -28,6 +28,7 @@
       <sprite>sprites\spr_falling</sprite>
       <sprite>sprites\spr_running</sprite>
       <sprite>sprites\spr_idle</sprite>
+      <sprite>sprites\spr_player_mask</sprite>
     </sprites>
     <sprites name="Lighting">
       <sprite>sprites\spr_torch</sprite>
@@ -86,6 +87,8 @@
       <sprite>sprites\spr_item_2</sprite>
       <sprite>sprites\spr_invslot</sprite>
     </sprites>
+    <sprite>sprites\spr_collision_box</sprite>
+    <sprite>sprites\spr_collision_slope</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_testroom</background>
@@ -113,12 +116,11 @@
     </scripts>
     <scripts name="Player Scripts">
       <script>scripts\scr_player_normal.gml</script>
-      <script>scripts\scr_player_motion.gml</script>
-      <script>scripts\scr_player_collision.gml</script>
       <script>scripts\scr_player_hide.gml</script>
       <script>scripts\scr_get_direction.gml</script>
       <script>scripts\scr_player_ladder.gml</script>
       <script>scripts\scr_player_stairs.gml</script>
+      <script>scripts\scr_phy_motion.gml</script>
     </scripts>
     <scripts name="Item Scripts">
       <script>scripts\spawn_gui_item.gml</script>
@@ -222,9 +224,11 @@
       <object>objects\obj_light</object>
       <object>objects\obj_torch</object>
     </objects>
-    <object>objects\obj_collision_grid</object>
+    <object>objects\obj_collision_box</object>
+    <object>objects\obj_collision_slope</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_physics_test</room>
     <room>rooms\rm_testroom</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>

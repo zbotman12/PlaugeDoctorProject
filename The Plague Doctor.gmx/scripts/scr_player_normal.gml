@@ -1,7 +1,7 @@
 //Behavior
 
-scr_player_motion(maxWalkingSpeed, maxRunningSpeed, jumpingSpeed);
-scr_player_collision(obj_wall_parent);
+scr_phy_motion();
+//scr_player_collision(obj_wall_parent);
 
 //Transitions
 

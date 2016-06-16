@@ -15,6 +15,4 @@ else
 v_y = 0; //If motionless on ladder 
 g=0;
 }
-scr_player_motion(maxWalkingSpeed, maxRunningSpeed, jumpingSpeed)
-scr_player_collision(obj_wall_parent);
 

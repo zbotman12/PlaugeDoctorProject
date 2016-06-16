@@ -6,7 +6,7 @@
   <depth>-5</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>spr_walking</maskName>
+  <maskName>spr_player_mask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -32,7 +32,7 @@ left = false;
 rightAndLeftPressed = false;
 runningRight = false;
 runningLeft = false;
-grounded = true;
+grounded = false;
 hidden = false;
 grabbing = false;
 runButton = false;
@@ -48,23 +48,27 @@ gamepadB = false;
 gamepadStart = false;
 gamepadLT = false;
 gamepadVert = false;
+jump = false;
 
 //kinematics
-maxWalkingSpeed = 8;
-maxRunningSpeed = 12;
-jumpingSpeed = 3;
-maxAirSpeed = 8;
+phy_fixed_rotation = true;
+
+maxWalkingSpeed = 6;
+WalkingSpeed = 6;
+slopeScanValue = -4;
+
+maxRunningSpeed = 10;
+RunningSpeed = 10;
+RunningSlopeScanValue = -4;
+
+airSpeed = 6;
+maxAirSpeed = 6;
+
+baseJumpSpeed = -4;
+
 ladderSpeed = 6;
-jumpCounter = 5;
-baseJumpSpeed = 10;
-startJumpCount = false;
-jumpCounterMax = jumpCounter;
-slopeScanValue = 15;
-fric = 3;
-v_x = 0;
-v_y = 0;
-g = 3;
 temp = 0;
+
 </string>
           </argument>
         </arguments>
@@ -158,6 +162,15 @@ door = noone;
             <kind>1</kind>
             <string>get_input();
 
+if(place_meeting(x, y + 4, obj_collision_box))
+{
+    grounded = true;
+}
+else
+{
+    grounded = false;
+}
+
 //Sprites
 if (grounded) 
 {
@@ -165,7 +178,7 @@ if (grounded)
     {
         /** if the sprite isn't the running sprite set index to zero so when 
           * it becomes the running sprite, it always starts on frame 0 */
-        if (sprite_index != spr_running) 
+        if (sprite_index != spr_running)
         {  
             image_index = 0;
         }   
@@ -192,7 +205,7 @@ if (grounded)
 else 
 { 
     // if not grounded...
-    if (v_y &gt; 0) 
+    if (!grounded) 
     {
         if (sprite_index != spr_falling) 
         {
@@ -201,7 +214,7 @@ else
         sprite_index = spr_falling; // this has a script in "animation end" to avoid looping
         image_speed = 0.5 * global.timeScale;
     }
-    if (v_y &lt; 0) 
+    if (grounded) 
     {
         sprite_index = spr_idle;
         image_speed  = 1 * global.timeScale;
@@ -266,6 +279,29 @@ if(place_meeting(x,y,obj_nextroom))
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_collision_box">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Do nothing
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
@@ -317,17 +353,19 @@ if (sprite_index == spr_falling)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = start_x;
-y = start_y;
+            <string>phy_position_x = start_x + 96;
+phy_position_y = start_y;
+WalkingSpeed = WalkingSpeed * abs(image_xscale);
+RunningSpeed = RunningSpeed * abs(image_xscale);
 maxWalkingSpeed = maxWalkingSpeed * abs(image_xscale);
 maxRunningSpeed = maxRunningSpeed * abs(image_xscale);
-jumpingSpeed = jumpingSpeed * abs(image_xscale);
+baseJumpSpeed = baseJumpSpeed * abs(image_xscale);
 ladderSpeed = ladderSpeed * abs(image_xscale);
 slopeScanValue = slopeScanValue * abs(image_xscale);
+RunningSlopeScanValue = RunningSlopeScanValue * abs(image_xscale);
+//slopeScanValue = slopeScanValue * abs(image_xscale);
 grounded = false;
-v_x = 0;
-v_y = 0;
-
+phy_fixed_rotation = true;
 </string>
           </argument>
         </arguments>
@@ -367,6 +405,8 @@ v_y = 0;
           <argument>
             <kind>1</kind>
             <string>draw_self();
+physics_draw_debug();
+draw_text(x + 10, y - 10, grounded);
 if(debug_mode){
     draw_rectangle(
             bbox_left, 
@@ -390,16 +430,21 @@ if(debug_mode){
       </action>
     </event>
   </events>
-  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
-  <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectShape>1</PhysicsObjectShape>
+  <PhysicsObjectDensity>1</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectLinearDamping>1</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>1</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.5</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,1</point>
+    <point>32,1</point>
+    <point>32,94</point>
+    <point>0,94</point>
+  </PhysicsShapePoints>
 </object>
