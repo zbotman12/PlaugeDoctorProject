@@ -100,6 +100,7 @@
     <backgrounds name="tilesheets">
       <background>background\bg_prototilesheet</background>
       <background>background\bg_Testroomsheet</background>
+      <background>background\bg_hospitalSheet</background>
     </backgrounds>
     <backgrounds name="menu">
       <background>background\bg_menu</background>
@@ -228,6 +229,7 @@
     <object>objects\obj_collision_slope</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_newhospital</room>
     <room>rooms\rm_physics_test</room>
     <room>rooms\rm_testroom</room>
     <room>rooms\rm_menu</room>
