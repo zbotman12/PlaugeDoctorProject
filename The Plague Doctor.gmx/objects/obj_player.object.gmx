@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Kinematic booleans
+            <string>///Initialize Variables
 
+//Buttons
 right = false;
 left = false;
 rightAndLeftPressed = false;
@@ -69,6 +70,18 @@ baseJumpSpeed = -4;
 ladderSpeed = 6;
 temp = 0;
 
+//spritestuff
+image_speed = 2;
+image_index = 0;
+
+//doors
+PressWPrompt = false;
+lastRoom = room;
+lastRoomX = 0;
+lastRoomY = 0;
+start_x = xstart;
+start_y = ystart;
+door = noone;
 </string>
           </argument>
         </arguments>
@@ -90,7 +103,6 @@ temp = 0;
           <argument>
             <kind>1</kind>
             <string>///Player State
-
 enum states{
     normal,
     sprint,
@@ -101,43 +113,6 @@ enum states{
 }
 
 state = states.normal;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Initialize Variables
-
-//health
-player_hp = 100;
-
-// sprites
-image_speed = 2;
-image_index = 0;
-
-PressWPrompt = false;
-
-lastRoom = room;
-lastRoomX = 0;
-lastRoomY = 0;
-start_x = xstart;
-start_y = ystart;
-door = noone;
 </string>
           </argument>
         </arguments>
@@ -160,7 +135,12 @@ door = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>get_input();
+            <string>if (keyboard_check(vk_enter)) 
+{
+    room_restart();
+}
+
+get_input();
 
 if(place_meeting(x, y + 4, obj_collision_box))
 {
@@ -169,6 +149,53 @@ if(place_meeting(x, y + 4, obj_collision_box))
 else
 {
     grounded = false;
+}
+
+if(place_meeting(x,y,obj_firetrap))
+{
+    if(instance_exists(obj_guiManager)) obj_guiManager.hp -= 1;
+}
+
+if(runButton &amp;&amp; (right ^^ left))
+{
+    if(instance_exists(obj_guiManager))
+    {
+        if(obj_guiManager.mp &lt;= 0)
+        {
+            runButton = false;
+        }
+        else
+        {
+            obj_guiManager.mp -= 1;
+        }
+    }
+}
+
+if(place_meeting(x,y,obj_nextroom))
+{
+    door = instance_nearest(x, y, obj_nextroom);
+    if(door != noone)
+    {
+        door.pressWprompt = true;
+        
+        if(keyboard_check_pressed(ord('W')))
+        {
+            lastRoom = room;
+            lastRoomX = door.last_x;
+            lastRoomY = door.last_y;
+            start_x = door.new_x;
+            start_y = door.new_y;
+            door.pressWprompt = false;
+            room_goto(door.next_room);
+        }
+    }
+}
+else
+{
+    if(door != noone &amp;&amp; instance_exists(door))
+    {
+        door.pressWprompt = false;
+    }
 }
 
 //Sprites
@@ -220,6 +247,7 @@ else
         image_speed  = 1 * global.timeScale;
     }
 }
+
 //Player State Machine
 switch (state)
 {
@@ -243,36 +271,6 @@ switch (state)
     {
          
     }break;
-}
-
-if (keyboard_check(vk_enter)) 
-{
-    room_restart();
-}
-
-if(place_meeting(x,y,obj_nextroom))
-{
-    door = instance_nearest(x, y, obj_nextroom);
-    if(door != noone)
-    {
-        door.pressWprompt = true;
-        
-        if(keyboard_check_pressed(ord('W')))
-        {
-            lastRoom = room;
-            lastRoomX = door.last_x;
-            lastRoomY = door.last_y;
-            start_x = door.new_x;
-            start_y = door.new_y;
-            door.pressWprompt = false;
-            room_goto(door.next_room);
-        }
-    }
-}else{
-    if(door != noone &amp;&amp; instance_exists(door))
-    {
-        door.pressWprompt = false;
-    }
 }
 </string>
           </argument>
