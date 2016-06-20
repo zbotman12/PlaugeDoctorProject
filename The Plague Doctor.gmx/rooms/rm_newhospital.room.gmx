@@ -138,11 +138,6 @@
     <instance objName="obj_collision_box" x="3744" y="2016" name="inst_8DDFC68C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="3840" y="2016" name="inst_11C518B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="3936" y="2016" name="inst_3A23CD83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_collision_box" x="4032" y="1920" name="inst_830CA9EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_collision_box" x="4032" y="1824" name="inst_601F6DFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_collision_box" x="4032" y="1728" name="inst_D2519C62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_collision_box" x="4032" y="1632" name="inst_3DB6CCAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_collision_box" x="4032" y="1536" name="inst_413A14BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="4032" y="1440" name="inst_1D8D46D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="3936" y="1440" name="inst_D80ECEC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="3840" y="1440" name="inst_635834D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -160,6 +155,7 @@
     <instance objName="obj_collision_box" x="3936" y="2400" name="inst_B7B41E52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="4032" y="2400" name="inst_E1E8301B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="4032" y="2016" name="inst_B48CEB98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_firetrap" x="1248" y="2304" name="inst_7481C460" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_hospitalSheet" x="1536" y="1920" w="96" h="96" xo="96" yo="384" id="10014196" name="inst_FD5A8D78" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -191,7 +187,6 @@
     <tile bgName="bg_hospitalSheet" x="2016" y="1440" w="96" h="96" xo="96" yo="96" id="10014241" name="inst_83D49F50" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2208" y="1440" w="96" h="96" xo="96" yo="96" id="10014242" name="inst_F5FB7914" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2304" y="1440" w="96" h="96" xo="96" yo="96" id="10014243" name="inst_2FD5B507" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2208" y="2016" w="96" h="96" xo="96" yo="96" id="10014245" name="inst_E22DAB02" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2304" y="1824" w="96" h="96" xo="96" yo="96" id="10014247" name="inst_C490D448" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2304" y="1632" w="96" h="96" xo="96" yo="96" id="10014248" name="inst_9BADFEEA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2304" y="1536" w="96" h="96" xo="96" yo="96" id="10014249" name="inst_9B509E01" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -243,21 +238,6 @@
     <tile bgName="bg_hospitalSheet" x="3264" y="2112" w="96" h="96" xo="768" yo="480" id="10014312" name="inst_33DF740F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3264" y="2208" w="96" h="96" xo="768" yo="480" id="10014313" name="inst_398D3046" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3264" y="2304" w="96" h="96" xo="768" yo="480" id="10014314" name="inst_B00A6410" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2400" y="2400" w="96" h="96" xo="576" yo="480" id="10014315" name="inst_5E018E34" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2496" y="2400" w="96" h="96" xo="576" yo="480" id="10014316" name="inst_2B533152" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2592" y="2400" w="96" h="96" xo="576" yo="480" id="10014317" name="inst_A46ED29A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2688" y="2400" w="96" h="96" xo="576" yo="480" id="10014318" name="inst_B03283D3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2784" y="2400" w="96" h="96" xo="576" yo="480" id="10014319" name="inst_80248A8A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2880" y="2400" w="96" h="96" xo="576" yo="480" id="10014320" name="inst_BAE75B36" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2976" y="2400" w="96" h="96" xo="576" yo="480" id="10014321" name="inst_6E1230C0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3072" y="2400" w="96" h="96" xo="576" yo="480" id="10014322" name="inst_93AD598E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3168" y="2400" w="96" h="96" xo="576" yo="480" id="10014323" name="inst_4EB9863B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3264" y="2400" w="96" h="96" xo="576" yo="480" id="10014324" name="inst_152267E5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2304" y="2400" w="96" h="96" xo="576" yo="480" id="10014325" name="inst_06F28842" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2208" y="2400" w="96" h="96" xo="576" yo="480" id="10014326" name="inst_E7E3AC92" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2112" y="2400" w="96" h="96" xo="576" yo="480" id="10014327" name="inst_EE019F45" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2016" y="2400" w="96" h="96" xo="576" yo="480" id="10014328" name="inst_A44A54E1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1920" y="2400" w="96" h="96" xo="576" yo="480" id="10014329" name="inst_CB36B3F5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="192" y="2400" w="96" h="96" xo="576" yo="480" id="10014332" name="inst_5D7FA514" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="96" y="2400" w="96" h="96" xo="576" yo="480" id="10014333" name="inst_8192D2F3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="288" y="2400" w="96" h="96" xo="576" yo="480" id="10014334" name="inst_D51E8A2B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -271,7 +251,6 @@
     <tile bgName="bg_hospitalSheet" x="960" y="2400" w="96" h="96" xo="576" yo="480" id="10014343" name="inst_1BB8AE0C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1056" y="2400" w="96" h="96" xo="576" yo="480" id="10014344" name="inst_5FE98D92" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1152" y="2400" w="96" h="96" xo="576" yo="480" id="10014345" name="inst_D2B0F813" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1632" y="2400" w="96" h="96" xo="576" yo="480" id="10014348" name="inst_B790DD48" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1248" y="2400" w="96" h="96" xo="576" yo="480" id="10014353" name="inst_0B3E54C1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1344" y="2400" w="96" h="96" xo="576" yo="480" id="10014354" name="inst_A0985A75" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1440" y="2400" w="96" h="96" xo="576" yo="480" id="10014355" name="inst_33E1DD30" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -291,9 +270,6 @@
     <tile bgName="bg_hospitalSheet" x="1248" y="2304" w="96" h="96" xo="576" yo="384" id="10014369" name="inst_94C23ED3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1344" y="2304" w="96" h="96" xo="576" yo="384" id="10014370" name="inst_A792337E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1440" y="2304" w="96" h="96" xo="576" yo="384" id="10014371" name="inst_BD3400FB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1536" y="2400" w="96" h="96" xo="576" yo="480" id="10014384" name="inst_74CA22ED" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1824" y="2400" w="96" h="96" xo="576" yo="480" id="10014386" name="inst_4F8766B1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1728" y="2400" w="96" h="96" xo="576" yo="480" id="10014389" name="inst_8BF22533" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2400" y="1920" w="96" h="96" xo="96" yo="384" id="10014390" name="inst_FFC93981" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2880" y="1728" w="96" h="96" xo="96" yo="384" id="10014391" name="inst_14D30477" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3072" y="1632" w="96" h="96" xo="96" yo="384" id="10014392" name="inst_FD6A2211" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -302,28 +278,13 @@
     <tile bgName="bg_hospitalSheet" x="2784" y="1824" w="96" h="96" xo="96" yo="384" id="10014395" name="inst_ABEA3D3A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2688" y="1920" w="96" h="96" xo="96" yo="384" id="10014396" name="inst_0B30048D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3168" y="1920" w="96" h="96" xo="96" yo="384" id="10014397" name="inst_5B541938" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2496" y="2016" w="96" h="96" xo="96" yo="384" id="10014398" name="inst_60439BDD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3072" y="2016" w="96" h="96" xo="96" yo="384" id="10014399" name="inst_CCF8823F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2880" y="1440" w="96" h="96" xo="96" yo="384" id="10014400" name="inst_21EE7572" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2208" y="1728" w="96" h="96" xo="96" yo="384" id="10014401" name="inst_4409FBFF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2016" y="1824" w="96" h="96" xo="96" yo="384" id="10014402" name="inst_E326EEA1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2016" y="1536" w="96" h="96" xo="96" yo="384" id="10014403" name="inst_8CFAC883" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2400" y="1824" w="96" h="96" xo="96" yo="96" id="10014404" name="inst_1B6A657F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2400" y="2016" w="96" h="96" xo="96" yo="96" id="10014406" name="inst_047E9621" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2304" y="2016" w="96" h="96" xo="96" yo="96" id="10014407" name="inst_2A5830CC" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2880" y="2016" w="96" h="96" xo="96" yo="96" id="10014408" name="inst_BEF205C4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2784" y="2016" w="96" h="96" xo="96" yo="96" id="10014409" name="inst_B75C1EDD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2688" y="2016" w="96" h="96" xo="96" yo="96" id="10014410" name="inst_E5A14A9C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2592" y="2016" w="96" h="96" xo="96" yo="96" id="10014411" name="inst_98E248EA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2976" y="2016" w="96" h="96" xo="96" yo="96" id="10014412" name="inst_C677945C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3168" y="2016" w="96" h="96" xo="96" yo="96" id="10014413" name="inst_D19D9382" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3264" y="2016" w="96" h="96" xo="96" yo="96" id="10014414" name="inst_77F4DD1F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3264" y="1920" w="96" h="96" xo="96" yo="96" id="10014415" name="inst_E2F53FA7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3264" y="1728" w="96" h="96" xo="96" yo="96" id="10014417" name="inst_62AA8DC3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3168" y="1632" w="96" h="96" xo="96" yo="96" id="10014418" name="inst_22B0A3F9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3264" y="1440" w="96" h="96" xo="96" yo="96" id="10014420" name="inst_27C3F328" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3264" y="1536" w="96" h="96" xo="96" yo="96" id="10014421" name="inst_3CDEEF26" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3264" y="1632" w="96" h="96" xo="96" yo="96" id="10014422" name="inst_48368C46" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3168" y="1440" w="96" h="96" xo="96" yo="96" id="10014423" name="inst_B5423C2A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3072" y="1440" w="96" h="96" xo="96" yo="96" id="10014424" name="inst_8F8DD472" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="2976" y="1440" w="96" h="96" xo="96" yo="96" id="10014425" name="inst_785BF0D4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -397,86 +358,14 @@
     <tile bgName="bg_hospitalSheet" x="3360" y="2112" w="96" h="96" xo="960" yo="480" id="10014500" name="inst_F32C33BD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3936" y="2304" w="96" h="96" xo="960" yo="480" id="10014501" name="inst_2CCFFB14" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3744" y="2208" w="96" h="96" xo="960" yo="480" id="10014502" name="inst_4BAD1709" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3840" y="2016" w="96" h="96" xo="96" yo="96" id="10014503" name="inst_5EFAFD22" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3648" y="2016" w="96" h="96" xo="96" yo="96" id="10014505" name="inst_AB1E1991" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3552" y="2016" w="96" h="96" xo="96" yo="96" id="10014506" name="inst_6A897763" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3456" y="2016" w="96" h="96" xo="96" yo="96" id="10014507" name="inst_170D7C88" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3360" y="2016" w="96" h="96" xo="96" yo="96" id="10014508" name="inst_D41EB79B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3936" y="2016" w="96" h="96" xo="96" yo="96" id="10014509" name="inst_F8FB4679" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="4032" y="1920" w="96" h="96" xo="96" yo="96" id="10014511" name="inst_69BF575D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="4032" y="1824" w="96" h="96" xo="96" yo="96" id="10014512" name="inst_18D4F113" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="4032" y="1632" w="96" h="96" xo="96" yo="96" id="10014514" name="inst_51396144" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="4032" y="1536" w="96" h="96" xo="96" yo="96" id="10014515" name="inst_3C318503" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="4032" y="1440" w="96" h="96" xo="96" yo="96" id="10014516" name="inst_F0791904" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3936" y="1440" w="96" h="96" xo="96" yo="96" id="10014517" name="inst_6472AE1F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3840" y="1440" w="96" h="96" xo="96" yo="96" id="10014518" name="inst_5F65A6CE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3648" y="1440" w="96" h="96" xo="96" yo="96" id="10014519" name="inst_5CAB1E27" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3360" y="1440" w="96" h="96" xo="96" yo="96" id="10014522" name="inst_41F0CE73" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3744" y="1440" w="96" h="96" xo="96" yo="96" id="10014523" name="inst_962C99B4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3360" y="1632" w="96" h="96" xo="96" yo="96" id="10014525" name="inst_6FCF3C6D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3360" y="1728" w="96" h="96" xo="96" yo="96" id="10014526" name="inst_FDF306BC" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3360" y="1824" w="96" h="96" xo="96" yo="96" id="10014527" name="inst_901988CF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3360" y="1920" w="96" h="96" xo="96" yo="96" id="10014528" name="inst_D5882F8B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3456" y="1920" w="96" h="96" xo="96" yo="96" id="10014529" name="inst_E1A91473" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3552" y="1920" w="96" h="96" xo="96" yo="96" id="10014530" name="inst_5B1C20A7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3744" y="1920" w="96" h="96" xo="96" yo="96" id="10014531" name="inst_6AA5E5EB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3936" y="1920" w="96" h="96" xo="96" yo="96" id="10014533" name="inst_1D813DF6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3648" y="1920" w="96" h="96" xo="96" yo="96" id="10014535" name="inst_0C9FE03F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3648" y="1824" w="96" h="96" xo="96" yo="96" id="10014536" name="inst_BD4649F8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3456" y="1824" w="96" h="96" xo="96" yo="96" id="10014538" name="inst_1E8B232F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3456" y="1728" w="96" h="96" xo="96" yo="96" id="10014539" name="inst_C7D6D8E9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3456" y="1632" w="96" h="96" xo="96" yo="96" id="10014540" name="inst_7779765F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3456" y="1536" w="96" h="96" xo="96" yo="96" id="10014541" name="inst_DFCA1667" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3552" y="1536" w="96" h="96" xo="96" yo="96" id="10014542" name="inst_9321892A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3552" y="1728" w="96" h="96" xo="96" yo="96" id="10014544" name="inst_D662CDF9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3648" y="1728" w="96" h="96" xo="96" yo="96" id="10014545" name="inst_ACC72105" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3648" y="1632" w="96" h="96" xo="96" yo="96" id="10014546" name="inst_A532E60E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3648" y="1536" w="96" h="96" xo="96" yo="96" id="10014547" name="inst_F541D308" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3744" y="1536" w="96" h="96" xo="96" yo="96" id="10014548" name="inst_4B40D8E6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3840" y="1632" w="96" h="96" xo="96" yo="96" id="10014550" name="inst_26473FE2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3936" y="1536" w="96" h="96" xo="96" yo="96" id="10014551" name="inst_0597F254" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3936" y="1632" w="96" h="96" xo="96" yo="96" id="10014552" name="inst_68D2367E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3936" y="1728" w="96" h="96" xo="96" yo="96" id="10014553" name="inst_45F95E0D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3840" y="1920" w="96" h="96" xo="96" yo="96" id="10014555" name="inst_3142B7FC" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3840" y="1824" w="96" h="96" xo="96" yo="96" id="10014556" name="inst_46661276" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3744" y="1824" w="96" h="96" xo="96" yo="96" id="10014559" name="inst_2B266327" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3744" y="1728" w="96" h="96" xo="96" yo="96" id="10014560" name="inst_47B5B3BB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3840" y="1728" w="96" h="96" xo="96" yo="96" id="10014561" name="inst_24FBB0C5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3840" y="1536" w="96" h="96" xo="96" yo="96" id="10014562" name="inst_5FE3C6B5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3744" y="1632" w="96" h="96" xo="96" yo="384" id="10014563" name="inst_28D9EA69" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3552" y="1440" w="96" h="96" xo="96" yo="384" id="10014564" name="inst_22DA4720" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3936" y="1824" w="96" h="96" xo="96" yo="384" id="10014565" name="inst_CD67213A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3744" y="2016" w="96" h="96" xo="96" yo="384" id="10014566" name="inst_0581AE44" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="4032" y="2016" w="96" h="96" xo="96" yo="384" id="10014567" name="inst_305DBC8F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3552" y="1824" w="96" h="96" xo="96" yo="384" id="10014568" name="inst_50344A8A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3552" y="1632" w="96" h="96" xo="96" yo="384" id="10014569" name="inst_9CB39F28" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3264" y="1824" w="96" h="96" xo="96" yo="384" id="10014570" name="inst_ECBF330F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3360" y="1536" w="96" h="96" xo="96" yo="384" id="10014571" name="inst_F8C5980C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="3456" y="1440" w="96" h="96" xo="96" yo="384" id="10014572" name="inst_2DB240D0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="4032" y="1728" w="96" h="96" xo="96" yo="384" id="10014573" name="inst_AAD2A68B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3360" y="2400" w="96" h="96" xo="576" yo="480" id="10014574" name="inst_FFEA9812" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3456" y="2400" w="96" h="96" xo="576" yo="480" id="10014575" name="inst_4B3B76E2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3552" y="2400" w="96" h="96" xo="576" yo="480" id="10014576" name="inst_D3E116CD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3648" y="2400" w="96" h="96" xo="576" yo="480" id="10014577" name="inst_4E4DEBE3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3744" y="2400" w="96" h="96" xo="576" yo="480" id="10014578" name="inst_BD840F68" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3840" y="2400" w="96" h="96" xo="576" yo="480" id="10014579" name="inst_0778E295" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="3936" y="2400" w="96" h="96" xo="576" yo="480" id="10014580" name="inst_AFA589D8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="4032" y="2400" w="96" h="96" xo="576" yo="480" id="10014581" name="inst_D82CD63A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2112" y="2304" w="96" h="96" xo="1056" yo="480" id="10014582" name="inst_1CEB2591" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="2016" y="2304" w="96" h="96" xo="1056" yo="480" id="10014583" name="inst_E5657D9D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1920" y="2304" w="96" h="96" xo="1056" yo="480" id="10014584" name="inst_6C843C1A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1824" y="2304" w="96" h="96" xo="1056" yo="480" id="10014585" name="inst_D3E27DB3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1728" y="2304" w="96" h="96" xo="1056" yo="480" id="10014586" name="inst_4B5A29B7" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1632" y="2304" w="96" h="96" xo="1056" yo="480" id="10014587" name="inst_7C503837" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1536" y="2304" w="96" h="96" xo="1056" yo="480" id="10014588" name="inst_ADD2CBAD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_hospitalSheet" x="1632" y="2112" w="96" h="96" xo="576" yo="480" id="10014594" name="inst_EB34A40D" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
-    <tile bgName="bg_hospitalSheet" x="1632" y="2112" w="96" h="96" xo="576" yo="480" id="10014596" name="inst_AE8D7ACF" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
-    <tile bgName="bg_hospitalSheet" x="1728" y="2112" w="96" h="96" xo="576" yo="480" id="10014597" name="inst_8E17B010" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
-    <tile bgName="bg_hospitalSheet" x="1824" y="2112" w="96" h="96" xo="576" yo="480" id="10014598" name="inst_02A4ED69" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
-    <tile bgName="bg_hospitalSheet" x="1920" y="2112" w="96" h="96" xo="576" yo="480" id="10014599" name="inst_B69F925E" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
-    <tile bgName="bg_hospitalSheet" x="2016" y="2112" w="96" h="96" xo="576" yo="480" id="10014600" name="inst_C5437357" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
-    <tile bgName="bg_hospitalSheet" x="2112" y="2112" w="96" h="96" xo="576" yo="480" id="10014601" name="inst_3E08A99D" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
-    <tile bgName="bg_hospitalSheet" x="2208" y="2112" w="96" h="96" xo="576" yo="480" id="10014602" name="inst_D556239A" depth="1000000" locked="0" colour="4294967295" scaleX="-1" scaleY="-1"/>
     <tile bgName="bg_hospitalSheet" x="2208" y="2112" w="96" h="96" xo="768" yo="480" id="10014604" name="inst_058B4BD8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1536" y="2208" w="96" h="96" xo="1056" yo="384" id="10014605" name="inst_7ED3C029" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1632" y="2208" w="96" h="96" xo="1056" yo="384" id="10014606" name="inst_2B2054FA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -492,6 +381,126 @@
     <tile bgName="bg_hospitalSheet" x="1728" y="2112" w="96" h="96" xo="1056" yo="384" id="10014616" name="inst_453591A9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1632" y="2112" w="96" h="96" xo="1056" yo="384" id="10014617" name="inst_BFC69724" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_hospitalSheet" x="1536" y="2112" w="96" h="96" xo="1056" yo="384" id="10014618" name="inst_972F167F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1536" y="2016" w="96" h="96" xo="96" yo="192" id="10014619" name="inst_C6884995" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1632" y="2016" w="96" h="96" xo="96" yo="192" id="10014620" name="inst_8E62A53A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1728" y="2016" w="96" h="96" xo="96" yo="192" id="10014621" name="inst_12424BC5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1824" y="2016" w="96" h="96" xo="96" yo="192" id="10014622" name="inst_5E7705F6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1920" y="2016" w="96" h="96" xo="96" yo="192" id="10014623" name="inst_DC89A8D5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2016" y="2016" w="96" h="96" xo="96" yo="192" id="10014624" name="inst_D87286E3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2496" y="2016" w="96" h="96" xo="96" yo="192" id="10014625" name="inst_070236AB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2400" y="2016" w="96" h="96" xo="96" yo="192" id="10014626" name="inst_1F0DEB1B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2304" y="2016" w="96" h="96" xo="96" yo="192" id="10014627" name="inst_0E8558A9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2208" y="2016" w="96" h="96" xo="96" yo="192" id="10014628" name="inst_C44D0267" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2112" y="2016" w="96" h="96" xo="96" yo="192" id="10014629" name="inst_45EE3CA5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2592" y="2016" w="96" h="96" xo="96" yo="192" id="10014630" name="inst_DD59BE1C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2784" y="2016" w="96" h="96" xo="96" yo="192" id="10014631" name="inst_E8BDFC9C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2688" y="2016" w="96" h="96" xo="96" yo="192" id="10014632" name="inst_8858C1A9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2880" y="2016" w="96" h="96" xo="96" yo="192" id="10014633" name="inst_C5474537" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3072" y="2016" w="96" h="96" xo="96" yo="192" id="10014634" name="inst_5B6D7652" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2976" y="2016" w="96" h="96" xo="96" yo="192" id="10014635" name="inst_D56F3C8F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3168" y="2016" w="96" h="96" xo="96" yo="192" id="10014636" name="inst_2BDD6C77" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3456" y="2016" w="96" h="96" xo="96" yo="192" id="10014637" name="inst_6FA74632" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3360" y="2016" w="96" h="96" xo="96" yo="192" id="10014638" name="inst_8BDF2E16" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3264" y="2016" w="96" h="96" xo="96" yo="192" id="10014639" name="inst_5B1F98BF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3744" y="2016" w="96" h="96" xo="96" yo="192" id="10014640" name="inst_D4053A60" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3840" y="2016" w="96" h="96" xo="96" yo="192" id="10014641" name="inst_5F93FE62" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3936" y="2016" w="96" h="96" xo="96" yo="192" id="10014642" name="inst_AFEFA14F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="4032" y="2016" w="96" h="96" xo="96" yo="192" id="10014643" name="inst_63538863" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3648" y="2016" w="96" h="96" xo="96" yo="192" id="10014644" name="inst_D085F0CE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3552" y="2016" w="96" h="96" xo="96" yo="192" id="10014645" name="inst_F45D99E4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2208" y="2400" w="96" h="96" xo="1152" yo="480" id="10014657" name="inst_8FDEE70D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2304" y="2400" w="96" h="96" xo="1152" yo="480" id="10014658" name="inst_C944167E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2400" y="2400" w="96" h="96" xo="1152" yo="480" id="10014659" name="inst_B7FF8CEA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2496" y="2400" w="96" h="96" xo="1152" yo="480" id="10014660" name="inst_5D64764B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2592" y="2400" w="96" h="96" xo="1152" yo="480" id="10014661" name="inst_649DB80F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2688" y="2400" w="96" h="96" xo="1152" yo="480" id="10014662" name="inst_E1AC7107" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2784" y="2400" w="96" h="96" xo="1152" yo="480" id="10014663" name="inst_BFD3C8FC" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2880" y="2400" w="96" h="96" xo="1152" yo="480" id="10014664" name="inst_D5DFC697" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2976" y="2400" w="96" h="96" xo="1152" yo="480" id="10014665" name="inst_48AFC4A5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3072" y="2400" w="96" h="96" xo="1152" yo="480" id="10014666" name="inst_87FE8DC6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3168" y="2400" w="96" h="96" xo="1152" yo="480" id="10014667" name="inst_92719811" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3264" y="2400" w="96" h="96" xo="1152" yo="480" id="10014668" name="inst_932767E8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3360" y="2400" w="96" h="96" xo="1152" yo="480" id="10014669" name="inst_92CF741B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3456" y="2400" w="96" h="96" xo="1152" yo="480" id="10014670" name="inst_4C39D8ED" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3552" y="2400" w="96" h="96" xo="1152" yo="480" id="10014671" name="inst_C934CC9C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3648" y="2400" w="96" h="96" xo="1152" yo="480" id="10014672" name="inst_6B35E234" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="4032" y="2400" w="96" h="96" xo="1152" yo="480" id="10014673" name="inst_8E57C57E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3936" y="2400" w="96" h="96" xo="1152" yo="480" id="10014674" name="inst_234A9352" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3840" y="2400" w="96" h="96" xo="1152" yo="480" id="10014675" name="inst_F188409E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3744" y="2400" w="96" h="96" xo="1152" yo="480" id="10014676" name="inst_7A6B566D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1536" y="2400" w="96" h="96" xo="1152" yo="480" id="10014677" name="inst_3C8A6FD0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1632" y="2400" w="96" h="96" xo="1152" yo="480" id="10014678" name="inst_4C81C2C2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1728" y="2400" w="96" h="96" xo="1152" yo="480" id="10014679" name="inst_A8243E06" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1824" y="2400" w="96" h="96" xo="1152" yo="480" id="10014680" name="inst_05F2B94D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1920" y="2400" w="96" h="96" xo="1152" yo="480" id="10014681" name="inst_C80E0D67" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2016" y="2400" w="96" h="96" xo="1152" yo="480" id="10014682" name="inst_2D3B1FCB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2112" y="2400" w="96" h="96" xo="1152" yo="480" id="10014683" name="inst_181A1205" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1536" y="2304" w="96" h="96" xo="1152" yo="384" id="10014685" name="inst_E2087109" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1632" y="2304" w="96" h="96" xo="1152" yo="384" id="10014686" name="inst_EC7F0629" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1728" y="2304" w="96" h="96" xo="1152" yo="384" id="10014687" name="inst_C112478F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1824" y="2304" w="96" h="96" xo="1152" yo="384" id="10014688" name="inst_89D8D7E3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1920" y="2304" w="96" h="96" xo="1152" yo="384" id="10014689" name="inst_A68B76E9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2016" y="2304" w="96" h="96" xo="1152" yo="384" id="10014690" name="inst_B24D55FB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2112" y="2304" w="96" h="96" xo="1152" yo="384" id="10014691" name="inst_3C831E7F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3264" y="1536" w="96" h="96" xo="96" yo="192" id="10014733" name="inst_28C8CDBE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3360" y="1536" w="96" h="96" xo="96" yo="192" id="10014734" name="inst_023B0628" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3552" y="1536" w="96" h="96" xo="96" yo="192" id="10014735" name="inst_C753D468" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3456" y="1536" w="96" h="96" xo="96" yo="192" id="10014736" name="inst_C63F2A41" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3648" y="1536" w="96" h="96" xo="96" yo="192" id="10014737" name="inst_DBF9DA45" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3840" y="1536" w="96" h="96" xo="96" yo="192" id="10014738" name="inst_854EADA6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3744" y="1536" w="96" h="96" xo="96" yo="192" id="10014739" name="inst_A50A9293" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="4032" y="1536" w="96" h="96" xo="96" yo="192" id="10014740" name="inst_25DCA1C0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3936" y="1536" w="96" h="96" xo="96" yo="192" id="10014741" name="inst_2B089076" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3360" y="1728" w="96" h="96" xo="864" yo="480" id="10014753" name="inst_A35EA5FF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3744" y="1632" w="96" h="96" xo="864" yo="480" id="10014755" name="inst_CB605526" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3456" y="1632" w="96" h="96" xo="864" yo="480" id="10014757" name="inst_5E91659D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3552" y="1728" w="96" h="96" xo="960" yo="480" id="10014760" name="inst_8D992D81" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3936" y="1728" w="96" h="96" xo="960" yo="480" id="10014761" name="inst_A6A1FB79" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3648" y="1632" w="96" h="96" xo="960" yo="480" id="10014763" name="inst_9211484A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3264" y="1632" w="96" h="96" xo="960" yo="480" id="10014767" name="inst_C79DA45E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3264" y="1728" w="96" h="96" xo="768" yo="480" id="10014768" name="inst_6734596E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3456" y="1728" w="96" h="96" xo="768" yo="480" id="10014771" name="inst_95B5E9EE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3360" y="1632" w="96" h="96" xo="768" yo="480" id="10014772" name="inst_F971C6A0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3648" y="1728" w="96" h="96" xo="768" yo="480" id="10014778" name="inst_19EC1C93" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3552" y="1632" w="96" h="96" xo="768" yo="480" id="10014779" name="inst_44D57F0E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3744" y="1728" w="96" h="96" xo="768" yo="480" id="10014780" name="inst_D554EC8A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3840" y="1728" w="96" h="96" xo="768" yo="480" id="10014781" name="inst_1BE258A9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3840" y="1632" w="96" h="96" xo="768" yo="480" id="10014782" name="inst_9C68ABFE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="4032" y="1632" w="96" h="96" xo="768" yo="480" id="10014783" name="inst_2760B9AD" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3936" y="1632" w="96" h="96" xo="768" yo="480" id="10014784" name="inst_7748D6F3" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="4032" y="1728" w="96" h="96" xo="768" yo="480" id="10014785" name="inst_A8981E56" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3360" y="1920" w="96" h="96" xo="96" yo="384" id="10014791" name="inst_7127BEFC" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3552" y="1920" w="96" h="96" xo="96" yo="384" id="10014792" name="inst_F4E4397F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3936" y="1920" w="96" h="96" xo="96" yo="384" id="10014793" name="inst_70AAE152" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="4032" y="1920" w="96" h="96" xo="96" yo="384" id="10014794" name="inst_B3F2357B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3744" y="1920" w="96" h="96" xo="96" yo="96" id="10014795" name="inst_C7FB69EB" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3840" y="1920" w="96" h="96" xo="96" yo="96" id="10014796" name="inst_03B44863" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3648" y="1920" w="96" h="96" xo="96" yo="96" id="10014797" name="inst_245DD0E2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3456" y="1920" w="96" h="96" xo="96" yo="96" id="10014798" name="inst_53419B63" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3264" y="1920" w="96" h="96" xo="96" yo="96" id="10014799" name="inst_DFC823F2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3264" y="1824" w="96" h="96" xo="1152" yo="480" id="10014800" name="inst_75C7A079" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3360" y="1824" w="96" h="96" xo="1152" yo="480" id="10014801" name="inst_C1099FCA" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3456" y="1824" w="96" h="96" xo="1152" yo="480" id="10014803" name="inst_53BADF9B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3552" y="1824" w="96" h="96" xo="1152" yo="480" id="10014804" name="inst_D123B451" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3648" y="1824" w="96" h="96" xo="1152" yo="480" id="10014805" name="inst_B7BDF521" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3744" y="1824" w="96" h="96" xo="1152" yo="480" id="10014806" name="inst_3BA7D125" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3840" y="1824" w="96" h="96" xo="1152" yo="480" id="10014807" name="inst_D607CBB0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="3936" y="1824" w="96" h="96" xo="1152" yo="480" id="10014808" name="inst_FFA72DA6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="4032" y="1824" w="96" h="96" xo="1152" yo="480" id="10014809" name="inst_F57336C4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1536" y="2304" w="96" h="96" xo="1056" yo="384" id="10014707" name="inst_5706263E" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1536" y="2304" w="96" h="96" xo="1152" yo="384" id="10014708" name="inst_6B2D0E1A" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1632" y="2304" w="96" h="96" xo="1056" yo="384" id="10014711" name="inst_EA413AE5" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1728" y="2304" w="96" h="96" xo="1056" yo="384" id="10014712" name="inst_F1DB16A0" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1824" y="2304" w="96" h="96" xo="1056" yo="384" id="10014713" name="inst_E628E88C" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2016" y="2304" w="96" h="96" xo="1056" yo="384" id="10014714" name="inst_6AEFD665" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2112" y="2304" w="96" h="96" xo="1056" yo="384" id="10014715" name="inst_3825F48C" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1920" y="2304" w="96" h="96" xo="1056" yo="384" id="10014716" name="inst_623E78CA" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1632" y="2304" w="96" h="96" xo="1152" yo="384" id="10014718" name="inst_73A055EA" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1728" y="2304" w="96" h="96" xo="1152" yo="384" id="10014719" name="inst_75B723AC" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1824" y="2304" w="96" h="96" xo="1152" yo="384" id="10014720" name="inst_DCA9A8C8" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="1920" y="2304" w="96" h="96" xo="1152" yo="384" id="10014721" name="inst_32861A53" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2016" y="2304" w="96" h="96" xo="1152" yo="384" id="10014722" name="inst_BBBAC61F" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="bg_hospitalSheet" x="2112" y="2304" w="96" h="96" xo="1152" yo="384" id="10014723" name="inst_7D6DACC3" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>-1</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

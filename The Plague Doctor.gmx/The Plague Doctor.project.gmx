@@ -233,8 +233,8 @@
     <object>objects\obj_firetrap</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_physics_test</room>
     <room>rooms\rm_newhospital</room>
+    <room>rooms\rm_physics_test</room>
     <room>rooms\rm_testroom</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>
