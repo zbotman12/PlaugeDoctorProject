@@ -46,6 +46,7 @@
           <sprite>sprites\spr_ammoboxre</sprite>
           <sprite>sprites\spr_barbed_wire</sprite>
           <sprite>sprites\spr_spotlight</sprite>
+          <sprite>sprites\spr_armybox</sprite>
         </sprites>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
@@ -186,6 +187,7 @@
           <object>objects\obj_ammobox</object>
           <object>objects\obj_ammoboxre</object>
           <object>objects\obj_barbed_wire</object>
+          <object>objects\obj_armybox</object>
         </objects>
         <object>objects\obj_poppy</object>
         <object>objects\obj_poppy2</object>
