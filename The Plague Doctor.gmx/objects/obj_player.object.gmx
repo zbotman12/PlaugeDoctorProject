@@ -50,9 +50,15 @@ gamepadStart = false;
 gamepadLT = false;
 gamepadVert = false;
 jump = false;
-
+gamepadDpadUpPressed = false;
+gamepadDpadDownPressed = false;
+gamepadDpadLeftPressed = false;
+gamepadDpadRightPressed = false;
+gamepadDpadUp = false;
+gamepadDpadDown = false;
+gamepadDpadLeft = false;
+gamepadDpadRight = false;
 //kinematics
-phy_fixed_rotation = true;
 
 maxWalkingSpeed = 6;
 WalkingSpeed = 6;
@@ -62,13 +68,30 @@ maxRunningSpeed = 10;
 RunningSpeed = 10;
 RunningSlopeScanValue = -4;
 
+maxCrouchingSpeed = 5;
+CrouchingSpeed = 3;
+CrouchingSlopeScanValue = -8;
+
+maxSlideSpeed = 4;
+slideSpeed = 6;
+slideTime = 8;
+slideCounter = slideTime;
+sliding = false;
+
 airSpeed = 6;
 maxAirSpeed = 6;
 
-baseJumpSpeed = -4;
+baseJumpSpeed = -3;
 
 ladderSpeed = 6;
 temp = 0;
+
+fatiqued = false;
+
+backfootPointX = 0;
+backfootPointY = 0;
+rayHitPointX = 0;
+rayHitPointY = 0;
 
 //spritestuff
 image_speed = 2;
@@ -82,6 +105,14 @@ lastRoomY = 0;
 start_x = xstart;
 start_y = ystart;
 door = noone;
+/*
+rollerball = noone;
+rollerball_pos_x = x;
+rollerball_pos_y = y + ((sprite_height * abs(image_yscale)) /2) - ((sprite_height * abs(image_yscale)) /6) - 5;
+rollerball_radius = (sprite_width * abs(image_xscale))/2;
+fix_ball = noone;
+*/
+fix_box = noone;
 </string>
           </argument>
         </arguments>
@@ -102,7 +133,7 @@ door = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Player State
+            <string>///Player States
 enum states{
     normal,
     sprint,
@@ -135,73 +166,54 @@ state = states.normal;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_enter)) 
-{
-    room_restart();
-}
-
+            <string>///Get the inputs
 get_input();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Sprite Controller
 
-if(place_meeting(x, y + 4, obj_collision_box))
-{
-    grounded = true;
-}
-else
-{
-    grounded = false;
-}
+var running = runButton &amp;&amp; !fatiqued;
 
-if(place_meeting(x,y,obj_firetrap))
-{
-    if(instance_exists(obj_guiManager)) obj_guiManager.hp -= 1;
-}
-
-if(runButton &amp;&amp; (right ^^ left))
-{
-    if(instance_exists(obj_guiManager))
-    {
-        if(obj_guiManager.mp &lt;= 0)
-        {
-            runButton = false;
-        }
-        else
-        {
-            obj_guiManager.mp -= 1;
-        }
-    }
-}
-
-if(place_meeting(x,y,obj_nextroom))
-{
-    door = instance_nearest(x, y, obj_nextroom);
-    if(door != noone)
-    {
-        door.pressWprompt = true;
-        
-        if(keyboard_check_pressed(ord('W')))
-        {
-            lastRoom = room;
-            lastRoomX = door.last_x;
-            lastRoomY = door.last_y;
-            start_x = door.new_x;
-            start_y = door.new_y;
-            door.pressWprompt = false;
-            room_goto(door.next_room);
-        }
-    }
-}
-else
-{
-    if(door != noone &amp;&amp; instance_exists(door))
-    {
-        door.pressWprompt = false;
-    }
-}
-
-//Sprites
 if (grounded) 
 {
-    if (runButton &amp;&amp; (right ^^ left))//If running
+    if(sliding &amp;&amp; (right ^^ left))
+    {
+        if (sprite_index != spr_slide)
+        {  
+            image_index = 0;
+        }   
+        sprite_index = spr_slide;
+        image_speed = 3 * global.timeScale;
+    }
+    else if ((right ^^ left &amp;&amp; crouchButton))
+    { 
+        // same as before
+        if (sprite_index != spr_crawl)
+        { 
+            image_index = 0;
+        }
+        sprite_index = spr_crawl;
+        image_speed = 1 * global.timeScale;
+    }
+    else if (running &amp;&amp; (right ^^ left))//If running
     {
         /** if the sprite isn't the running sprite set index to zero so when 
           * it becomes the running sprite, it always starts on frame 0 */
@@ -212,7 +224,7 @@ if (grounded)
         sprite_index = spr_running;
         image_speed = 3 * global.timeScale;
     }
-    else if ((left ^^ right)) //If not running
+    else if ((right ^^ left)) //If not running
     { 
         // same as before
         if (sprite_index != spr_walking) 
@@ -221,6 +233,11 @@ if (grounded)
         }
         sprite_index = spr_walking;
         image_speed = 4 * global.timeScale;
+    }
+    else if(crouchButton)
+    {   
+        sprite_index = spr_crouched_idle;
+        image_speed = 1 * global.timeScale;
     }
     else 
     { 
@@ -247,13 +264,102 @@ else
         image_speed  = 1 * global.timeScale;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stamina Controller
+/*if(runButton &amp;&amp; (right ^^ left))
+{
+    if(instance_exists(obj_guiManager))
+    {
+        if(obj_guiManager.mp &lt;= 1)
+        {
+            fatiqued = true;
+        }
+        else
+        {
+            obj_guiManager.mp -= 1;
+        }
+    }
+}
+
+if(obj_guiManager.mp &gt;= 5)
+{
+    fatiqued = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Main State Machine
+
+if(place_meeting(x, y + 3, obj_collision_box))
+{
+    grounded = true;
+}
+else
+{
+    grounded = false;
+}
 
 //Player State Machine
 switch (state)
 {
     case states.normal:
     { 
-        scr_player_normal(); 
+        //Behavior
+        scr_phy_motion();
+        
+        //Transitions
+        
+        if ((up || down) &amp;&amp; place_meeting(x, y + 1, obj_ladder_climb_mask)) 
+        {
+            state = states.ladder;
+        }
+        
+        if(place_meeting(x, y + 1, obj_enter_stairs_mask) &amp;&amp; (up || down))
+        {
+            state = states.staircase;
+        }
+        
+        if(place_meeting(x, y, obj_grabBlock)) 
+        {
+            state = states.ledgegrab; 
+        }
+         
     }break;
     case states.staircase: 
     {
@@ -276,6 +382,126 @@ switch (state)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Damage Events
+if(place_meeting(x,y,obj_firetrap))
+{
+    if(instance_exists(obj_guiManager)) obj_guiManager.hp -= 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Door Code
+if(place_meeting(x,y,obj_nextroom))
+{
+    door = instance_nearest(x, y, obj_nextroom);
+    if(door != noone)
+    {
+        door.pressWprompt = true;
+        
+        if(keyboard_check_pressed(ord('W')))
+        {
+            lastRoom = room;
+            lastRoomX = door.last_x;
+            lastRoomY = door.last_y;
+            start_x = door.new_x;
+            start_y = door.new_y;
+            door.pressWprompt = false;
+            room_goto(door.next_room);
+        }
+    }
+}
+else
+{
+    if(door != noone &amp;&amp; instance_exists(door))
+    {
+        door.pressWprompt = false;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Inventory Controls
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Debug Stuff
+if (keyboard_check(vk_enter)) 
+{
+    room_restart();
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_collision_box">
       <action>
@@ -294,7 +520,11 @@ switch (state)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Do nothing
+            <string>///Do nothing (DO NOT DELETE)
+
+//The Physics engine works off collision events like this one, but gamemaker
+//tries to optimize your code by removing events with no actions, so this is
+//just a dummy action so this event won't get removed.
 </string>
           </argument>
         </arguments>
@@ -317,7 +547,8 @@ switch (state)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (sprite_index == spr_hide) 
+            <string>///Blend Animations
+if (sprite_index == spr_hide) 
 {
     image_index = 14; // set frame speed to 0 at frame 19 (last frame)
     image_speed = 0; //Do not animate
@@ -351,8 +582,12 @@ if (sprite_index == spr_falling)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>phy_position_x = start_x + 96;
-phy_position_y = start_y;
+            <string>///Reinitialize Player
+sprite_index = spr_idle;
+image_index = 0;
+image_xscale = abs(image_xscale);
+x = start_x;
+y = start_y;
 WalkingSpeed = WalkingSpeed * abs(image_xscale);
 RunningSpeed = RunningSpeed * abs(image_xscale);
 maxWalkingSpeed = maxWalkingSpeed * abs(image_xscale);
@@ -361,28 +596,20 @@ baseJumpSpeed = baseJumpSpeed * abs(image_xscale);
 ladderSpeed = ladderSpeed * abs(image_xscale);
 slopeScanValue = slopeScanValue * abs(image_xscale);
 RunningSlopeScanValue = RunningSlopeScanValue * abs(image_xscale);
-//slopeScanValue = slopeScanValue * abs(image_xscale);
+CrouchingSlopeScanValue = CrouchingSlopeScanValue * abs(image_xscale);
 grounded = false;
-phy_fixed_rotation = true;
+/*
+rollerball = noone;
+rollerball_pos_x = x;
+rollerball_pos_y = y + ((sprite_height * abs(image_yscale)) /2) - ((sprite_height * abs(image_yscale)) /6) - 5;
+rollerball_radius = (sprite_width * abs(image_xscale))/2;
+*/
+physics_remove_fixture(id, fix_box)
+physics_fixture_delete(fix_box);
+player_physics();
 </string>
           </argument>
         </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>223</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_current_room</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="0">
@@ -402,18 +629,13 @@ phy_fixed_rotation = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>///Draw and Draw Debug
+draw_self();
+draw_set_color(c_white);
 physics_draw_debug();
 draw_text(x + 10, y - 10, grounded);
 if(debug_mode){
-    draw_rectangle(
-            bbox_left, 
-            bbox_top, 
-            bbox_right, 
-            bbox_bottom,
-            true
-    );
-    
+    draw_text(x + 10, y - 10, grounded);
     switch (state){
         case states.normal: draw_text(x + 10, y - 10, "STATE = normal"); break;
         case states.staircase: draw_text(x + 10, y - 10, "STATE = staircase"); break;
@@ -428,7 +650,7 @@ if(debug_mode){
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>1</PhysicsObjectDensity>
@@ -438,11 +660,6 @@ if(debug_mode){
   <PhysicsObjectAngularDamping>1</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>0.5</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
-  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>0,1</point>
-    <point>32,1</point>
-    <point>32,94</point>
-    <point>0,94</point>
-  </PhysicsShapePoints>
+  <PhysicsObjectKinematic>-1</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
 </object>

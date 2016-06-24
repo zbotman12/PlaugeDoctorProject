@@ -1,9 +1,12 @@
 /*
 Args:
-    argument0 = angle at which the ray is running (real)
-    argument1 = object the ray is seeking (object name)
-    argument2 = maximum distance the ray will travel (real)
-    argument3 = chunk size. The length of lines the ray is divided (real)
+    argument0 = x origin
+    argument1 = y origin
+    argument2 = angle at which the ray is running (real)
+    argument3 = object the ray is seeking (object name)
+    argument4 = maximum distance the ray will travel (real)
+    argument5 = chunk size. The length of lines the ray is divided (real)
+
 
 Return:
     true  = if the ray hit something
@@ -14,29 +17,36 @@ Return:
       of the given object.
 */
 
-var i, a, CheckX ,CheckY, originX, originY;
+var i, a, CheckX ,CheckY, originX, originY, lineChunkX, lineChunkY;
 
-originX=x;
-originY=y;
+originX=argument0;
+originY=argument1;
+rayAngle = argument2;
+objToScanFor = argument3;
+MaxDistance = argument4;
+LineChunkSize = argument5;
+lineChunkX = originX;
+lineChunkY = originY;
 
-if collision_point(x,y,argument1,1,1) //If origin point of ray immediately collides, we exit
+
+if collision_point(originX,originY,objToScanFor,1,1) //If origin point of ray immediately collides, we exit
 {
-rayHitPointX=x;
-rayHitPointY=y;
-return true;
+    rayHitPointX=originX;
+    rayHitPointY=originY;
+    return true;
 }
 
-for (i=1;i<argument2;i+=argument3) //create a line chunk to check for instances of the object
+for (i=1;i<MaxDistance;i+=LineChunkSize) //create a line chunk to check for instances of the object
 {
-    CheckX=x+lengthdir_x(i,argument0); //Object's X + change in X for line chunk
-    CheckY=y+lengthdir_y(i,argument0); //Object's Y + change in Y for line chunk
-    if collision_line(originX,originY,CheckX,CheckY,argument1,1,1) //if our line collides with an instance 
+    CheckX=originX+lengthdir_x(i,rayAngle); //Object's X + change in X for line chunk
+    CheckY=originY+lengthdir_y(i,rayAngle); //Object's Y + change in Y for line chunk
+    if collision_line(lineChunkX,lineChunkY,CheckX,CheckY,objToScanFor,1,1) //if our line collides with an instance 
     {
-        for (a=i-argument3;a<argument2;a+=1) //Jump back 1 line chunk, and then Check for the point of collision along the rest the ray
+        for (a=i-LineChunkSize;a<MaxDistance;a+=1) //Jump back 1 line chunk, and then Check for the point of collision along the rest the ray
         {
-            CheckX=x+lengthdir_x(a,argument0);
-            CheckY=y+lengthdir_y(a,argument0);
-            if collision_point(CheckX,CheckY,argument1,1,1)
+            CheckX=x+lengthdir_x(a,rayAngle);
+            CheckY=y+lengthdir_y(a,rayAngle);
+            if collision_point(CheckX,CheckY,objToScanFor,1,1)
             {
                 rayHitPointX=CheckX;
                 rayHitPointY=CheckY;
@@ -44,9 +54,9 @@ for (i=1;i<argument2;i+=argument3) //create a line chunk to check for instances 
             }
         }
     }
-    originX=CheckX;
-    originY=CheckY;
+    lineChunkX=CheckX;
+    lineChunkY=CheckY;
 }
-rayHitPointX=originX;
-rayHitPointY=originY;
+rayHitPointX=CheckX;
+rayHitPointY=CheckY;
 return false;

@@ -84,8 +84,7 @@ shader_set_uniform_f(uniform_ambient, ambient_light);
 texture_set_stage(sampler_light, surface_get_texture(light_surface));
 
 draw_surface(application_surface, 0, 0);
-
-shader_reset(); 
+shader_reset();
 </string>
           </argument>
         </arguments>
@@ -111,13 +110,32 @@ shader_reset();
             <string>surface_set_target(light_surface);
 draw_clear_alpha(c_black, 1);
 draw_set_blend_mode(bm_add);
-
-with(obj_light){
-   draw_sprite_ext(lightSprite, 0, x - view_xview,y  - view_yview, sizeX , sizeY, angle, c_white, 1);
+draw_set_color(c_white);
+draw_set_alpha(1);
+    
+with(obj_light)
+{
+    draw_primitive_begin(pr_trianglefan);
+    draw_vertex(x - view_xview, y - view_yview);
+    for(var rayIndex = 0; rayIndex &lt; numLightRays; rayIndex++)
+    {
+        scr_castRay(x,y, rayAngleIncrement * rayIndex, obj_collision_box, lightDistance, lightChunkSize);
+        draw_set_alpha(1 - lightDistance/point_distance(x,y,rayHitPointX,rayHitPointY));
+        draw_vertex(rayHitPointX - view_xview, rayHitPointY - view_yview);
+        if(rayIndex == 0)
+        {
+            reconnectPointX = rayHitPointX - view_xview;
+            reconnectPointY = rayHitPointY - view_yview;
+        }
+    }
+    draw_vertex(reconnectPointX, reconnectPointY);
+        draw_set_alpha(1);
+    draw_primitive_end();
 }
 
 draw_set_blend_mode(bm_normal);
 surface_reset_target();
+
 </string>
           </argument>
         </arguments>

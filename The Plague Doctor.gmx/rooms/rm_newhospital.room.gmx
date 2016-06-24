@@ -156,6 +156,7 @@
     <instance objName="obj_collision_box" x="4032" y="2400" name="inst_E1E8301B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="4032" y="2016" name="inst_B48CEB98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_firetrap" x="1248" y="2304" name="inst_7481C460" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Pause" x="2112" y="2304" name="inst_E28EDA1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_hospitalSheet" x="1536" y="1920" w="96" h="96" xo="96" yo="384" id="10014196" name="inst_FD5A8D78" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

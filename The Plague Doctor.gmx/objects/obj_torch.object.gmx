@@ -7,7 +7,103 @@
   <persistent>0</persistent>
   <parentName>obj_light</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+fireSystem = part_system_create();
+part_system_depth(fireSystem, depth - 1);
+torchPart = part_type_create();
+
+//part_type_shape(torchPart, pt_shape_square);
+
+part_type_sprite(fireSystem, spr_fire_particle, true, true, true);
+part_type_size(torchPart,0.50,0.75,-.005,0);
+part_type_color2(torchPart,8454143,65280);
+part_type_alpha2(torchPart,1,0.75);
+part_type_speed(torchPart,0.1,0.5,0,0);
+part_type_direction(torchPart,0,359,0,0);
+part_type_gravity(torchPart,0.02,90);
+part_type_orientation(torchPart,0,359,10,0,true);
+part_type_life(torchPart,100,150);
+part_type_blend(torchPart,true);
+
+fireEffect = part_emitter_create(fireSystem);
+
+part_emitter_region(fireSystem, fireEffect, x - 1, x + 1, y, y, ps_shape_ellipse, ps_distr_gaussian);
+
+part_emitter_stream( fireSystem,  fireEffect,  torchPart, 1);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>part_system_destroy( fireSystem );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>part_emitter_destroy(fireSystem, fireEffect);
+part_system_destroy( fireSystem );
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

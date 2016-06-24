@@ -26,6 +26,7 @@
       <sprite>sprites\spr_crouch</sprite>
       <sprite>sprites\spr_crouched_idle</sprite>
       <sprite>sprites\spr_falling</sprite>
+      <sprite>sprites\spr_slide</sprite>
       <sprite>sprites\spr_running</sprite>
       <sprite>sprites\spr_idle</sprite>
       <sprite>sprites\spr_player_mask</sprite>
@@ -118,9 +119,8 @@
       <script>scripts\scr_menu.gml</script>
     </scripts>
     <scripts name="Player Scripts">
-      <script>scripts\scr_player_normal.gml</script>
+      <script>scripts\get_input.gml</script>
       <script>scripts\scr_player_hide.gml</script>
-      <script>scripts\scr_get_direction.gml</script>
       <script>scripts\scr_player_ladder.gml</script>
       <script>scripts\scr_player_stairs.gml</script>
       <script>scripts\scr_phy_motion.gml</script>
@@ -134,7 +134,8 @@
       <script>scripts\EnemyPathing.gml</script>
     </scripts>
     <script>scripts\scr_castRay.gml</script>
-    <script>scripts\get_input.gml</script>
+    <script>scripts\player_angle_detect.gml</script>
+    <script>scripts\player_physics.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -206,6 +207,7 @@
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
+      <object>objects\obj_rollerball</object>
     </objects>
     <objects name="menu">
       <object>objects\obj_menu_sound</object>
@@ -231,10 +233,11 @@
     <object>objects\obj_collision_box</object>
     <object>objects\obj_collision_slope</object>
     <object>objects\obj_firetrap</object>
+    <object>objects\obj_partManager</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_newhospital</room>
     <room>rooms\rm_physics_test</room>
+    <room>rooms\rm_newhospital</room>
     <room>rooms\rm_testroom</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>
