@@ -120,7 +120,8 @@ with(obj_light)
     for(var rayIndex = 0; rayIndex &lt; numLightRays; rayIndex++)
     {
         scr_castRay(x,y, rayAngleIncrement * rayIndex, obj_collision_box, lightDistance, lightChunkSize);
-        draw_set_alpha(1 - lightDistance/point_distance(x,y,rayHitPointX,rayHitPointY));
+        draw_set_alpha(1);
+        //draw_set_alpha(1 - lightDistance/point_distance(x,y,rayHitPointX,rayHitPointY));
         draw_vertex(rayHitPointX - view_xview, rayHitPointY - view_yview);
         if(rayIndex == 0)
         {

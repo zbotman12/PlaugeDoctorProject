@@ -17,7 +17,7 @@ Return:
       of the given object.
 */
 
-var i, a, CheckX ,CheckY, originX, originY, lineChunkX, lineChunkY;
+var i, a, CheckX ,CheckY, originX, originY, lineChunkX, lineChunkY = 0;
 
 originX=argument0;
 originY=argument1;

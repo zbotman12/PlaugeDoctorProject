@@ -5,6 +5,7 @@ if (gamepad_is_connected(0)) //Maybe we want any controller, 0 - 3, to work, jus
     gamepadVert = sign(gamepad_axis_value(0, gp_axislv));
    
     //FACEBUTTONS 
+    gamepadAReleased = gamepad_button_check_released(0, gp_face1);
     gamepadAPressed = gamepad_button_check_pressed(0, gp_face1);
     gamepadBPressed = gamepad_button_check_pressed(0, gp_face2);
     gamepadXPressed = gamepad_button_check_pressed(0, gp_face3);
@@ -37,6 +38,7 @@ down = keyboard_check(ord("S")) || (gamepadVert != -1);
 runButton = keyboard_check(vk_lshift) || gamepadLT;
 crouchButton = keyboard_check(vk_control) || gamepadB;
 crouchButtonPressed = keyboard_check_pressed(vk_control) || gamepadBPressed;
-jump = keyboard_check_pressed(vk_space) || gamepadA;
+jump = keyboard_check(vk_space) || gamepadA;
+jumpReleased = keyboard_check_released(vk_space) || gamepadAReleased;
 rightAndLeftPressed = right && left;
 

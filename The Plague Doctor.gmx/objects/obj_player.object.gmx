@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-5</depth>
   <persistent>-1</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>spr_player_mask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Variables
-
+lightstuff = instance_create(x, y - sprite_height, obj_light);
 //Buttons
 right = false;
 left = false;
@@ -60,38 +60,24 @@ gamepadDpadLeft = false;
 gamepadDpadRight = false;
 //kinematics
 
-maxWalkingSpeed = 6;
-WalkingSpeed = 6;
-slopeScanValue = -4;
-
-maxRunningSpeed = 10;
-RunningSpeed = 10;
-RunningSlopeScanValue = -4;
-
-maxCrouchingSpeed = 5;
-CrouchingSpeed = 3;
-CrouchingSlopeScanValue = -8;
-
-maxSlideSpeed = 4;
-slideSpeed = 6;
-slideTime = 8;
-slideCounter = slideTime;
+hspd = 0;
+vspd = 0;
+jspd = 20;
+spd = 6;
+hAccConst = 2;
+grav = 3;
+terminalVel = 30;
+gravIgnoreTime = 12;
+baseGravIgnoreTime = 8;
+gravIgnoreTimer = gravIgnoreTime;
+jumped = false;
+turnDelayTime = 3;
+turnDelayTimer = 0;
+lastkey = 0;
 sliding = false;
-
-airSpeed = 6;
-maxAirSpeed = 6;
-
-baseJumpSpeed = -3;
-
-ladderSpeed = 6;
-temp = 0;
-
-fatiqued = false;
-
-backfootPointX = 0;
-backfootPointY = 0;
-rayHitPointX = 0;
-rayHitPointY = 0;
+slideSpeed = 50;
+slideDecay = false;
+slideDecayAmmount = 4;
 
 //spritestuff
 image_speed = 2;
@@ -105,14 +91,6 @@ lastRoomY = 0;
 start_x = xstart;
 start_y = ystart;
 door = noone;
-/*
-rollerball = noone;
-rollerball_pos_x = x;
-rollerball_pos_y = y + ((sprite_height * abs(image_yscale)) /2) - ((sprite_height * abs(image_yscale)) /6) - 5;
-rollerball_radius = (sprite_width * abs(image_xscale))/2;
-fix_ball = noone;
-*/
-fix_box = noone;
 </string>
           </argument>
         </arguments>
@@ -190,16 +168,24 @@ get_input();
             <kind>1</kind>
             <string>///Sprite Controller
 
-var running = runButton &amp;&amp; !fatiqued;
+var running = runButton;
+if(!sliding){
+    if(right){
+        image_xscale = abs(image_xscale);
+    }else if (left){
+        image_xscale = -abs(image_xscale);
+    }
+}
 
-if (grounded) 
+if (grounded)
 {
-    if(sliding &amp;&amp; (right ^^ left))
+    if(sliding)
     {
         if (sprite_index != spr_slide)
         {  
             image_index = 0;
-        }   
+        }  
+        mask_index = spr_crouch_mask;
         sprite_index = spr_slide;
         image_speed = 3 * global.timeScale;
     }
@@ -210,6 +196,7 @@ if (grounded)
         { 
             image_index = 0;
         }
+        mask_index = spr_crouch_mask;
         sprite_index = spr_crawl;
         image_speed = 1 * global.timeScale;
     }
@@ -220,7 +207,8 @@ if (grounded)
         if (sprite_index != spr_running)
         {  
             image_index = 0;
-        }   
+        }
+        mask_index = spr_player_mask;
         sprite_index = spr_running;
         image_speed = 3 * global.timeScale;
     }
@@ -231,17 +219,20 @@ if (grounded)
         { 
             image_index = 0;
         }
+        mask_index = spr_player_mask;
         sprite_index = spr_walking;
         image_speed = 4 * global.timeScale;
     }
     else if(crouchButton)
     {   
+        mask_index = spr_crouch_mask;
         sprite_index = spr_crouched_idle;
         image_speed = 1 * global.timeScale;
     }
     else 
     { 
         // if idle.
+        mask_index = spr_player_mask;
         sprite_index = spr_idle;
         image_speed = 1 * global.timeScale;
     }
@@ -255,11 +246,13 @@ else
         {
             image_index = 0;
         }
+        mask_index = spr_player_mask;
         sprite_index = spr_falling; // this has a script in "animation end" to avoid looping
         image_speed = 0.5 * global.timeScale;
     }
     if (grounded) 
     {
+        mask_index = spr_player_mask;
         sprite_index = spr_idle;
         image_speed  = 1 * global.timeScale;
     }
@@ -326,22 +319,12 @@ if(obj_guiManager.mp &gt;= 5)
             <kind>1</kind>
             <string>///Main State Machine
 
-if(place_meeting(x, y + 3, obj_collision_box))
-{
-    grounded = true;
-}
-else
-{
-    grounded = false;
-}
-
-//Player State Machine
 switch (state)
 {
     case states.normal:
     { 
         //Behavior
-        scr_phy_motion();
+        scr_motion();
         
         //Transitions
         
@@ -497,34 +480,8 @@ if (keyboard_check(vk_enter))
 {
     room_restart();
 }
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_collision_box">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Do nothing (DO NOT DELETE)
-
-//The Physics engine works off collision events like this one, but gamemaker
-//tries to optimize your code by removing events with no actions, so this is
-//just a dummy action so this event won't get removed.
+lightstuff.x = x;
+lightstuff.y = y - sprite_height;
 </string>
           </argument>
         </arguments>
@@ -588,25 +545,7 @@ image_index = 0;
 image_xscale = abs(image_xscale);
 x = start_x;
 y = start_y;
-WalkingSpeed = WalkingSpeed * abs(image_xscale);
-RunningSpeed = RunningSpeed * abs(image_xscale);
-maxWalkingSpeed = maxWalkingSpeed * abs(image_xscale);
-maxRunningSpeed = maxRunningSpeed * abs(image_xscale);
-baseJumpSpeed = baseJumpSpeed * abs(image_xscale);
-ladderSpeed = ladderSpeed * abs(image_xscale);
-slopeScanValue = slopeScanValue * abs(image_xscale);
-RunningSlopeScanValue = RunningSlopeScanValue * abs(image_xscale);
-CrouchingSlopeScanValue = CrouchingSlopeScanValue * abs(image_xscale);
-grounded = false;
-/*
-rollerball = noone;
-rollerball_pos_x = x;
-rollerball_pos_y = y + ((sprite_height * abs(image_yscale)) /2) - ((sprite_height * abs(image_yscale)) /6) - 5;
-rollerball_radius = (sprite_width * abs(image_xscale))/2;
-*/
-physics_remove_fixture(id, fix_box)
-physics_fixture_delete(fix_box);
-player_physics();
+//grounded = false;
 </string>
           </argument>
         </arguments>
