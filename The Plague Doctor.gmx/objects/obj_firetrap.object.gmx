@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>0</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>obj_light</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -26,24 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
- fireSystem = part_system_create();
- fireEffect = part_emitter_create( fireSystem);
-
- BigFirePart = part_type_create();
-part_type_size( BigFirePart, 1, 3, 0, 0);
-part_type_scale( BigFirePart, 0.5, 0.5);
-part_type_colour1( BigFirePart, c_white);
-part_type_alpha2( BigFirePart, 1, 0);
-part_type_speed( BigFirePart, 2, 4, 0, 0);
-part_type_direction( BigFirePart, 60, 90, 0, 0);
-part_type_gravity( BigFirePart, 0.3, 90);
-part_type_orientation( BigFirePart, 0, 0, 0, 20, 1);
-part_type_blend( BigFirePart, 1);
-part_type_life( BigFirePart, 15, 30);
-
-part_type_sprite( fireSystem, spr_fire_particle, false, false, true);
-
-part_emitter_region( fireSystem,  fireEffect, bbox_left, bbox_right, bbox_top, bbox_bottom, ps_shape_rectangle, ps_distr_gaussian);
+streaming = false;
 </string>
           </argument>
         </arguments>
@@ -72,7 +55,7 @@ part_emitter_region( fireSystem,  fireEffect, bbox_left, bbox_right, bbox_top, b
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -89,31 +72,28 @@ part_emitter_region( fireSystem,  fireEffect, bbox_left, bbox_right, bbox_top, b
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>if(!streaming){
+fireSystem = part_system_create();
+fireEffect = part_emitter_create( fireSystem);
+
+BigFirePart = part_type_create();
+part_type_size( BigFirePart, 1, 3, 0, 0);
+part_type_scale( BigFirePart, 0.5, 0.5);
+part_type_colour1( BigFirePart, c_white);
+part_type_alpha2( BigFirePart, 1, 0);
+part_type_speed( BigFirePart, 2, 4, 0, 0);
+part_type_direction( BigFirePart, 60, 90, 0, 0);
+part_type_gravity( BigFirePart, 0.3, 90);
+part_type_orientation( BigFirePart, 0, 0, 0, 20, 1);
+part_type_blend( BigFirePart, 1);
+part_type_life( BigFirePart, 15, 30);
+
+part_type_sprite( fireSystem, spr_fire_particle, false, false, true);
+
+part_emitter_region( fireSystem,  fireEffect, bbox_left, bbox_right, bbox_top, bbox_bottom, ps_shape_rectangle, ps_distr_gaussian);
 part_emitter_stream( fireSystem,  fireEffect,  BigFirePart, 60);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>part_system_destroy( fireSystem );
+streaming = true;
+}
 </string>
           </argument>
         </arguments>

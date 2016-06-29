@@ -5,14 +5,8 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sounds name="menu">
-      <sound>sound\sou_menu_plague</sound>
-    </sounds>
-    <sounds name="level">
-      <sound>sound\sou_stealth</sound>
-      <sound>sound\sou_alert</sound>
-      <sound>sound\sou_wind</sound>
-    </sounds>
+    <sound>sound\sou_menu_plague</sound>
+    <sound>sound\sou_stealth</sound>
     <sound>sound\snd_flanders</sound>
   </sounds>
   <sprites name="sprites">
@@ -49,6 +43,7 @@
           <sprite>sprites\spr_barbed_wire</sprite>
           <sprite>sprites\spr_spotlight</sprite>
           <sprite>sprites\spr_armybox</sprite>
+          <sprite>sprites\spr_Landmine</sprite>
         </sprites>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
@@ -58,26 +53,12 @@
           <sprite>sprites\spr_tree3</sprite>
         </sprites>
       </sprites>
-      <sprites name="white boxes">
-        <sprite>sprites\spr_white_box_background</sprite>
-        <sprite>sprites\spr_checkpoint</sprite>
-        <sprite>sprites\spr_White_box</sprite>
-        <sprite>sprites\spr_mask_wall</sprite>
-        <sprite>sprites\spr_ladder_mask</sprite>
-        <sprite>sprites\spr_mask_stair</sprite>
-        <sprite>sprites\spr_stair_block</sprite>
-        <sprite>sprites\spr_slope_white_box</sprite>
-        <sprite>sprites\sprite56</sprite>
-        <sprite>sprites\sprite57</sprite>
-        <sprite>sprites\spr_slope_while_box</sprite>
-        <sprite>sprites\spr_bad_guy_while_box</sprite>
-        <sprite>sprites\spr_Landmine</sprite>
-        <sprite>sprites\spr_next_room</sprite>
-      </sprites>
       <sprites name="Interactables">
         <sprite>sprites\spr_ladder</sprite>
+        <sprite>sprites\spr_ladder_mask</sprite>
         <sprite>sprites\spr_nextroom</sprite>
         <sprite>sprites\spr_crate</sprite>
+        <sprite>sprites\spr_checkpoint</sprite>
         <sprite>sprites\spr_crate2</sprite>
       </sprites>
     </sprites>
@@ -95,20 +76,14 @@
     <sprite>sprites\spr_fire_particle</sprite>
   </sprites>
   <backgrounds name="background">
+    <background>background\bg_menu</background>
+    <background>background\bg_hospitalSheet</background>
+    <background>background\bg_Testroomsheet</background>
+    <background>background\bg_prototilesheet</background>
+    <background>background\bg_hills</background>
+    <background>background\bg_mountains</background>
+    <background>background\bg_stars</background>
     <background>background\bg_testroom</background>
-    <backgrounds name="Parallax">
-      <background>background\bg_stars</background>
-      <background>background\bg_mountains</background>
-      <background>background\bg_hills</background>
-    </backgrounds>
-    <backgrounds name="tilesheets">
-      <background>background\bg_prototilesheet</background>
-      <background>background\bg_Testroomsheet</background>
-      <background>background\bg_hospitalSheet</background>
-    </backgrounds>
-    <backgrounds name="menu">
-      <background>background\bg_menu</background>
-    </backgrounds>
     <background>background\background5</background>
     <background>background\background9</background>
   </backgrounds>
@@ -117,26 +92,15 @@
     <path>paths\EnemyPath2</path>
   </paths>
   <scripts name="scripts">
-    <scripts name="menu">
-      <script>scripts\scr_menu.gml</script>
-    </scripts>
-    <scripts name="Player Scripts">
-      <script>scripts\get_input.gml</script>
-      <script>scripts\scr_player_hide.gml</script>
-      <script>scripts\scr_player_ladder.gml</script>
-      <script>scripts\scr_player_stairs.gml</script>
-      <script>scripts\scr_motion.gml</script>
-    </scripts>
-    <scripts name="Item Scripts">
-      <script>scripts\spawn_gui_item.gml</script>
-    </scripts>
-    <scripts name="Enemy Scripts">
-      <script>scripts\scr_enemy_sightcone.gml</script>
-      <script>scripts\scr_enemy_move_to_point.gml</script>
-      <script>scripts\EnemyPathing.gml</script>
-    </scripts>
+    <script>scripts\scr_enemy_move_to_point.gml</script>
+    <script>scripts\scr_enemy_sightcone.gml</script>
+    <script>scripts\EnemyPathing.gml</script>
+    <script>scripts\spawn_gui_item.gml</script>
+    <script>scripts\scr_motion.gml</script>
+    <script>scripts\get_input.gml</script>
+    <script>scripts\scr_menu.gml</script>
     <script>scripts\scr_castRay.gml</script>
-    <script>scripts\player_angle_detect.gml</script>
+    <script>scripts\change_mask_index.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -146,69 +110,49 @@
     <shader type="GLSLES">shaders\shd_multiply.shader</shader>
   </shaders>
   <fonts name="fonts">
-    <fonts name="menu">
-      <font>fonts\fnt_menu</font>
-    </fonts>
+    <font>fonts\fnt_menu</font>
   </fonts>
   <objects name="objects">
+    <objects name="Traps">
+      <object>objects\obj_firetrap</object>
+      <object>objects\obj_landmine</object>
+    </objects>
+    <objects name="Interactables">
+      <object>objects\obj_nextroom</object>
+      <object>objects\obj_ladder_mask</object>
+      <object>objects\obj_hideable</object>
+      <object>objects\obj_crate</object>
+      <object>objects\obj_ladder</object>
+    </objects>
+    <objects name="Scenery">
+      <objects name="plants">
+        <object>objects\obj_tree</object>
+        <object>objects\obj_tree2</object>
+        <object>objects\obj_tree3</object>
+        <object>objects\obj_poppy2</object>
+        <object>objects\obj_poppy</object>
+      </objects>
+      <objects name="army">
+        <object>objects\obj_tank</object>
+        <object>objects\obj_tankre</object>
+        <object>objects\obj_ammobox</object>
+        <object>objects\obj_ammoboxre</object>
+        <object>objects\obj_barbed_wire</object>
+        <object>objects\obj_armybox</object>
+      </objects>
+    </objects>
     <objects name="Controllers">
+      <object>objects\obj_gameManager</object>
       <object>objects\obj_Pause</object>
       <object>objects\obj_shader_controller</object>
       <object>objects\obj_parallax</object>
       <object>objects\obj_display</object>
       <object>objects\obj_guiManager</object>
       <object>objects\obj_invgrid</object>
-      <object>objects\obj_gameManager</object>
       <object>objects\obj_timeController</object>
-    </objects>
-    <objects name="level">
-      <objects name="CollisionMasks">
-        <object>objects\obj_wall_parent</object>
-        <object>objects\obj_slope_parent</object>
-        <object>objects\obj_ladder_climb_mask</object>
-        <object>objects\obj_slope_white_box0</object>
-        <object>objects\obj_slope_white_box</object>
-        <objects name="Stairs">
-          <object>objects\obj_stair</object>
-          <object>objects\obj_stairs</object>
-          <object>objects\obj_stair_block</object>
-          <object>objects\obj_enter_stairs_mask</object>
-          <object>objects\obj_wall_ignore_mask</object>
-        </objects>
-      </objects>
-      <objects name="Scenery">
-        <objects name="Trees">
-          <object>objects\obj_tree</object>
-          <object>objects\obj_tree2</object>
-          <object>objects\obj_tree3</object>
-        </objects>
-        <objects name="army">
-          <object>objects\obj_tank</object>
-          <object>objects\obj_tankre</object>
-          <object>objects\obj_ammobox</object>
-          <object>objects\obj_ammoboxre</object>
-          <object>objects\obj_barbed_wire</object>
-          <object>objects\obj_armybox</object>
-        </objects>
-        <object>objects\obj_poppy</object>
-        <object>objects\obj_poppy2</object>
-        <object>objects\obj_white_box_landmine</object>
-      </objects>
-      <objects name="Interactables">
-        <object>objects\obj_nextroom</object>
-        <object>objects\obj_ladder</object>
-        <object>objects\obj_grabBlock</object>
-        <object>objects\obj_hideable</object>
-        <object>objects\obj_crate</object>
-      </objects>
-      <objects name="PlaceHolders">
-        <object>objects\obj_checkpoint</object>
-        <object>objects\obj_bad_guy_white_box</object>
-        <object>objects\obj_white_box_background</object>
-      </objects>
-    </objects>
-    <objects name="player">
-      <object>objects\obj_player</object>
+      <object>objects\obj_checkpoint</object>
+      <object>objects\obj_partManager</object>
+      <object>objects\obj_level_sound</object>
     </objects>
     <objects name="menu">
       <object>objects\obj_menu_sound</object>
@@ -223,21 +167,17 @@
       <object>objects\obj_item_2</object>
       <object>objects\obj_item_3</object>
     </objects>
-    <objects name="sound">
-      <object>objects\obj_level_sound</object>
-    </objects>
     <objects name="Lighting">
       <object>objects\obj_lightcontrol</object>
       <object>objects\obj_light</object>
       <object>objects\obj_torch</object>
     </objects>
     <object>objects\obj_collision_box</object>
-    <object>objects\obj_firetrap</object>
-    <object>objects\obj_partManager</object>
+    <object>objects\obj_player</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_testroom</room>
     <room>rooms\rm_physics_test</room>
+    <room>rooms\rm_testroom</room>
     <room>rooms\rm_newhospital</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>
