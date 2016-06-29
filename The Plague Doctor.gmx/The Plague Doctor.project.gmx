@@ -47,6 +47,7 @@
         </sprites>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
+        <sprite>sprites\spr_barrel</sprite>
         <sprites name="Trees">
           <sprite>sprites\spr_tree</sprite>
           <sprite>sprites\spr_tree2</sprite>
@@ -140,6 +141,7 @@
         <object>objects\obj_barbed_wire</object>
         <object>objects\obj_armybox</object>
       </objects>
+      <object>objects\obj_barrel</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_gameManager</object>
