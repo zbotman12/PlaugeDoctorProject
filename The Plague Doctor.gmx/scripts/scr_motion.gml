@@ -8,9 +8,9 @@ if(runButton && crouchButtonPressed && grounded){ //SLIDING
     realTurnDelayTime = 0;
     velocity = 4;
 }else if(runButton){ //SPRINTING
-    realTurnDelayTime = runTurnDelayTime;
+    realTurnDelayTime = turnDelayTime * 2;
     jumpVelocity = jspd * 1.2;
-    velocity = runSpd;
+    velocity = spd * 1.6;
 }else{ //IDLE
 
 }

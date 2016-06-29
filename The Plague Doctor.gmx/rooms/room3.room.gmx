@@ -52,6 +52,9 @@
   </views>
   <instances>
     <instance objName="obj_player" x="416" y="768" name="inst_C2B3A0D6" locked="0" code="" scaleX="6.13333320617676" scaleY="5.48999977111816" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_parent" x="0" y="1056" name="inst_A521D9C7" locked="0" code="" scaleX="61" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_parent" x="0" y="0" name="inst_3A9A01DA" locked="0" code="" scaleX="1" scaleY="33" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_parent" x="1952" y="0" name="inst_8A403FE6" locked="0" code="" scaleX="1" scaleY="34" colour="4294967295" rotation="0"/>
     <instance objName="obj_gameManager" x="64" y="32" name="inst_DAD23425" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

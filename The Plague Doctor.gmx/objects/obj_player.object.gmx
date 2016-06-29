@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-5</depth>
   <persistent>-1</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>spr_player_mask</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,13 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>///Initialize Variables
+lightstuff = instance_create(x, y - sprite_height, obj_light);
 //Buttons
 right = false;
 left = false;
-up = false;
-down = false;
-upPressed = false;
-downPressed = false;
 rightAndLeftPressed = false;
 runningRight = false;
 runningLeft = false;
@@ -44,20 +41,15 @@ climbing = false;
 stairs = false;
 click = false;
 lastDir = 0;
-jump = false;
 gamepadHor = false;
-gamepadVert = false;
-//FACEBUTTONS 
-gamepadAReleased = false;
-gamepadAPressed = false;
-gamepadBPressed = false;
-gamepadXPressed = false;
-gamepadYPressed = false;
 gamepadA = false;
-gamepadB = false;
 gamepadX = false;
 gamepadY = false;
-//DPAD
+gamepadB = false;
+gamepadStart = false;
+gamepadLT = false;
+gamepadVert = false;
+jump = false;
 gamepadDpadUpPressed = false;
 gamepadDpadDownPressed = false;
 gamepadDpadLeftPressed = false;
@@ -66,34 +58,26 @@ gamepadDpadUp = false;
 gamepadDpadDown = false;
 gamepadDpadLeft = false;
 gamepadDpadRight = false;
-gamepadStart = false;
-gamepadLT = false;
 //kinematics
-gamespeed = 2;
-/*KNOBS*/
-spd = 6 / gamespeed;
-runSpd = 15 / gamespeed;
-hAccConst = 2 / gamespeed;
-turnDelayTime = 3 * gamespeed;
-runTurnDelayTime = 8 * gamespeed;
-grav = 3 / gamespeed;
-terminalVel = 30 / gamespeed;
-jspd = 20 / gamespeed;
-gravIgnoreTime = 12 * gamespeed;
-baseGravIgnoreTime = 8 * gamespeed;
-slideSpeed = 50 / gamespeed;
-slideDecayAmmount = 4 / gamespeed;
-ladderspd = 5 / gamespeed;
-/*END KNOBS*/
 
 hspd = 0;
 vspd = 0;
+jspd = 20;
+spd = 6;
+hAccConst = 2;
+grav = 3;
+terminalVel = 30;
+gravIgnoreTime = 12;
+baseGravIgnoreTime = 8;
 gravIgnoreTimer = gravIgnoreTime;
 jumped = false;
+turnDelayTime = 3;
 turnDelayTimer = 0;
 lastkey = 0;
 sliding = false;
+slideSpeed = 50;
 slideDecay = false;
+slideDecayAmmount = 4;
 
 //spritestuff
 image_speed = 2;
@@ -130,6 +114,7 @@ door = noone;
             <string>///Player States
 enum states{
     normal,
+    sprint,
     hide,
     staircase,
     ladder,
@@ -196,79 +181,80 @@ if (grounded)
 {
     if(sliding)
     {
-            mask_index = spr_crouch_mask;
-            if (sprite_index != spr_slide)
-            {  
-                image_index = 0;
-            }  
-            sprite_index = spr_slide;
-            image_speed = 3 / gamespeed;
-        }
+        if (sprite_index != spr_slide)
+        {  
+            image_index = 0;
+        }  
+        mask_index = spr_crouch_mask;
+        sprite_index = spr_slide;
+        image_speed = 3 * global.timeScale;
+    }
     else if ((right ^^ left &amp;&amp; crouchButton))
-    {
-            mask_index = spr_crouch_mask;
-            if (sprite_index != spr_crawl)
-            { 
-                image_index = 0;
-            }
-            sprite_index = spr_crawl;
-            image_speed = 1 / gamespeed;
+    { 
+        // same as before
+        if (sprite_index != spr_crawl)
+        { 
+            image_index = 0;
+        }
+        mask_index = spr_crouch_mask;
+        sprite_index = spr_crawl;
+        image_speed = 1 * global.timeScale;
     }
     else if (running &amp;&amp; (right ^^ left))//If running
     {
         /** if the sprite isn't the running sprite set index to zero so when 
           * it becomes the running sprite, it always starts on frame 0 */
-            mask_index = spr_player_mask;
-            if (sprite_index != spr_running)
-            {  
-                image_index = 0;
-            }
-            sprite_index = spr_running;
-            image_speed = 3 / gamespeed;
+        if (sprite_index != spr_running)
+        {  
+            image_index = 0;
+        }
+        mask_index = spr_player_mask;
+        sprite_index = spr_running;
+        image_speed = 3 * global.timeScale;
     }
     else if ((right ^^ left)) //If not running
     { 
         // same as before
-            mask_index = spr_player_mask;
-            if (sprite_index != spr_walking) 
-            { 
-                image_index = 0;
-            }
-            sprite_index = spr_walking;
-            image_speed = 4 / gamespeed;
+        if (sprite_index != spr_walking) 
+        { 
+            image_index = 0;
+        }
+        mask_index = spr_player_mask;
+        sprite_index = spr_walking;
+        image_speed = 4 * global.timeScale;
     }
     else if(crouchButton)
-    {  
-            mask_index = spr_crouch_mask;
-            sprite_index = spr_crouched_idle;
-            image_speed = 1 / gamespeed;
+    {   
+        mask_index = spr_crouch_mask;
+        sprite_index = spr_crouched_idle;
+        image_speed = 1 * global.timeScale;
     }
     else 
     { 
         // if idle.
-            mask_index = spr_player_mask;
-            sprite_index = spr_idle;
-            image_speed = 1 / gamespeed;
-        }
+        mask_index = spr_player_mask;
+        sprite_index = spr_idle;
+        image_speed = 1 * global.timeScale;
+    }
 }
 else 
 { 
     // if not grounded...
     if (!grounded) 
     {
-            mask_index = spr_player_mask;
-            if (sprite_index != spr_falling) 
-            {
-                image_index = 0;
-            }
-            sprite_index = spr_falling; // this has a script in "animation end" to avoid looping
-            image_speed = 0.5 / gamespeed;
+        if (sprite_index != spr_falling) 
+        {
+            image_index = 0;
+        }
+        mask_index = spr_player_mask;
+        sprite_index = spr_falling; // this has a script in "animation end" to avoid looping
+        image_speed = 0.5 * global.timeScale;
     }
     if (grounded) 
     {
-            mask_index = spr_player_mask;
-            sprite_index = spr_idle;
-            image_speed  = 1 / gamespeed;
+        mask_index = spr_player_mask;
+        sprite_index = spr_idle;
+        image_speed  = 1 * global.timeScale;
     }
 }
 </string>
@@ -335,109 +321,43 @@ if(obj_guiManager.mp &gt;= 5)
 
 switch (state)
 {
-    case states.normal:{ 
+    case states.normal:
+    { 
         //Behavior
         scr_motion();
         
         //Transitions
-        if((place_meeting(x,y - 1,obj_ladder_mask) &amp;&amp; up) || (place_meeting(x,y + 1,obj_ladder_mask) &amp;&amp; down) &amp;&amp; (place_meeting(x,y,obj_ladder_mask)) )
+        
+        if ((up || down) &amp;&amp; place_meeting(x, y + 1, obj_ladder_climb_mask)) 
         {
-            turnDelayTimer = 0;
-            vspd = 0;
-            hspd = 0;
             state = states.ladder;
+        }
+        
+        if(place_meeting(x, y + 1, obj_enter_stairs_mask) &amp;&amp; (up || down))
+        {
+            state = states.staircase;
+        }
+        
+        if(place_meeting(x, y, obj_grabBlock)) 
+        {
+            state = states.ledgegrab; 
         }
          
     }break;
-    case states.staircase:{
+    case states.staircase: 
+    {
+        scr_player_stairs();
+    }break;
+    case states.ladder:
+    {
+        scr_player_ladder();
+    }break;
+    case states.ledgegrab:
+    {
     
     }break;
-    case states.ladder:{
-        //Behavior
-        var ladderObj = instance_nearest(x,y, obj_ladder_mask);
-        if(ladderObj != noone){
-            x = ladderObj.x;
-        }
-        if(!(left ^^ right)){
-            if(turnDelayTimer != 0){
-                turnDelayTimer--;
-            }else if(up &amp;&amp; !down){
-                if(lastkey == "down"){
-                    turnDelayTimer = turnDelayTime;
-                }else{
-                    vspd = -ladderspd;
-                }
-                lastkey = "up";
-            }else if (down &amp;&amp; !up){
-                if(lastkey =="up"){
-                    turnDelayTimer = turnDelayTime;
-                }else{
-                    vspd = ladderspd;
-                }
-                lastkey = "down";
-            }
-        }
-        
-         if(!place_meeting(x, bbox_top + ladderspd, obj_ladder_mask) &amp;&amp; place_meeting(x, bbox_top, obj_ladder_mask)){
-            //If your below the ladder
-            if(vspd &gt; 0){
-                vspd = 0;
-            }
-         }
-         if(!place_meeting(x, bbox_bottom - ladderspd, obj_ladder_mask)){
-            //If your above the ladder
-            if(vspd &lt; 0){
-                vspd = 0;
-            }
-         }
-        
-        if((!up &amp;&amp; !down) || (up &amp;&amp; down)){
-            vspd = 0;
-        }
-        
-        //Transitions
-        if((jump)){
-            vspd = -jspd;
-            turnDelayTimer = 0;
-            state = states.normal;
-        }
-        if( !up &amp;&amp; !down &amp;&amp; right &amp;&amp; !place_meeting(x + sprite_get_width(obj_ladder_mask) + 1,y, obj_collision_box) ){
-            hspd = spd;
-            turnDelayTimer = 0;
-            state = states.normal;
-        }else if(!up &amp;&amp; !down &amp;&amp; left &amp;&amp; !place_meeting(x - sprite_get_width(obj_ladder_mask) - 1,y, obj_collision_box)){
-            hspd = -spd;
-            turnDelayTimer = 0;
-            state = states.normal;
-        }
-        
-        if(place_meeting(x + hspd, y, obj_collision_box)){
-            while(!place_meeting(x+sign(hspd), y, obj_collision_box)){
-                x += sign(hspd);
-            }
-            hspd = 0;
-            if(ladderObj != noone){
-                x = ladderObj.x;
-            }
-        }
-        
-        x += hspd;
-        
-        if(place_meeting(x, y + vspd, obj_collision_box)){
-            while(!place_meeting(x, y+sign(vspd), obj_collision_box)){
-                y += sign(vspd);
-            }
-            vspd = 0;
-        }
-        
-        y += vspd;
-        
-        
-    }break;
-    case states.ledgegrab:{
-    
-    }break;
-    case states.hide:{
+    case states.hide:
+    {
          
     }break;
 }
@@ -560,6 +480,8 @@ if (keyboard_check(vk_enter))
 {
     room_restart();
 }
+lightstuff.x = x;
+lightstuff.y = y - sprite_height;
 </string>
           </argument>
         </arguments>
@@ -648,10 +570,11 @@ y = start_y;
             <kind>1</kind>
             <string>///Draw and Draw Debug
 draw_self();
+draw_set_color(c_white);
+physics_draw_debug();
+draw_text(x + 10, y - 10, grounded);
 if(debug_mode){
-    draw_set_color(c_white);
-    draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-   draw_text(x + 10, y - 20, vspd);
+    draw_text(x + 10, y - 10, grounded);
     switch (state){
         case states.normal: draw_text(x + 10, y - 10, "STATE = normal"); break;
         case states.staircase: draw_text(x + 10, y - 10, "STATE = staircase"); break;
