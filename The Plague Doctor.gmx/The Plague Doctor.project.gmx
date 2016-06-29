@@ -57,6 +57,7 @@
           <sprite>sprites\spr_tree2</sprite>
           <sprite>sprites\spr_tree3</sprite>
         </sprites>
+        <sprite>sprites\spr_barrel</sprite>
       </sprites>
       <sprites name="white boxes">
         <sprite>sprites\spr_white_box_background</sprite>
@@ -193,6 +194,7 @@
         <object>objects\obj_poppy</object>
         <object>objects\obj_poppy2</object>
         <object>objects\obj_white_box_landmine</object>
+        <object>objects\obj_barrel</object>
       </objects>
       <objects name="Interactables">
         <object>objects\obj_nextroom</object>
@@ -236,9 +238,9 @@
     <object>objects\obj_partManager</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_newhospital</room>
     <room>rooms\rm_testroom</room>
     <room>rooms\rm_physics_test</room>
-    <room>rooms\rm_newhospital</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Hospital_1</room>
