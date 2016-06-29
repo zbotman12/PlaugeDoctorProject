@@ -32,6 +32,8 @@ application_surface_draw_enable(false);
 
 uniform_ambient = shader_get_uniform(shd_multiply, "u_fAmbient");
 sampler_light = shader_get_sampler_index(shd_multiply, "u_sLight");
+
+streaming = false;
 </string>
           </argument>
         </arguments>
@@ -56,6 +58,61 @@ sampler_light = shader_get_sampler_index(shd_multiply, "u_sLight");
             <kind>1</kind>
             <string>if(!surface_exists(light_surface)){
     light_surface = surface_create(view_wview, view_hview);
+}
+/*if(streaming)
+{
+    part_emitter_region(fogSystem,fogEffect,0,view_wview,0,view_hview,ps_shape_rectangle,ps_distr_linear);    
+    part_emitter_burst( fogSystem,  fogEffect,  fogPart, 5);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*if(!streaming)
+{
+fogSystem = part_system_create();
+part_system_automatic_draw(fogSystem, false);
+part_system_depth(fogSystem, depth - 10);
+fogPart = part_type_create();
+
+part_type_shape(fogPart, pt_shape_cloud);
+
+part_type_size( fogPart, 3, 6, 0, 0);
+part_type_scale( fogPart, 1, 1);
+part_type_colour_mix( fogPart, c_olive, c_red);
+part_type_blend( fogPart, 0);
+part_type_alpha2(fogPart,.5,.1);
+part_type_gravity(fogPart,0.005,10);
+part_type_speed(fogPart,0.5,0.5,0,1);
+part_type_direction(fogPart,250,330,0,1);
+part_type_orientation(fogPart,0,359,0,0,0);
+part_type_life(fogPart,100,1000);
+
+fogEffect = part_emitter_create(fogSystem);
+
+streaming = true;
+repeat(3000){
+    part_system_update(fogSystem);
+}
+
 }
 </string>
           </argument>
@@ -112,7 +169,9 @@ draw_clear_alpha(c_black, 1);
 draw_set_blend_mode(bm_add);
 draw_set_color(c_white);
 draw_set_alpha(1);
-    
+
+//part_system_drawit(fogSystem);
+
 with(obj_light)
 {
     draw_primitive_begin(pr_trianglefan);
@@ -120,8 +179,8 @@ with(obj_light)
     for(var rayIndex = 0; rayIndex &lt; numLightRays; rayIndex++)
     {
         scr_castRay(x,y, rayAngleIncrement * rayIndex, obj_collision_box, lightDistance, lightChunkSize);
-        draw_set_alpha(1);
-        //draw_set_alpha(1 - lightDistance/point_distance(x,y,rayHitPointX,rayHitPointY));
+        //draw_set_alpha(1);
+        draw_set_alpha(1 - lightDistance/point_distance(x,y,rayHitPointX,rayHitPointY));
         draw_vertex(rayHitPointX - view_xview, rayHitPointY - view_yview);
         if(rayIndex == 0)
         {
