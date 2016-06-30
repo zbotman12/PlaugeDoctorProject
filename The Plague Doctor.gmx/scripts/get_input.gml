@@ -1,6 +1,6 @@
 if (gamepad_is_connected(0)) //Maybe we want any controller, 0 - 3, to work, just a thought.
 { 
-    gamepad_set_axis_deadzone(0, 0.1);
+    gamepad_set_axis_deadzone(0, 0.5);
     gamepadHor = sign(gamepad_axis_value(0, gp_axislh));
     gamepadVert = sign(gamepad_axis_value(0, gp_axislv));
    

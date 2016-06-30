@@ -15,6 +15,8 @@
     </sprites>
     <sprites name="player">
       <sprite>sprites\spr_crawl</sprite>
+      <sprite>sprites\spr_climb</sprite>
+      <sprite>sprites\spr_climb_idle</sprite>
       <sprite>sprites\spr_walking</sprite>
       <sprite>sprites\spr_hide</sprite>
       <sprite>sprites\spr_crouch</sprite>
@@ -73,6 +75,7 @@
       <sprite>sprites\spr_invslot</sprite>
     </sprites>
     <sprite>sprites\spr_collision_box</sprite>
+    <sprite>sprites\spr_collision_oneway</sprite>
     <sprite>sprites\spr_collision_slope</sprite>
     <sprite>sprites\spr_fire_particle</sprite>
   </sprites>
@@ -175,6 +178,7 @@
       <object>objects\obj_torch</object>
     </objects>
     <object>objects\obj_collision_box</object>
+    <object>objects\obj_one_way_floor</object>
     <object>objects\obj_player</object>
   </objects>
   <rooms name="rooms">

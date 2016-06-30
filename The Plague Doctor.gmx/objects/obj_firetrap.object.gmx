@@ -91,7 +91,7 @@ part_type_life( BigFirePart, 15, 30);
 part_type_sprite( fireSystem, spr_fire_particle, false, false, true);
 
 part_emitter_region( fireSystem,  fireEffect, bbox_left, bbox_right, bbox_top, bbox_bottom, ps_shape_rectangle, ps_distr_gaussian);
-part_emitter_stream( fireSystem,  fireEffect,  BigFirePart, 60);
+part_emitter_stream( fireSystem,  fireEffect,  BigFirePart, 8);
 streaming = true;
 }
 </string>

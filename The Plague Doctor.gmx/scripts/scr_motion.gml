@@ -22,22 +22,33 @@ if(jumpReleased){
 if(place_meeting(x, y + 1, obj_collision_box)){
     grounded = true;
     vspd = 0;
-    if(jump && jumped == false && !sliding){
-        gravIgnoreTimer = baseGravIgnoreTime;
-        vspd = -jumpVelocity;
-        jumped = true;
-    }
+    jumplagTimer = jumplag;
+}else if((instance_place(x, y + 1, obj_one_way_floor) != noone) && instance_place(x, y + 1, obj_one_way_floor).playerCollidable == true){
+    grounded = true;
+    vspd = 0;
+    jumplagTimer = jumplag;
 }else{
-    grounded = false;
     if(jumped){
+        grounded = false;
         gravIgnoreTimer++;
+    }
+    else if(jumplagTimer == 0){
+        grounded = false;
+        gravIgnoreTimer = gravIgnoreTime;
     }else{
+        jumplagTimer--;
         gravIgnoreTimer = gravIgnoreTime;
     }
     if(vspd < terminalVel && gravIgnoreTimer >= gravIgnoreTime){
         vspd += grav;
     }
 }
+
+if(jump && jumped == false && !sliding && grounded){
+        gravIgnoreTimer = baseGravIgnoreTime;
+        vspd = -jumpVelocity;
+        jumped = true;
+    }
 
 
 if(!sliding){
@@ -123,6 +134,11 @@ if(place_meeting(x, y + vspd, obj_collision_box)){
         y += sign(vspd);
     }
     vspd = 0;
+}else if((vspd > 0 && instance_place(x, y + vspd, obj_one_way_floor) != noone) && (instance_place(x, y + vspd, obj_one_way_floor).playerCollidable == true)){
+        while(!place_meeting(x, y+1, obj_one_way_floor)){
+            y += 1;
+        }
+        vspd = 0;
 }
 
 y += vspd;
