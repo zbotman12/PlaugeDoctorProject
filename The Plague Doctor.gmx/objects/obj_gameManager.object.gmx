@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0, obj_timeController);
+            <string>global.debug = debug_mode;
+instance_create(0,0, obj_timeController);
 instance_create(0,0, obj_display);
 instance_create(0,0, obj_lightcontrol);
 instance_create(0,0, obj_parallax);

@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>//sprite_index = -1;
 playerCollidable = false;
-if(debug_mode) visible = true;
 </string>
           </argument>
         </arguments>
@@ -57,7 +56,7 @@ if(debug_mode) visible = true;
         checkVal = obj_player.vspd;
     }    
 
-    if(obj_player.y &gt; y + 3 || obj_player.down){
+    if(round(obj_player.y) &gt; y + checkVal || obj_player.down){
         //mask_index = -1;
         playerCollidable = false;
     }else{
@@ -69,6 +68,8 @@ if(debug_mode) visible = true;
     //    playerCollidable = false;
     //}
 }
+
+if(global.debug) visible = true; else visible = false; 
 
 </string>
           </argument>

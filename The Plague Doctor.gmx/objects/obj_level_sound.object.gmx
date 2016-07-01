@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>var snd = audio_play_sound(sou_stealth, 1, true);
 audio_sound_gain(snd, 0, 0);
-audio_sound_gain(snd, 0.4, 5000);
+audio_sound_gain(snd, 0.2, 5000);
 </string>
           </argument>
         </arguments>

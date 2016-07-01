@@ -71,8 +71,9 @@ gamepadLT = false;
 //kinematics
 gamespeed = 2;
 /*KNOBS*/
-spd = 6 / gamespeed;
-runSpd = 15 / gamespeed;
+spd = 10 / gamespeed;
+runSpd = 16 / gamespeed;
+crawlSpd = 6 / gamespeed;
 hAccConst = 2 / gamespeed;
 turnDelayTime = 3 * gamespeed;
 runTurnDelayTime = 8 * gamespeed;
@@ -135,10 +136,15 @@ justOnLadder = false;
             <string>///Player States
 enum states{
     normal,
+    sprint,
+    crouch,
+    slide,
     hide,
     staircase,
     ladder,
     ledgegrab,
+    inventory,
+    dialog
 }
 
 state = states.normal;
@@ -187,21 +193,14 @@ get_input();
           <argument>
             <kind>1</kind>
             <string>///Sprite Controller
-
+/*
 var running = runButton;
-if(!sliding){
-    if(right){
-        image_xscale = abs(image_xscale);
-    }else if (left){
-        image_xscale = -abs(image_xscale);
-    }
-}
 if(state == states.normal){
 if (grounded)
     {
         if(sliding)
         {
-                mask_index = spr_crouch_mask;
+                change_mask_index(spr_crouch_mask);
                 if (sprite_index != spr_slide)
                 {  
                     image_index = 0;
@@ -211,7 +210,7 @@ if (grounded)
             }
         else if ((right ^^ left &amp;&amp; crouchButton))
         {
-                mask_index = spr_crouch_mask;
+                change_mask_index(spr_crouch_mask);
                 if (sprite_index != spr_crawl)
                 { 
                     image_index = 0;
@@ -222,8 +221,8 @@ if (grounded)
         else if (running &amp;&amp; (right ^^ left))//If running
         {
             /** if the sprite isn't the running sprite set index to zero so when 
-              * it becomes the running sprite, it always starts on frame 0 */
-                mask_index = spr_player_mask;
+              * it becomes the running sprite, it always starts on frame 0 
+                change_mask_index(spr_player_mask);
                 if (sprite_index != spr_running)
                 {  
                     image_index = 0;
@@ -234,7 +233,7 @@ if (grounded)
         else if ((right ^^ left)) //If not running
         { 
             // same as before
-                mask_index = spr_player_mask;
+                change_mask_index(spr_player_mask);
                 if (sprite_index != spr_walking) 
                 { 
                     image_index = 0;
@@ -244,14 +243,14 @@ if (grounded)
         }
         else if(crouchButton)
         {  
-                mask_index = spr_crouch_mask;
+                change_mask_index(spr_crouch_mask);
                 sprite_index = spr_crouched_idle;
                 image_speed = 1 / gamespeed;
         }
         else 
         { 
             // if idle.
-                mask_index = spr_player_mask;
+                change_mask_index(spr_player_mask);
                 sprite_index = spr_idle;
                 image_speed = 1 / gamespeed;
             }
@@ -261,7 +260,7 @@ if (grounded)
         // if not grounded...
         if (!grounded) 
         {
-                mask_index = spr_player_mask;
+                change_mask_index(spr_player_mask);
                 if (sprite_index != spr_falling) 
                 {
                     image_index = 0;
@@ -271,13 +270,13 @@ if (grounded)
         }
         if (grounded) 
         {
-                mask_index = spr_player_mask;
+                change_mask_index(spr_player_mask);
                 sprite_index = spr_idle;
                 image_speed  = 1 / gamespeed;
         }
     }
 }else if (state = states.ladder){
-        mask_index = spr_player_mask;
+        change_mask_index(spr_player_mask);
     if(up ^^ down){
         sprite_index = spr_climb;
         image_speed  = 1 / gamespeed;
@@ -324,132 +323,6 @@ if (grounded)
 if(obj_guiManager.mp &gt;= 5)
 {
     fatiqued = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Main State Machine
-
-switch (state)
-{
-    case states.normal:{ 
-        //Behavior
-        scr_motion();
-        
-        if(!place_meeting(x,y,obj_ladder_mask) || grounded){
-            justOnLadder = false;
-        }
-        //Transitions
-        if(((position_meeting(x,bbox_top,obj_ladder_mask) &amp;&amp; up ) || (position_meeting(x,bbox_bottom,obj_ladder_mask) &amp;&amp; down)) &amp;&amp; !justOnLadder &amp;&amp; !jump)
-        {
-            justOnLadder = true;
-            ladderSnap = true;
-            turnDelayTimer = 0;
-            vspd = 0;
-            hspd = 0;
-            state = states.ladder;
-        }
-         
-    }break;
-    case states.staircase:{
-    
-    }break;
-    case states.ladder:{
-        //Behavior
-        //Snap to ladder's X
-        var ladderObj = instance_place(x,y, obj_ladder_mask);
-        if(ladderObj != noone &amp;&amp; ladderSnap){
-            x = ladderObj.x;
-            ladderSnap = false;
-        }
-        //Going up and down
-        if(turnDelayTimer != 0){
-            turnDelayTimer--;
-        }else if(up &amp;&amp; !down){
-            if(lastkey == "down"){
-                turnDelayTimer = turnDelayTime;
-            }else{
-                vspd = -ladderspd;
-            }
-            lastkey = "up";
-        }else if (down &amp;&amp; !up){
-            if(lastkey =="up"){
-                turnDelayTimer = turnDelayTime;
-            }else{
-                vspd = ladderspd;
-            }
-            lastkey = "down";
-        }
-         
-         //Disable upward movement if high enough on ladder
-         if(!position_meeting(x, y - ladderspd, obj_ladder_mask) &amp;&amp; position_meeting(x, y, obj_ladder_mask)){
-            //If your above the ladder
-            if(vspd &lt; 0){
-                vspd = 0;
-            }
-         }
-        
-         //disable all movement if no input up or down
-        if((!up &amp;&amp; !down) || (up &amp;&amp; down)){
-            vspd = 0;
-        }
-        
-        //Transitions
-        if((jump)){
-            jumped = true;
-            grounded = false;
-           turnDelayTimer = 0;
-           state = states.normal;
-        }
-       //fall off if low enough on ladder
-       if(!position_meeting(x ,y, obj_ladder_mask) &amp;&amp; position_meeting(x ,y - sprite_get_height(spr_player_mask) / 2, obj_ladder_mask) &amp;&amp; down){
-            turnDelayTimer = 0;
-            state = states.normal;
-       }
-       if(!up &amp;&amp; !down || (up &amp;&amp; down)){
-            if(right &amp;&amp; !position_meeting(x + sprite_get_width(obj_ladder_mask)/2 + 1,y, obj_collision_box)){
-                turnDelayTimer = 0;
-                state = states.normal;
-            }else if(left &amp;&amp; !position_meeting(x - sprite_get_width(obj_ladder_mask)/2 - 1,y, obj_collision_box)){
-                turnDelayTimer = 0;
-                state = states.normal;
-            }
-       }
-       
-        if(place_meeting(x, y + vspd, obj_collision_box)){
-            while(!place_meeting(x, y+sign(vspd), obj_collision_box)){
-                y += sign(vspd);
-            }
-            vspd = 0;
-        }
-        
-        y += vspd;
-        
-        
-    }break;
-    case states.ledgegrab:{
-    
-    }break;
-    case states.hide:{
-         
-    }break;
 }
 </string>
           </argument>
@@ -570,6 +443,254 @@ if (keyboard_check(vk_enter))
 {
     room_restart();
 }
+if(keyboard_check_pressed(vk_f11)){
+    global.debug = !global.debug;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Main State Machine
+
+switch (state)
+{
+    case states.normal:{ 
+        //Behavior
+        if(grounded){
+            if(left ^^ right){
+                change_sprite(spr_walking, 2, true, true);
+            }else{
+                 change_sprite(spr_idle, 1, true, true);
+            }
+        }else{
+            if(vspd &gt;= 0){
+                change_sprite(spr_falling, 0.25, true, true);
+            }else{
+                //change_sprite(spr_jump, 1, true, true);
+            }
+        }
+        mask_index = spr_player_mask;
+        scr_motion(spd, jspd, turnDelayTime);
+        
+        //Transitions
+        if(!place_meeting(x,y,obj_ladder_mask) || grounded){
+            justOnLadder = false;
+        }
+        if(((position_meeting(x,bbox_top,obj_ladder_mask) &amp;&amp; up ) || (position_meeting(x,bbox_bottom,obj_ladder_mask) &amp;&amp; down)) &amp;&amp; !justOnLadder &amp;&amp; !jump)
+        {
+            justOnLadder = true;
+            ladderSnap = true;
+            turnDelayTimer = 0;
+            vspd = 0;
+            hspd = 0;
+            state = states.ladder;
+        }else if(crouchButton &amp;&amp; check_mask_index(x, y, spr_crouch_mask)){
+            state = states.crouch;
+        }else if(runButton){
+            state = states.sprint;
+        }
+         
+    }break;
+    case states.sprint:{
+        //Behavior
+        if(grounded){
+            if(left ^^ right){
+                change_sprite(spr_running, 3, true, true);
+            }else{
+                 change_sprite(spr_idle, 1, true, true);
+            }        
+        }else{
+            if(vspd &gt;= 0){
+                change_sprite(spr_falling, 0.25, true, true);
+            }else{
+                //change_sprite(spr_jump, 1, true, true);
+            }
+        }
+        mask_index = spr_player_mask;
+        scr_motion(runSpd, jspd * 1.2, runTurnDelayTime);
+        
+        //Transitions
+        if(!place_meeting(x,y,obj_ladder_mask) || grounded){
+            justOnLadder = false;
+        }
+        if(((position_meeting(x,bbox_top,obj_ladder_mask) &amp;&amp; up ) || (position_meeting(x,bbox_bottom,obj_ladder_mask) &amp;&amp; down)) &amp;&amp; !justOnLadder &amp;&amp; !jump)
+        {
+            justOnLadder = true;
+            ladderSnap = true;
+            turnDelayTimer = 0;
+            vspd = 0;
+            hspd = 0;
+            state = states.ladder;
+        }else if(crouchButtonPressed &amp;&amp; check_mask_index(x, y, spr_crouch_mask) &amp;&amp; (left ^^ right)){
+            state = states.slide;
+        }else if(crouchButton &amp;&amp; check_mask_index(x, y, spr_crouch_mask)){
+            state = states.crouch;
+        }else if(!runButton){
+            state = states.normal;
+        }
+    
+    }break;
+    case states.crouch:{
+        //Behavior
+        if(grounded){
+            if((left ^^ right)){
+                change_sprite(spr_crawl, 1, true, true);
+            }else{
+                change_sprite(spr_crouched_idle, 1, true, true);
+            }
+        }else{
+            if(vspd &gt;= 0){
+                change_sprite(spr_falling, 0.25, true, true);
+            }else{
+                //change_sprite(spr_jump, 1, true, true);
+            }
+        }
+        mask_index = spr_crouch_mask;
+        scr_motion(crawlSpd, jspd, 2);
+        //Transitions
+        if(check_mask_index(x,y,spr_player_mask)){
+            if(!crouchButton &amp;&amp; !runButton){
+                state = states.normal;
+            }else if(!crouchButton &amp;&amp; runButton){
+                state = states.sprint;
+            }
+        }
+    }break;
+    case states.slide:{
+        //Behavior
+        mask_index = spr_crouch_mask;
+        change_sprite(spr_slide, 0.25, true, false);
+        
+        //Slide Controls
+        if(!slideDecay){
+            if(right){
+                hspd = slideSpeed;
+            }
+            if(left){
+                hspd = -slideSpeed;
+            }
+            slideDecay = true;
+        }else{
+            hspd += -sign(hspd) * slideDecayAmmount;
+            if(sign(hspd) == -1 &amp;&amp; hspd &gt; -slideDecayAmmount){
+                hspd = 0;
+            }else if(sign(hspd) == 1 &amp;&amp; hspd &lt; slideDecayAmmount){
+                hspd = 0;
+            }
+            
+            if(hspd == 0){
+                slideDecay = false;
+                state = states.crouch;
+            }
+        }
+        player_position_update(hspd,vspd);
+    
+    }break;
+    case states.ladder:{
+        //Behavior
+        if(up ^^ down){
+            change_sprite(spr_climb, 1, true, false);
+        }else{
+            change_sprite(spr_climb_idle, 1, true, false);
+        }
+        
+        //Snap to ladder's X
+        var ladderObj = instance_place(x,y, obj_ladder_mask);
+        if(ladderObj != noone &amp;&amp; ladderSnap &amp;&amp; check_mask_index(ladderObj.x,y, mask_index)){
+            x = ladderObj.x;
+            ladderSnap = false;
+        }
+        //Going up and down
+        if(turnDelayTimer != 0){
+            turnDelayTimer--;
+        }else if(up &amp;&amp; !down){
+            if(lastkey == "down"){
+                turnDelayTimer = turnDelayTime;
+            }else{
+                vspd = -ladderspd;
+            }
+            lastkey = "up";
+        }else if (down &amp;&amp; !up){
+            if(lastkey =="up"){
+                turnDelayTimer = turnDelayTime;
+            }else{
+                vspd = ladderspd;
+            }
+            lastkey = "down";
+        }
+         
+         //Disable upward movement if high enough on ladder
+         if(!position_meeting(x, y - ladderspd, obj_ladder_mask) &amp;&amp; position_meeting(x, y, obj_ladder_mask)){
+            //If your above the ladder
+            if(vspd &lt; 0){
+                vspd = 0;
+            }
+         }
+        
+         //disable all movement if no input up or down
+        if((!up &amp;&amp; !down) || (up &amp;&amp; down)){
+            vspd = 0;
+        }
+        
+        //Transitions
+        if((jump)){
+            jumped = true;
+            grounded = false;
+           turnDelayTimer = 0;
+           state = states.normal;
+        }
+       //fall off if low enough on ladder
+       if(!position_meeting(x ,y, obj_ladder_mask) &amp;&amp; position_meeting(x ,y - sprite_get_height(spr_player_mask) / 2, obj_ladder_mask) &amp;&amp; down){
+            turnDelayTimer = 0;
+            state = states.normal;
+       }
+       if(!up &amp;&amp; !down || (up &amp;&amp; down)){
+            if(right &amp;&amp; !position_meeting(x + sprite_get_width(obj_ladder_mask)/2 + 1,y, obj_collision_box)){
+                turnDelayTimer = 0;
+                state = states.normal;
+            }else if(left &amp;&amp; !position_meeting(x - sprite_get_width(obj_ladder_mask)/2 - 1,y, obj_collision_box)){
+                turnDelayTimer = 0;
+                state = states.normal;
+            }
+       }
+       
+        if(place_meeting(x, y + vspd, obj_collision_box)){
+            while(!place_meeting(x, y+sign(vspd), obj_collision_box)){
+                y += sign(vspd);
+            }
+            vspd = 0;
+        }
+        
+        y += vspd;
+        
+        
+    }break;
+    case states.ledgegrab:{
+    
+    }break;
+    case states.hide:{
+         
+    }break;
+    case states.staircase:{
+    
+    }break;
+}
 </string>
           </argument>
         </arguments>
@@ -604,7 +725,6 @@ if (sprite_index == spr_falling)
     image_index = 24;
     image_speed = 0;
 }
-
 </string>
           </argument>
         </arguments>
@@ -633,7 +753,35 @@ image_index = 0;
 image_xscale = abs(image_xscale);
 x = start_x;
 y = start_y;
+if(instance_exists(obj_guiManager) &amp;&amp; obj_guiManager.hp != obj_guiManager.maxHealth){
+    obj_guiManager.hp = obj_guiManager.maxHealth;
+}
 //grounded = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Debug Stuff
+
+room_restart();
 </string>
           </argument>
         </arguments>
@@ -658,16 +806,22 @@ y = start_y;
             <kind>1</kind>
             <string>///Draw and Draw Debug
 draw_self();
-if(debug_mode){
+if(global.debug){
     draw_set_color(c_white);
     draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
     draw_text(x + 10, y - 20, grounded);
-    switch (state){
-        case states.normal: draw_text(x + 10, y - 10, "STATE = normal"); break;
-        case states.staircase: draw_text(x + 10, y - 10, "STATE = staircase"); break;
-        case states.ladder: draw_text(x + 10, y - 10, "STATE = ladder"); break;
-        case states.ledgegrab: draw_text(x + 10, y - 10, "STATE = ledgegrab"); break;
-        case states.hide: draw_text(x + 10, y - 10, "STATE = hide"); break;
+    switch(state)
+    {
+        case states.normal:{draw_text(x + 10, y - 10, "STATE = normal");}break;
+        case states.sprint:{draw_text(x + 10, y - 10, "STATE = sprint");}break;
+        case states.crouch:{draw_text(x + 10, y - 10, "STATE = crouch" );}break;
+        case states.slide:{draw_text(x + 10, y - 10, "STATE = slide" );}break;
+        case states.hide:{draw_text(x + 10, y - 10, "STATE = hide" );}break;
+        case states.staircase:{draw_text(x + 10, y - 10, "STATE = staircase" );}break;
+        case states.ladder:{draw_text(x + 10, y - 10, "STATE = ladder" );}break;
+        case states.ledgegrab:{draw_text(x + 10, y - 10, "STATE = ledgegrab" );}break;
+        case states.inventory:{draw_text(x + 10, y - 10, "STATE = inventory" );}break;
+        case states.dialog:{draw_text(x + 10, y - 10, "STATE = dialog" );}break;
     }
 }
 </string>
