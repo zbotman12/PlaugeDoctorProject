@@ -46,6 +46,7 @@
           <sprite>sprites\spr_spotlight</sprite>
           <sprite>sprites\spr_armybox</sprite>
           <sprite>sprites\spr_Landmine</sprite>
+          <sprite>sprites\spr_box2</sprite>
         </sprites>
         <sprite>sprites\spr_poppy</sprite>
         <sprite>sprites\spr_poppy2</sprite>
@@ -145,6 +146,7 @@
         <object>objects\obj_ammoboxre</object>
         <object>objects\obj_barbed_wire</object>
         <object>objects\obj_armybox</object>
+        <object>objects\obj_box2</object>
       </objects>
       <object>objects\obj_barrel</object>
     </objects>
@@ -184,9 +186,9 @@
     <object>objects\obj_player</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_newhospital</room>
     <room>rooms\rm_physics_test</room>
     <room>rooms\rm_testroom</room>
-    <room>rooms\rm_newhospital</room>
     <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Hospital_1</room>
