@@ -33,16 +33,16 @@ invGrid = ds_grid_create(kitSizeX, kitSizeY);
 InventoryCoordList = ds_list_create();
 
 ds_grid_clear(invGrid, 0);
-gridStartX = view_xview * global.display_scale + 50;
-gridStartY = view_yview * global.display_scale + 50;
+gridStartX = view_xview * global.display_scale + view_wview/2 - (kitSizeX * INV_CELL_SIZE)/2;
+gridStartY = view_yview * global.display_scale + 25; //+ view_hview/2 - (kitSizeY * INV_CELL_SIZE)/2;
 
 itemSelected = noone;
 
 drawInvGUI = false;
 
-ds_list_add(InventoryCoordList, obj_item_1, 0, 0, 0);
-ds_list_add(InventoryCoordList, obj_item_2, 2, 2, 0);
-ds_list_add(InventoryCoordList, obj_item_3, 6, 6, 0);
+ds_list_add(InventoryCoordList, obj_item_1, 0, 0, noone);
+ds_list_add(InventoryCoordList, obj_item_2, 2, 2, noone);
+ds_list_add(InventoryCoordList, obj_item_3, 6, 6, noone);
 </string>
           </argument>
         </arguments>
@@ -66,6 +66,49 @@ ds_list_add(InventoryCoordList, obj_item_3, 6, 6, 0);
           <argument>
             <kind>1</kind>
             <string>ds_grid_destroy(invGrid);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(object_exists(obj_player) &amp;&amp; obj_player.openInventory){
+    drawInvGUI = true;
+    ds_grid_clear(invGrid, 0);
+    itemSelected = noone;
+    
+    for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){
+        if(drawInvGUI){
+            if(InventoryCoordList[| item + 3] == noone){
+                InventoryCoordList[| item + 3] = spawn_gui_item(InventoryCoordList[| item + 1], InventoryCoordList[| item + 2], InventoryCoordList[| item]);
+            }
+        }
+    }
+}else if(drawInvGUI == true){
+    drawInvGUI = false;
+    for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){
+        if(InventoryCoordList[| item + 3] != noone){
+            with(InventoryCoordList[| item + 3]) instance_destroy();
+            InventoryCoordList[| item + 3] = noone;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -118,7 +161,7 @@ if(drawInvGUI)
     {
         for(var cellX = 0; cellX &lt; kitSizeX; cellX++)
         {
-            draw_sprite_ext(spr_invslot, 0, gridStartX + cellX*INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE, 1, 1,0,c_white, 1);
+            draw_sprite_ext(spr_invslot, 0, gridStartX + cellX*INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE, 1, 1,0,c_white, 0.6);
             if(debug_mode)
             {
                 draw_text(gridStartX + cellX*INV_CELL_SIZE,gridStartX + cellY*INV_CELL_SIZE, invGrid[# cellX, cellY]);
@@ -127,44 +170,6 @@ if(drawInvGUI)
     }
 }
  surface_reset_target();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="69">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>drawInvGUI = !drawInvGUI;
-ds_grid_clear(invGrid, 0);
-itemSelected = noone;
-
-    for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4)
-    {
-        if(drawInvGUI)
-        {
-            InventoryCoordList[| item + 3] = spawn_gui_item(InventoryCoordList[| item + 1], InventoryCoordList[| item + 2], InventoryCoordList[| item]);
-        }
-        else
-        {
-            with(InventoryCoordList[| item + 3]) instance_destroy();
-        }
-    }
-    
 </string>
           </argument>
         </arguments>

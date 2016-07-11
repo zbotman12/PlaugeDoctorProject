@@ -79,6 +79,7 @@
     <sprite>sprites\spr_collision_oneway</sprite>
     <sprite>sprites\spr_collision_slope</sprite>
     <sprite>sprites\spr_fire_particle</sprite>
+    <sprite>sprites\spr_talk_guy</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_menu</background>
@@ -184,6 +185,8 @@
     <object>objects\obj_collision_box</object>
     <object>objects\obj_one_way_floor</object>
     <object>objects\obj_player</object>
+    <object>objects\obj_talk_guy</object>
+    <object>objects\obj_container</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_newhospital</room>

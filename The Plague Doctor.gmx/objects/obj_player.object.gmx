@@ -34,40 +34,17 @@ down = false;
 upPressed = false;
 downPressed = false;
 rightAndLeftPressed = false;
-runningRight = false;
-runningLeft = false;
 grounded = false;
 hidden = false;
-grabbing = false;
 runButton = false;
-climbing = false;
-stairs = false;
 click = false;
 lastDir = 0;
 jump = false;
-gamepadHor = false;
-gamepadVert = false;
-//FACEBUTTONS 
-gamepadAReleased = false;
-gamepadAPressed = false;
-gamepadBPressed = false;
-gamepadXPressed = false;
-gamepadYPressed = false;
-gamepadA = false;
-gamepadB = false;
-gamepadX = false;
-gamepadY = false;
-//DPAD
-gamepadDpadUpPressed = false;
-gamepadDpadDownPressed = false;
-gamepadDpadLeftPressed = false;
-gamepadDpadRightPressed = false;
-gamepadDpadUp = false;
-gamepadDpadDown = false;
-gamepadDpadLeft = false;
-gamepadDpadRight = false;
-gamepadStart = false;
-gamepadLT = false;
+interactPressed = false;
+arrowUp = false;
+arrowDown = false;
+arrowLeft = false;
+arrowRight = false;
 //kinematics
 gamespeed = 2;
 /*KNOBS*/
@@ -113,6 +90,9 @@ door = noone;
 
 ladderSnap = false;
 justOnLadder = false;
+
+//Interactions
+openInventory = false;
 </string>
           </argument>
         </arguments>
@@ -304,46 +284,6 @@ if (grounded)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Stamina Controller
-/*if(runButton &amp;&amp; (right ^^ left))
-{
-    if(instance_exists(obj_guiManager))
-    {
-        if(obj_guiManager.mp &lt;= 1)
-        {
-            fatiqued = true;
-        }
-        else
-        {
-            obj_guiManager.mp -= 1;
-        }
-    }
-}
-
-if(obj_guiManager.mp &gt;= 5)
-{
-    fatiqued = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Damage Events
 if(place_meeting(x,y,obj_firetrap))
 {
@@ -377,7 +317,7 @@ if(place_meeting(x,y,obj_nextroom))
     {
         door.pressWprompt = true;
         
-        if(keyboard_check_pressed(ord('W')))
+        if(upPressed)
         {
             lastRoom = room;
             lastRoomX = door.last_x;
@@ -410,14 +350,24 @@ else
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_player</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
             <string>///Inventory Controls
+if(interactPressed){
+    if(place_meeting(x,y,obj_container) &amp;&amp; openInventory == false){
+        openInventory = true;
+    }else{
+        openInventory = false;
+    }
+}
 
+if(!place_meeting(x,y,obj_container)){
+    openInventory = false;
+}
 </string>
           </argument>
         </arguments>
@@ -577,6 +527,10 @@ switch (state)
         mask_index = spr_crouch_mask;
         change_sprite(spr_slide, 0.25, true, false);
         
+        if(vspd &lt; 0){
+            vspd = 0;
+        }
+        
         //Slide Controls
         if(!slideDecay){
             if(right){
@@ -690,6 +644,46 @@ switch (state)
     case states.staircase:{
     
     }break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Stamina Controller
+/*if(runButton &amp;&amp; (right ^^ left))
+{
+    if(instance_exists(obj_guiManager))
+    {
+        if(obj_guiManager.mp &lt;= 1)
+        {
+            fatiqued = true;
+        }
+        else
+        {
+            obj_guiManager.mp -= 1;
+        }
+    }
+}
+
+if(obj_guiManager.mp &gt;= 5)
+{
+    fatiqued = false;
 }
 </string>
           </argument>

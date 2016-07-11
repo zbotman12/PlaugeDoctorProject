@@ -39,6 +39,9 @@ height = sprite_height;
 
 display_x = 0;
 display_y = 0;
+
+selectionBoxCellX = 0;
+selectionBoxCellY = 0;
 </string>
           </argument>
         </arguments>
@@ -61,90 +64,116 @@ display_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//Check if the mouse is hovering over the item on the gui
-var yhover = (global.gui_mouse_y == median(display_y, global.gui_mouse_y, display_y + height));
-var xhover = (global.gui_mouse_x == median(display_x, global.gui_mouse_x, display_x + width));
-hover = xhover &amp;&amp; yhover;
-
-if (trackMouse)
-{
-    //Update the display location of the item to follow the mouse gui position
-    display_x = global.gui_mouse_x;
-    display_y = global.gui_mouse_y;
-    //Update the selected item in the inventory controller object
-    if(obj_invgrid.itemSelected == noone) obj_invgrid.itemSelected = self.id;
-    //Clear the grid so that items can be placed where this item used to be.
-    for(var cellY = currentCellY; cellY &lt;  currentCellY + numCellsY; cellY++)
-    {
-        for(var cellX = currentCellX; cellX &lt; currentCellX + numCellsX; cellX++)
-        {
-            obj_invgrid.invGrid[# cellX,cellY] = 0;
+            <string>if(obj_player.gamepad){
+    if(obj_player.arrowUp){
+        if(selectionBoxCellY &gt; 0){
+            selectionBoxCellY--;
+        }
+    }else if(obj_player.arrowDown){
+        if(selectionBoxCellY &lt; obj_invgrid.kitSizeY){
+            selectionBoxCellY++;
+        }
+    }else if(obj_player.arrowLeft){
+        if(selectionBoxCellX &gt; 0){
+            selectionBoxCellX--;
+        }
+    }else if(obj_player.arrowRight){
+        if(selectionBoxCellX &lt; obj_invgrid.kitSizeX){
+            selectionBoxCellX++;
         }
     }
-}
-else if (place)
-{
-    //Calcuate the display values realitive to the starting point of the grid
-    var GridRealitiveX = display_x - obj_invgrid.gridStartX;
-    var GridRealitiveY = display_y - obj_invgrid.gridStartY;
     
-    //If we are left or above the grid, do not place
-    if(GridRealitiveX &lt; 0 || GridRealitiveY &lt; 0)
+    //If we are on an item
+    if(obj_invgrid.invGrid[# selectionBoxCellX,selectionBoxCellY] != 0)
     {
-        trackMouse = true;
-        exit;
+        hover = true;
     }
     
-    //Calculate the which cell to put the top left corner of the item in
-    var CellLocationX = floor(GridRealitiveX/INV_CELL_SIZE);
-    var CellLocationY = floor(GridRealitiveY/INV_CELL_SIZE);
+}else{
+    //Check if the mouse is hovering over the item on the gui
+    var yhover = (global.gui_mouse_y == median(display_y, global.gui_mouse_y, display_y + height));
+    var xhover = (global.gui_mouse_x == median(display_x, global.gui_mouse_x, display_x + width));
+    hover = xhover &amp;&amp; yhover;
     
-    //If we are Right or below the grid, do not place
-    if(CellLocationX + numCellsX &gt; obj_invgrid.kitSizeX || CellLocationY + numCellsY &gt; obj_invgrid.kitSizeY)
+    if (trackMouse)
     {
-        trackMouse = true;
-        exit;
-    }
-    
-    //If the item would overlap another item, do not place.
-    for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++)
-    {
-        for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
+        //Update the display location of the item to follow the mouse gui position
+        display_x = global.gui_mouse_x;
+        display_y = global.gui_mouse_y;
+        //Update the selected item in the inventory controller object
+        if(obj_invgrid.itemSelected == noone) obj_invgrid.itemSelected = self.id;
+        //Clear the grid so that items can be placed where this item used to be.
+        for(var cellY = currentCellY; cellY &lt;  currentCellY + numCellsY; cellY++)
         {
-            if(obj_invgrid.invGrid[# cellX,cellY] != 0)
+            for(var cellX = currentCellX; cellX &lt; currentCellX + numCellsX; cellX++)
             {
-                trackMouse = true;
-                exit;
+                obj_invgrid.invGrid[# cellX,cellY] = 0;
             }
         }
     }
-    
-    //Fill the section of the grid that has the item in it with 1's.
-    for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++)
+    else if (place)
     {
-        for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
+        //Calcuate the display values realitive to the starting point of the grid
+        var GridRealitiveX = display_x - obj_invgrid.gridStartX;
+        var GridRealitiveY = display_y - obj_invgrid.gridStartY;
+        
+        //If we are left or above the grid, do not place
+        if(GridRealitiveX &lt; 0 || GridRealitiveY &lt; 0)
         {
-            obj_invgrid.invGrid[# cellX,cellY] = itemId;
+            trackMouse = true;
+            exit;
         }
+        
+        //Calculate the which cell to put the top left corner of the item in
+        var CellLocationX = floor(GridRealitiveX/INV_CELL_SIZE);
+        var CellLocationY = floor(GridRealitiveY/INV_CELL_SIZE);
+        
+        //If we are Right or below the grid, do not place
+        if(CellLocationX + numCellsX &gt; obj_invgrid.kitSizeX || CellLocationY + numCellsY &gt; obj_invgrid.kitSizeY)
+        {
+            trackMouse = true;
+            exit;
+        }
+        
+        //If the item would overlap another item, do not place.
+        for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++)
+        {
+            for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
+            {
+                if(obj_invgrid.invGrid[# cellX,cellY] != 0)
+                {
+                    trackMouse = true;
+                    exit;
+                }
+            }
+        }
+        
+        //Fill the section of the grid that has the item in it with 1's.
+        for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++)
+        {
+            for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
+            {
+                obj_invgrid.invGrid[# cellX,cellY] = itemId;
+            }
+        }
+        
+        //Update the display location of the item
+        display_x = CellLocationX * INV_CELL_SIZE + obj_invgrid.gridStartX;
+        display_y = CellLocationY * INV_CELL_SIZE + obj_invgrid.gridStartY;
+        
+        //Update the current cell for the top left corner of the item
+        currentCellX = CellLocationX;
+        currentCellY = CellLocationY;
+        
+        //Clear the selected item and place.
+        obj_invgrid.itemSelected = noone;
+        place = false;
+        
+        var itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, object_index);
+        ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 1, currentCellX);
+        ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 2, currentCellY);
+        ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 3, id);
     }
-    
-    //Update the display location of the item
-    display_x = CellLocationX * INV_CELL_SIZE + obj_invgrid.gridStartX;
-    display_y = CellLocationY * INV_CELL_SIZE + obj_invgrid.gridStartY;
-    
-    //Update the current cell for the top left corner of the item
-    currentCellX = CellLocationX;
-    currentCellY = CellLocationY;
-    
-    //Clear the selected item and place.
-    obj_invgrid.itemSelected = noone;
-    place = false;
-    
-    var itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, object_index);
-    ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 1, currentCellX);
-    ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 2, currentCellY);
-    ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 3, id);
 }
 </string>
           </argument>
@@ -227,8 +256,15 @@ draw_sprite(sprite_index, image_index, display_x, display_y);
 if(hover){
     draw_set_alpha(0.8);
     draw_rectangle_color(display_x, display_y, display_x + width, display_y + height, c_white, c_white, c_white, c_white, false);
-    draw_set_alpha(1);
+}else if(obj_player.gamepad){
+    draw_set_alpha(0.8);
+    draw_rectangle_color(obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE,
+    obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE,
+    obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE + INV_CELL_SIZE,
+    obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE + INV_CELL_SIZE,
+    c_white, c_white, c_white, c_white, false);
 }
+draw_set_alpha(1);
 surface_reset_target();
 </string>
           </argument>

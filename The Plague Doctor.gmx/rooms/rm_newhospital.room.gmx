@@ -3,8 +3,8 @@
   <caption></caption>
   <width>15000</width>
   <height>2500</height>
-  <vsnap>96</vsnap>
-  <hsnap>96</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -71,6 +71,8 @@
     <instance objName="obj_collision_box" x="1344" y="2016" name="inst_A9051FC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision_box" x="1248" y="2016" name="inst_C61AAF48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_box2" x="864" y="2304" name="inst_B6FB6240" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_talk_guy" x="1296" y="2320" name="inst_E1C212D0" locked="0" code="" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_nextroom" x="3184" y="2256" name="inst_86B1EA13" locked="0" code="last_x = 3072;&#xA;last_y = 2384;&#xA;new_x = 130;&#xA;new_y = 1240;&#xA;next_room = rm_physics_test;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_hospitalSheet" x="1632" y="1920" w="96" h="96" xo="1056" yo="480" id="10016374" name="inst_1C9B8A51" depth="10000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
