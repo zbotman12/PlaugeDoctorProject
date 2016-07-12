@@ -42,6 +42,10 @@ display_y = 0;
 
 selectionBoxCellX = 0;
 selectionBoxCellY = 0;
+selectionBoxX = obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE;
+selectionBoxY = obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE;
+gridLocationX = 0;
+gridLocationY = 0;
 </string>
           </argument>
         </arguments>
@@ -82,9 +86,10 @@ selectionBoxCellY = 0;
             selectionBoxCellX++;
         }
     }
-    
+    selectionBoxX = obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE;
+    selectionBoxY = obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE;
     //If we are on an item
-    if(obj_invgrid.invGrid[# selectionBoxCellX,selectionBoxCellY] != 0)
+    if(gridLocationX == selectionBoxCellX &amp;&amp; gridLocationY == selectionBoxCellY)
     {
         hover = true;
     }
@@ -258,10 +263,10 @@ if(hover){
     draw_rectangle_color(display_x, display_y, display_x + width, display_y + height, c_white, c_white, c_white, c_white, false);
 }else if(obj_player.gamepad){
     draw_set_alpha(0.8);
-    draw_rectangle_color(obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE,
-    obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE,
-    obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE + INV_CELL_SIZE,
-    obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE + INV_CELL_SIZE,
+    draw_rectangle_color(selectionBoxX,
+    selectionBoxY,
+    selectionBoxX + INV_CELL_SIZE,
+    selectionBoxY + INV_CELL_SIZE,
     c_white, c_white, c_white, c_white, false);
 }
 draw_set_alpha(1);

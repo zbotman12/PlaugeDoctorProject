@@ -19,6 +19,8 @@ item = instance_create(displayLocationX, displayLocationY, itemType);
 
 with (item)
 {
+gridLocationX = gridLocationX;
+gridLocationY = gridLocationY;
 display_x = displayLocationX;
 display_y = displayLocationY;
 }
