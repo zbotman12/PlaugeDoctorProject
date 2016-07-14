@@ -45,6 +45,16 @@ arrowUp = false;
 arrowDown = false;
 arrowLeft = false;
 arrowRight = false;
+arrowUpRelease = 0;
+arrowDownRelease = 0;
+arrowLeftRelease = 0;
+arrowRightRelease = 0;
+
+lastDirTSRHor = 0;
+lastDirTSLHor = 0;
+lastDirTSRVert = 0;
+lastDirTSLVert = 0;
+
 //kinematics
 gamespeed = 2;
 /*KNOBS*/
@@ -90,9 +100,6 @@ door = noone;
 
 ladderSnap = false;
 justOnLadder = false;
-
-//Interactions
-openInventory = false;
 </string>
           </argument>
         </arguments>
@@ -152,118 +159,6 @@ state = states.normal;
             <kind>1</kind>
             <string>///Get the inputs
 get_input();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Sprite Controller
-/*
-var running = runButton;
-if(state == states.normal){
-if (grounded)
-    {
-        if(sliding)
-        {
-                change_mask_index(spr_crouch_mask);
-                if (sprite_index != spr_slide)
-                {  
-                    image_index = 0;
-                }  
-                sprite_index = spr_slide;
-                image_speed = 3 / gamespeed;
-            }
-        else if ((right ^^ left &amp;&amp; crouchButton))
-        {
-                change_mask_index(spr_crouch_mask);
-                if (sprite_index != spr_crawl)
-                { 
-                    image_index = 0;
-                }
-                sprite_index = spr_crawl;
-                image_speed = 1 / gamespeed;
-        }
-        else if (running &amp;&amp; (right ^^ left))//If running
-        {
-            /** if the sprite isn't the running sprite set index to zero so when 
-              * it becomes the running sprite, it always starts on frame 0 
-                change_mask_index(spr_player_mask);
-                if (sprite_index != spr_running)
-                {  
-                    image_index = 0;
-                }
-                sprite_index = spr_running;
-                image_speed = 3 / gamespeed;
-        }
-        else if ((right ^^ left)) //If not running
-        { 
-            // same as before
-                change_mask_index(spr_player_mask);
-                if (sprite_index != spr_walking) 
-                { 
-                    image_index = 0;
-                }
-                sprite_index = spr_walking;
-                image_speed = 4 / gamespeed;
-        }
-        else if(crouchButton)
-        {  
-                change_mask_index(spr_crouch_mask);
-                sprite_index = spr_crouched_idle;
-                image_speed = 1 / gamespeed;
-        }
-        else 
-        { 
-            // if idle.
-                change_mask_index(spr_player_mask);
-                sprite_index = spr_idle;
-                image_speed = 1 / gamespeed;
-            }
-    }
-    else 
-    { 
-        // if not grounded...
-        if (!grounded) 
-        {
-                change_mask_index(spr_player_mask);
-                if (sprite_index != spr_falling) 
-                {
-                    image_index = 0;
-                }
-                sprite_index = spr_falling; // this has a script in "animation end" to avoid looping
-                image_speed = 0.5 / gamespeed;
-        }
-        if (grounded) 
-        {
-                change_mask_index(spr_player_mask);
-                sprite_index = spr_idle;
-                image_speed  = 1 / gamespeed;
-        }
-    }
-}else if (state = states.ladder){
-        change_mask_index(spr_player_mask);
-    if(up ^^ down){
-        sprite_index = spr_climb;
-        image_speed  = 1 / gamespeed;
-    }else{
-        sprite_index = spr_climb_idle;
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -350,38 +245,6 @@ else
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>obj_player</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Inventory Controls
-if(interactPressed){
-    if(place_meeting(x,y,obj_container) &amp;&amp; openInventory == false){
-        openInventory = true;
-    }else{
-        openInventory = false;
-    }
-}
-
-if(!place_meeting(x,y,obj_container)){
-    openInventory = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
@@ -442,6 +305,11 @@ switch (state)
         if(!place_meeting(x,y,obj_ladder_mask) || grounded){
             justOnLadder = false;
         }
+        
+        if(place_meeting(x,y, obj_container) &amp;&amp; interactPressed){
+            state = states.inventory;
+        }
+        
         if(((position_meeting(x,bbox_top,obj_ladder_mask) &amp;&amp; up ) || (position_meeting(x,bbox_bottom,obj_ladder_mask) &amp;&amp; down)) &amp;&amp; !justOnLadder &amp;&amp; !jump)
         {
             justOnLadder = true;
@@ -479,6 +347,11 @@ switch (state)
         if(!place_meeting(x,y,obj_ladder_mask) || grounded){
             justOnLadder = false;
         }
+        
+        if(place_meeting(x,y, obj_container) &amp;&amp; interactPressed){
+            state = states.inventory;
+        }
+        
         if(((position_meeting(x,bbox_top,obj_ladder_mask) &amp;&amp; up ) || (position_meeting(x,bbox_bottom,obj_ladder_mask) &amp;&amp; down)) &amp;&amp; !justOnLadder &amp;&amp; !jump)
         {
             justOnLadder = true;
@@ -513,7 +386,10 @@ switch (state)
         }
         mask_index = spr_crouch_mask;
         scr_motion(crawlSpd, jspd, 2);
-        //Transitions
+        //Transitions    
+        if(place_meeting(x,y, obj_container) &amp;&amp; interactPressed){
+            state = states.inventory;
+        }      
         if(check_mask_index(x,y,spr_player_mask)){
             if(!crouchButton &amp;&amp; !runButton){
                 state = states.normal;
@@ -635,8 +511,23 @@ switch (state)
         
         
     }break;
-    case states.ledgegrab:{
+    case states.inventory:{
+    //Behavior
+        change_sprite(spr_crouched_idle, 1, true, false);
     
+        if(instance_exists(obj_invgrid)){
+            obj_invgrid.openInventory = true;
+        }
+        player_position_update(0,vspd);
+        
+        //Transitions
+        if(interactPressed){
+            state = states.normal;
+            if(instance_exists(obj_invgrid)){
+                obj_invgrid.openInventory = false;
+            }
+        }
+         
     }break;
     case states.hide:{
          

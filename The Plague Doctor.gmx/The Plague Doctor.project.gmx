@@ -109,6 +109,7 @@
     <script>scripts\check_mask_index.gml</script>
     <script>scripts\player_position_update.gml</script>
     <script>scripts\change_sprite.gml</script>
+    <script>scripts\press_any_button_gamepad.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>

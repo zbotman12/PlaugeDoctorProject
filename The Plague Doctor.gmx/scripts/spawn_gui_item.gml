@@ -1,6 +1,6 @@
-gridLocationX = argument0;
-gridLocationY = argument1;
-itemType = argument2;
+var gridLocationX = argument0;
+var gridLocationY = argument1;
+var itemType = argument2;
 
 if(gridLocationX > kitSizeX)
 {
@@ -19,8 +19,8 @@ item = instance_create(displayLocationX, displayLocationY, itemType);
 
 with (item)
 {
-gridLocationX = gridLocationX;
-gridLocationY = gridLocationY;
+gridX = gridLocationX;
+gridY = gridLocationY;
 display_x = displayLocationX;
 display_y = displayLocationY;
 }

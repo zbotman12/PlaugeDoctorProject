@@ -32,7 +32,7 @@ kitSizeY = 20;
 invGrid = ds_grid_create(kitSizeX, kitSizeY);
 InventoryCoordList = ds_list_create();
 
-ds_grid_clear(invGrid, 0);
+ds_grid_clear(invGrid, noone);
 gridStartX = view_xview * global.display_scale + view_wview/2 - (kitSizeX * INV_CELL_SIZE)/2;
 gridStartY = view_yview * global.display_scale + 25; //+ view_hview/2 - (kitSizeY * INV_CELL_SIZE)/2;
 
@@ -40,9 +40,27 @@ itemSelected = noone;
 
 drawInvGUI = false;
 
+/*List as a structure. each Item is 4 consecutive list elements like so:
+*   1) Object ID 2) X position in grid 3) Y position in grid 4) instance ID
+*/
 ds_list_add(InventoryCoordList, obj_item_1, 0, 0, noone);
 ds_list_add(InventoryCoordList, obj_item_2, 2, 2, noone);
 ds_list_add(InventoryCoordList, obj_item_3, 6, 6, noone);
+
+selectionBoxCellX = 0;
+selectionBoxCellY = 0;
+selectionBoxX = gridStartX + selectionBoxCellX * INV_CELL_SIZE;
+selectionBoxY = gridStartY + selectionBoxCellY * INV_CELL_SIZE;
+
+openInventory = false;
+
+mouseLastX = 0;
+mouseLastY = 0;
+usingGamepad = false;
+
+delayTimer = 0;
+delayTime = 15;
+scrolling = false;
 </string>
           </argument>
         </arguments>
@@ -88,11 +106,25 @@ ds_list_add(InventoryCoordList, obj_item_3, 6, 6, noone);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(object_exists(obj_player) &amp;&amp; obj_player.openInventory){
-    drawInvGUI = true;
-    ds_grid_clear(invGrid, 0);
+            <string>if(global.gui_mouse_y != mouseLastY){
+    usingGamepad = false;
+}
+if(global.gui_mouse_x != mouseLastX){
+    usingGamepad = false;
+}
+if(press_any_button_gamepad()){
+    usingGamepad = true;
+}
+mouseLastY = global.gui_mouse_y;
+mouseLastX = global.gui_mouse_x;
+
+if(openInventory){ //If player sends open inventory message
+    drawInvGUI = true; //Time to draw the gui
+    //Clear the grid and item selected
+    ds_grid_clear(invGrid, noone);
     itemSelected = noone;
     
+    //Spawn in all the items at there saved locations and save the instance id
     for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){
         if(drawInvGUI){
             if(InventoryCoordList[| item + 3] == noone){
@@ -100,12 +132,123 @@ ds_list_add(InventoryCoordList, obj_item_3, 6, 6, noone);
             }
         }
     }
+    
+    if(usingGamepad){
+    //SelectionBox Controls
+    
+    var up = obj_player.arrowUp &amp;&amp; selectionBoxCellY &gt; 0
+    var down = obj_player.arrowDown &amp;&amp; selectionBoxCellY &lt; (kitSizeY - 1);
+    var left = obj_player.arrowLeft &amp;&amp; selectionBoxCellX &gt; 0;
+    var right = obj_player.arrowRight &amp;&amp; selectionBoxCellX &lt; (kitSizeX - 1);
+    var upleft = up &amp;&amp; left;
+    var upright = up &amp;&amp; right;
+    var downleft = down &amp;&amp; left;
+    var downright = down &amp;&amp; right;
+    
+    if(!scrolling){
+        if(upleft){
+            if(delayTimer == 0){
+                selectionBoxCellY--;
+                selectionBoxCellX--;
+            }
+            delayTimer++;
+        }else if(upright){ 
+            if(delayTimer == 0){
+                selectionBoxCellY--;
+                selectionBoxCellX++;
+            }
+            delayTimer++;
+        }else if(downleft){
+            if(delayTimer == 0){
+                selectionBoxCellY++;
+                selectionBoxCellX--;
+            }
+            delayTimer++;
+        }else if(downright){ 
+            if(delayTimer == 0){
+                selectionBoxCellY++;
+                selectionBoxCellX++;
+            }
+            delayTimer++;
+        }else if(up){
+            if(delayTimer == 0){
+                selectionBoxCellY--;
+            }
+            delayTimer++;
+        }else if(down){
+            if(delayTimer == 0){
+                selectionBoxCellY++;
+            }
+            delayTimer++;
+        }else if(left){
+            if(delayTimer == 0){
+                selectionBoxCellX--;
+            }
+            delayTimer++;
+        }else if(right){
+            if(delayTimer == 0){
+                selectionBoxCellX++;
+            }
+            delayTimer++;
+        }
+        
+        if(delayTimer == delayTime){
+            scrolling = true;
+        }
+    }else{
+        if(upleft){
+            selectionBoxCellY--;
+            selectionBoxCellX--;
+        }else if(upright){ 
+            selectionBoxCellY--;
+            selectionBoxCellX++;
+        }else if(downleft){
+            selectionBoxCellY++;
+            selectionBoxCellX--;
+        }else if(downright){ 
+            selectionBoxCellY++;
+            selectionBoxCellX++;
+        }else if(up){
+            selectionBoxCellY--;
+        }else if(down){
+            selectionBoxCellY++;
+        }else if(left){
+            selectionBoxCellX--;
+        }else if(right){
+            selectionBoxCellX++;
+        }
+    }
+    
+    if(obj_player.arrowUpRelease || obj_player.arrowDownRelease || obj_player.arrowRightRelease || obj_player.arrowLeftRelease){
+        scrolling = false;
+        delayTimer = 0;
+    }
+    }else{
+     var mouseGridY = floor((global.gui_mouse_y - gridStartY) / INV_CELL_SIZE);
+     var mouseGridX = floor((global.gui_mouse_x - gridStartX) / INV_CELL_SIZE);
+    
+    if(mouseGridY &gt;= 0 &amp;&amp; mouseGridY &lt; (kitSizeY)){
+        selectionBoxCellY = mouseGridY;
+    }
+    if( mouseGridX &gt;= 0 &amp;&amp; mouseGridX &lt; (kitSizeX)){
+        selectionBoxCellX = mouseGridX;
+    }
+    }
+    selectionBoxX = obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE;
+    selectionBoxY = obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE;
+    
+    
+//If openInventory is false, and we were drawing the gui last frame
 }else if(drawInvGUI == true){
-    drawInvGUI = false;
-    for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){
+    drawInvGUI = false; //Stop drawing the gui
+    //Clear the grid items
+    ds_grid_clear(invGrid, noone);
+    itemSelected = noone;
+    //Destroy the items and clear the pointers to them in the list
+    for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){ 
         if(InventoryCoordList[| item + 3] != noone){
             with(InventoryCoordList[| item + 3]) instance_destroy();
-            InventoryCoordList[| item + 3] = noone;
+            ds_list_replace(InventoryCoordList, item + 3, noone);
         }
     }
 }
@@ -132,6 +275,7 @@ ds_list_add(InventoryCoordList, obj_item_3, 6, 6, noone);
           <argument>
             <kind>1</kind>
             <string>drawInvGUI = false;
+openInventory = false;
 </string>
           </argument>
         </arguments>
@@ -168,8 +312,17 @@ if(drawInvGUI)
             }
         }
     }
+    draw_set_alpha(0.8);
+    draw_rectangle_color(selectionBoxX,
+    selectionBoxY,
+    selectionBoxX + INV_CELL_SIZE,
+    selectionBoxY + INV_CELL_SIZE,
+    c_white, c_white, c_white, c_white, false);
+    draw_set_alpha(1);
+    draw_text(0,0, "delayTimer = " + string(delayTimer));
+    draw_text(0,10, "scrolling = " + string(scrolling));
 }
- surface_reset_target();
+surface_reset_target();
 </string>
           </argument>
         </arguments>
