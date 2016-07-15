@@ -37,7 +37,8 @@ rightAndLeftPressed = false;
 grounded = false;
 hidden = false;
 runButton = false;
-click = false;
+leftClick = false;
+leftClickReleased = false;
 lastDir = 0;
 jump = false;
 interactPressed = false;
@@ -99,6 +100,7 @@ start_y = ystart;
 door = noone;
 
 ladderSnap = false;
+roomRestarted = false;
 justOnLadder = false;
 </string>
           </argument>
@@ -521,7 +523,7 @@ switch (state)
         player_position_update(0,vspd);
         
         //Transitions
-        if(interactPressed){
+        if(interactPressed || roomRestarted){
             state = states.normal;
             if(instance_exists(obj_invgrid)){
                 obj_invgrid.openInventory = false;
@@ -536,6 +538,8 @@ switch (state)
     
     }break;
 }
+
+roomRestarted = false;
 </string>
           </argument>
         </arguments>
@@ -633,7 +637,7 @@ if (sprite_index == spr_falling)
           <argument>
             <kind>1</kind>
             <string>///Reinitialize Player
-sprite_index = spr_idle;
+roomRestarted = true;
 image_index = 0;
 image_xscale = abs(image_xscale);
 x = start_x;
@@ -694,7 +698,9 @@ draw_self();
 if(global.debug){
     draw_set_color(c_white);
     draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-    draw_text(x + 10, y - 20, grounded);
+    draw_text(x + 10, y - 20, "grounded = " + string(grounded));
+    draw_text(x + 10, y - 30, leftClick);
+    draw_text(x + 10, y - 40, leftClickReleased);
     switch(state)
     {
         case states.normal:{draw_text(x + 10, y - 10, "STATE = normal");}break;

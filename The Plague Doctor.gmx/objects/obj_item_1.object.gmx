@@ -29,9 +29,9 @@
 trackMouse = false;
 numCellsX = floor(sprite_width / INV_CELL_SIZE);
 numCellsY = floor(sprite_height / INV_CELL_SIZE);
-place = true;
 currentCellX = 0;
 currentCellY = 0;
+place = true;
 
 hover = false;
 width = sprite_width;
@@ -64,29 +64,17 @@ gridY = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Check if the mouse is hovering over the item on the gui
-var yhover = (global.gui_mouse_y == median(display_y, global.gui_mouse_y, display_y + height));
-var xhover = (global.gui_mouse_x == median(display_x, global.gui_mouse_x, display_x + width));
-hover = xhover &amp;&amp; yhover;
-
-if (trackMouse)
-{
+            <string>if (trackMouse){
     //Update the display location of the item to follow the mouse gui position
-    display_x = global.gui_mouse_x;
-    display_y = global.gui_mouse_y;
-    //Update the selected item in the inventory controller object
-    if(obj_invgrid.itemSelected == noone) obj_invgrid.itemSelected = self.id;
+    display_x = obj_invgrid.selectionBoxX;
+    display_y = obj_invgrid.selectionBoxY;
     //Clear the grid so that items can be placed where this item used to be.
-    for(var cellY = currentCellY; cellY &lt;  currentCellY + numCellsY; cellY++)
-    {
-        for(var cellX = currentCellX; cellX &lt; currentCellX + numCellsX; cellX++)
-        {
+    for(var cellY = currentCellY; cellY &lt;  currentCellY + numCellsY; cellY++){
+        for(var cellX = currentCellX; cellX &lt; currentCellX + numCellsX; cellX++){
             obj_invgrid.invGrid[# cellX,cellY] = noone;
         }
     }
-}
-else if (place)
-{
+}else if(place){
     //Calcuate the display values realitive to the starting point of the grid
     var GridRealitiveX = display_x - obj_invgrid.gridStartX;
     var GridRealitiveY = display_y - obj_invgrid.gridStartY;
@@ -122,7 +110,7 @@ else if (place)
         }
     }
     
-    //Fill the section of the grid that has the item in it with 1's.
+    //Fill the section of the grid that has the item in it with the instance id.
     for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++)
     {
         for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
@@ -140,66 +128,13 @@ else if (place)
     currentCellY = CellLocationY;
     
     //Clear the selected item and place.
-    obj_invgrid.itemSelected = noone;
     place = false;
+    obj_invgrid.itemSelected = noone;
     
     var itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, object_index);
     ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 1, currentCellX);
     ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 2, currentCellY);
     ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 3, id);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="56">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(trackMouse == true)
-{
-    trackMouse = false;
-    place = true;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="53">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(obj_invgrid.itemSelected == noone &amp;&amp; trackMouse == false &amp;&amp; hover)
-{
-    trackMouse = true;
 }
 </string>
           </argument>

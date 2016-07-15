@@ -59,7 +59,7 @@ mouseLastY = 0;
 usingGamepad = false;
 
 delayTimer = 0;
-delayTime = 15;
+delayTime = 8;
 scrolling = false;
 </string>
           </argument>
@@ -120,16 +120,10 @@ mouseLastX = global.gui_mouse_x;
 
 if(openInventory){ //If player sends open inventory message
     drawInvGUI = true; //Time to draw the gui
-    //Clear the grid and item selected
-    ds_grid_clear(invGrid, noone);
-    itemSelected = noone;
-    
     //Spawn in all the items at there saved locations and save the instance id
     for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){
-        if(drawInvGUI){
-            if(InventoryCoordList[| item + 3] == noone){
-                InventoryCoordList[| item + 3] = spawn_gui_item(InventoryCoordList[| item + 1], InventoryCoordList[| item + 2], InventoryCoordList[| item]);
-            }
+        if(!instance_exists(InventoryCoordList[| item + 3])){
+            InventoryCoordList[| item + 3] = spawn_gui_item(InventoryCoordList[| item + 1], InventoryCoordList[| item + 2], InventoryCoordList[| item]);
         }
     }
     
@@ -145,7 +139,7 @@ if(openInventory){ //If player sends open inventory message
     var downleft = down &amp;&amp; left;
     var downright = down &amp;&amp; right;
     
-    if(!scrolling){
+    if(!obj_player.runButton){
         if(upleft){
             if(delayTimer == 0){
                 selectionBoxCellY--;
@@ -193,7 +187,7 @@ if(openInventory){ //If player sends open inventory message
         }
         
         if(delayTimer == delayTime){
-            scrolling = true;
+            delayTimer = 0;
         }
     }else{
         if(upleft){
@@ -237,6 +231,24 @@ if(openInventory){ //If player sends open inventory message
     selectionBoxX = obj_invgrid.gridStartX + selectionBoxCellX * INV_CELL_SIZE;
     selectionBoxY = obj_invgrid.gridStartY + selectionBoxCellY * INV_CELL_SIZE;
     
+    if(instance_exists(invGrid[# selectionBoxCellX, selectionBoxCellY])){
+        invGrid[# selectionBoxCellX, selectionBoxCellY].hover = true; //If the box is over and item, hover
+        if(obj_player.leftClick){
+            itemSelected = invGrid[# selectionBoxCellX, selectionBoxCellY];
+            itemSelected.trackMouse = true;
+        }
+    }else{
+        for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){  //Else, set all hovers to false.
+            if(instance_exists(InventoryCoordList[| item + 3])){
+               InventoryCoordList[| item + 3].hover = false;
+            }
+        }
+    }
+    
+    if(obj_player.leftClickReleased &amp;&amp; itemSelected != noone){
+        itemSelected.trackMouse = false;
+        itemSelected.place = true;
+    }
     
 //If openInventory is false, and we were drawing the gui last frame
 }else if(drawInvGUI == true){
@@ -246,7 +258,7 @@ if(openInventory){ //If player sends open inventory message
     itemSelected = noone;
     //Destroy the items and clear the pointers to them in the list
     for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){ 
-        if(InventoryCoordList[| item + 3] != noone){
+        if(instance_exists(InventoryCoordList[| item + 3])){
             with(InventoryCoordList[| item + 3]) instance_destroy();
             ds_list_replace(InventoryCoordList, item + 3, noone);
         }
@@ -276,6 +288,13 @@ if(openInventory){ //If player sends open inventory message
             <kind>1</kind>
             <string>drawInvGUI = false;
 openInventory = false;
+ds_grid_clear(invGrid, noone);
+for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){ 
+     if(instance_exists(InventoryCoordList[| item + 3])){
+         with(InventoryCoordList[| item + 3]) instance_destroy();
+         ds_list_replace(InventoryCoordList, item + 3, noone);
+     }
+ }
 </string>
           </argument>
         </arguments>
@@ -306,9 +325,26 @@ if(drawInvGUI)
         for(var cellX = 0; cellX &lt; kitSizeX; cellX++)
         {
             draw_sprite_ext(spr_invslot, 0, gridStartX + cellX*INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE, 1, 1,0,c_white, 0.6);
-            if(debug_mode)
+            if(global.debug)
             {
-                draw_text(gridStartX + cellX*INV_CELL_SIZE,gridStartX + cellY*INV_CELL_SIZE, invGrid[# cellX, cellY]);
+                if(invGrid[# cellX, cellY] != noone){
+                    draw_set_color(c_red);
+                    draw_set_alpha(1);
+                    draw_rectangle(gridStartX + cellX*INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE, gridStartX + cellX*INV_CELL_SIZE + INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE + INV_CELL_SIZE, true);
+                }
+            }
+        }
+    }
+    if(global.debug)
+    {
+        draw_set_color(c_white);
+        draw_text(0,10, "delayTimer = " + string(delayTimer));
+        draw_text(0,20, "scrolling = " + string(scrolling));
+        draw_text(0,30, "itemSelected = " + string(itemSelected));
+        for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item+=4){
+            if(instance_exists(InventoryCoordList[|item + 3])){
+                draw_text(0,40 + 10 * item, "trackMouse = " + string(InventoryCoordList[|item + 3].trackMouse));
+                draw_text(0,50 + 10 * item , "place = " + string(InventoryCoordList[|item + 3].place));
             }
         }
     }
@@ -319,8 +355,6 @@ if(drawInvGUI)
     selectionBoxY + INV_CELL_SIZE,
     c_white, c_white, c_white, c_white, false);
     draw_set_alpha(1);
-    draw_text(0,0, "delayTimer = " + string(delayTimer));
-    draw_text(0,10, "scrolling = " + string(scrolling));
 }
 surface_reset_target();
 </string>

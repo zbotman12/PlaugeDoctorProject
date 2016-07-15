@@ -73,6 +73,7 @@ if (gamepad_is_connected(0)) //Maybe we want any controller, 0 - 3, to work, jus
     
 //Keyboard Inputs
 var keyboardMbLeft = mouse_check_button_pressed(mb_left);
+var keyboardMbLeftReleased = mouse_check_button_released(mb_left);
 var keyboardRight = keyboard_check(ord("D"));
 var keyboardLeft = keyboard_check(ord("A"));
 var keyboardUp = keyboard_check(ord("W"));
@@ -103,6 +104,7 @@ keyboardDownPressed ||
 keyboardInteractPressed) gamepad = false;*/
 
 leftClick = keyboardMbLeft || gamepadAPressed;
+leftClickReleased = keyboardMbLeftReleased || gamepadAReleased;
 right = keyboardRight || (gamepadLeftHor == 1);
 left = keyboardLeft || (gamepadLeftHor == -1);
 up = keyboardUp || (gamepadLeftVert == -1);
