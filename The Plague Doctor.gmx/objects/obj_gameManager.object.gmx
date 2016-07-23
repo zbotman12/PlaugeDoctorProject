@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.debug = debug_mode;
+init_containers(room);
 instance_create(0,0, obj_timeController);
 instance_create(0,0, obj_display);
 instance_create(0,0, obj_lightcontrol);

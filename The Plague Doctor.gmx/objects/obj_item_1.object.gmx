@@ -31,6 +31,8 @@ numCellsX = floor(sprite_width / INV_CELL_SIZE);
 numCellsY = floor(sprite_height / INV_CELL_SIZE);
 currentCellX = 0;
 currentCellY = 0;
+currentGrid = noone;
+currentList = noone;
 place = true;
 
 hover = false;
@@ -71,13 +73,20 @@ gridY = 0;
     //Clear the grid so that items can be placed where this item used to be.
     for(var cellY = currentCellY; cellY &lt;  currentCellY + numCellsY; cellY++){
         for(var cellX = currentCellX; cellX &lt; currentCellX + numCellsX; cellX++){
-            obj_invgrid.invGrid[# cellX,cellY] = noone;
+            currentGrid[# cellX,cellY] = noone;
         }
     }
 }else if(place){
     //Calcuate the display values realitive to the starting point of the grid
-    var GridRealitiveX = display_x - obj_invgrid.gridStartX;
-    var GridRealitiveY = display_y - obj_invgrid.gridStartY;
+    var GridRealitiveX;
+    var GridRealitiveY;
+    if(currentGrid == obj_invgrid.invGrid){
+        GridRealitiveX = display_x - obj_invgrid.gridStartX;
+        GridRealitiveY = display_y - obj_invgrid.gridStartY;
+    }else{
+        GridRealitiveX = display_x - obj_invgrid.containerStartX;
+        GridRealitiveY = display_y - obj_invgrid.containerStartY;
+    }
     
     //If we are left or above the grid, do not place
     if(GridRealitiveX &lt; 0 || GridRealitiveY &lt; 0)
@@ -102,7 +111,7 @@ gridY = 0;
     {
         for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
         {
-            if(obj_invgrid.invGrid[# cellX,cellY] != noone)
+            if(currentGrid[# cellX,cellY] != noone)
             {
                 trackMouse = true;
                 exit;
@@ -115,13 +124,20 @@ gridY = 0;
     {
         for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
         {
-            obj_invgrid.invGrid[# cellX,cellY] = id;
+            currentGrid[# cellX,cellY] = id;
         }
     }
     
     //Update the display location of the item
-    display_x = CellLocationX * INV_CELL_SIZE + obj_invgrid.gridStartX;
-    display_y = CellLocationY * INV_CELL_SIZE + obj_invgrid.gridStartY;
+    
+    if(currentGrid == obj_invgrid.invGrid){
+        display_x = CellLocationX * INV_CELL_SIZE + obj_invgrid.gridStartX;
+        display_y = CellLocationY * INV_CELL_SIZE + obj_invgrid.gridStartY;
+    }else{
+        display_x = CellLocationX * INV_CELL_SIZE + obj_invgrid.containerStartX;
+        display_y = CellLocationY * INV_CELL_SIZE + obj_invgrid.containerStartY; 
+    }
+
     
     //Update the current cell for the top left corner of the item
     currentCellX = CellLocationX;
@@ -131,10 +147,40 @@ gridY = 0;
     place = false;
     obj_invgrid.itemSelected = noone;
     
-    var itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, object_index);
-    ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 1, currentCellX);
-    ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 2, currentCellY);
-    ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex + 3, id);
+    if(currentGrid == obj_invgrid.invGrid){
+        var itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, id);
+        if(itemIndex != -1){
+            ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex - 2, currentCellX);
+            ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex - 1, currentCellY);
+            ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex, id);
+        }else{
+            ds_list_add(obj_invgrid.InventoryCoordList, object_index, currentCellX, currentCellY, id);
+        }
+        itemIndex = ds_list_find_index(obj_invgrid.containerList, id);
+        if(itemIndex != -1){
+            ds_list_delete(obj_invgrid.containerList, itemIndex);
+            ds_list_delete(obj_invgrid.containerList, itemIndex - 1);
+            ds_list_delete(obj_invgrid.containerList, itemIndex - 2);
+            ds_list_delete(obj_invgrid.containerList, itemIndex - 3);
+        }      
+    }else{
+        var itemIndex = ds_list_find_index(obj_invgrid.containerList, id);
+        if(itemIndex != -1){
+            ds_list_replace(obj_invgrid.containerList, itemIndex - 2, currentCellX);
+            ds_list_replace(obj_invgrid.containerList, itemIndex - 1, currentCellY);
+            ds_list_replace(obj_invgrid.containerList, itemIndex, id);
+        }else{
+            ds_list_add(obj_invgrid.containerList, object_index, currentCellX, currentCellY, id);
+        }
+        
+        itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, id);
+        if(itemIndex != -1){
+            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex);
+            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex - 1);
+            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex - 2);
+            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex - 3);
+        }
+    }
 }
 </string>
           </argument>

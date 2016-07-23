@@ -110,6 +110,8 @@
     <script>scripts\player_position_update.gml</script>
     <script>scripts\change_sprite.gml</script>
     <script>scripts\press_any_button_gamepad.gml</script>
+    <script>scripts\check_grid_transition.gml</script>
+    <script>scripts\init_containers.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>

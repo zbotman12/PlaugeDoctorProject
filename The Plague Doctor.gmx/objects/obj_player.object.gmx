@@ -493,10 +493,10 @@ switch (state)
             state = states.normal;
        }
        if(!up &amp;&amp; !down || (up &amp;&amp; down)){
-            if(right &amp;&amp; !position_meeting(x + sprite_get_width(obj_ladder_mask)/2 + 1,y, obj_collision_box)){
+            if(right &amp;&amp; !position_meeting(x + sprite_get_width(obj_ladder_mask)/2 + 1,y - 1, obj_collision_box)){
                 turnDelayTimer = 0;
                 state = states.normal;
-            }else if(left &amp;&amp; !position_meeting(x - sprite_get_width(obj_ladder_mask)/2 - 1,y, obj_collision_box)){
+            }else if(left &amp;&amp; !position_meeting(x - sprite_get_width(obj_ladder_mask)/2 - 1,y - 1, obj_collision_box)){
                 turnDelayTimer = 0;
                 state = states.normal;
             }
@@ -519,6 +519,7 @@ switch (state)
     
         if(instance_exists(obj_invgrid)){
             obj_invgrid.openInventory = true;
+            obj_invgrid.containerToOpen = instance_place(x,y,obj_container);
         }
         player_position_update(0,vspd);
         
