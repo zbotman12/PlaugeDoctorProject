@@ -36,6 +36,7 @@ containerList = noone;
 containerSizeX = 0;
 containerSizeY = 0;
 InventoryCoordList = ds_list_create();
+itemHovered = noone;
 
 ds_grid_clear(invGrid, noone);
 gridStartX = view_xview * global.display_scale + view_wview/2 - (kitSizeX * INV_CELL_SIZE)/2;
@@ -166,19 +167,19 @@ if(openInventory){ //If player sends open inventory message
     if(usingGamepad){
     
     if(selectionBoxCurrentGrid == invGrid){
-        gridUpperBoundsX = kitSizeX - 1;
+        gridUpperBoundsX = kitSizeX;
         gridUpperBoundsY = kitSizeY;
         gridLowerBoundsX = 0;
         gridLowerBoundsY = 0;
     }else{
-        gridUpperBoundsX = containerSizeX - 1; 
-        gridUpperBoundsY = containerSizeY - 1;
+        gridUpperBoundsX = containerSizeX; 
+        gridUpperBoundsY = containerSizeY;
         gridLowerBoundsX = 0;
-        gridLowerBoundsY = -1;
+        gridLowerBoundsY = 0;
     }
     
     
-    var up = obj_player.arrowUp &amp;&amp; selectionBoxCellY &gt; gridLowerBoundsY;
+    var up = obj_player.arrowUp &amp;&amp; selectionBoxCellY &gt; gridLowerBoundsY - 1;
     var down = obj_player.arrowDown &amp;&amp; selectionBoxCellY &lt; (gridUpperBoundsY);
     var left = obj_player.arrowLeft &amp;&amp; selectionBoxCellX &gt; gridLowerBoundsX;
     var right = obj_player.arrowRight &amp;&amp; selectionBoxCellX &lt; (gridUpperBoundsX);
@@ -285,6 +286,22 @@ if(openInventory){ //If player sends open inventory message
         }
     }
     
+        if(selectionBoxCellY &gt;= 0 &amp;&amp; selectionBoxCellY &lt; (gridUpperBoundsY)){
+            selectionBoxCellY = selectionBoxCellY;
+        }else if(selectionBoxCellY &gt;= 0){
+            selectionBoxCellY = gridUpperBoundsY - 1; 
+        }else{
+            selectionBoxCellY = 0;
+        }
+        
+        if( selectionBoxCellX &gt;= 0 &amp;&amp; selectionBoxCellX &lt; (gridUpperBoundsX)){
+            selectionBoxCellX = selectionBoxCellX;
+        }else if(mouseGridX &gt;= 0){
+            selectionBoxCellX = gridUpperBoundsX - 1;
+        }else{
+            selectionBoxCellX = 0;
+        }
+    
     if(obj_player.arrowUpRelease || obj_player.arrowDownRelease || obj_player.arrowRightRelease || obj_player.arrowLeftRelease){
         delayTimer = 0;
     }
@@ -304,7 +321,7 @@ if(openInventory){ //If player sends open inventory message
             gridLowerBoundsY = gridStartY;
             gridUpperBoundsX = kitSizeX;
             gridUpperBoundsY = kitSizeY;
-            selectionBoxCellY = kitSizeY - 1; 
+            selectionBoxCellY = kitSizeY - 1;
         }else{
             gridLowerBoundsX = containerStartX;
             gridLowerBoundsY = containerStartY;
@@ -341,25 +358,19 @@ if(openInventory){ //If player sends open inventory message
         selectionBoxY = containerStartY + selectionBoxCellY * INV_CELL_SIZE;
     }
     
-    
-    
    if((ds_exists(selectionBoxCurrentGrid, ds_type_grid)) &amp;&amp; (selectionBoxCurrentGrid[# selectionBoxCellX, selectionBoxCellY] != noone)){
-        selectionBoxCurrentGrid[# selectionBoxCellX, selectionBoxCellY].hover = true; //If the box is over and item, hover
+        if(itemHovered != selectionBoxCurrentGrid[# selectionBoxCellX, selectionBoxCellY]){
+            if(instance_exists(itemHovered)) itemHovered.hover = false;
+            itemHovered = selectionBoxCurrentGrid[# selectionBoxCellX, selectionBoxCellY];
+            itemHovered.hover = true;
+        }
         if(obj_player.leftClick){
-            itemSelected = selectionBoxCurrentGrid[# selectionBoxCellX, selectionBoxCellY];
+            itemSelected = itemHovered;
             itemSelected.trackMouse = true;
         }
     }else{
-        for(var item = 0; item &lt; ds_list_size(containerList); item += 4){  //Else, set all hovers to false.
-            if(containerList[| item + 3] != noone){
-               containerList[| item + 3].hover = false;
-            }
-        }
-        for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){  //Else, set all hovers to false.
-            if(InventoryCoordList[| item + 3] != noone){
-               InventoryCoordList[| item + 3].hover = false;
-            }
-        }
+        if(instance_exists(itemHovered)) itemHovered.hover = false;
+        itemHovered = noone;
     }
     
     if(obj_player.leftClickReleased &amp;&amp; itemSelected != noone){
@@ -432,7 +443,7 @@ for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -449,7 +460,7 @@ for(var item = 0; item &lt; ds_list_size(InventoryCoordList); item += 4){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(application_surface);
+            <string>surface_set_target(global.guiSurf);
 if(drawInvGUI)
 {
     for(var cellY = 0; cellY &lt; kitSizeY; cellY++)

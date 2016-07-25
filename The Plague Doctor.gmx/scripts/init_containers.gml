@@ -31,18 +31,31 @@ ini_write_string(RoomToInitContainersFor, "box3", str);
 
 ds_list_clear(initContainerList);
 
-ds_list_add(initContainerList, obj_item_3, 2, 6, noone);
-ds_list_add(initContainerList, obj_item_3, 3, 2, noone);
+ds_list_add(initContainerList, obj_item_3, 0, 3, noone);
+ds_list_add(initContainerList, obj_item_3, 0, 2, noone);
 var str = ds_list_write(initContainerList);
 ini_write_string(RoomToInitContainersFor, "box4", str);
 
 ds_list_clear(initContainerList);
-;
+
 ds_list_add(initContainerList, obj_item_2, 2, 2, noone);
 ds_list_add(initContainerList, obj_item_1, 0, 0, noone);
 ds_list_add(initContainerList, obj_item_1, 0, 1, noone);
 var str = ds_list_write(initContainerList);
 ini_write_string(RoomToInitContainersFor, "box5", str);
+
+ds_list_clear(initContainerList);
+
+ds_list_add(initContainerList, obj_item_1, 1, 0, noone);
+ds_list_add(initContainerList, obj_item_1, 2, 1, noone);
+ds_list_add(initContainerList, obj_item_1, 1, 2, noone);
+ds_list_add(initContainerList, obj_item_1, 2, 3, noone);
+ds_list_add(initContainerList, obj_item_1, 1, 4, noone);
+ds_list_add(initContainerList, obj_item_1, 2, 5, noone);
+var str = ds_list_write(initContainerList);
+ini_write_string(RoomToInitContainersFor, "box6", str);
+
+ds_list_clear(initContainerList);
 
 ds_list_clear(initContainerList);
 ds_list_destroy(initContainerList);

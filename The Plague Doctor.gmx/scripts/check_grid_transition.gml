@@ -9,6 +9,10 @@ if(containerToOpen != noone)
                 selectionBoxCellX = (kitSizeX - 1);  
             }
             selectionBoxCurrentGrid = invGrid;
+            gridUpperBoundsX = kitSizeX;
+            gridUpperBoundsY = kitSizeY;
+            gridLowerBoundsX = 0;
+            gridLowerBoundsY = 0;
             selectionBoxCellY = (kitSizeY - 1);
             return true;
         }else{
@@ -22,6 +26,10 @@ if(containerToOpen != noone)
                 selectionBoxCellX = containerToOpen.containerSizeX - 1;
             }
             selectionBoxCurrentGrid = containerGrid;
+            gridUpperBoundsX = containerSizeX; 
+            gridUpperBoundsY = containerSizeY;
+            gridLowerBoundsX = 0;
+            gridLowerBoundsY = 0;
             selectionBoxCellY = 0;
             return true;
         }else{
@@ -31,5 +39,3 @@ if(containerToOpen != noone)
 }else{
     return false;
 }
-
-

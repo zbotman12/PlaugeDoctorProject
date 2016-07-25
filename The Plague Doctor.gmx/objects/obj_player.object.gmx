@@ -528,6 +528,8 @@ switch (state)
             state = states.normal;
             if(instance_exists(obj_invgrid)){
                 obj_invgrid.openInventory = false;
+                obj_invgrid.selectionBoxCellX = 0;
+                obj_invgrid.selectionBoxCellY = 0;
             }
         }
          
