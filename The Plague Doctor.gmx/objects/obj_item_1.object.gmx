@@ -73,46 +73,35 @@ gridY = 0;
     //Clear the grid so that items can be placed where this item used to be.
     for(var cellY = currentCellY; cellY &lt;  currentCellY + numCellsY; cellY++){
         for(var cellX = currentCellX; cellX &lt; currentCellX + numCellsX; cellX++){
-            currentGrid[# cellX,cellY] = noone;
+            if(currentGrid[# cellX,cellY] != noone) currentGrid[# cellX,cellY] = noone;
         }
     }
 }else if(place){
-    //Calcuate the display values realitive to the starting point of the grid
-    var GridRealitiveX;
-    var GridRealitiveY;
-    if(currentGrid == obj_invgrid.invGrid){
-        GridRealitiveX = display_x - obj_invgrid.gridStartX;
-        GridRealitiveY = display_y - obj_invgrid.gridStartY;
-    }else{
-        GridRealitiveX = display_x - obj_invgrid.containerStartX;
-        GridRealitiveY = display_y - obj_invgrid.containerStartY;
-    }
+    var GridStartX;
+    var GridStartY;
     
-    //If we are left or above the grid, do not place
-    if(GridRealitiveX &lt; 0 || GridRealitiveY &lt; 0)
-    {
-        trackMouse = true;
-        exit;
+    if(currentGrid == obj_invgrid.invGrid){
+        GridStartX = obj_invgrid.gridStartX;
+        GridStartY = obj_invgrid.gridStartY;
+    }else{
+        GridStartX = obj_invgrid.containerStartX;
+        GridStartY = obj_invgrid.containerStartY;
     }
     
     //Calculate the which cell to put the top left corner of the item in
-    var CellLocationX = floor(GridRealitiveX/INV_CELL_SIZE);
-    var CellLocationY = floor(GridRealitiveY/INV_CELL_SIZE);
+    var CellLocationX = floor((display_x - GridStartX)/INV_CELL_SIZE);
+    var CellLocationY = floor((display_y - GridStartY)/INV_CELL_SIZE);
     
-    //If we are Right or below the grid, do not place
-    if(CellLocationX + numCellsX &gt; obj_invgrid.kitSizeX || CellLocationY + numCellsY &gt; obj_invgrid.kitSizeY)
-    {
+    //If we are outside the grid, do not place
+    if((CellLocationX &lt; 0) || (CellLocationY &lt; 0) || (CellLocationX + numCellsX &gt; obj_invgrid.kitSizeX) || (CellLocationY + numCellsY &gt; obj_invgrid.kitSizeY)){
         trackMouse = true;
         exit;
     }
     
     //If the item would overlap another item, do not place.
-    for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++)
-    {
-        for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
-        {
-            if(currentGrid[# cellX,cellY] != noone)
-            {
+    for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++){
+        for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++){
+            if(currentGrid[# cellX,cellY] != noone){
                 trackMouse = true;
                 exit;
             }
@@ -120,67 +109,22 @@ gridY = 0;
     }
     
     //Fill the section of the grid that has the item in it with the instance id.
-    for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++)
-    {
-        for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++)
-        {
+    for(var cellY = CellLocationY; cellY &lt; CellLocationY + numCellsY; cellY++){
+        for(var cellX = CellLocationX; cellX &lt; CellLocationX + numCellsX; cellX++){
             currentGrid[# cellX,cellY] = id;
         }
     }
     
-    //Update the display location of the item
-    
-    if(currentGrid == obj_invgrid.invGrid){
-        display_x = CellLocationX * INV_CELL_SIZE + obj_invgrid.gridStartX;
-        display_y = CellLocationY * INV_CELL_SIZE + obj_invgrid.gridStartY;
-    }else{
-        display_x = CellLocationX * INV_CELL_SIZE + obj_invgrid.containerStartX;
-        display_y = CellLocationY * INV_CELL_SIZE + obj_invgrid.containerStartY; 
-    }
-
-    
     //Update the current cell for the top left corner of the item
     currentCellX = CellLocationX;
     currentCellY = CellLocationY;
+    //Update the display location of the item
+    display_x = CellLocationX * INV_CELL_SIZE + GridStartX
+    display_y = CellLocationY * INV_CELL_SIZE + GridStartY;
     
     //Clear the selected item and place.
     place = false;
     obj_invgrid.itemSelected = noone;
-    
-    if(currentGrid == obj_invgrid.invGrid){
-        var itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, id);
-        if(itemIndex != -1){
-            ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex - 2, currentCellX);
-            ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex - 1, currentCellY);
-            ds_list_replace(obj_invgrid.InventoryCoordList, itemIndex, id);
-        }else{
-            ds_list_add(obj_invgrid.InventoryCoordList, object_index, currentCellX, currentCellY, id);
-        }
-        itemIndex = ds_list_find_index(obj_invgrid.containerList, id);
-        if(itemIndex != -1){
-            ds_list_delete(obj_invgrid.containerList, itemIndex);
-            ds_list_delete(obj_invgrid.containerList, itemIndex - 1);
-            ds_list_delete(obj_invgrid.containerList, itemIndex - 2);
-            ds_list_delete(obj_invgrid.containerList, itemIndex - 3);
-        }      
-    }else{
-        var itemIndex = ds_list_find_index(obj_invgrid.containerList, id);
-        if(itemIndex != -1){
-            ds_list_replace(obj_invgrid.containerList, itemIndex - 2, currentCellX);
-            ds_list_replace(obj_invgrid.containerList, itemIndex - 1, currentCellY);
-            ds_list_replace(obj_invgrid.containerList, itemIndex, id);
-        }else{
-            ds_list_add(obj_invgrid.containerList, object_index, currentCellX, currentCellY, id);
-        }
-        
-        itemIndex = ds_list_find_index(obj_invgrid.InventoryCoordList, id);
-        if(itemIndex != -1){
-            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex);
-            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex - 1);
-            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex - 2);
-            ds_list_delete(obj_invgrid.InventoryCoordList, itemIndex - 3);
-        }
-    }
 }
 </string>
           </argument>
@@ -205,13 +149,12 @@ gridY = 0;
           <argument>
             <kind>1</kind>
             <string>surface_set_target(global.guiSurf);
-
 draw_sprite(sprite_index, image_index, display_x, display_y);
 if(hover){
     draw_set_alpha(0.8);
     draw_rectangle_color(display_x, display_y, display_x + width, display_y + height, c_white, c_white, c_white, c_white, false);
+    draw_set_alpha(1);
 }
-draw_set_alpha(1);
 surface_reset_target();
 </string>
           </argument>

@@ -25,19 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//GridsizeX and Y
-ContainerInventoryCoordList = 0;
-
-//Set these variables in the room editor
-containerSizeX = 0;
-containerSizeY = 0;
-boxId = ""
+            <string>ContainerInventoryGrid = 0;
+containerSizeX = 5;
+containerSizeY = 5;
+tempContainerSizeX = 5;
+tempContainerSizeY = 5;
+lastContainerSizeX = 5;
+lastContainerSizeY = 5;
+boxId = 0;
+tempMax = 30;
+openBoxEditor = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="5">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,16 +57,58 @@ boxId = ""
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var str = ds_list_write(ContainerInventoryCoordList);
-ini_open(global.containerfname);
-ini_write_string(string(room), boxId, str);
-ini_close();
+            <string>if(openBoxEditor){
+    var vertInc = keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up);
+    var horInc = keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left);
+    
+    tempContainerSizeX += horInc;
+    tempContainerSizeY += vertInc;
+
+    tempContainerSizeX = clamp(tempContainerSizeX, 1, tempMax);
+    tempContainerSizeY = clamp(tempContainerSizeY, 1, tempMax);
+    
+    if(lastContainerSizeX != tempContainerSizeX || lastContainerSizeY != tempContainerSizeY){
+        ds_grid_resize(ContainerInventoryGrid, tempContainerSizeX, tempContainerSizeY);
+        
+        if(tempContainerSizeX &gt; containerSizeX){
+            ds_grid_set_region(ContainerInventoryGrid, containerSizeX, 0, tempContainerSizeX, containerSizeY, noone);
+        }else if(tempContainerSizeX &lt; containerSizeX){
+            for(var cellX = tempContainerSizeX; cellX &lt; containerSizeX; cellX++){
+                for(var cellY = 0; cellY &lt; containerSizeY; cellY++){
+                    if(ContainerInventoryGrid[# cellX, cellY] != noone){
+                        with(ContainerInventoryGrid[# cellX, cellY]) instance_destroy();
+                        ContainerInventoryGrid[# cellX, cellY] = noone;
+                    }
+                }
+            }
+        }
+        
+        if(tempContainerSizeY &gt; containerSizeY){
+            ds_grid_set_region(ContainerInventoryGrid, 0, containerSizeY, containerSizeX, tempContainerSizeY, noone);
+        }else if(tempContainerSizeY &lt; containerSizeY){
+            for(var cellY = tempContainerSizeY; cellY &lt; containerSizeY; cellY++){
+                for(var cellX = 0; cellX &lt; containerSizeX; cellX++){
+                    if(ContainerInventoryGrid[# cellX, cellY] != noone){
+                        with(ContainerInventoryGrid[# cellX, cellY]) instance_destroy();
+                        ContainerInventoryGrid[# cellX, cellY] = noone;
+                    }
+                }
+            }
+        }
+        
+        containerSizeX = tempContainerSizeX;
+        containerSizeY = tempContainerSizeY;
+        
+        lastContainerSizeX = containerSizeX;
+        lastContainerSizeY = containerSizeY;
+    }
+} 
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="4">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -80,21 +125,22 @@ ini_close();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var str = "";
-ContainerInventoryCoordList = ds_list_create();
-ini_open(global.containerfname);
-if(ini_key_exists(string(room),boxId)){
-    str = ini_read_string(string(room),boxId,"");
-}else{
-    show_message("The container you tried to read in did not exist in the file.");
+            <string>draw_self();
+if(openBoxEditor){
+    var gridStartX = (view_xview + view_wview / 2) * global.display_scale;
+    var gridStartY = (view_yview + view_hview / 2) * global.display_scale;
+    //surface_set_target(global.guiSurf);
+    draw_text(gridStartX, gridStartY - 24, "Container Width : " + string(containerSizeX) + " cells");
+    draw_text(gridStartX, gridStartY - 12, "Container Height : " + string(containerSizeY) + " cells");
+    for(var cellY = 0; cellY &lt; containerSizeY; cellY++)
+    {
+        for(var cellX = 0; cellX &lt; containerSizeX; cellX++)
+        {
+            draw_sprite_ext(spr_invslot, 0, gridStartX + cellX*INV_CELL_SIZE, gridStartY + cellY*INV_CELL_SIZE, 1, 1,0,c_white, 0.6);
+        }
+    }
+    //surface_reset_target();
 }
-if(str != ""){
-    ds_list_read(ContainerInventoryCoordList, str);
-}else{
-    show_message("List not created.");
-}
-ini_close();
-
 </string>
           </argument>
         </arguments>

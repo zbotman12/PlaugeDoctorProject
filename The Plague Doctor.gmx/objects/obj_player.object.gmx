@@ -516,21 +516,37 @@ switch (state)
     case states.inventory:{
     //Behavior
         change_sprite(spr_crouched_idle, 1, true, false);
-    
-        if(instance_exists(obj_invgrid)){
-            obj_invgrid.openInventory = true;
-            obj_invgrid.containerToOpen = instance_place(x,y,obj_container);
-        }
+        
         player_position_update(0,vspd);
         
-        //Transitions
-        if(interactPressed || roomRestarted){
-            state = states.normal;
+        if(!global.devmode){
             if(instance_exists(obj_invgrid)){
-                obj_invgrid.openInventory = false;
-                obj_invgrid.selectionBoxCellX = 0;
-                obj_invgrid.selectionBoxCellY = 0;
+                obj_invgrid.openInventory = true;
+                obj_invgrid.containerToOpen = instance_place(x,y,obj_container);
             }
+            
+            //Transitions
+            if(interactPressed || roomRestarted){
+                state = states.normal;
+                if(instance_exists(obj_invgrid)){
+                    obj_invgrid.openInventory = false;
+                    obj_invgrid.selectionBoxCellX = 0;
+                    obj_invgrid.selectionBoxCellY = 0;
+                }
+            }
+        }else{
+            var container = instance_place(x,y,obj_container);
+            if(instance_exists(container)){
+                container.openBoxEditor = true;
+            }
+            
+            if(interactPressed || roomRestarted){
+                state = states.normal;
+                if(instance_exists(container)){
+                    container.openBoxEditor = false;
+                }
+            }
+            
         }
          
     }break;

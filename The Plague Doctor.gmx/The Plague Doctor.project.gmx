@@ -111,7 +111,7 @@
     <script>scripts\change_sprite.gml</script>
     <script>scripts\press_any_button_gamepad.gml</script>
     <script>scripts\check_grid_transition.gml</script>
-    <script>scripts\init_containers.gml</script>
+    <script>scripts\init_container_to_empty.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -159,13 +159,12 @@
       <object>objects\obj_Pause</object>
       <object>objects\obj_shader_controller</object>
       <object>objects\obj_parallax</object>
-      <object>objects\obj_display</object>
       <object>objects\obj_guiManager</object>
       <object>objects\obj_invgrid</object>
       <object>objects\obj_timeController</object>
-      <object>objects\obj_checkpoint</object>
       <object>objects\obj_partManager</object>
       <object>objects\obj_level_sound</object>
+      <object>objects\obj_checkpoint</object>
     </objects>
     <objects name="menu">
       <object>objects\obj_menu_sound</object>
