@@ -110,8 +110,7 @@
     <script>scripts\player_position_update.gml</script>
     <script>scripts\change_sprite.gml</script>
     <script>scripts\press_any_button_gamepad.gml</script>
-    <script>scripts\check_grid_transition.gml</script>
-    <script>scripts\init_container_to_empty.gml</script>
+    <script>scripts\pack_inventory_grid.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
@@ -122,6 +121,7 @@
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_menu</font>
+    <font>fonts\fnt_debug</font>
   </fonts>
   <objects name="objects">
     <objects name="Traps">
@@ -157,12 +157,9 @@
     <objects name="Controllers">
       <object>objects\obj_gameManager</object>
       <object>objects\obj_Pause</object>
-      <object>objects\obj_shader_controller</object>
       <object>objects\obj_parallax</object>
       <object>objects\obj_guiManager</object>
-      <object>objects\obj_invgrid</object>
-      <object>objects\obj_timeController</object>
-      <object>objects\obj_partManager</object>
+      <object>objects\obj_inventoryManager</object>
       <object>objects\obj_level_sound</object>
       <object>objects\obj_checkpoint</object>
     </objects>
@@ -175,6 +172,7 @@
       <object>objects\obj_spotlight</object>
     </objects>
     <objects name="Items">
+      <object>objects\obj_item_parent</object>
       <object>objects\obj_item_1</object>
       <object>objects\obj_item_2</object>
       <object>objects\obj_item_3</object>
@@ -191,10 +189,10 @@
     <object>objects\obj_container</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_menu</room>
     <room>rooms\rm_newhospital</room>
     <room>rooms\rm_physics_test</room>
     <room>rooms\rm_testroom</room>
-    <room>rooms\rm_menu</room>
     <room>rooms\rm_Lvl1_whitebox</room>
     <room>rooms\rm_Hospital_1</room>
     <room>rooms\room3</room>

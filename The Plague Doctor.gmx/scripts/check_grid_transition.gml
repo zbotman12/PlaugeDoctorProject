@@ -5,15 +5,7 @@ if(containerToOpen != noone)
         //If you are in the container, below the inventory
         if((selectionBoxCurrentGrid == containerGrid) && (selectionBoxCellY <= 0))
         {
-            if(selectionBoxCellX > (kitSizeX - 1)){
-                selectionBoxCellX = (kitSizeX - 1);  
-            }
             selectionBoxCurrentGrid = invGrid;
-            gridUpperBoundsX = kitSizeX;
-            gridUpperBoundsY = kitSizeY;
-            gridLowerBoundsX = 0;
-            gridLowerBoundsY = 0;
-            selectionBoxCellY = (kitSizeY - 1);
             return true;
         }else{
             return false;
@@ -22,15 +14,7 @@ if(containerToOpen != noone)
         //If you are in the inventory, above the container, and press down
         if(selectionBoxCurrentGrid == invGrid && selectionBoxCellY >= (kitSizeY - 1))
         {
-            if(selectionBoxCellX > (containerToOpen.containerSizeX - 1)){ 
-                selectionBoxCellX = containerToOpen.containerSizeX - 1;
-            }
             selectionBoxCurrentGrid = containerGrid;
-            gridUpperBoundsX = containerSizeX; 
-            gridUpperBoundsY = containerSizeY;
-            gridLowerBoundsX = 0;
-            gridLowerBoundsY = 0;
-            selectionBoxCellY = 0;
             return true;
         }else{
             return false;

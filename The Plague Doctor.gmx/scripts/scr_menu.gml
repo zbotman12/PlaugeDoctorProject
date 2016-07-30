@@ -1,12 +1,18 @@
 switch (mpos)
 {
     case 0:
-    {
-        room_goto(rm_Lvl1_whitebox);
+    {   
+        if(file_exists(global.containerSavefname)){
+            file_delete(global.containerSavefname);
+        }
+        room_goto(rm_newhospital);
         break;
     }
     case 1: 
         {
+        if(file_exists(global.containerSavefname)){
+            room_goto(rm_newhospital);
+        }
         break;
         }
     case 2:

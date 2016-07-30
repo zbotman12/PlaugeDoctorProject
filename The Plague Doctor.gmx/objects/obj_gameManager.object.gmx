@@ -28,30 +28,18 @@
             <string>global.guiSurf = surface_create(view_wview, view_hview);
 global.usingGamepad = false;
 global.debug = debug_mode;
-global.devmode = false;
 /// Initialize the display object
 global.display_scale = display_get_gui_width()/view_wview[view_current];
 //Get the mouse position relative to the gui not the room
 global.gui_mouse_x = (mouse_x - view_xview[view_current]) * global.display_scale;
 global.gui_mouse_y = (mouse_y - view_yview[view_current]) * global.display_scale;
-global.containerInitfname = "initContainer";
-global.containerRuntimefname = "runtimeContainer";
-textAlpha = 1;
-drawSavetext = false;
 
-//Create the runtime file from the initialization file for a new game. (since GameManager is persistant);
-if(file_exists(global.containerInitfname)){
-    file_delete(global.containerRuntimefname);
-    file_copy(global.containerInitfname, global.containerRuntimefname);
-}
-
-instance_create(0,0, obj_timeController);
-instance_create(0,0, obj_lightcontrol);
-instance_create(0,0, obj_parallax);
-instance_create(0,0, obj_invgrid);
-instance_create(0,0, obj_Pause);
-instance_create(0,0, obj_level_sound);
-instance_create(0,0, obj_guiManager);
+instance_create(0,0,obj_Pause);
+instance_create(0,0,obj_lightcontrol);
+instance_create(0,0,obj_parallax);
+instance_create(0,0,obj_inventoryManager);
+instance_create(0,0,obj_level_sound);
+instance_create(0,0,obj_guiManager);
 
 mouseLastX = 0;
 mouseLastY = 0;
@@ -94,142 +82,6 @@ mouseLastX = global.gui_mouse_x;
 
 if (!surface_exists(global.guiSurf)){
     global.guiSurf = surface_create(view_wview, view_hview);
-}
-
-if(keyboard_check_pressed(vk_f12)){
-    global.devmode = !global.devmode;
-}
-
-if(global.devmode){
-    if(keyboard_check(vk_control) &amp;&amp; keyboard_check_pressed(ord('S'))){
-       ///Save containers to Runtime File
-        with(obj_container){
-            ini_open(global.containerRuntimefname);
-            var str = ds_grid_write(ContainerInventoryGrid);
-            ini_write_string(room_get_name(room), boxId, str);
-            ini_write_real(room_get_name(room), boxId + "sizeX", containerSizeX);
-            ini_write_real(room_get_name(room), boxId + "sizeY", containerSizeY);
-            ini_close();
-        }
-        //Create the init file from the runtime one
-        file_delete(global.containerInitfname);
-        file_copy(global.containerRuntimefname, global.containerInitfname);
-        drawSavetext = true;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="5">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Save containers to Runtime File
-//When the room restarts, save the data in the boxes out to the runtime file
-with(obj_container){
-    ini_open(global.containerRuntimefname);
-    var str = ds_grid_write(ContainerInventoryGrid);
-    ini_write_string(room_get_name(room), boxId, str);
-    ini_write_real(room_get_name(room), boxId + "sizeX", containerSizeX);
-    ini_write_real(room_get_name(room), boxId + "sizeY", containerSizeY);
-    ini_close();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Read all containers from the Runtime file
-var boxCount = 0;
-with(obj_container){
-    ini_open(global.containerRuntimefname);
-    var gridStr = "";
-    boxId = room_get_name(room) + "_Cont_" + string(boxCount++);
-    //If the box does not exist in the Runtime file, create an empty default box.
-    if(!ini_key_exists(room_get_name(room), boxId)){  
-        var emptyGrid = ds_grid_create(containerSizeX,containerSizeY);
-        ds_grid_clear(emptyGrid, noone);
-        var str = ds_grid_write(emptyGrid);
-        ini_write_string(room_get_name(room), boxId, str);
-        ini_write_real(room_get_name(room), boxId + "sizeX", containerSizeX);
-        ini_write_real(room_get_name(room), boxId + "sizeY", containerSizeY);
-        show_message("WARNING: A Container in the game was unaccounted for in the runtime file. Initializing it to an empty, default container.");
-        ds_grid_destroy(emptyGrid);
-    }
-    containerSizeX = ini_read_real(room_get_name(room),boxId + "sizeX",-1);
-    containerSizeY = ini_read_real(room_get_name(room),boxId + "sizeY",-1);
-    gridStr = ini_read_string(room_get_name(room),boxId,"");
-    if(gridStr != "" &amp;&amp; containerSizeX != -1 &amp;&amp; containerSizeY != -1){
-        ContainerInventoryGrid = ds_grid_create(containerSizeX, containerSizeY);
-        ds_grid_read(ContainerInventoryGrid, gridStr);
-    }else{
-        show_message("The container you tried to read in did not exist in the file.");
-    }    
-    ini_close();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(global.devmode){
-    draw_text(view_xview * global.display_scale + view_wview/2, view_yview * global.display_scale + 25, "DEVELOPER MODE ENABLED");
-    if(drawSavetext) {draw_text_colour(view_xview * global.display_scale + view_wview/2, view_yview * global.display_scale + 40, "Container Initalization File Saved.",c_white,c_white,c_white,c_white, textAlpha)};
-    if(textAlpha &lt;= 0 &amp;&amp; drawSavetext){
-        drawSavetext = false;
-        textAlpha = 1;
-    }else{
-        textAlpha -= 0.001;
-    }
 }
 </string>
           </argument>

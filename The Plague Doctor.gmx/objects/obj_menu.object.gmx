@@ -25,20 +25,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu[0] = "Start";
-menu[1] = "Continue (does nothing)";
+            <string>menu[0] = "New Game";
+menu[1] = "Continue";
 menu[2] = "Options (does nothing)";
 menu[3] = "Quit";
 
 space = 65;
 mpos = 0;
 
-gamepadVertUp = 0;
-gamepadVertDown = 0;
-gamepadStart = 0;
-gamepadA = 0;
-lastgamepadVertUp = 0;
-lastgamepadVertDown = 0;
+right = false;
+left = false;
+up = false;
+down = false;
+upPressed = false;
+downPressed = false;
+rightAndLeftPressed = false;
+grounded = false;
+hidden = false;
+runButton = false;
+leftClick = false;
+leftClickReleased = false;
+lastDir = 0;
+jump = false;
+interactPressed = false;
+arrowUp = false;
+arrowDown = false;
+arrowLeft = false;
+arrowRight = false;
+arrowUpRelease = 0;
+arrowDownRelease = 0;
+arrowLeftRelease = 0;
+arrowRightRelease = 0;
+
+lastDirTSRHor = 0;
+lastDirTSLHor = 0;
+lastDirTSRVert = 0;
+lastDirTSLVert = 0;
+
+
+delayTimer = 0;
+delayTime = 8;
 </string>
           </argument>
         </arguments>
@@ -61,18 +87,25 @@ lastgamepadVertDown = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (gamepad_is_connected(0))
-{ 
-    gamepad_set_axis_deadzone(0, 0.1);
-    gamepadVertUp = min(sign(gamepad_axis_value(0, gp_axislv)), 0);
-    gamepadVertDown = max(sign(gamepad_axis_value(0, gp_axislv)), 0);
-    gamepadStart = gamepad_button_check_pressed(0, gp_start);
-    gamepadA = gamepad_button_check_pressed(0, gp_face1);
-}
+            <string>get_input();
 
 var move = 0;
-move -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")), (gamepadVertUp != lastgamepadVertUp),0);
-move += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")), (gamepadVertDown != lastgamepadVertDown),0);
+var up = 0;
+var down = 0;
+
+
+if(delayTimer == 0){
+    if(arrowUp){
+        up = 1;
+    }else if(arrowDown){
+        down = 1;
+    }else{
+        delayTimer = delayTime;
+    }
+}
+
+move -= max(keyboard_check_pressed(vk_up),keyboard_check_pressed(ord("W")), up, 0);
+move += max(keyboard_check_pressed(vk_down),keyboard_check_pressed(ord("S")), down, 0);
 
 if (move != 0)
 {
@@ -82,11 +115,13 @@ if (move != 0)
 }
 
 var push;
-push = max(keyboard_check_released(vk_enter),keyboard_check_released(vk_shift),keyboard_check_released(vk_space), gamepadA, gamepadStart, 0); 
+push = max(keyboard_check_released(vk_enter),keyboard_check_released(vk_shift),keyboard_check_released(vk_space), leftClick, pauseButton, 0); 
 if (push == 1) scr_menu();
 
-lastgamepadVertUp = gamepadVertUp;
-lastgamepadVertDown = gamepadVertDown;
+delayTimer++;
+if(delayTimer &gt;= delayTime || arrowUpRelease || arrowDownRelease){
+    delayTimer = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -117,11 +152,16 @@ draw_set_color(c_red);
 var m;
 for (m =0; m &lt; array_length_1d(menu); m += 1)
 {
+    if(menu[m] == "Continue" &amp;&amp; !file_exists(global.containerSavefname)){
+        draw_set_alpha(0.3);
+    }else{
+        draw_set_alpha(1);
+    }
     draw_text(x + space, y +(m * space),string(menu[m]))
 }
 
 draw_sprite(sprite_index, 0, x + 16, y + mpos * space);
-
+draw_set_font(fnt_debug);
     
 </string>
           </argument>

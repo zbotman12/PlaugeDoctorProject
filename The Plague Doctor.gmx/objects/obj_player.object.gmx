@@ -101,6 +101,7 @@ door = noone;
 
 ladderSnap = false;
 roomRestarted = false;
+justOpened = false;
 justOnLadder = false;
 </string>
           </argument>
@@ -310,6 +311,7 @@ switch (state)
         
         if(place_meeting(x,y, obj_container) &amp;&amp; interactPressed){
             state = states.inventory;
+            justOpened = true;
         }
         
         if(((position_meeting(x,bbox_top,obj_ladder_mask) &amp;&amp; up ) || (position_meeting(x,bbox_bottom,obj_ladder_mask) &amp;&amp; down)) &amp;&amp; !justOnLadder &amp;&amp; !jump)
@@ -352,6 +354,7 @@ switch (state)
         
         if(place_meeting(x,y, obj_container) &amp;&amp; interactPressed){
             state = states.inventory;
+            justOpened = true;
         }
         
         if(((position_meeting(x,bbox_top,obj_ladder_mask) &amp;&amp; up ) || (position_meeting(x,bbox_bottom,obj_ladder_mask) &amp;&amp; down)) &amp;&amp; !justOnLadder &amp;&amp; !jump)
@@ -391,6 +394,7 @@ switch (state)
         //Transitions    
         if(place_meeting(x,y, obj_container) &amp;&amp; interactPressed){
             state = states.inventory;
+            justOpened = true;
         }      
         if(check_mask_index(x,y,spr_player_mask)){
             if(!crouchButton &amp;&amp; !runButton){
@@ -519,34 +523,21 @@ switch (state)
         
         player_position_update(0,vspd);
         
-        if(!global.devmode){
-            if(instance_exists(obj_invgrid)){
-                obj_invgrid.openInventory = true;
-                obj_invgrid.containerToOpen = instance_place(x,y,obj_container);
+        if(instance_exists(obj_inventoryManager) &amp;&amp; justOpened){
+            obj_inventoryManager.openInventory = true;
+            obj_inventoryManager.initGrids = true;
+            obj_inventoryManager.containerToOpen = instance_place(x,y,obj_container);
+            justOpened = false;
+        }
+        
+        //Transitions
+        if(interactPressed || roomRestarted){
+            state = states.normal;
+            if(instance_exists(obj_inventoryManager)){
+                obj_inventoryManager.openInventory = false;
+                obj_inventoryManager.selectionBoxCellX = 0;
+                obj_inventoryManager.selectionBoxCellY = 0;
             }
-            
-            //Transitions
-            if(interactPressed || roomRestarted){
-                state = states.normal;
-                if(instance_exists(obj_invgrid)){
-                    obj_invgrid.openInventory = false;
-                    obj_invgrid.selectionBoxCellX = 0;
-                    obj_invgrid.selectionBoxCellY = 0;
-                }
-            }
-        }else{
-            var container = instance_place(x,y,obj_container);
-            if(instance_exists(container)){
-                container.openBoxEditor = true;
-            }
-            
-            if(interactPressed || roomRestarted){
-                state = states.normal;
-                if(instance_exists(container)){
-                    container.openBoxEditor = false;
-                }
-            }
-            
         }
          
     }break;
