@@ -708,9 +708,7 @@ draw_self();
 if(global.debug){
     draw_set_color(c_white);
     draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-    draw_text(x + 10, y - 20, "grounded = " + string(grounded));
-    draw_text(x + 10, y - 30, leftClick);
-    draw_text(x + 10, y - 40, leftClickReleased);
+    draw_text(x + 10, y - 25, "grounded = " + string(grounded));
     switch(state)
     {
         case states.normal:{draw_text(x + 10, y - 10, "STATE = normal");}break;

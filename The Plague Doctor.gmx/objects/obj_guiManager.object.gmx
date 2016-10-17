@@ -116,7 +116,7 @@ lastmp = mp;
 
 draw_roundrect_colour_ext(HealthbarX, HealthbarY, HealthbarX + maxHealth * 3, HealthbarY + barHeight, 5, 5, c_maroon, c_maroon, 1);
 draw_roundrect_colour_ext(HealthbarX, HealthbarY + 1, HealthbarX + hp * 3, HealthbarY + barHeight - 1, 5, 5, c_red, c_red, 0);
-if(global.debug) draw_text(HealthbarX, HealthbarY - 10, fps);
+if(global.debug) draw_text(HealthbarX, HealthbarY - 5, fps);
 //draw_roundrect_colour_ext(StaminabarX, StaminabarY, StaminabarX + maxStamina, StaminabarY + barHeight, 5, 5, c_olive, c_olive, 1);
 //draw_roundrect_colour_ext(StaminabarX, StaminabarY + 1, StaminabarX + mp, StaminabarY + barHeight - 1, 5, 5, c_green, c_green, 0);
 
