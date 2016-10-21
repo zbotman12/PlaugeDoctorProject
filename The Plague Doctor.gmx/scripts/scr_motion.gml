@@ -84,4 +84,6 @@ if((!right && !left) || (right && left) && hspd != 0){
     }
 }
 
+soundValue = abs(hspd) / runSpd;
+
 player_position_update(hspd,vspd);
