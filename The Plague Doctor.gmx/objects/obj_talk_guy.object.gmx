@@ -26,7 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>hearRange = 400;
+coneHeight = 250;
+coneBaseHalf = 50;
 hearThreshold = 0.05;
+seesPlayer = false;
 text = "I don't hear nuffin";
 </string>
           </argument>
@@ -51,24 +54,38 @@ text = "I don't hear nuffin";
           <argument>
             <kind>1</kind>
             <string>if(object_exists(obj_player)){
-    if(point_distance(x,y,obj_player.x, obj_player.y) &lt;= hearRange){ //The Hearing
-    //THE BEHAVIOR
+    if(point_distance(x,y,obj_player.x, obj_player.y) &lt;= hearRange){
         var distanceFromGuy = abs(point_distance(x,y,obj_player.x, obj_player.y) / hearRange);    
-        if(obj_player.soundValue - distanceFromGuy &gt; hearThreshold)
+        if(obj_player.soundValue - distanceFromGuy &gt; hearThreshold) //The Hearing
         {
             text = "HEY!!";
         }else{
             text = "I don't hear nuffin";
         }
+    }
+    
+    if(rectangle_in_triangle(obj_player.bbox_left,
+                             obj_player.bbox_top, 
+                             obj_player.bbox_right, 
+                             obj_player.bbox_bottom, 
+                             x, 
+                             y - 30, 
+                             x + (-image_xscale * coneHeight), 
+                             y + coneBaseHalf, 
+                             x + (-image_xscale * coneHeight), 
+                             y - coneBaseHalf)){
+        seesPlayer = true;
     }else{
-        var odds = 50;
-        if(irandom(odds) == odds){
-            image_xscale *= -1;
-        }
+        seesPlayer = false;
     }
 }
 
+var odds = 50;
+if(irandom(odds) == odds){
+    image_xscale *= -1;
+}
 
+x++;
 </string>
           </argument>
         </arguments>
@@ -92,6 +109,14 @@ text = "I don't hear nuffin";
           <argument>
             <kind>1</kind>
             <string>draw_text(x, y - 20, text);
+if(seesPlayer) draw_set_color(c_red);
+draw_triangle(               x, 
+                             y - 30, 
+                             x + (-image_xscale * coneHeight), 
+                             y + coneBaseHalf, 
+                             x + (-image_xscale * coneHeight), 
+                             y - coneBaseHalf, 1);
+draw_set_color(c_white);
 draw_self();
 </string>
           </argument>
