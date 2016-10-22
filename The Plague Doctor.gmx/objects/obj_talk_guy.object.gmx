@@ -26,11 +26,81 @@
           <argument>
             <kind>1</kind>
             <string>hearRange = 400;
-coneHeight = 250;
+coneHeight = 300;
 coneBaseHalf = 50;
 hearThreshold = 0.05;
-seesPlayer = false;
-text = "I don't hear nuffin";
+playerTouched = 0;
+seesPlayer = 0;
+hearsPlayer = 0;
+turnTimer = 0;
+alertnessThreshold = 0.5;
+alertness = 0;
+objectOfInterestX = x;
+objectOfInterestY = y;
+
+
+grav = 1;
+terminalVel = 30;
+spd = 3;
+jumpReleased = false;
+grounded = false;
+vspd = 0;
+hspd = 0;
+jumplagTimer = 0;
+jumplag = 12;
+jump = false;
+hspd = 0;
+vspd = 0;
+gravIgnoreTime = 24;
+baseGravIgnoreTime = 16;
+gravIgnoreTimer = gravIgnoreTime;
+jumplagTimer = 0;
+jumped = false;
+turnDelayTimer = 0;
+lastkey = 0;
+right = false;
+left = false;
+up = false;
+down = false;
+
+//kinematics
+gamespeed = 2;
+/*KNOBS*/
+spd = 10 / gamespeed;
+runSpd = 16 / gamespeed;
+crawlSpd = 6 / gamespeed;
+hAccConst = 2 / gamespeed;
+turnDelayTime = 3 * gamespeed;
+runTurnDelayTime = 8 * gamespeed;
+grav = 2 / gamespeed;
+terminalVel = 30 / gamespeed;
+jspd = 20 / gamespeed;
+gravIgnoreTime = 12 * gamespeed;
+baseGravIgnoreTime = 8 * gamespeed;
+slideSpeed = 50 / gamespeed;
+slideDecayAmmount = 4 / gamespeed;
+ladderspd = 5 / gamespeed;
+jumplag = 6 * gamespeed;
+/*END KNOBS*/
+
+hspd = 0;
+vspd = 0;
+gravIgnoreTimer = gravIgnoreTime;
+jumplagTimer = 0;
+jumped = false;
+turnDelayTimer = 0;
+lastkey = 0;
+sliding = false;
+slideDecay = false;
+
+
+enum behaviorStates{
+    standGuard,
+    seek,
+    patrol,
+    engage
+}
+behaviorState = behaviorStates.standGuard;
 </string>
           </argument>
         </arguments>
@@ -54,38 +124,101 @@ text = "I don't hear nuffin";
           <argument>
             <kind>1</kind>
             <string>if(object_exists(obj_player)){
+
+    //The Hearing
     if(point_distance(x,y,obj_player.x, obj_player.y) &lt;= hearRange){
         var distanceFromGuy = abs(point_distance(x,y,obj_player.x, obj_player.y) / hearRange);    
-        if(obj_player.soundValue - distanceFromGuy &gt; hearThreshold) //The Hearing
+        if(obj_player.soundValue - distanceFromGuy &gt; hearThreshold)
         {
-            text = "HEY!!";
+            if(hearsPlayer &lt; 1) hearsPlayer += 0.1;
         }else{
-            text = "I don't hear nuffin";
+            if(hearsPlayer &gt; 0)hearsPlayer -= 0.05;
         }
     }
     
+    //Seeing
     if(rectangle_in_triangle(obj_player.bbox_left,
                              obj_player.bbox_top, 
                              obj_player.bbox_right, 
                              obj_player.bbox_bottom, 
                              x, 
                              y - 30, 
-                             x + (-image_xscale * coneHeight), 
+                             x + (-sign(image_xscale) * coneHeight), 
                              y + coneBaseHalf, 
-                             x + (-image_xscale * coneHeight), 
+                             x + (-sign(image_xscale) * coneHeight), 
                              y - coneBaseHalf)){
-        seesPlayer = true;
-    }else{
-        seesPlayer = false;
+                             
+            if(seesPlayer &lt; 1) seesPlayer += 0.1;
+        }else{
+            if(seesPlayer &gt; 0)seesPlayer -= 0.05;
+    
+    //Touch
+    if(place_meeting(x, y, obj_player)){
+            if(playerTouched &lt; 1) playerTouched += 0.2;
+        }else{
+            if(playerTouched &gt; 0)playerTouched -= 0.05;
+        }
     }
 }
 
-var odds = 50;
-if(irandom(odds) == odds){
-    image_xscale *= -1;
+alertness = mean(seesPlayer, hearsPlayer, playerTouched); //Maybe not the best math model
+
+switch(behaviorState){
+    case behaviorStates.standGuard:{
+    
+    //Action
+        left = false;
+        right = false;
+        jump = false;
+    
+        var odds = 50;
+        if(irandom(odds) == odds &amp;&amp; turnTimer &lt;= 0){
+            image_xscale *= -1;
+            turnTimer = 90;
+        }
+        turnTimer--;
+    //Transitions
+        if(alertness &gt; alertnessThreshold){
+            behaviorState = behaviorStates.seek;
+            objectOfInterestX = obj_player.x;
+            objectOfInterestY = obj_player.y;
+        }
+    }break;
+    case behaviorStates.patrol:{
+    
+    
+    }break;
+    case behaviorStates.seek:{
+    
+     //Action
+        if(x &lt; objectOfInterestX){
+            left = false;
+            right = true;
+        }else if(x &gt; objectOfInterestX){
+            left = true;
+            right = false;
+        }
+        if(y &lt; objectOfInterestY){
+        }else if(y &gt; objectOfInterestY){
+        }
+     //Transitions
+        if(alertness &lt;= 0){
+            behaviorState = behaviorStates.standGuard;
+            objectOfInterestX = obj_player.x;
+            objectOfInterestY = obj_player.y;
+        }
+        
+    }break;
+    case behaviorStates.engage:{
+    
+    
+    }break;
+    default:{
+        show_message("PANNICC");
+    }
 }
 
-x++;
+scr_motion(spd, 5, 4);
 </string>
           </argument>
         </arguments>
@@ -108,15 +241,26 @@ x++;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(x, y - 20, text);
-if(seesPlayer) draw_set_color(c_red);
-draw_triangle(               x, 
-                             y - 30, 
-                             x + (-image_xscale * coneHeight), 
-                             y + coneBaseHalf, 
-                             x + (-image_xscale * coneHeight), 
-                             y - coneBaseHalf, 1);
-draw_set_color(c_white);
+            <string>if(global.debug){
+    if(seesPlayer == 1) draw_set_color(c_red);
+    draw_triangle(               x, 
+                                 y - 30, 
+                                 x + (-image_xscale * coneHeight), 
+                                 y + coneBaseHalf, 
+                                 x + (-image_xscale * coneHeight), 
+                                 y - coneBaseHalf, 1);
+    draw_set_color(c_white);
+    if(playerTouched == 1) draw_set_color(c_red);
+    draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+    draw_set_color(c_white);
+    if(hearsPlayer == 1) draw_set_color(c_red);
+    draw_circle(x, y, hearRange, true);
+    draw_set_color(c_white);
+    draw_text(x, y - 50, "see:" + string(seesPlayer))
+    draw_text(x, y - 60, "hear:" + string(hearsPlayer))
+    draw_text(x, y - 70, "feel:" + string(playerTouched))
+    draw_text(x, y - 80, "state:" + string(behaviorState))
+}
 draw_self();
 </string>
           </argument>
