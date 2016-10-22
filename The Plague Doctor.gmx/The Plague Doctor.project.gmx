@@ -111,6 +111,7 @@
     <script>scripts\change_sprite.gml</script>
     <script>scripts\press_any_button_gamepad.gml</script>
     <script>scripts\pack_inventory_grid.gml</script>
+    <script>scripts\init_movement.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_BlackAndWhite.shader</shader>
